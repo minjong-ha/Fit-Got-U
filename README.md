@@ -2,17 +2,19 @@
 Fitness For you
 
 2019-03-21
-±×³É ±âº»ÀÎ com.example.myapplication À¸·Î ¸¸µé¾úÀ½.
-SDK´Â 26(Oreo)¸¦ ÀÌ¿ë.
-ÀÚ¹Ù´Â JDK 8 ÀÌ¿ë.
+ê·¸ëƒ¥ ê¸°ë³¸ì¸ com.example.myapplication ìœ¼ë¡œ ë§Œë“¤ì—ˆìŒ.
+SDKëŠ” 26(Oreo)ë¥¼ ì´ìš©.
+ìžë°”ëŠ” JDK 8 ì´ìš©.
 
-µðÀÚÀÎ ¾øÀÌ »À´ë¸¸ ¸¸µé°í ÀÖÀ¸¸ç ¹ö±× µîÀº ¾ÆÁ÷ °í·ÁÇÏÁö ¾Ê¾ÒÀ½.
-ÇöÀç »óÅÂ´Â ¾Æ·¡¿Í °°À½.
+ë””ìžì¸ ì—†ì´ ë¼ˆëŒ€ë§Œ ë§Œë“¤ê³  ìžˆìœ¼ë©° ë²„ê·¸ ë“±ì€ ì•„ì§ ê³ ë ¤í•˜ì§€ ì•Šì•˜ìŒ.
+í˜„ìž¬ ìƒíƒœëŠ” ì•„ëž˜ì™€ ê°™ìŒ.
 
-MainActivity : ¾Æ¹«°Íµµ ¾È ¸¸µë. ±âº»ÀûÀ¸·Î ¿©±â¼­ ¾îÇÃÀÌ ½ÃÀÛµÇ±â ¶§¹®¿¡ StartPageActivity¸¦ º¼ ¼ö´Â ¾øÀ» °ÍÀÓ.
+MainActivity : ì•„ë¬´ê²ƒë„ ì•ˆ ë§Œë“¬. ê¸°ë³¸ì ìœ¼ë¡œ ì—¬ê¸°ì„œ ì–´í”Œì´ ì‹œìž‘ë˜ê¸° ë•Œë¬¸ì— StartPageActivityë¥¼ ë³¼ ìˆ˜ëŠ” ì—†ì„ ê²ƒìž„.
 
-StartPageActivity : ½ÃÀÛ È­¸éÀÓ(³ªÁß¿¡). User login ¹öÆ°°ú Fitness Login ¹öÆ°, È¸¿ø°¡ÀÔ ¹öÆ°ÀÌ Á¸Àç. login ¹öÆ°À» ´©¸£¸é who Á¤º¸¸¦ user ¶Ç´Â fitness·Î ÀúÀåÇØ LoginActivity·Î Àü´ÞÇÔ.
+StartPageActivity : ì‹œìž‘ í™”ë©´ìž„(ë‚˜ì¤‘ì—). User login ë²„íŠ¼ê³¼ Fitness Login ë²„íŠ¼, íšŒì›ê°€ìž… ë²„íŠ¼ì´ ì¡´ìž¬. login ë²„íŠ¼ì„ ëˆ„ë¥´ë©´ who ì •ë³´ë¥¼ user ë˜ëŠ” fitnessë¡œ ì €ìž¥í•´ LoginActivityë¡œ ì „ë‹¬í•¨.
 
-LoginActivity : ¾ÆÀÌµð¿Í ºñ¹Ð¹øÈ£¸¦ ÀÔ·ÂÇÏ´Â Ã¢ÀÌ ³ª¿È. µ¥ÀÌÅÍ º£ÀÌ½º´Â ÀÌ¿ëÇÏÁö ¾Ê¾Æ¼­ ¾Æ·¡ login ¹öÆ°À» ´©¸£¸é ±×³É MainActivity·Î ÀÌµ¿ÇÔ.
+LoginActivity : ì•„ì´ë””ì™€ ë¹„ë°€ë²ˆí˜¸ë¥¼ ìž…ë ¥í•˜ëŠ” ì°½ì´ ë‚˜ì˜´. ë°ì´í„° ë² ì´ìŠ¤ëŠ” ì´ìš©í•˜ì§€ ì•Šì•„ì„œ ì•„ëž˜ login ë²„íŠ¼ì„ ëˆ„ë¥´ë©´ ê·¸ëƒ¥ MainActivityë¡œ ì´ë™í•¨.
 
-JoinActivity : ¾ÆÁ÷ ¾È ¸¸µë.
+JoinActivity : ì•„ì§ ì•ˆ ë§Œë“¬.
+
+nanamare ëŒ€ê°€ë¦¬ ê¹¨
