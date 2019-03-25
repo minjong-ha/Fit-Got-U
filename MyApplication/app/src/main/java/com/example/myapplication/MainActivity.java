@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_registered) {
         } else if (id == R.id.nav_analysis) {
         } else if (id == R.id.nav_setting) {
-        } else if (id == R.id.nav_logout) {
+        } else if (id == R.id.nav_logout) {//버그 방지를 위해 기본적으로 공통 메뉴가 아닌 것은 숨김 상태로.
             findViewById(R.id.nav_recommand).setVisibility(View.INVISIBLE);
             findViewById(R.id.nav_near).setVisibility(View.INVISIBLE);
             findViewById(R.id.nav_fitness).setVisibility(View.INVISIBLE);
