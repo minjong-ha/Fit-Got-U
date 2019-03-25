@@ -11,28 +11,23 @@
         <item
             android:id="@+id/nav_recommand"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/nav_recommand"
-            android:visible="false" />
+            android:title="@string/nav_recommand" />
         <item
             android:id="@+id/nav_fitness"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/nav_fitness"
-            android:visible="false" />
+            android:title="@string/nav_fitness" />
         <item
             android:id="@+id/nav_near"
             android:icon="@drawable/ic_menu_share"
-            android:title="@string/nav_near"
-            android:visible="false" />
+            android:title="@string/nav_near" />
         <item
             android:id="@+id/nav_registered"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/nav_registered"
-            android:visible="false" />
+            android:title="@string/nav_registered" />
         <item
             android:id="@+id/nav_analysis"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/nav_analysis"
-            android:visible="false" />
+            android:title="@string/nav_analysis" />
         <item
             android:id="@+id/nav_setting"
             android:icon="@drawable/ic_menu_manage"
