@@ -29,21 +29,11 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);//버그 방지로 공통 메뉴가 아닌 건 안 보이게 시작.
         if (true) {//피트니스 일 때
-            navigationView.getMenu().findItem(R.id.nav_recommand).setVisible(false);
-            navigationView.getMenu().findItem(R.id.nav_near).setVisible(false);
-            navigationView.getMenu().findItem(R.id.nav_fitness).setVisible(false);
-
-            navigationView.getMenu().findItem(R.id.nav_registered).setVisible(true);
-            navigationView.getMenu().findItem(R.id.nav_analysis).setVisible(true);
+            changeMenu(navigationView, 0);
         } else {//일반 유저일 때
-            navigationView.getMenu().findItem(R.id.nav_recommand).setVisible(true);
-            navigationView.getMenu().findItem(R.id.nav_near).setVisible(true);
-            navigationView.getMenu().findItem(R.id.nav_fitness).setVisible(true);
-
-            navigationView.getMenu().findItem(R.id.nav_registered).setVisible(false);
-            navigationView.getMenu().findItem(R.id.nav_analysis).setVisible(false);
+            changeMenu(navigationView, 1);
         }
         navigationView.setNavigationItemSelectedListener(this);
     }
@@ -71,10 +61,39 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_analysis) {
         } else if (id == R.id.nav_setting) {
         } else if (id == R.id.nav_logout) {
+            changeMenu(null, -1);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void changeMenu(NavigationView nv, int i) {//-1:다 안보이게 0:피트니스 1:유저
+        if (nv == null) {
+            nv = (NavigationView) findViewById(R.id.nav_view);
+        }
+        if (i == -1) {
+            nv.getMenu().findItem(R.id.nav_recommand).setVisible(false);
+            nv.getMenu().findItem(R.id.nav_near).setVisible(false);
+            nv.getMenu().findItem(R.id.nav_fitness).setVisible(false);
+
+            nv.getMenu().findItem(R.id.nav_registered).setVisible(false);
+            nv.getMenu().findItem(R.id.nav_analysis).setVisible(false);
+        } else if (i == 0) {
+            nv.getMenu().findItem(R.id.nav_recommand).setVisible(false);
+            nv.getMenu().findItem(R.id.nav_near).setVisible(false);
+            nv.getMenu().findItem(R.id.nav_fitness).setVisible(false);
+
+            nv.getMenu().findItem(R.id.nav_registered).setVisible(true);
+            nv.getMenu().findItem(R.id.nav_analysis).setVisible(true);
+        } else {
+            nv.getMenu().findItem(R.id.nav_recommand).setVisible(true);
+            nv.getMenu().findItem(R.id.nav_near).setVisible(true);
+            nv.getMenu().findItem(R.id.nav_fitness).setVisible(true);
+
+            nv.getMenu().findItem(R.id.nav_registered).setVisible(false);
+            nv.getMenu().findItem(R.id.nav_analysis).setVisible(false);
+        }
     }
 }
