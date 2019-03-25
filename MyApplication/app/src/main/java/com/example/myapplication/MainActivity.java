@@ -29,7 +29,22 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);//버그 방지를 위해 기본적으로 공통 메뉴가 아닌 것은 숨김 상태로 시작.
+        if (true) {//피트니스 일 때
+            findViewById(R.id.nav_recommand).setVisibility(View.INVISIBLE);
+            findViewById(R.id.nav_near).setVisibility(View.INVISIBLE);
+            findViewById(R.id.nav_fitness).setVisibility(View.INVISIBLE);
+
+            findViewById(R.id.nav_registered).setVisibility(View.VISIBLE);
+            findViewById(R.id.nav_analysis).setVisibility(View.VISIBLE);
+        } else {//일반 유저일 때
+            findViewById(R.id.nav_recommand).setVisibility(View.VISIBLE);
+            findViewById(R.id.nav_near).setVisibility(View.VISIBLE);
+            findViewById(R.id.nav_fitness).setVisibility(View.VISIBLE);
+
+            findViewById(R.id.nav_registered).setVisibility(View.INVISIBLE);
+            findViewById(R.id.nav_analysis).setVisibility(View.INVISIBLE);
+        }
         navigationView.setNavigationItemSelectedListener(this);
     }
 
@@ -52,7 +67,15 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_recommand) {
         } else if (id == R.id.nav_fitness) {
         } else if (id == R.id.nav_near) {
+        } else if (id == R.id.nav_registered) {
+        } else if (id == R.id.nav_analysis) {
         } else if (id == R.id.nav_setting) {
+        } else if (id == R.id.nav_logout) {
+            findViewById(R.id.nav_recommand).setVisibility(View.INVISIBLE);
+            findViewById(R.id.nav_near).setVisibility(View.INVISIBLE);
+            findViewById(R.id.nav_fitness).setVisibility(View.INVISIBLE);
+            findViewById(R.id.nav_registered).setVisibility(View.INVISIBLE);
+            findViewById(R.id.nav_analysis).setVisibility(View.INVISIBLE);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

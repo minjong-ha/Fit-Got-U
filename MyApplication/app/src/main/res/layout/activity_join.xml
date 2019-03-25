@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/join_id_T"
+        android:id="@+id/join_id_t"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -50,7 +50,7 @@
         app:layout_constraintTop_toBottomOf="@+id/join_text" />
 
     <TextView
-        android:id="@+id/join_pw_T"
+        android:id="@+id/join_pw_t"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="92dp"
@@ -62,7 +62,7 @@
         app:layout_constraintEnd_toStartOf="@+id/join_pw"
         app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/join_id_T" />
+        app:layout_constraintTop_toBottomOf="@+id/join_id_t" />
 
     <EditText
         android:id="@+id/join_pw"
@@ -101,7 +101,7 @@
         android:layout_marginTop="48dp"
         android:text="@string/join_who"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/join_pw_T" />
+        app:layout_constraintTop_toBottomOf="@+id/join_pw_t" />
 
     <RadioGroup
         android:id="@+id/join_who_g"
