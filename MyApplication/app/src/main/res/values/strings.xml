@@ -17,4 +17,13 @@
     <string name="login_id_hint">아이디를 입력해주세요</string>
     <string name="login_pw">PW</string>
     <string name="login_pw_hint">비밀번호를 입력해주세요</string>
+
+    <string name="join_text">회원가입</string>
+    <string name="join_id">ID</string>
+    <string name="join_id_hint">아이디를 입력해주세요</string>
+    <string name="join_pw">PW</string>
+    <string name="join_pw_hint">비밀번호를 입력해주세요</string>
+    <string name="join_who">WHO</string>
+    <string name="join_fitness">피트니스</string>
+    <string name="join_user">유저</string>
 </resources>
