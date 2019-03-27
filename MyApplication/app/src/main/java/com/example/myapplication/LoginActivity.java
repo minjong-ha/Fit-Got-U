@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class LoginActivity extends AppCompatActivity {
@@ -15,6 +16,8 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         TextView login_text = (TextView)findViewById(R.id.login_text);//텍스트뷰 불러오기
+        final EditText login_id = (EditText)findViewById(R.id.login_id);
+        final EditText login_pw = (EditText)findViewById(R.id.login_pw);
 
         Intent intent = getIntent();
         String name = intent.getExtras().getString("who");//startpage에서 보낸 who 값 가져오기
@@ -25,8 +28,8 @@ public class LoginActivity extends AppCompatActivity {
         login_b.setOnClickListener(new Button.OnClickListener() {//클릭 이벤트
             @Override
             public void onClick(View view) {
-                Intent main_intent = new Intent(getApplicationContext(),MainActivity.class);
-                startActivity(main_intent);
+                Intent login_intent = new Intent(getApplicationContext(),MainActivity.class);
+                startActivity(login_intent);
             }
         });
     }

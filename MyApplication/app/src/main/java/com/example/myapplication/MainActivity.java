@@ -23,22 +23,18 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);//버그 방지로 공통 메뉴가 아닌 건 안 보이게 시작.
+        if (true) {//피트니스 일 때
+            changeMenu(navigationView, 0);
+        } else {//일반 유저일 때
+            changeMenu(navigationView, 1);
+        }
         navigationView.setNavigationItemSelectedListener(this);
     }
 
@@ -52,50 +48,52 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        if (id == R.id.nav_profile) {
+        } else if (id == R.id.nav_recommand) {
+        } else if (id == R.id.nav_fitness) {
+        } else if (id == R.id.nav_near) {
+        } else if (id == R.id.nav_registered) {
+        } else if (id == R.id.nav_analysis) {
+        } else if (id == R.id.nav_setting) {
+        } else if (id == R.id.nav_logout) {
+            changeMenu(null, -1);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void changeMenu(NavigationView nv, int i) {//-1:다 안보이게 0:피트니스 1:유저
+        if (nv == null) {
+            nv = (NavigationView) findViewById(R.id.nav_view);
+        }
+        if (i == -1) {
+            nv.getMenu().findItem(R.id.nav_recommand).setVisible(false);
+            nv.getMenu().findItem(R.id.nav_near).setVisible(false);
+            nv.getMenu().findItem(R.id.nav_fitness).setVisible(false);
+
+            nv.getMenu().findItem(R.id.nav_registered).setVisible(false);
+            nv.getMenu().findItem(R.id.nav_analysis).setVisible(false);
+        } else if (i == 0) {
+            nv.getMenu().findItem(R.id.nav_recommand).setVisible(false);
+            nv.getMenu().findItem(R.id.nav_near).setVisible(false);
+            nv.getMenu().findItem(R.id.nav_fitness).setVisible(false);
+
+            nv.getMenu().findItem(R.id.nav_registered).setVisible(true);
+            nv.getMenu().findItem(R.id.nav_analysis).setVisible(true);
+        } else {
+            nv.getMenu().findItem(R.id.nav_recommand).setVisible(true);
+            nv.getMenu().findItem(R.id.nav_near).setVisible(true);
+            nv.getMenu().findItem(R.id.nav_fitness).setVisible(true);
+
+            nv.getMenu().findItem(R.id.nav_registered).setVisible(false);
+            nv.getMenu().findItem(R.id.nav_analysis).setVisible(false);
+        }
     }
 }
