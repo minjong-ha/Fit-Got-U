@@ -1,8 +1,11 @@
-package com.example.myapplication;
+package com.example.myapplication.Activity;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,8 +16,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.myapplication.Fragment.ProfileFragment;
+import com.example.myapplication.R;
+
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, ProfileFragment.OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +58,10 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
+        Fragment fragment = null;
 
         if (id == R.id.nav_profile) {
+            fragment = new ProfileFragment();
         } else if (id == R.id.nav_recommand) {
         } else if (id == R.id.nav_fitness) {
         } else if (id == R.id.nav_near) {
@@ -62,6 +70,12 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_setting) {
         } else if (id == R.id.nav_logout) {
             changeMenu(null, -1);
+        }
+
+        if (fragment != null) {
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.content_fragment_layout, fragment);
+            ft.commit();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -95,5 +109,10 @@ public class MainActivity extends AppCompatActivity
             nv.getMenu().findItem(R.id.nav_registered).setVisible(false);
             nv.getMenu().findItem(R.id.nav_analysis).setVisible(false);
         }
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 }

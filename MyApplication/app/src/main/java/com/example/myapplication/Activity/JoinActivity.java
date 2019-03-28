@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.Activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,7 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
-import android.widget.TextView;
+
+import com.example.myapplication.R;
 
 public class JoinActivity extends AppCompatActivity {
 
@@ -25,7 +26,7 @@ public class JoinActivity extends AppCompatActivity {
         join_b.setOnClickListener(new Button.OnClickListener() {//클릭 이벤트
             @Override
             public void onClick(View view) {
-                Intent join_intent = new Intent(getApplicationContext(),StartPageActivity.class);
+                Intent join_intent = new Intent(getApplicationContext(), StartPageActivity.class);
                 startActivity(join_intent);
             }
         });
