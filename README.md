@@ -17,4 +17,5 @@ LoginActivity : 아이디와 비밀번호를 입력하는 창이 나옴. 데이�
 
 JoinActivity : 아직 안 만듬.
 
-nanamare 대가리 깨
+nanamare는 포기 edvardHua로 시도중
+
