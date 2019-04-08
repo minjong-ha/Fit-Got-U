@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Fragment.HomeTrainingFragment"
+    tools:showIn="@layout/activity_main">
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+                <TextView
+                    android:id="@+id/ht_fitness"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fitness" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+                <ImageButton
+                    android:id="@+id/ht_f1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@android:drawable/alert_dark_frame" />
+
+                <ImageButton
+                    android:id="@+id/ht_f2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@android:drawable/alert_dark_frame" />
+
+                <ImageButton
+                    android:id="@+id/ht_f3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@android:drawable/alert_dark_frame" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+                <ImageButton
+                    android:id="@+id/ht_f4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@android:drawable/alert_dark_frame" />
+
+                <ImageButton
+                    android:id="@+id/ht_f5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@android:drawable/alert_dark_frame" />
+
+                <ImageButton
+                    android:id="@+id/ht_f6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@android:drawable/alert_dark_frame" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+                <TextView
+                    android:id="@+id/ht_yoga"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/yoga" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+                <ImageButton
+                    android:id="@+id/ht_y1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@android:drawable/alert_dark_frame" />
+
+                <ImageButton
+                    android:id="@+id/ht_y2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@android:drawable/alert_dark_frame" />
+
+                <ImageButton
+                    android:id="@+id/ht_y3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@android:drawable/alert_dark_frame" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+                <ImageButton
+                    android:id="@+id/ht_y4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@android:drawable/alert_dark_frame" />
+
+                <ImageButton
+                    android:id="@+id/ht_y5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@android:drawable/alert_dark_frame" />
+
+                <ImageButton
+                    android:id="@+id/ht_y6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@android:drawable/alert_dark_frame" />
+        </TableRow>
+</TableLayout>
