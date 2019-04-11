@@ -17,13 +17,16 @@ public class MyPageFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        ListView listview = getView().findViewById(R.id.mp_list);
+        View view = inflater.inflate(R.layout.fragment_my_page, container, false);
+        ListView listview = view.findViewById(R.id.mp_list);
 
         ArrayList<MP_List_Item> items = new ArrayList<>();
         items.add(new MP_List_Item("item 1"));
+        items.add(new MP_List_Item("item 2"));
 
-        MP_List_Item_Adapter listadapter = new MP_List_Item_Adapter(this);
+        MP_List_Item_Adapter listadapter = new MP_List_Item_Adapter(getContext(), R.layout.mp_list_item, items);
+        listview.setAdapter(listadapter);
 
-        return inflater.inflate(R.layout.fragment_my_page, container, false);
+        return view;
     }
 }
