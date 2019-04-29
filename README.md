@@ -12,7 +12,7 @@ Camera2BasicFrgment에서 백그라운드 스레드로 카메라의 이미지를
 	여기서 mace와 opencv를 통해 이미지를 처리한다. 
 	여기서 걸린 시간을 측정된다. ( ex) 화면에 표시되는 37ms가 이 것)
 
-	mPrintpointArray에 mace를 통해 처리된 결과값이 들어간다.(post process 처리된것)
+mPrintpointArray에 mace를 통해 처리된 결과값이 들어간다.(post process 처리된것)
 다시 Camera2BasicFrgment 여기로 돌와와서 이 값을 Drawview객체로 넘긴다. 
 	
 Drawview객체 내에서 넘겨받은 이 값을 setDrawviewpoint로 화면에 맞게 처리한다. 
