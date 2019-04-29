@@ -26,3 +26,4 @@ UI 도안 제작, 현재 안드로이드 스튜디오로 개발 진행 중.
 
 PoseEstimationForMobile/edvardhua 소스 코드 분석 / 다른 기능과 merge 시도 중
 -> PoseEstimationForMobile 분석완료 카카오톡 로그인 api와 합치는 중 카카오톡 로그인 api 자체는 되는데 합치는 것이 문제
+각도 계산은 atan을 사용 
