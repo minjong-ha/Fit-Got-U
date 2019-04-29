@@ -29,3 +29,10 @@ Drawview객체 내에서 넘겨받은 이 값을 setDrawviewpoint로 화면에 �
 좌표 값과 스켈레톤을 여기서 그린다. 
 
 우리가 임시로 출력하는 값은 Camera2BasicFrgment 에서 출력되어 보여준다. 
+
+======================================================================
+json 형식 내의 좌표 정보 순서는 다음과 같다.
+
+TOP(머리), NECK, R_SHOULDER, R_ELBOW, R_WRIST, L_SHOULDER< L_ELBOW, L_WRITST, R_HIP, R_KNEE, R_ANKLE, L_HIP, L_KNEE, L_ANKLE, BACKGROUND
+
+이 중에서 마지막 BACKGROUND는 필요 없는 정보라고 추측됨.
