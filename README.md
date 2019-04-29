@@ -20,6 +20,7 @@ JoinActivity : 아직 안 만듬.
 nanamare는 포기 edvardHua로 시도중
 
 2019-04-29
+
 UI 도안 제작, 현재 안드로이드 스튜디오로 개발 진행 중.
 
 팀원별로 맡은 부분에 대해서 sample application을 개발 중.
