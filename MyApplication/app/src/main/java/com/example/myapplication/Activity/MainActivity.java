@@ -1,5 +1,6 @@
 package com.example.myapplication.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -28,31 +29,41 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private String maintitle = "";
     private int menu = -1;//1~4까지. 현재 선택 fragment 구별
 
+    private boolean logged = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-        HTfragment.push(new HomeTrainingFragment());
-        TMfragment.push(new TrainerMatchFragment());
-        DAfragment.push(new DataAnalysisFragment());
-        MPfragment.push(new MyPageFragment());
+        if (!logged) {//로그인하지 않았을 때
+            Intent login = new Intent(getApplicationContext(), LoginActivity.class);
+            startActivity(login);
+            finish();
+            return;
+        } else {
+            setContentView(R.layout.activity_main);
+            Toolbar toolbar = findViewById(R.id.toolbar);
+            setSupportActionBar(toolbar);
 
-        mainfragment = HTfragment.peek();
-        maintitle = getString(R.string.app_name);
-        menu = 1;
-        ChangeFragmentMain();
+            HTfragment.push(new HomeTrainingFragment());
+            TMfragment.push(new TrainerMatchFragment());
+            DAfragment.push(new DataAnalysisFragment());
+            MPfragment.push(new MyPageFragment());
 
-        ImageButton homeTraining = findViewById(R.id.hometraining);
-        homeTraining.setOnClickListener(this);
-        ImageButton TrainerMatch = findViewById(R.id.trainer_match);
-        TrainerMatch.setOnClickListener(this);
-        ImageButton DataAnalysis = findViewById(R.id.data_analysis);
-        DataAnalysis.setOnClickListener(this);
-        ImageButton MyPage = findViewById(R.id.mypage);
-        MyPage.setOnClickListener(this);
+            mainfragment = HTfragment.peek();
+            maintitle = getString(R.string.app_name);
+            menu = 1;
+            ChangeFragmentMain();
+
+            ImageButton homeTraining = findViewById(R.id.hometraining);
+            homeTraining.setOnClickListener(this);
+            ImageButton TrainerMatch = findViewById(R.id.trainer_match);
+            TrainerMatch.setOnClickListener(this);
+            ImageButton DataAnalysis = findViewById(R.id.data_analysis);
+            DataAnalysis.setOnClickListener(this);
+            ImageButton MyPage = findViewById(R.id.mypage);
+            MyPage.setOnClickListener(this);
+        }
     }
 
     @Override
