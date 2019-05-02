@@ -37,5 +37,11 @@ TOP(머리), NECK, R_SHOULDER, R_ELBOW, R_WRIST, L_SHOULDER< L_ELBOW, L_WRITST, 
 
 이 중에서 마지막 BACKGROUND는 필요 없는 정보라고 추측됨.
 
+2019-05-02 카메라 전면부로 수정
 
-2019-05-02 
+
+
+
+
+
+
