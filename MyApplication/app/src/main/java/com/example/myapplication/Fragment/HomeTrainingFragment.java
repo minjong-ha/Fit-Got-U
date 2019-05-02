@@ -33,7 +33,7 @@ public class HomeTrainingFragment extends Fragment implements View.OnClickListen
     @Override
     public void onClick(View view) {
         if (mOnHTListener != null) {
-            mOnHTListener.onReceivedData(view.getId());
+            mOnHTListener.onReceivedData(view.getId() + "");
         }
     }
 

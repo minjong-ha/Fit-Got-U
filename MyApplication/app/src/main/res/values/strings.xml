@@ -3,7 +3,11 @@
     <string name="title_activity_main">MainActivity</string>
 
     <string name="fitness">피트니스</string>
-    <string name="yoga">요가</string>
+    <string name="yoga">요가</string>'
+
+    <string name="fitness_1">운동 종류1</string>
+    <string name="fitness_2">운동 종류2</string>
+    <string name="fitness_3">운동 종류3</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

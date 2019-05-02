@@ -18,6 +18,11 @@ import com.example.myapplication.Fragment.MyPageFragment;
 import com.example.myapplication.Fragment.TrainerMatchFragment;
 import com.example.myapplication.R;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Stack;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, onFragmentListener {
@@ -29,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private String maintitle = "";
     private int menu = -1;//1~4까지. 현재 선택 fragment 구별
 
-    private boolean logged = false;
+    private boolean logged = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -140,17 +145,48 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void onReceivedData(Object data) {
-        switch ((int)data) {
-            case R.id.ht_f1:
-            case R.id.ht_f2:
-            case R.id.ht_f3:
-            case R.id.ht_f4:
-            case R.id.ht_f5:
-            case R.id.ht_f6:
-                HTfragment.push(new HomeTrainingFragment2().newInstance((int)data));
+        switch ((String)data) {
+            case R.id.ht_f1 + "":
+            case R.id.ht_f2 + "":
+            case R.id.ht_f3 + "":
+            case R.id.ht_f4 + "":
+            case R.id.ht_f5 + "":
+            case R.id.ht_f6 + "":
+                HTfragment.push(new HomeTrainingFragment2().newInstance((String)data));
                 mainfragment = HTfragment.peek();
                 break;
         }
         ChangeFragmentMain();
+    }
+
+    private ArrayList<HashMap<String, String>> getJsonTable(String JsonString) {
+        ArrayList<HashMap<String, String>> mArrayList = new ArrayList<>();
+        try {
+            JSONObject jsonObject = new JSONObject(JsonString);
+            JSONArray jsonArray = jsonObject.getJSONArray("cs");
+
+            for(int i=0;i<jsonArray.length();i++){
+                JSONObject item = jsonArray.getJSONObject(i);
+
+                String id = item.getString("id");
+                String ownerid = item.getString("ownerid");
+                String name = item.getString("name");
+                String tdata = item.getString("tdata");
+                String updated = item.getString("updated");
+
+                HashMap<String,String> hashMap = new HashMap<>();
+
+                hashMap.put("id", id);
+                hashMap.put("ownerid", ownerid);
+                hashMap.put("name", name);
+                hashMap.put("tdata", tdata);
+                hashMap.put("updated", updated);
+
+                mArrayList.add(hashMap);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return mArrayList;
     }
 }
