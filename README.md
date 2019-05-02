@@ -35,7 +35,6 @@ json 형식 내의 좌표 정보 순서는 다음과 같다.
 
 TOP(머리), NECK, R_SHOULDER, R_ELBOW, R_WRIST, L_SHOULDER< L_ELBOW, L_WRITST, R_HIP, R_KNEE, R_ANKLE, L_HIP, L_KNEE, L_ANKLE
 로 총 14개의 KeyPoint
-이 중에서 마지막 BACKGROUND는 필요 없는 정보라고 추측됨.
 
 2019-05-02 카메라 전면부로 수정
 
