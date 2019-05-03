@@ -14,6 +14,7 @@ import com.example.myapplication.Etc.onFragmentListener;
 import com.example.myapplication.Fragment.DataAnalysisFragment;
 import com.example.myapplication.Fragment.HomeTrainingFragment;
 import com.example.myapplication.Fragment.HomeTrainingFragment2;
+import com.example.myapplication.Fragment.HomeTrainingFragment3;
 import com.example.myapplication.Fragment.MyPageFragment;
 import com.example.myapplication.Fragment.TrainerMatchFragment;
 import com.example.myapplication.R;
@@ -34,11 +35,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private String maintitle = "";
     private int menu = -1;//1~4까지. 현재 선택 fragment 구별
 
-    private boolean logged = true;
+    private boolean logged = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Intent intent = getIntent();
+        logged = intent.getBooleanExtra("logged", false);
 
         if (!logged) {//로그인하지 않았을 때
             Intent login = new Intent(getApplicationContext(), LoginActivity.class);
@@ -145,14 +149,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void onReceivedData(Object data) {
-        switch ((String)data) {
-            case R.id.ht_f1 + "":
-            case R.id.ht_f2 + "":
-            case R.id.ht_f3 + "":
-            case R.id.ht_f4 + "":
-            case R.id.ht_f5 + "":
-            case R.id.ht_f6 + "":
-                HTfragment.push(new HomeTrainingFragment2().newInstance((String)data));
+        switch ((int)data) {
+            case R.id.ht_f1:
+            case R.id.ht_f2:
+            case R.id.ht_f3:
+            case R.id.ht_f4:
+            case R.id.ht_f5:
+            case R.id.ht_f6:
+                HTfragment.push(new HomeTrainingFragment2().newInstance((int)data));
+                mainfragment = HTfragment.peek();
+                break;
+            case R.string.fitness_1_1:
+            case R.string.fitness_1_2:
+            case R.string.fitness_1_3:
+                HTfragment.push(new HomeTrainingFragment3().newInstance((int)data));
                 mainfragment = HTfragment.peek();
                 break;
         }

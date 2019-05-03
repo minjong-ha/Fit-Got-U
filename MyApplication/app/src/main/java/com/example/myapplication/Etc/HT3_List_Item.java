@@ -1,14 +1,12 @@
 package com.example.myapplication.Etc;
 
-public class HT2_List_Item {
+public class HT3_List_Item {
     private String image;
     private int nameid;
-    private String desc;
 
-    public HT2_List_Item(String image, int nameid, String desc) {
+    public HT3_List_Item(String image, int nameid) {
         this.image = image;
         this.nameid = nameid;
-        this.desc = desc;
     }
 
     public String getImage() {
@@ -17,9 +15,5 @@ public class HT2_List_Item {
 
     public int getNameId() {
         return nameid;
-    }
-
-    public String getDesc() {
-        return desc;
     }
 }

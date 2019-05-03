@@ -9,6 +9,13 @@
     <string name="fitness_2">운동 종류2</string>
     <string name="fitness_3">운동 종류3</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="fitness_1_1">운동 루틴1</string>
+    <string name="fitness_1_2">운동 루틴2</string>
+    <string name="fitness_1_3">운동 루틴3</string>
+
+    <string name="fitness_1_1_1">운동1</string>
+    <string name="fitness_1_1_2">운동2</string>
+    <string name="fitness_1_1_3">운동3</string>
+
+    <string name="kakao_app_key">40d4b3eead99526595fbe4be1120f80d</string>
 </resources>

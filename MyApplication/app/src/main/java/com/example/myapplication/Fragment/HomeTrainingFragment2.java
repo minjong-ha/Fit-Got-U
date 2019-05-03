@@ -25,11 +25,11 @@ public class HomeTrainingFragment2 extends Fragment implements AdapterView.OnIte
     private ArrayList<HT2_List_Item> items = new ArrayList<>();
 
     //public static Fragment newInstance(DataObject data) {
-    public static HomeTrainingFragment2 newInstance(String data) {
+    public static HomeTrainingFragment2 newInstance(int data) {
         HomeTrainingFragment2 f = new HomeTrainingFragment2();
         Bundle b = new Bundle();
         //b.putParcelable(DataObject.class.getName(), data);
-        b.putString("data", data);
+        b.putInt("data", data);
         f.setArguments(b);
         return f;
     }
@@ -39,11 +39,11 @@ public class HomeTrainingFragment2 extends Fragment implements AdapterView.OnIte
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             //str = getArguments().getParcelable(DataObject.class.getName());
-            switch(getArguments().getString("data")) {
-                case R.id.ht_f1 + "":
+            switch(getArguments().getInt("data")) {
+                case R.id.ht_f1:
                     name = getContext().getString(R.string.fitness_1);
                     break;
-                case R.id.ht_f2 + "":
+                case R.id.ht_f2:
                     name = getContext().getString(R.string.fitness_2);
                     break;
                 default:
@@ -62,6 +62,14 @@ public class HomeTrainingFragment2 extends Fragment implements AdapterView.OnIte
         ht2_name.setText(name);
 
         ListView listview = view.findViewById(R.id.ht2_list);
+        items.clear();
+        items.add(new HT2_List_Item("image1", R.string.fitness_1_1, "설명1"));
+        items.add(new HT2_List_Item("image2", R.string.fitness_1_2, "설명2"));
+
+        HT2_List_Item_Adapter listadapter = new HT2_List_Item_Adapter(getContext(), R.layout.ht2_list_item, items);
+        listview.setAdapter(listadapter);
+        listview.setOnItemClickListener(this);
+
         Spinner spinner = view.findViewById(R.id.ht2_spinner);
         ArrayList<String> spinnerlist = new ArrayList<>();
         spinnerlist.add("정렬1");
@@ -79,12 +87,6 @@ public class HomeTrainingFragment2 extends Fragment implements AdapterView.OnIte
 
             }
         });
-        items.add(new HT2_List_Item("image1", "이름1", "설명1"));
-        items.add(new HT2_List_Item("image2", "이름2", "설명2"));
-
-        HT2_List_Item_Adapter listadapter = new HT2_List_Item_Adapter(getContext(), R.layout.ht2_list_item, items);
-        listview.setAdapter(listadapter);
-        listview.setOnItemClickListener(this);
 
         return view;
     }
@@ -106,7 +108,7 @@ public class HomeTrainingFragment2 extends Fragment implements AdapterView.OnIte
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         if (mOnHTListener != null) {
-            mOnHTListener.onReceivedData(items.get(i).getName());
+            mOnHTListener.onReceivedData(items.get(i).getNameId());
         }
     }
 }

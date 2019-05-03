@@ -19,10 +19,22 @@ public class DBPHPTask extends AsyncTask<String, Void, String> {
     @Override
     protected String doInBackground(String... Strings) {
         HttpURLConnection conn = null;
-        String id = "aaaaaaaa";
-        String postParameters = "name=" + id;
+        StringBuffer postParameters = new StringBuffer();
         String link = "http://c.c.com/" + phpname + ".php";//쿼리php 파일 불러오기
         try {
+            int num = 0;
+            for (String str : Strings) {
+                if (num % 2 == 0) {
+                    if (num > 0) {
+                        postParameters.append("&");
+                    }
+                    postParameters.append(str).append("=");
+                } else {
+                    postParameters.append(str);
+                }
+                num++;
+            }
+
             URL url = new URL(link);
 
             conn = (HttpURLConnection) url.openConnection();
@@ -36,7 +48,7 @@ public class DBPHPTask extends AsyncTask<String, Void, String> {
             conn.connect();
 
             OutputStream outputStream = conn.getOutputStream();
-            outputStream.write(postParameters.getBytes("UTF-8"));
+            outputStream.write(postParameters.toString().getBytes("UTF-8"));
             outputStream.flush();
             outputStream.close();
 
