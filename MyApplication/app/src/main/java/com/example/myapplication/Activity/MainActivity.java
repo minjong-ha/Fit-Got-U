@@ -1,7 +1,9 @@
 package com.example.myapplication.Activity;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +12,8 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import com.example.myapplication.Etc.DataObject;
+import com.example.myapplication.Etc.MySQLiteOpenHelper;
+import com.example.myapplication.Etc.SessionCallback;
 import com.example.myapplication.Etc.onFragmentListener;
 import com.example.myapplication.Fragment.DataAnalysisFragment;
 import com.example.myapplication.Fragment.HomeTrainingFragment;
@@ -18,6 +22,7 @@ import com.example.myapplication.Fragment.HomeTrainingFragment3;
 import com.example.myapplication.Fragment.MyPageFragment;
 import com.example.myapplication.Fragment.TrainerMatchFragment;
 import com.example.myapplication.R;
+import com.kakao.auth.Session;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -27,6 +32,9 @@ import java.util.HashMap;
 import java.util.Stack;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, onFragmentListener {
+    //private MySQLiteOpenHelper dbhelper;
+    //private SQLiteDatabase db;
+
     private Fragment mainfragment = null;
     private Stack<Fragment> HTfragment = new Stack<>();
     private Stack<Fragment> TMfragment = new Stack<>();
@@ -35,20 +43,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private String maintitle = "";
     private int menu = -1;//1~4까지. 현재 선택 fragment 구별
 
-    private boolean logged = false;
+    private SessionCallback callback;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Intent intent = getIntent();
-        logged = intent.getBooleanExtra("logged", false);
+        callback = new SessionCallback(false, this);
+        Session.getCurrentSession().addCallback(callback);
+        Session.getCurrentSession().checkAndImplicitOpen();
 
-        if (!logged) {//로그인하지 않았을 때
-            Intent login = new Intent(getApplicationContext(), LoginActivity.class);
-            startActivity(login);
-            finish();
-            return;
+        if (!callback.isLogged()) {//로그인하지 않았을 때
+            ActivityCompat.finishAffinity(this);
+            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
         } else {
             setContentView(R.layout.activity_main);
             Toolbar toolbar = findViewById(R.id.toolbar);
@@ -136,10 +143,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
         if (realback) {
-            super.onBackPressed();
+            //super.onBackPressed();
+            ActivityCompat.finishAffinity(this);
         } else {
             ChangeFragmentMain();
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (Session.getCurrentSession().handleActivityResult(requestCode, resultCode, data)) {
+            return;
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Session.getCurrentSession().removeCallback(callback);
     }
 
     public void ChangeFragmentMain() {
@@ -167,36 +189,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
         ChangeFragmentMain();
-    }
-
-    private ArrayList<HashMap<String, String>> getJsonTable(String JsonString) {
-        ArrayList<HashMap<String, String>> mArrayList = new ArrayList<>();
-        try {
-            JSONObject jsonObject = new JSONObject(JsonString);
-            JSONArray jsonArray = jsonObject.getJSONArray("cs");
-
-            for(int i=0;i<jsonArray.length();i++){
-                JSONObject item = jsonArray.getJSONObject(i);
-
-                String id = item.getString("id");
-                String ownerid = item.getString("ownerid");
-                String name = item.getString("name");
-                String tdata = item.getString("tdata");
-                String updated = item.getString("updated");
-
-                HashMap<String,String> hashMap = new HashMap<>();
-
-                hashMap.put("id", id);
-                hashMap.put("ownerid", ownerid);
-                hashMap.put("name", name);
-                hashMap.put("tdata", tdata);
-                hashMap.put("updated", updated);
-
-                mArrayList.add(hashMap);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return mArrayList;
     }
 }

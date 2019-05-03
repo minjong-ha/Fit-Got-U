@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Fit Got U</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="dbName">jelly.db</string>
+    <string name="dbVersion">1</string>
+    <string name="dbtag">SQLite_Jelly</string>
 
     <string name="fitness">피트니스</string>
     <string name="yoga">요가</string>'

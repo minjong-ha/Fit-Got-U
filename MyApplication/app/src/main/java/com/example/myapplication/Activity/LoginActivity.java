@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.myapplication.Etc.GlobalApplication;
+import com.example.myapplication.Etc.SessionCallback;
 import com.example.myapplication.R;
 import com.kakao.auth.ISessionCallback;
 import com.kakao.auth.KakaoSDK;
@@ -27,8 +29,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        KakaoSDK.init(new GlobalApplication.KakaoSDKAdapter());
-        callback = new SessionCallback();
+
+        callback = new SessionCallback(true, this);
         Session.getCurrentSession().addCallback(callback);
         Session.getCurrentSession().checkAndImplicitOpen();
     }
@@ -42,28 +44,14 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
+        ActivityCompat.finishAffinity(this);
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         Session.getCurrentSession().removeCallback(callback);
-    }
-
-    private class SessionCallback implements ISessionCallback {
-        @Override
-        public void onSessionOpened() {
-            redirectSignupActivity();
-        }
-        @Override
-        public void onSessionOpenFailed(KakaoException exception) {
-            if (exception != null) {
-                Logger.e(exception);
-            }
-        }
-    }
-
-    protected void redirectSignupActivity() {
-        final Intent intent = new Intent(this, JoinActivity.class);
-        intent.putExtra("logged", true);
-        startActivity(intent);
-        finish();
     }
 }
