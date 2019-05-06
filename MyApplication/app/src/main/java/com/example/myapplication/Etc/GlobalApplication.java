@@ -8,6 +8,7 @@ import com.kakao.auth.AuthType;
 import com.kakao.auth.IApplicationConfig;
 import com.kakao.auth.ISessionConfig;
 import com.kakao.auth.KakaoAdapter;
+import com.kakao.auth.KakaoSDK;
 
 public class GlobalApplication extends Application {
     private static GlobalApplication instance;
@@ -55,6 +56,9 @@ public class GlobalApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        instance = this;
+        instance = this;;
+        if (KakaoSDK.getAdapter() == null) {
+            KakaoSDK.init(new GlobalApplication.KakaoSDKAdapter());
+        }
     }
 }

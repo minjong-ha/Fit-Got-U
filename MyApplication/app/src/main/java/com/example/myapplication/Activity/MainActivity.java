@@ -1,7 +1,9 @@
 package com.example.myapplication.Activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
@@ -10,10 +12,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.example.myapplication.Etc.DataObject;
 import com.example.myapplication.Etc.MySQLiteOpenHelper;
 import com.example.myapplication.Etc.SessionCallback;
+import com.example.myapplication.Etc.Util;
 import com.example.myapplication.Etc.onFragmentListener;
 import com.example.myapplication.Fragment.DataAnalysisFragment;
 import com.example.myapplication.Fragment.HomeTrainingFragment;
@@ -23,6 +27,11 @@ import com.example.myapplication.Fragment.MyPageFragment;
 import com.example.myapplication.Fragment.TrainerMatchFragment;
 import com.example.myapplication.R;
 import com.kakao.auth.Session;
+import com.kakao.network.ErrorResult;
+import com.kakao.usermgmt.UserManagement;
+import com.kakao.usermgmt.callback.LogoutResponseCallback;
+import com.kakao.usermgmt.callback.MeV2ResponseCallback;
+import com.kakao.usermgmt.response.MeV2Response;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -43,43 +52,40 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private String maintitle = "";
     private int menu = -1;//1~4까지. 현재 선택 fragment 구별
 
-    private SessionCallback callback;
+    private long kakaoid;
+    private String nickname;
+    private String thumbnail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        callback = new SessionCallback(false, this);
-        Session.getCurrentSession().addCallback(callback);
-        Session.getCurrentSession().checkAndImplicitOpen();
-
-        if (!callback.isLogged()) {//로그인하지 않았을 때
-            ActivityCompat.finishAffinity(this);
-            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-        } else {
-            setContentView(R.layout.activity_main);
-            Toolbar toolbar = findViewById(R.id.toolbar);
-            setSupportActionBar(toolbar);
-
-            HTfragment.push(new HomeTrainingFragment());
-            TMfragment.push(new TrainerMatchFragment());
-            DAfragment.push(new DataAnalysisFragment());
-            MPfragment.push(new MyPageFragment());
-
-            mainfragment = HTfragment.peek();
-            maintitle = getString(R.string.app_name);
-            menu = 1;
-            ChangeFragmentMain();
-
-            ImageButton homeTraining = findViewById(R.id.hometraining);
-            homeTraining.setOnClickListener(this);
-            ImageButton TrainerMatch = findViewById(R.id.trainer_match);
-            TrainerMatch.setOnClickListener(this);
-            ImageButton DataAnalysis = findViewById(R.id.data_analysis);
-            DataAnalysis.setOnClickListener(this);
-            ImageButton MyPage = findViewById(R.id.mypage);
-            MyPage.setOnClickListener(this);
+        boolean istest = true;
+        if (!istest) {//카카오 로그인 없이 진행
+            requestMe(this);
         }
+        setContentView(R.layout.activity_main);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        HTfragment.push(new HomeTrainingFragment());
+        TMfragment.push(new TrainerMatchFragment());
+        DAfragment.push(new DataAnalysisFragment());
+        MPfragment.push(new MyPageFragment());
+
+        mainfragment = HTfragment.peek();
+        maintitle = getString(R.string.app_name);
+        menu = 1;
+        ChangeFragmentMain();
+
+        ImageButton homeTraining = findViewById(R.id.hometraining);
+        homeTraining.setOnClickListener(this);
+        ImageButton TrainerMatch = findViewById(R.id.trainer_match);
+        TrainerMatch.setOnClickListener(this);
+        ImageButton DataAnalysis = findViewById(R.id.data_analysis);
+        DataAnalysis.setOnClickListener(this);
+        ImageButton MyPage = findViewById(R.id.mypage);
+        MyPage.setOnClickListener(this);
     }
 
     @Override
@@ -150,20 +156,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (Session.getCurrentSession().handleActivityResult(requestCode, resultCode, data)) {
-            return;
-        }
-        super.onActivityResult(requestCode, resultCode, data);
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Session.getCurrentSession().removeCallback(callback);
-    }
-
     public void ChangeFragmentMain() {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.mainfragment, mainfragment);
@@ -189,5 +181,39 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
         ChangeFragmentMain();
+    }
+
+    protected void Logout(final Activity activity) {
+        UserManagement.getInstance().requestLogout(new LogoutResponseCallback() {
+            @Override
+            public void onCompleteLogout() {
+                Util.startLoginActivity(activity);
+            }
+        });
+    }
+
+    protected void requestMe(final Activity activity) {
+        UserManagement.getInstance().me(new MeV2ResponseCallback() {
+            @Override
+            public void onFailure(ErrorResult errorResult) {
+                Toast.makeText(getApplicationContext(), "오류가 발생했습니다." , Toast.LENGTH_SHORT).show();
+                Util.startLoginActivity(activity);
+            }
+
+            @Override
+            public void onSessionClosed(ErrorResult errorResult) {
+                Util.startLoginActivity(activity);
+            }
+
+            @Override
+            public void onSuccess(MeV2Response result) {
+                kakaoid = result.getId();
+                nickname = result.getNickname();
+                thumbnail = result.getThumbnailImagePath();
+                Bitmap bitmap = Util.getImagefromURL(thumbnail);
+                if (bitmap != null) {
+                }
+            }
+        });
     }
 }
