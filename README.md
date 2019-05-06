@@ -38,7 +38,7 @@ TOP(머리), NECK, R_SHOULDER, R_ELBOW, R_WRIST, L_SHOULDER< L_ELBOW, L_WRITST, 
 
 2019-05-02 카메라 전면부로 수정
 
-
+2019-05-07 간단한 선택 UI 추가. PoseEstiamtion화면에 선택한 운동과 종료버튼 추가(다시 스켈레톤 보이게, sleep 500ms)
 
 
 
