@@ -40,7 +40,7 @@
         android:testOnly="true"
         android:theme="@style/MaterialTheme" >
         <activity
-            android:name="com.example.CameraActivity"
+            android:name="com.example.MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
@@ -49,6 +49,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.example.CameraActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

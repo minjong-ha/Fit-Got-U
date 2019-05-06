@@ -640,7 +640,6 @@ public class Camera2BasicFragment extends Fragment
                             classifyFrame();
 
                             //=====
-                            System.out.print("hello world!\t");
                             if(!drawView.mDrawPoint.isEmpty()) {
                                 for (int i = 0; i < 13; i++) {
                                     System.out.print(drawView.mDrawPoint.get(i) + " ");

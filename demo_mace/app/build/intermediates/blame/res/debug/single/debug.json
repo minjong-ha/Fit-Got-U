@@ -2132,6 +2132,10 @@
         "source": "/Users/a1/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.2.0.aar/63b8cd8f29f3d156d26e51bbf0919eaf/res/color-v23/abc_btn_colored_borderless_text_material.xml"
     },
     {
+        "merged": "/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/res/merged/debug/layout_activity_main.xml.flat",
+        "source": "/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/src/main/res/layout/activity_main.xml"
+    },
+    {
         "merged": "/Users/a1/Downloads/PoseEstimationForMobile-master/android_demo/demo_mace/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_design_ic_visibility_off.png.flat",
         "source": "/Users/a1/.gradle/caches/transforms-1/files-1.1/design-25.2.0.aar/505f3ff564f7c50b2ffcdf6aa33fb0b1/res/drawable-xhdpi-v4/design_ic_visibility_off.png"
     },

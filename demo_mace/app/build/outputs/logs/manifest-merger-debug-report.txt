@@ -1,13 +1,13 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/app/src/main/AndroidManifest.xml:18:1-45:12
-INJECTED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/app/src/main/AndroidManifest.xml:18:1-45:12
-INJECTED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/app/src/main/AndroidManifest.xml:18:1-45:12
-INJECTED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/app/src/main/AndroidManifest.xml:18:1-45:12
+ADDED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/app/src/main/AndroidManifest.xml:18:1-47:12
+INJECTED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/app/src/main/AndroidManifest.xml:18:1-47:12
+INJECTED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/app/src/main/AndroidManifest.xml:18:1-47:12
+INJECTED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/app/src/main/AndroidManifest.xml:18:1-47:12
 MERGED from [:tensorflow-lite:] /Users/a1/.gradle/caches/transforms-1/files-1.1/tensorflow-lite.aar/a000f341b23265e72a5a6b2542774094/AndroidManifest.xml:2:1-6:12
 MERGED from [com.android.support:design:25.2.0] /Users/a1/.gradle/caches/transforms-1/files-1.1/design-25.2.0.aar/505f3ff564f7c50b2ffcdf6aa33fb0b1/AndroidManifest.xml:17:1-27:12
 MERGED from [com.android.support:appcompat-v7:25.2.0] /Users/a1/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.2.0.aar/63b8cd8f29f3d156d26e51bbf0919eaf/AndroidManifest.xml:17:1-27:12
-MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/a1/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/f33ec6e4f2949886f18847ad8cc10ae5/AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/a1/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/2acfac53d34473b38d3930baa18f093f/AndroidManifest.xml:2:1-11:12
 MERGED from [com.android.support:support-v13:25.2.0] /Users/a1/.gradle/caches/transforms-1/files-1.1/support-v13-25.2.0.aar/182aceac6e77740141e3dba2aa3297fa/AndroidManifest.xml:17:1-27:12
 MERGED from [com.android.support:animated-vector-drawable:25.2.0] /Users/a1/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-25.2.0.aar/d3a164ead1a18978ad95d25130e69374/AndroidManifest.xml:17:1-24:12
 MERGED from [com.android.support:support-vector-drawable:25.2.0] /Users/a1/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-25.2.0.aar/fadfdf34893076d41d4400979237bbbe/AndroidManifest.xml:17:1-25:12
@@ -21,20 +21,20 @@ MERGED from [com.android.support:support-core-ui:25.2.0] /Users/a1/.gradle/cache
 MERGED from [com.android.support:support-compat:25.2.0] /Users/a1/.gradle/caches/transforms-1/files-1.1/support-compat-25.2.0.aar/ecdedf43a6a209e1ada684aa07c7d681/AndroidManifest.xml:17:1-27:12
 MERGED from [:openCVLibrary341] /mydev/PoseEstimationForMobile/android_demo/demo_mace/openCVLibrary341/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [:macelibrary] /mydev/PoseEstimationForMobile/android_demo/demo_mace/macelibrary/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-11:12
-INJECTED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/app/src/main/AndroidManifest.xml:18:1-45:12
-INJECTED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/app/src/main/AndroidManifest.xml:18:1-45:12
-INJECTED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/app/src/main/AndroidManifest.xml:18:1-45:12
+INJECTED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/app/src/main/AndroidManifest.xml:18:1-47:12
+INJECTED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/app/src/main/AndroidManifest.xml:18:1-47:12
+INJECTED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/app/src/main/AndroidManifest.xml:18:1-47:12
 	package
 		ADDED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/app/src/main/AndroidManifest.xml:19:11-32
 		INJECTED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/app/src/main/AndroidManifest.xml
 		INJECTED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/app/src/main/AndroidManifest.xml
 	android:versionName
 		INJECTED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/app/src/main/AndroidManifest.xml
-		ADDED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/app/src/main/AndroidManifest.xml:18:1-45:12
+		ADDED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/app/src/main/AndroidManifest.xml:18:1-47:12
 		INJECTED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/app/src/main/AndroidManifest.xml
 	android:versionCode
 		INJECTED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/app/src/main/AndroidManifest.xml
-		ADDED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/app/src/main/AndroidManifest.xml:18:1-45:12
+		ADDED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/app/src/main/AndroidManifest.xml:18:1-47:12
 		INJECTED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/app/src/main/AndroidManifest.xml
 	xmlns:android
 		ADDED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/app/src/main/AndroidManifest.xml:18:11-69
@@ -58,8 +58,8 @@ MERGED from [com.android.support:design:25.2.0] /Users/a1/.gradle/caches/transfo
 MERGED from [com.android.support:design:25.2.0] /Users/a1/.gradle/caches/transforms-1/files-1.1/design-25.2.0.aar/505f3ff564f7c50b2ffcdf6aa33fb0b1/AndroidManifest.xml:21:5-23:62
 MERGED from [com.android.support:appcompat-v7:25.2.0] /Users/a1/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.2.0.aar/63b8cd8f29f3d156d26e51bbf0919eaf/AndroidManifest.xml:21:5-23:78
 MERGED from [com.android.support:appcompat-v7:25.2.0] /Users/a1/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.2.0.aar/63b8cd8f29f3d156d26e51bbf0919eaf/AndroidManifest.xml:21:5-23:78
-MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/a1/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/f33ec6e4f2949886f18847ad8cc10ae5/AndroidManifest.xml:5:5-7:41
-MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/a1/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/f33ec6e4f2949886f18847ad8cc10ae5/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/a1/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/2acfac53d34473b38d3930baa18f093f/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/a1/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/2acfac53d34473b38d3930baa18f093f/AndroidManifest.xml:5:5-7:41
 MERGED from [com.android.support:support-v13:25.2.0] /Users/a1/.gradle/caches/transforms-1/files-1.1/support-v13-25.2.0.aar/182aceac6e77740141e3dba2aa3297fa/AndroidManifest.xml:21:5-23:55
 MERGED from [com.android.support:support-v13:25.2.0] /Users/a1/.gradle/caches/transforms-1/files-1.1/support-v13-25.2.0.aar/182aceac6e77740141e3dba2aa3297fa/AndroidManifest.xml:21:5-23:55
 MERGED from [com.android.support:animated-vector-drawable:25.2.0] /Users/a1/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-25.2.0.aar/d3a164ead1a18978ad95d25130e69374/AndroidManifest.xml:20:5-44
@@ -99,15 +99,15 @@ INJECTED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/app/src/main
 		INJECTED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/app/src/main/AndroidManifest.xml
 		INJECTED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/app/src/main/AndroidManifest.xml
 application
-ADDED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/app/src/main/AndroidManifest.xml:28:5-43:19
+ADDED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/app/src/main/AndroidManifest.xml:28:5-45:19
 MERGED from [:tensorflow-lite:] /Users/a1/.gradle/caches/transforms-1/files-1.1/tensorflow-lite.aar/a000f341b23265e72a5a6b2542774094/AndroidManifest.xml:4:5-5:19
 MERGED from [:tensorflow-lite:] /Users/a1/.gradle/caches/transforms-1/files-1.1/tensorflow-lite.aar/a000f341b23265e72a5a6b2542774094/AndroidManifest.xml:4:5-5:19
 MERGED from [com.android.support:design:25.2.0] /Users/a1/.gradle/caches/transforms-1/files-1.1/design-25.2.0.aar/505f3ff564f7c50b2ffcdf6aa33fb0b1/AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:design:25.2.0] /Users/a1/.gradle/caches/transforms-1/files-1.1/design-25.2.0.aar/505f3ff564f7c50b2ffcdf6aa33fb0b1/AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:appcompat-v7:25.2.0] /Users/a1/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.2.0.aar/63b8cd8f29f3d156d26e51bbf0919eaf/AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:appcompat-v7:25.2.0] /Users/a1/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.2.0.aar/63b8cd8f29f3d156d26e51bbf0919eaf/AndroidManifest.xml:25:5-20
-MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/a1/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/f33ec6e4f2949886f18847ad8cc10ae5/AndroidManifest.xml:9:5-20
-MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/a1/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/f33ec6e4f2949886f18847ad8cc10ae5/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/a1/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/2acfac53d34473b38d3930baa18f093f/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/a1/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/2acfac53d34473b38d3930baa18f093f/AndroidManifest.xml:9:5-20
 MERGED from [com.android.support:support-v13:25.2.0] /Users/a1/.gradle/caches/transforms-1/files-1.1/support-v13-25.2.0.aar/182aceac6e77740141e3dba2aa3297fa/AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-v13:25.2.0] /Users/a1/.gradle/caches/transforms-1/files-1.1/support-v13-25.2.0.aar/182aceac6e77740141e3dba2aa3297fa/AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:animated-vector-drawable:25.2.0] /Users/a1/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-25.2.0.aar/d3a164ead1a18978ad95d25130e69374/AndroidManifest.xml:22:5-20
@@ -136,14 +136,14 @@ MERGED from [com.android.support:support-compat:25.2.0] /Users/a1/.gradle/caches
 		ADDED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/app/src/main/AndroidManifest.xml:29:9-35
 	android:theme
 		ADDED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/app/src/main/AndroidManifest.xml:32:9-45
-activity#com.example.CameraActivity
+activity#com.example.MainActivity
 ADDED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/app/src/main/AndroidManifest.xml:34:9-42:20
 	android:screenOrientation
 		ADDED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/app/src/main/AndroidManifest.xml:37:13-49
 	android:label
 		ADDED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/app/src/main/AndroidManifest.xml:36:13-45
 	android:name
-		ADDED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/app/src/main/AndroidManifest.xml:35:13-43
+		ADDED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/app/src/main/AndroidManifest.xml:35:13-41
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
 ADDED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/app/src/main/AndroidManifest.xml:38:13-41:29
 action#android.intent.action.MAIN
@@ -154,9 +154,15 @@ category#android.intent.category.LAUNCHER
 ADDED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/app/src/main/AndroidManifest.xml:40:17-76
 	android:name
 		ADDED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/app/src/main/AndroidManifest.xml:40:27-74
+activity#com.example.CameraActivity
+ADDED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/app/src/main/AndroidManifest.xml:43:9-44:51
+	android:screenOrientation
+		ADDED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/app/src/main/AndroidManifest.xml:44:13-49
+	android:name
+		ADDED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/app/src/main/AndroidManifest.xml:43:19-49
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-IMPLIED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/app/src/main/AndroidManifest.xml:18:1-45:12 reason: org.tensorflow.lite has a targetSdkVersion < 4
+IMPLIED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/app/src/main/AndroidManifest.xml:18:1-47:12 reason: org.tensorflow.lite has a targetSdkVersion < 4
 uses-permission#android.permission.READ_PHONE_STATE
-IMPLIED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/app/src/main/AndroidManifest.xml:18:1-45:12 reason: org.tensorflow.lite has a targetSdkVersion < 4
+IMPLIED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/app/src/main/AndroidManifest.xml:18:1-47:12 reason: org.tensorflow.lite has a targetSdkVersion < 4
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
-IMPLIED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/app/src/main/AndroidManifest.xml:18:1-45:12 reason: org.tensorflow.lite requested WRITE_EXTERNAL_STORAGE
+IMPLIED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/app/src/main/AndroidManifest.xml:18:1-47:12 reason: org.tensorflow.lite requested WRITE_EXTERNAL_STORAGE
