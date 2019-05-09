@@ -175,6 +175,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     MPfragment.push(new MyInfoFragment());
                     mainfragment = MPfragment.peek();
                     break;
+                case "로그아웃":
+                    Logout(this);
+                    Util.startMainActivity(this);
+                    break;
             }
         } else if (data instanceof Integer) {
             switch ((int)data) {

@@ -29,6 +29,7 @@ public class MyPageFragment extends Fragment implements View.OnClickListener {
         items.add(new MP_List_Item("내 정보"));
         items.add(new MP_List_Item("내 트레이너"));
         items.add(new MP_List_Item("앱 정보"));
+        items.add(new MP_List_Item("로그아웃"));
 
         final MP_List_Item_Adapter listadapter = new MP_List_Item_Adapter(getContext(), R.layout.mp_list_item, items);
         listview.setAdapter(listadapter);
