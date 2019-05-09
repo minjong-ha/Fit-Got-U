@@ -1,6 +1,9 @@
 package com.example.myapplication.Activity;
 
 import android.app.Activity;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
@@ -8,6 +11,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Base64;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -28,6 +32,7 @@ import com.kakao.usermgmt.callback.LogoutResponseCallback;
 import com.kakao.usermgmt.callback.MeV2ResponseCallback;
 import com.kakao.usermgmt.response.MeV2Response;
 
+import java.security.MessageDigest;
 import java.util.Stack;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, onFragmentListener {
@@ -53,10 +58,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        boolean istest = true;
+        boolean istest = false;
         if (!istest) {//카카오 로그인 없이 진행
             requestMe(this);
         } else {
+            getHK();
             kakaoid = 1;
             nickname = "테스트1";
             thumbnail = "";
@@ -230,5 +236,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
             }
         });
+    }
+
+    private void getHK() {
+        try {
+            PackageInfo info = getPackageManager().getPackageInfo("com.example.myapplication", PackageManager.GET_SIGNATURES);
+            for (Signature signature : info.signatures) {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                System.out.println("HK=" + Base64.encodeToString(md.digest(), Base64.DEFAULT));
+            }
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
     }
 }
