@@ -1,8 +1,6 @@
 package com.example.myapplication.Activity;
 
 import android.app.Activity;
-import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
@@ -14,30 +12,22 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.example.myapplication.Etc.DataObject;
-import com.example.myapplication.Etc.MySQLiteOpenHelper;
-import com.example.myapplication.Etc.SessionCallback;
 import com.example.myapplication.Etc.Util;
 import com.example.myapplication.Etc.onFragmentListener;
 import com.example.myapplication.Fragment.DataAnalysisFragment;
 import com.example.myapplication.Fragment.HomeTrainingFragment;
 import com.example.myapplication.Fragment.HomeTrainingFragment2;
 import com.example.myapplication.Fragment.HomeTrainingFragment3;
+import com.example.myapplication.Fragment.MyInfoFragment;
 import com.example.myapplication.Fragment.MyPageFragment;
 import com.example.myapplication.Fragment.TrainerMatchFragment;
 import com.example.myapplication.R;
-import com.kakao.auth.Session;
 import com.kakao.network.ErrorResult;
 import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.LogoutResponseCallback;
 import com.kakao.usermgmt.callback.MeV2ResponseCallback;
 import com.kakao.usermgmt.response.MeV2Response;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Stack;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, onFragmentListener {
@@ -163,22 +153,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void onReceivedData(Object data) {
-        switch ((int)data) {
-            case R.id.ht_f1:
-            case R.id.ht_f2:
-            case R.id.ht_f3:
-            case R.id.ht_f4:
-            case R.id.ht_f5:
-            case R.id.ht_f6:
-                HTfragment.push(new HomeTrainingFragment2().newInstance((int)data));
-                mainfragment = HTfragment.peek();
-                break;
-            case R.string.fitness_1_1:
-            case R.string.fitness_1_2:
-            case R.string.fitness_1_3:
-                HTfragment.push(new HomeTrainingFragment3().newInstance((int)data));
-                mainfragment = HTfragment.peek();
-                break;
+        if (data instanceof String) {
+            switch ((String)data) {
+                case "내 정보":
+                    MPfragment.push(new MyInfoFragment());
+                    mainfragment = MPfragment.peek();
+                    break;
+            }
+        } else if (data instanceof Integer) {
+            switch ((int)data) {
+                case R.id.ht_f1:
+                case R.id.ht_f2:
+                case R.id.ht_f3:
+                case R.id.ht_f4:
+                case R.id.ht_f5:
+                case R.id.ht_f6:
+                    HTfragment.push(new HomeTrainingFragment2().newInstance((int)data));
+                    mainfragment = HTfragment.peek();
+                    break;
+                case R.string.fitness_1_1:
+                case R.string.fitness_1_2:
+                case R.string.fitness_1_3:
+                    HTfragment.push(new HomeTrainingFragment3().newInstance((int)data));
+                    mainfragment = HTfragment.peek();
+                    break;
+            }
         }
         ChangeFragmentMain();
     }

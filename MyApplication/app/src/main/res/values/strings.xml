@@ -21,4 +21,7 @@
     <string name="fitness_1_1_3">운동3</string>
 
     <string name="kakao_app_key">40d4b3eead99526595fbe4be1120f80d</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

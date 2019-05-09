@@ -1,26 +1,13 @@
 package com.example.myapplication.Activity;
 
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.Signature;
+import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Base64;
-import android.view.View;
-import android.widget.Button;
 
-import com.example.myapplication.Etc.GlobalApplication;
 import com.example.myapplication.Etc.SessionCallback;
 import com.example.myapplication.R;
-import com.kakao.auth.ISessionCallback;
-import com.kakao.auth.KakaoSDK;
 import com.kakao.auth.Session;
-import com.kakao.util.exception.KakaoException;
-import com.kakao.util.helper.log.Logger;
-
-import java.security.MessageDigest;
 
 public class LoginActivity extends AppCompatActivity {
     private SessionCallback callback;
