@@ -45,6 +45,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private long kakaoid;
     private String nickname;
     private String thumbnail;
+    private String address;
+    private String weight;
+    private String height;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +56,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         boolean istest = true;
         if (!istest) {//카카오 로그인 없이 진행
             requestMe(this);
+        } else {
+            kakaoid = 1;
+            nickname = "테스트1";
+            thumbnail = "";
+            /*if (address == null || height == null || weight == null) {
+                Util.startJoinActivity(this);
+            }*/
         }
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -211,6 +221,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 thumbnail = result.getThumbnailImagePath();
                 Bitmap bitmap = Util.getImagefromURL(thumbnail);
                 if (bitmap != null) {
+                }
+                address = result.getProperties().get("address");
+                weight = result.getProperties().get("weight");
+                height = result.getProperties().get("height");
+                if (address == null || height == null || weight == null) {
+                    Util.startJoinActivity(activity);
                 }
             }
         });
