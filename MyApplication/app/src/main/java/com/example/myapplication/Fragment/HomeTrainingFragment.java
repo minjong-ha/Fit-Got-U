@@ -1,16 +1,14 @@
 package com.example.myapplication.Fragment;
 
 import android.content.Context;
-import android.provider.ContactsContract;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 
-import com.example.myapplication.R;
 import com.example.myapplication.Etc.onFragmentListener;
+import com.example.myapplication.R;
 
 public class HomeTrainingFragment extends Fragment implements View.OnClickListener {
     private onFragmentListener mOnHTListener;
