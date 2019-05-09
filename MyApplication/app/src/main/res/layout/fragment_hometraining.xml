@@ -1,124 +1,232 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Fragment.HomeTrainingFragment"
-    tools:showIn="@layout/activity_main">
-        <TableRow
+    tools:context=".Fragment.HomeTrainingFragment">
+
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/ht_fitness"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/fitness" />
-        </TableRow>
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-        <TableRow
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/tb_border">
+
+                                <TextView
+                                    android:id="@+id/ht_fitness"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:text="@string/fitness"
+                                    android:textSize="30sp" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                                <ImageButton
+                                    android:id="@+id/ht_f1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:adjustViewBounds="true"
+                                    android:background="@drawable/all_border"
+                                    android:maxWidth="120dp"
+                                    android:maxHeight="120dp"
+                                    android:minWidth="120dp"
+                                    android:minHeight="120dp"
+                                    android:scaleType="centerInside"
+                                    android:src="@drawable/fitness_1" />
+
+                                <ImageButton
+                                    android:id="@+id/ht_f2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:adjustViewBounds="true"
+                                    android:background="#00000000"
+                                    android:maxWidth="120dp"
+                                    android:maxHeight="120dp"
+                                    android:minWidth="120dp"
+                                    android:minHeight="120dp"
+                                    android:scaleType="centerInside"
+                                    android:src="@drawable/fitness_2" />
+
+                                <ImageButton
+                                    android:id="@+id/ht_f3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:adjustViewBounds="true"
+                                    android:background="#00000000"
+                                    android:maxWidth="120dp"
+                                    android:maxHeight="120dp"
+                                    android:minWidth="120dp"
+                                    android:minHeight="120dp"
+                                    android:scaleType="centerInside"
+                                    android:src="@drawable/fitness_3" />
+
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                                <ImageButton
+                                    android:id="@+id/ht_f4"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:adjustViewBounds="true"
+                                    android:background="#00000000"
+                                    android:maxWidth="120dp"
+                                    android:maxHeight="120dp"
+                                    android:minWidth="120dp"
+                                    android:minHeight="120dp"
+                                    android:scaleType="centerInside"
+                                    android:src="@drawable/fitness_4" />
+
+                                <ImageButton
+                                    android:id="@+id/ht_f5"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:adjustViewBounds="true"
+                                    android:background="#00000000"
+                                    android:maxWidth="120dp"
+                                    android:maxHeight="120dp"
+                                    android:minWidth="120dp"
+                                    android:minHeight="120dp"
+                                    android:scaleType="centerInside"
+                                    android:src="@drawable/fitness_5" />
+
+                                <ImageButton
+                                    android:id="@+id/ht_f6"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:adjustViewBounds="true"
+                                    android:background="#00000000"
+                                    android:maxWidth="120dp"
+                                    android:maxHeight="120dp"
+                                    android:minWidth="120dp"
+                                    android:minHeight="120dp"
+                                    android:scaleType="centerInside"
+                                    android:src="@drawable/fitness_6" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/tb_border">
+
+                                <TextView
+                                    android:id="@+id/ht_yoga"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:text="@string/yoga"
+                                    android:textSize="30sp" />
+
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                                <ImageButton
+                                    android:id="@+id/ht_y1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:adjustViewBounds="true"
+                                    android:background="#00000000"
+                                    android:maxWidth="120dp"
+                                    android:maxHeight="120dp"
+                                    android:minWidth="120dp"
+                                    android:minHeight="120dp"
+                                    android:scaleType="centerInside"
+                                    android:src="@drawable/fitness_1" />
+
+                                <ImageButton
+                                    android:id="@+id/ht_y2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:adjustViewBounds="true"
+                                    android:background="#00000000"
+                                    android:maxWidth="120dp"
+                                    android:maxHeight="120dp"
+                                    android:minWidth="120dp"
+                                    android:minHeight="120dp"
+                                    android:scaleType="centerInside"
+                                    android:src="@drawable/fitness_2" />
+
+                                <ImageButton
+                                    android:id="@+id/ht_y3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:adjustViewBounds="true"
+                                    android:background="#00000000"
+                                    android:maxWidth="120dp"
+                                    android:maxHeight="120dp"
+                                    android:minWidth="120dp"
+                                    android:minHeight="120dp"
+                                    android:scaleType="centerInside"
+                                    android:src="@drawable/fitness_3" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                                <ImageButton
+                                    android:id="@+id/ht_y4"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:adjustViewBounds="true"
+                                    android:background="#00000000"
+                                    android:maxWidth="120dp"
+                                    android:maxHeight="120dp"
+                                    android:minWidth="120dp"
+                                    android:minHeight="120dp"
+                                    android:scaleType="centerInside"
+                                    android:src="@drawable/fitness_4" />
+
+                                <ImageButton
+                                    android:id="@+id/ht_y5"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:adjustViewBounds="true"
+                                    android:background="#00000000"
+                                    android:maxWidth="120dp"
+                                    android:maxHeight="120dp"
+                                    android:minWidth="120dp"
+                                    android:minHeight="120dp"
+                                    android:scaleType="centerInside"
+                                    android:src="@drawable/fitness_5" />
+
+                                <ImageButton
+                                    android:id="@+id/ht_y6"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:adjustViewBounds="true"
+                                    android:background="#00000000"
+                                    android:maxWidth="120dp"
+                                    android:maxHeight="120dp"
+                                    android:minWidth="120dp"
+                                    android:minHeight="120dp"
+                                    android:scaleType="centerInside"
+                                    android:src="@drawable/fitness_6" />
+
+                        </TableRow>
+                </TableLayout>
+        </ScrollView>
+
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="wrap_content"
+            android:background="@drawable/top_border"
+            android:textSize="8sp" />
 
-                <ImageButton
-                    android:id="@+id/ht_f1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@android:drawable/alert_dark_frame" />
-
-                <ImageButton
-                    android:id="@+id/ht_f2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@android:drawable/alert_dark_frame" />
-
-                <ImageButton
-                    android:id="@+id/ht_f3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@android:drawable/alert_dark_frame" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-                <ImageButton
-                    android:id="@+id/ht_f4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@android:drawable/alert_dark_frame" />
-
-                <ImageButton
-                    android:id="@+id/ht_f5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@android:drawable/alert_dark_frame" />
-
-                <ImageButton
-                    android:id="@+id/ht_f6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@android:drawable/alert_dark_frame" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-
-                <TextView
-                    android:id="@+id/ht_yoga"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/yoga" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-
-                <ImageButton
-                    android:id="@+id/ht_y1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@android:drawable/alert_dark_frame" />
-
-                <ImageButton
-                    android:id="@+id/ht_y2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@android:drawable/alert_dark_frame" />
-
-                <ImageButton
-                    android:id="@+id/ht_y3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@android:drawable/alert_dark_frame" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-                <ImageButton
-                    android:id="@+id/ht_y4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@android:drawable/alert_dark_frame" />
-
-                <ImageButton
-                    android:id="@+id/ht_y5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@android:drawable/alert_dark_frame" />
-
-                <ImageButton
-                    android:id="@+id/ht_y6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@android:drawable/alert_dark_frame" />
-        </TableRow>
-</TableLayout>
+</LinearLayout>
