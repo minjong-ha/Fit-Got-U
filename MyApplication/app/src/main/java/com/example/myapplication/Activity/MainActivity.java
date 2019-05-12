@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -35,7 +36,7 @@ import com.kakao.usermgmt.response.MeV2Response;
 import java.security.MessageDigest;
 import java.util.Stack;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener, onFragmentListener {
+public class MainActivity extends AppCompatActivity implements onFragmentListener, TabLayout.OnTabSelectedListener {
     //private MySQLiteOpenHelper dbhelper;
     //private SQLiteDatabase db;
 
@@ -58,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        boolean istest = false;
+        boolean istest = true;
         if (!istest) {//카카오 로그인 없이 진행
             requestMe(this);
         } else {
@@ -84,37 +85,39 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         menu = 1;
         ChangeFragmentMain();
 
-        ImageButton homeTraining = findViewById(R.id.hometraining);
-        homeTraining.setOnClickListener(this);
-        ImageButton TrainerMatch = findViewById(R.id.trainer_match);
-        TrainerMatch.setOnClickListener(this);
-        ImageButton DataAnalysis = findViewById(R.id.data_analysis);
-        DataAnalysis.setOnClickListener(this);
-        ImageButton MyPage = findViewById(R.id.mypage);
-        MyPage.setOnClickListener(this);
+        TabLayout tabLayout = (TabLayout)findViewById(R.id.tablayout);
+        tabLayout.addOnTabSelectedListener(this);
     }
 
     @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.hometraining:
+    public void onTabSelected(TabLayout.Tab tab) {
+        switch (tab.getPosition()) {
+            case 0:
                 mainfragment = HTfragment.peek();
                 menu = 1;
                 break;
-            case R.id.trainer_match:
+            case 1:
                 mainfragment = TMfragment.peek();
                 menu = 2;
                 break;
-            case R.id.data_analysis:
+            case 2:
                 mainfragment = DAfragment.peek();
                 menu = 3;
                 break;
-            case R.id.mypage:
+            case 3:
                 mainfragment = MPfragment.peek();
                 menu = 4;
                 break;
         }
         ChangeFragmentMain();
+    }
+
+    @Override
+    public void onTabUnselected(TabLayout.Tab tab) {
+    }
+
+    @Override
+    public void onTabReselected(TabLayout.Tab tab) {
     }
 
     @Override

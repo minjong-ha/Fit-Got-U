@@ -1,28 +1,26 @@
-package com.example.myapplication.Etc;
+package com.example.myapplication.List;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.myapplication.R;
 
 import java.util.ArrayList;
 
-public class HT3_List_Item_Adapter extends BaseAdapter {
+public class MP_List_Item_Adapter extends BaseAdapter {
+
     private LayoutInflater inflater;
     private int layout;
-    private ArrayList<HT3_List_Item> items;
-    private Context context;
+    private ArrayList<MP_List_Item> items;
 
-    public HT3_List_Item_Adapter(Context context, int layout, ArrayList<HT3_List_Item> items){
+    public MP_List_Item_Adapter(Context context, int layout, ArrayList<MP_List_Item> items){
         this.inflater=(LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.layout=layout;
         this.items=items;
-        this.context = context;
     }
 
     @Override
@@ -46,10 +44,9 @@ public class HT3_List_Item_Adapter extends BaseAdapter {
             view=inflater.inflate(layout,viewGroup,false);
         }
 
-        HT3_List_Item listviewitem = items.get(i);
-        ImageView image = view.findViewById(R.id.ht3_list_image);//이미지 따로 처리해줘야됨
-        TextView name = view.findViewById(R.id.ht3_list_name);
-        name.setText(context.getString(listviewitem.getNameId()));
+        MP_List_Item listviewitem = items.get(i);
+        TextView text = view.findViewById(R.id.mp_li_t);
+        text.setText(listviewitem.getName());
 
         return view;
     }

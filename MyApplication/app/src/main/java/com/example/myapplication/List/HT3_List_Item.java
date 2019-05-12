@@ -1,4 +1,4 @@
-package com.example.myapplication.Etc;
+package com.example.myapplication.List;
 
 public class HT3_List_Item {
     private String image;

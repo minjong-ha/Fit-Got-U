@@ -12,8 +12,8 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.example.myapplication.Etc.HT2_List_Item;
-import com.example.myapplication.Etc.HT2_List_Item_Adapter;
+import com.example.myapplication.List.HT2_List_Item;
+import com.example.myapplication.List.HT2_List_Item_Adapter;
 import com.example.myapplication.Etc.onFragmentListener;
 import com.example.myapplication.R;
 
