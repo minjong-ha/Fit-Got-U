@@ -1,26 +1,29 @@
-package com.example.myapplication.Etc;
+package com.example.myapplication.List;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.myapplication.R;
 
 import java.util.ArrayList;
 
-public class MP_List_Item_Adapter extends BaseAdapter {
+public class HT2_List_Item_Adapter extends BaseAdapter {
 
     private LayoutInflater inflater;
     private int layout;
-    private ArrayList<MP_List_Item> items;
+    private ArrayList<HT2_List_Item> items;
+    private Context context;
 
-    public MP_List_Item_Adapter(Context context, int layout, ArrayList<MP_List_Item> items){
+    public HT2_List_Item_Adapter(Context context, int layout, ArrayList<HT2_List_Item> items){
         this.inflater=(LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.layout=layout;
         this.items=items;
+        this.context = context;
     }
 
     @Override
@@ -44,10 +47,14 @@ public class MP_List_Item_Adapter extends BaseAdapter {
             view=inflater.inflate(layout,viewGroup,false);
         }
 
-        MP_List_Item listviewitem = items.get(i);
-        TextView text = view.findViewById(R.id.mp_li_t);
-        text.setText(listviewitem.getName());
+        HT2_List_Item listviewitem = items.get(i);
+        ImageView image = view.findViewById(R.id.ht2_list_image);//이미지 따로 처리해줘야됨
+        TextView name = view.findViewById(R.id.ht2_list_name);
+        name.setText(context.getString(listviewitem.getNameId()));
+        TextView desc = view.findViewById(R.id.ht2_list_desc);
+        desc.setText(listviewitem.getDesc());
 
         return view;
     }
+
 }

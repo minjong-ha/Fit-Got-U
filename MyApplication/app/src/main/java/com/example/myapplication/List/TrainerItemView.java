@@ -1,4 +1,4 @@
-package com.example.myapplication.Etc;
+package com.example.myapplication.List;
 
 import android.content.Context;
 import android.util.AttributeSet;

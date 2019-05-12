@@ -14,8 +14,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.myapplication.Activity.InfoChangeActivity;
-import com.example.myapplication.Etc.MP_List_Item;
-import com.example.myapplication.Etc.MP_List_Item_Adapter;
+import com.example.myapplication.List.MP_List_Item;
+import com.example.myapplication.List.MP_List_Item_Adapter;
 import com.example.myapplication.R;
 
 import java.util.ArrayList;

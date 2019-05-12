@@ -9,8 +9,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.example.myapplication.Etc.MP_List_Item;
-import com.example.myapplication.Etc.MP_List_Item_Adapter;
+import com.example.myapplication.List.MP_List_Item;
+import com.example.myapplication.List.MP_List_Item_Adapter;
 import com.example.myapplication.Etc.onFragmentListener;
 import com.example.myapplication.R;
 
