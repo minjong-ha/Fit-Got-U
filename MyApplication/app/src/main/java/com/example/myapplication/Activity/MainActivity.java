@@ -56,6 +56,8 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //Util.startTestActivity(this);
+
         boolean istest = true;
         if (!istest) {//카카오 로그인 없이 진행
             requestMe(this);

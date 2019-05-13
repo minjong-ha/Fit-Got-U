@@ -45,6 +45,10 @@ public class HomeTrainingFragment3 extends Fragment implements AdapterView.OnIte
         items.clear();
         items.add(new HT3_List_Item(0, R.string.fitness_1_1_1, R.string.fitness_1_1_1_desc));
         items.add(new HT3_List_Item(0, R.string.fitness_1_1_2, R.string.fitness_1_1_2_desc));
+        items.add(new HT3_List_Item(0, R.string.fitness_1_1_3, R.string.fitness_1_1_3_desc));
+        items.add(new HT3_List_Item(0, R.string.fitness_1_1_4, R.string.fitness_1_1_4_desc));
+        items.add(new HT3_List_Item(0, R.string.fitness_1_1_5, R.string.fitness_1_1_5_desc));
+        items.add(new HT3_List_Item(0, R.string.fitness_1_1_6, R.string.fitness_1_1_6_desc));
 
         HT3_List_Item_Adapter listadapter = new HT3_List_Item_Adapter(getContext(), R.layout.ht3_list_item, items);
         listview.setAdapter(listadapter);
