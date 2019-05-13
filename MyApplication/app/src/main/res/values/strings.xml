@@ -17,8 +17,11 @@
     <string name="fitness_1_3">운동 루틴3</string>
 
     <string name="fitness_1_1_1">운동1</string>
+    <string name="fitness_1_1_1_desc">운동1 설명이다아아아아아아아</string>
     <string name="fitness_1_1_2">운동2</string>
+    <string name="fitness_1_1_2_desc">운동2 설명이다아아아아아아아</string>
     <string name="fitness_1_1_3">운동3</string>
+    <string name="fitness_1_1_3_desc">운동3 설명이다아아아아아아아</string>
 
     <string name="my_info">내 정보</string>
     <string name="my_trainer">내 트레이너</string>
@@ -26,6 +29,8 @@
     <string name="logout">로그아웃</string>
 
     <string name="change_id">아이디 변경</string>
+
+    <string name="dialog_ht_start_text">이 운동 루틴을 실행하시겠습니까?</string>
 
     <string name="kakao_app_key">40d4b3eead99526595fbe4be1120f80d</string>
 

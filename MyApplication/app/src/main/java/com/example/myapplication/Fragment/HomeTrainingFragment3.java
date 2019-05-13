@@ -43,8 +43,8 @@ public class HomeTrainingFragment3 extends Fragment implements AdapterView.OnIte
         ht3_name.setText(getContext().getString(nameid));
         ListView listview = view.findViewById(R.id.ht3_list);
         items.clear();
-        items.add(new HT3_List_Item("image1", R.string.fitness_1_1_1));
-        items.add(new HT3_List_Item("image2", R.string.fitness_1_1_1));
+        items.add(new HT3_List_Item(0, R.string.fitness_1_1_1, R.string.fitness_1_1_1_desc));
+        items.add(new HT3_List_Item(0, R.string.fitness_1_1_2, R.string.fitness_1_1_2_desc));
 
         HT3_List_Item_Adapter listadapter = new HT3_List_Item_Adapter(getContext(), R.layout.ht3_list_item, items);
         listview.setAdapter(listadapter);
@@ -54,7 +54,7 @@ public class HomeTrainingFragment3 extends Fragment implements AdapterView.OnIte
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showLinkGroupDialog();
+                showSimpleDialog();
             }
         });
 
@@ -63,15 +63,28 @@ public class HomeTrainingFragment3 extends Fragment implements AdapterView.OnIte
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        ((MainActivity)getActivity()).ChangeFragmentMain(items.get(i).getNameId());
+        showHTDialog(i);
     }
 
-    private void showLinkGroupDialog() {
-        DialogFragment newFragment = new HTDialogFragment();
+    private void showSimpleDialog() {
+        DialogFragment newFragment = new SimpleDialogFragment();
         Bundle args = new Bundle();
+        args.putString("title", "운동 루틴 시작");
+        args.putString("text", getString(R.string.dialog_ht_start_text));
         newFragment.setArguments(args);
         newFragment.setTargetFragment(this, Util.DIALOG_REQUEST_CODE);
-        newFragment.show(getFragmentManager(), "linkgroupdialog");
+        newFragment.show(getFragmentManager(), "simpledialog");
+    }
+
+    private void showHTDialog(int pos) {
+        DialogFragment newFragment = new HTDialogFragment();
+        Bundle args = new Bundle();
+        args.putString("title", getString(items.get(pos).getNameId()));
+        args.putInt("imageid", items.get(pos).getImageId());
+        args.putString("desc", getString(items.get(pos).getDescId()));
+        newFragment.setArguments(args);
+        newFragment.setTargetFragment(this, Util.DIALOG_REQUEST_CODE);
+        newFragment.show(getFragmentManager(), "htdialog");
     }
 
     @Override
