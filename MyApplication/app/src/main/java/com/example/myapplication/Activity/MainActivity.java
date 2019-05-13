@@ -13,12 +13,9 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Base64;
-import android.view.View;
-import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.myapplication.Etc.Util;
-import com.example.myapplication.Etc.onFragmentListener;
 import com.example.myapplication.Fragment.DataAnalysisFragment;
 import com.example.myapplication.Fragment.HomeTrainingFragment;
 import com.example.myapplication.Fragment.HomeTrainingFragment2;
@@ -36,7 +33,7 @@ import com.kakao.usermgmt.response.MeV2Response;
 import java.security.MessageDigest;
 import java.util.Stack;
 
-public class MainActivity extends AppCompatActivity implements onFragmentListener, TabLayout.OnTabSelectedListener {
+public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSelectedListener {
     //private MySQLiteOpenHelper dbhelper;
     //private SQLiteDatabase db;
 
@@ -83,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements onFragmentListene
         mainfragment = HTfragment.peek();
         maintitle = getString(R.string.app_name);
         menu = 1;
-        ChangeFragmentMain();
+        ChangeFragmentMain(0);
 
         TabLayout tabLayout = (TabLayout)findViewById(R.id.tablayout);
         tabLayout.addOnTabSelectedListener(this);
@@ -109,7 +106,7 @@ public class MainActivity extends AppCompatActivity implements onFragmentListene
                 menu = 4;
                 break;
         }
-        ChangeFragmentMain();
+        ChangeFragmentMain(0);
     }
 
     @Override
@@ -161,51 +158,52 @@ public class MainActivity extends AppCompatActivity implements onFragmentListene
             //super.onBackPressed();
             ActivityCompat.finishAffinity(this);
         } else {
-            ChangeFragmentMain();
+            ChangeFragmentMain(0);
         }
     }
 
-    public void ChangeFragmentMain() {
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.mainfragment, mainfragment);
-        ft.commit();
-    }
-
-    public void onReceivedData(Object data) {
-        if (data instanceof String) {
-            switch ((String)data) {
-                case "내 정보":
-                    MPfragment.push(new MyInfoFragment());
-                    mainfragment = MPfragment.peek();
-                    break;
-                case "로그아웃":
-                    Logout(this);
-                    Util.startMainActivity(this);
-                    break;
-            }
-        } else if (data instanceof Integer) {
-            switch ((int)data) {
+    public void ChangeFragmentMain(int id) {
+        if (id != 0) {
+            Bundle args = new Bundle();
+            args.putInt("id", id);
+            switch (id) {
                 case R.id.ht_f1:
                 case R.id.ht_f2:
                 case R.id.ht_f3:
                 case R.id.ht_f4:
                 case R.id.ht_f5:
                 case R.id.ht_f6:
-                    HTfragment.push(new HomeTrainingFragment2().newInstance((int)data));
+                    Fragment ht2 = new HomeTrainingFragment2();
+                    args.putInt("id",id);
+                    ht2.setArguments(args);
+                    HTfragment.push(ht2);
                     mainfragment = HTfragment.peek();
                     break;
                 case R.string.fitness_1_1:
                 case R.string.fitness_1_2:
                 case R.string.fitness_1_3:
-                    HTfragment.push(new HomeTrainingFragment3().newInstance((int)data));
+                    Fragment ht3 = new HomeTrainingFragment3();
+                    args.putInt("id",id);
+                    ht3.setArguments(args);
+                    HTfragment.push(ht3);
                     mainfragment = HTfragment.peek();
+                    break;
+                case R.string.my_info:
+                    MPfragment.push(new MyInfoFragment());
+                    mainfragment = MPfragment.peek();
+                    break;
+                case R.string.logout:
+                    Logout(this);
+                    Util.startMainActivity(this);
                     break;
             }
         }
-        ChangeFragmentMain();
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.mainfragment, mainfragment);
+        ft.commit();
     }
 
-    protected void Logout(final Activity activity) {
+    private void Logout(final Activity activity) {
         UserManagement.getInstance().requestLogout(new LogoutResponseCallback() {
             @Override
             public void onCompleteLogout() {

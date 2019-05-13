@@ -20,6 +20,13 @@
     <string name="fitness_1_1_2">운동2</string>
     <string name="fitness_1_1_3">운동3</string>
 
+    <string name="my_info">내 정보</string>
+    <string name="my_trainer">내 트레이너</string>
+    <string name="app_info">앱 정보</string>
+    <string name="logout">로그아웃</string>
+
+    <string name="change_id">아이디 변경</string>
+
     <string name="kakao_app_key">40d4b3eead99526595fbe4be1120f80d</string>
 
     <!-- TODO: Remove or change this placeholder text -->
