@@ -46,7 +46,7 @@ public class MP_List_Item_Adapter extends BaseAdapter {
 
         MP_List_Item listviewitem = items.get(i);
         TextView text = view.findViewById(R.id.mp_li_t);
-        text.setText(listviewitem.getName());
+        text.setText(view.getResources().getString(listviewitem.getNameId()));
 
         return view;
     }

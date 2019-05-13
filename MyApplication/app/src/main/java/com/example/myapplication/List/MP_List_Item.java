@@ -1,13 +1,13 @@
 package com.example.myapplication.List;
 
 public class MP_List_Item {
-    private String name;
+    private int nameid;
 
-    public MP_List_Item(String name) {
-        this.name = name;
+    public MP_List_Item(int nameid) {
+        this.nameid = nameid;
     }
 
-    public String getName() {
-        return name;
+    public int getNameId() {
+        return nameid;
     }
 }

@@ -34,7 +34,7 @@ public class MyInfoFragment extends Fragment {
         ListView listview = view.findViewById(R.id.mi_list);
 
         ArrayList<MP_List_Item> items = new ArrayList<>();
-        items.add(new MP_List_Item("아이디 변경"));
+        items.add(new MP_List_Item(R.string.change_id));
 
         listadapter = new MP_List_Item_Adapter(getContext(), R.layout.mp_list_item, items);
         listview.setAdapter(listadapter);

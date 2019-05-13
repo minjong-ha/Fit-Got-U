@@ -14,32 +14,23 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.myapplication.Activity.MainActivity;
 import com.example.myapplication.Etc.Util;
 import com.example.myapplication.List.HT3_List_Item;
 import com.example.myapplication.List.HT3_List_Item_Adapter;
-import com.example.myapplication.Etc.onFragmentListener;
 import com.example.myapplication.R;
 
 import java.util.ArrayList;
 
 public class HomeTrainingFragment3 extends Fragment implements AdapterView.OnItemClickListener {
-    private onFragmentListener mOnHTListener;
     private int nameid;
     private ArrayList<HT3_List_Item> items = new ArrayList<>();
-
-    public static HomeTrainingFragment3 newInstance(int data) {
-        HomeTrainingFragment3 f = new HomeTrainingFragment3();
-        Bundle b = new Bundle();
-        b.putInt("data", data);
-        f.setArguments(b);
-        return f;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            nameid = getArguments().getInt("data");
+            nameid = getArguments().getInt("id");
         }
     }
 
@@ -72,9 +63,7 @@ public class HomeTrainingFragment3 extends Fragment implements AdapterView.OnIte
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        if (mOnHTListener != null) {
-            mOnHTListener.onReceivedData(items.get(i).getNameId());
-        }
+        ((MainActivity)getActivity()).ChangeFragmentMain(items.get(i).getNameId());
     }
 
     private void showLinkGroupDialog() {
