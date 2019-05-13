@@ -9,37 +9,39 @@ import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.myapplication.R;
 
-public class HTDialogFragment extends DialogFragment {
+import java.util.ArrayList;
+
+public class SimpleDialogFragment extends DialogFragment {
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View view = inflater.inflate(R.layout.dialog_ht, null);
+        View view = inflater.inflate(R.layout.dialog_simple, null);
         builder.setView(view);
 
         Bundle arg = getArguments();
         String title = arg.getString("title");
-        int imageid = arg.getInt("imageid");
-        String desc = arg.getString("desc");
+        String text = arg.getString("text");
 
-        ImageView iv = (ImageView) view.findViewById(R.id.dialog_ht_image);
-        if (imageid != 0) {
-            iv.setImageResource(imageid);
-        }
-        TextView tv2 = (TextView)view.findViewById(R.id.dialog_ht_desc);
-        tv2.setText(desc);
+        TextView tv = (TextView)view.findViewById(R.id.dialog_simple_text);
+        tv.setText(text);
 
-        builder.setPositiveButton("확인",
+        builder.setPositiveButton("실행",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         Intent intent = new Intent();
                         getTargetFragment().onActivityResult(getTargetRequestCode(), Activity.RESULT_OK, intent);
+                        dismiss();
+                    }
+                });
+        builder.setNegativeButton("취소",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
                         dismiss();
                     }
                 });

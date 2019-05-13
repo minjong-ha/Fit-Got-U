@@ -13,6 +13,7 @@ import android.support.v4.app.ActivityCompat;
 import com.example.myapplication.Activity.JoinActivity;
 import com.example.myapplication.Activity.LoginActivity;
 import com.example.myapplication.Activity.MainActivity;
+import com.example.myapplication.Activity.TestActivity;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -132,5 +133,10 @@ public class Util {
     public static void startMainActivity(Activity activity) {
         ActivityCompat.finishAffinity(activity);
         activity.startActivity(new Intent(activity.getApplicationContext(), MainActivity.class));
+    }
+
+    public static void startTestActivity(Activity activity) {
+        ActivityCompat.finishAffinity(activity);
+        activity.startActivity(new Intent(activity.getApplicationContext(), TestActivity.class));
     }
 }
