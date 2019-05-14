@@ -29,47 +29,41 @@
         android:layout_height="0dp"
         app:layout_anchor="@+id/appBarLayout"
         app:layout_anchorGravity="bottom|center"
-        app:layout_constraintBottom_toTopOf="@+id/button_layout"
+        app:layout_constraintBottom_toTopOf="@+id/tablayout"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
         tools:layout_editor_absoluteX="0dp" />
 
-    <LinearLayout
-        android:id="@+id/button_layout"
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tablayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/black"
-        android:orientation="horizontal"
-        app:layout_anchor="@+id/include"
-        app:layout_anchorGravity="bottom|center"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
-        <ImageButton
+        <android.support.design.widget.TabItem
             android:id="@+id/hometraining"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@android:drawable/alert_dark_frame" />
+            android:text="홈트레이닝" />
 
-        <ImageButton
+        <android.support.design.widget.TabItem
             android:id="@+id/trainer_match"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@android:drawable/alert_dark_frame" />
+            android:text="트레이너매치" />
 
-        <ImageButton
+        <android.support.design.widget.TabItem
             android:id="@+id/data_analysis"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@android:drawable/alert_dark_frame" />
+            android:text="데이터분석" />
 
-        <ImageButton
+        <android.support.design.widget.TabItem
             android:id="@+id/mypage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@android:drawable/alert_dark_frame" />
-    </LinearLayout>
+            android:text="내페이지" />
+    </android.support.design.widget.TabLayout>
 
 </android.support.constraint.ConstraintLayout>

@@ -24,6 +24,8 @@ public class JoinActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_join);
 
+        final Activity activity = this;
+
         Button b = findViewById(R.id.join_button);
         b.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,7 +36,7 @@ public class JoinActivity extends AppCompatActivity {
                 if (weight.getText().toString().trim().equals("") || height.getText().toString().trim().equals("") || address.getText().toString().trim().equals("")) {
 
                 } else {
-                    requestUpdateProfile(getParent(), weight.getText().toString(), height.getText().toString(), address.getText().toString());
+                    requestUpdateProfile(activity, weight.getText().toString(), height.getText().toString(), address.getText().toString());
                 }
             }
         });

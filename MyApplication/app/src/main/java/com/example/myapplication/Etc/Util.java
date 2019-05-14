@@ -1,7 +1,10 @@
 package com.example.myapplication.Etc;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -10,6 +13,7 @@ import android.support.v4.app.ActivityCompat;
 import com.example.myapplication.Activity.JoinActivity;
 import com.example.myapplication.Activity.LoginActivity;
 import com.example.myapplication.Activity.MainActivity;
+import com.example.myapplication.Activity.TestActivity;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -19,6 +23,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Util {
+    public static final int DIALOG_REQUEST_CODE = 1;
+
     private static ArrayList<HashMap<String, String>> getJsonTable(String JsonString) {
         ArrayList<HashMap<String, String>> mArrayList = new ArrayList<>();
         try {
@@ -81,6 +87,39 @@ public class Util {
         }
     }
 
+    public static void UpdateDBData(Context context, String value) {
+        MySQLiteOpenHelper dbhelper = new MySQLiteOpenHelper(context, "DB", null, 1);
+        SQLiteDatabase database = dbhelper.getWritableDatabase();
+        String sql = "UPDATE db_name SET value=" + value + " WHERE name='name';";
+        database.execSQL(sql);
+        database.close();
+        dbhelper.close();
+    }
+
+    public static String getDBData(Context context) {
+        MySQLiteOpenHelper dbhelper = new MySQLiteOpenHelper(context, "DB", null, 1);
+        SQLiteDatabase database = dbhelper.getReadableDatabase();
+        String sql = "SELECT value FROM db_name WHERE name='name';";
+        Cursor cursor = database.rawQuery(sql,null);
+        String id = "0";
+        while(cursor.moveToNext()){
+            id = cursor.getString(0);
+        }
+        cursor.close();
+        database.close();
+        dbhelper.close();
+        return id;
+    }
+
+    public static void InsertDBData(Context context) {
+        MySQLiteOpenHelper dbhelper = new MySQLiteOpenHelper(context, "DB", null, 1);
+        SQLiteDatabase database = dbhelper.getWritableDatabase();
+        String sql = "INSERT INTO db_name VALUES('name','value')";
+        database.execSQL(sql);
+        database.close();
+        dbhelper.close();
+    }
+
     public static void startLoginActivity(Activity activity) {
         ActivityCompat.finishAffinity(activity);
         activity.startActivity(new Intent(activity.getApplicationContext(), LoginActivity.class));
@@ -94,5 +133,10 @@ public class Util {
     public static void startMainActivity(Activity activity) {
         ActivityCompat.finishAffinity(activity);
         activity.startActivity(new Intent(activity.getApplicationContext(), MainActivity.class));
+    }
+
+    public static void startTestActivity(Activity activity) {
+        ActivityCompat.finishAffinity(activity);
+        activity.startActivity(new Intent(activity.getApplicationContext(), TestActivity.class));
     }
 }
