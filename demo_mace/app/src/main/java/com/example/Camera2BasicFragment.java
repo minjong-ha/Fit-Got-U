@@ -640,12 +640,12 @@ public class Camera2BasicFragment extends Fragment
                             classifyFrame();
 
                             //=====
-                            if(!drawView.mDrawPoint.isEmpty()) {
+                            /*if(!drawView.mDrawPoint.isEmpty()) {
                                 for (int i = 0; i < 13; i++) {
                                     System.out.print(drawView.mDrawPoint.get(i) + " ");
                                 }
                                 System.out.println();
-                            }
+                            }*/
 
                             /*for (int i = 0 ; i < classifier.mPrintPointArray.length ; i++) {
                                 System.out.println();
@@ -759,7 +759,7 @@ public class Camera2BasicFragment extends Fragment
      */
     private void classifyFrame() {
         if (classifier == null || getActivity() == null || cameraDevice == null) {
-            showToast("Uninitialized model or invalid context.");
+            showToast("Loading...");
             return;
         }
         Bitmap bitmap = textureView.getBitmap(classifier.getImageSizeX(), classifier.getImageSizeY());

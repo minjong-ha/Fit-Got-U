@@ -79,9 +79,9 @@ public abstract class PoseEstimation {
         runInference();
         //wait, sleep 걸면 어느정도 조정 가능하지 않을까?
         //=====
-        try {
+       /* try {
             Thread.sleep(500);
-        } catch (InterruptedException e) { }
+        } catch (InterruptedException e) { }*/
         //=====
         long endTime = SystemClock.uptimeMillis();
         String textToShow = Long.toString(endTime - startTime) + "ms";

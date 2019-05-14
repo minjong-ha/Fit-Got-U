@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Tue May 07 01:36:39 KST 2019
+#Mon May 13 18:40:13 KST 2019
 4.path=classes.dex
 8.set=NATIVE_RESOURCE
 6.path=lib/armeabi-v7a/libopencv_java3.so

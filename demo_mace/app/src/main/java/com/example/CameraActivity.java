@@ -78,6 +78,8 @@ public class CameraActivity extends Activity {
         String message = intent.getStringExtra("exercise");
         explain.setText(message);
 
+        Calculate mes = new Calculate();
+        mes.info = message;
     }
 
     public void onClick(View view){

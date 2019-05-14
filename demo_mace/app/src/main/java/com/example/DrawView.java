@@ -162,6 +162,9 @@ public class DrawView extends View {
         PointF p12 = mDrawPoint.get(12); //l_knee
         PointF p13 = mDrawPoint.get(13); //l_ankle
 
+        Calculate cal = new Calculate();
+        cal.main(mDrawPoint);
+
         //0-1 top - neck
         canvas.drawLine(p0.x, p0.y, p1.x, p1.y, mPaint);
 

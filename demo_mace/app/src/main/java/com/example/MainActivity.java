@@ -30,7 +30,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
             }
             case R.id.button2:{
                 Intent intent = new Intent(this, CameraActivity.class);
-                intent.putExtra("exercise", "푸쉬업");
+                intent.putExtra("exercise", "팔벌리기");
                 startActivity(intent);
                 break;
             }

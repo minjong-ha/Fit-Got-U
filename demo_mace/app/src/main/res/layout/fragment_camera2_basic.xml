@@ -40,12 +40,12 @@
 
     <LinearLayout
         android:id="@+id/layout_bottom"
-        android:layout_width="285dp"
-        android:layout_height="112dp"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:orientation="vertical"
-        android:background="#000">
+        android:background="#000"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/text"
@@ -54,125 +54,7 @@
             android:textColor="#FFF"
             android:textSize="20sp"
             android:textStyle="bold"
-            tools:text="asd"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="top"
-                android:layout_marginLeft="10dp"
-                android:textColor="#980000"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="neck"
-                android:layout_marginLeft="10dp"
-                android:textColor="#ff0000"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="r_shoulder"
-                android:layout_marginLeft="10dp"
-                android:textColor="#ff9900"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="r_elbow"
-                android:layout_marginLeft="10dp"
-                android:textColor="#ffff00"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="r_wrist"
-                android:textColor="#00ffff" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="l_shoulder"
-                android:textColor="#4a86e8" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="l_elbow"
-                android:textColor="#0000ff" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="l_wrist"
-                android:textColor="#9900ff" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="r_hip"
-                android:textColor="#274e13" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="r_knee"
-                android:textColor="#e6b8af" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="r_ankle"
-                android:textColor="#0c343d" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="l_hip"
-                android:textColor="#1c4587" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="l_knee"
-                android:textColor="#073763" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="l_ankle"
-                android:textColor="#20124d" />
-
-        </LinearLayout>
+            tools:text="asd" />
 
     </LinearLayout>
 
