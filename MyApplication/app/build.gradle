@@ -28,4 +28,5 @@ dependencies {
     implementation group: 'com.kakao.sdk', name: 'usermgmt', version: project.KAKAO_SDK_VERSION
     implementation files('libs/YouTubeAndroidPlayerApi.jar')
     implementation files('libs/glide-full-4.7.0.jar')
+    implementation files('libs/libDaumMapAndroid.jar')
 }
