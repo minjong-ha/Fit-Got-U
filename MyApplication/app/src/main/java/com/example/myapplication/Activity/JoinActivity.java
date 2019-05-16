@@ -12,7 +12,6 @@ import com.example.myapplication.R;
 import com.kakao.auth.ApiResponseCallback;
 import com.kakao.network.ErrorResult;
 import com.kakao.usermgmt.UserManagement;
-import com.kakao.util.helper.log.Logger;
 
 import java.util.HashMap;
 import java.util.Map;

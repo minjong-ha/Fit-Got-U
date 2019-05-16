@@ -17,9 +17,9 @@ import android.widget.Toast;
 
 import com.example.myapplication.Etc.Util;
 import com.example.myapplication.Fragment.DataAnalysisFragment;
+import com.example.myapplication.Fragment.HomeTraining2Fragment;
+import com.example.myapplication.Fragment.HomeTraining3Fragment;
 import com.example.myapplication.Fragment.HomeTrainingFragment;
-import com.example.myapplication.Fragment.HomeTrainingFragment2;
-import com.example.myapplication.Fragment.HomeTrainingFragment3;
 import com.example.myapplication.Fragment.MyInfoFragment;
 import com.example.myapplication.Fragment.MyPageFragment;
 import com.example.myapplication.Fragment.TrainerMatchFragment;
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
         if (!istest) {//카카오 로그인 없이 진행
             requestMe(this);
         } else {
-            getHK();
+            //getHK();
             kakaoid = 1;
             nickname = "테스트1";
             thumbnail = "";
@@ -175,7 +175,7 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
                 case R.id.ht_f4:
                 case R.id.ht_f5:
                 case R.id.ht_f6:
-                    Fragment ht2 = new HomeTrainingFragment2();
+                    Fragment ht2 = new HomeTraining2Fragment();
                     args.putInt("id",id);
                     ht2.setArguments(args);
                     HTfragment.push(ht2);
@@ -184,7 +184,7 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
                 case R.string.fitness_1_1:
                 case R.string.fitness_1_2:
                 case R.string.fitness_1_3:
-                    Fragment ht3 = new HomeTrainingFragment3();
+                    Fragment ht3 = new HomeTraining3Fragment();
                     args.putInt("id",id);
                     ht3.setArguments(args);
                     HTfragment.push(ht3);

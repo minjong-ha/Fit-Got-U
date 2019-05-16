@@ -13,8 +13,6 @@ import android.widget.TextView;
 
 import com.example.myapplication.R;
 
-import java.util.ArrayList;
-
 public class SimpleDialogFragment extends DialogFragment {
 
     @Override

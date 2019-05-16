@@ -14,7 +14,6 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.myapplication.Activity.MainActivity;
 import com.example.myapplication.Etc.Util;
 import com.example.myapplication.List.HT3_List_Item;
 import com.example.myapplication.List.HT3_List_Item_Adapter;
@@ -22,7 +21,7 @@ import com.example.myapplication.R;
 
 import java.util.ArrayList;
 
-public class HomeTrainingFragment3 extends Fragment implements AdapterView.OnItemClickListener {
+public class HomeTraining3Fragment extends Fragment implements AdapterView.OnItemClickListener {
     private int nameid;
     private ArrayList<HT3_List_Item> items = new ArrayList<>();
 

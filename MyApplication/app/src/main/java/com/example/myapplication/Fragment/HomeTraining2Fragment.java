@@ -18,7 +18,7 @@ import com.example.myapplication.R;
 
 import java.util.ArrayList;
 
-public class HomeTrainingFragment2 extends Fragment implements AdapterView.OnItemClickListener {
+public class HomeTraining2Fragment extends Fragment implements AdapterView.OnItemClickListener {
     private int nameid;
     private ArrayList<HT2_List_Item> items = new ArrayList<>();
 
