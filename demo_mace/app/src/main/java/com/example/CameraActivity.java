@@ -18,6 +18,7 @@ package com.example;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -83,7 +84,11 @@ public class CameraActivity extends Activity {
     }
 
     public void onClick(View view){
+        Log.d("result", "exerciseCount: " + Calculate.exerciseCount);
+        Log.d("result", "left: " + Calculate.left);
         finish();
+
+        //Calculate.varInit();
     }
 
     @Override

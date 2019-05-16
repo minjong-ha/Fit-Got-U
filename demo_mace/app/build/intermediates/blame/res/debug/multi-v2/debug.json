@@ -1,21 +1,6 @@
 {
     "logs": [
         {
-            "outputFile": "/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/res/merged/debug/values-large-v4_values-large-v4.arsc.flat",
-            "map": [
-                {
-                    "source": "/Users/a1/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.2.0.aar/63b8cd8f29f3d156d26e51bbf0919eaf/res/values-large-v4/values-large-v4.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10",
-                        "startColumns": "4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,114,185,256,326,396,464,532,636",
-                        "endColumns": "58,70,70,69,69,67,67,103,115",
-                        "endOffsets": "109,180,251,321,391,459,527,631,747"
-                    }
-                }
-            ]
-        },
-        {
             "outputFile": "/Users/a1/Downloads/PoseEstimationForMobile-master/android_demo/demo_mace/app/build/intermediates/res/merged/debug/values-large-v4_values-large-v4.arsc.flat",
             "map": [
                 {
@@ -31,16 +16,16 @@
             ]
         },
         {
-            "outputFile": "/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/res/merged/debug/values-cs_values-cs.arsc.flat",
+            "outputFile": "/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/res/merged/debug/values-large-v4_values-large-v4.arsc.flat",
             "map": [
                 {
-                    "source": "/Users/a1/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.2.0.aar/63b8cd8f29f3d156d26e51bbf0919eaf/res/values-cs/values-cs.xml",
+                    "source": "/Users/a1/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.2.0.aar/63b8cd8f29f3d156d26e51bbf0919eaf/res/values-large-v4/values-large-v4.xml",
                     "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,162,271,395,497,606,692,797,914,995,1076,1160,1264,1373,1472,1578,1688,1795,1917,2015,2097",
-                        "endColumns": "106,108,123,101,108,85,104,116,80,80,83,103,108,98,105,109,106,121,97,81,100",
-                        "endOffsets": "157,266,390,492,601,687,792,909,990,1071,1155,1259,1368,1467,1573,1683,1790,1912,2010,2092,2193"
+                        "startLines": "2,3,4,5,6,7,8,9,10",
+                        "startColumns": "4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,114,185,256,326,396,464,532,636",
+                        "endColumns": "58,70,70,69,69,67,67,103,115",
+                        "endOffsets": "109,180,251,321,391,459,527,631,747"
                     }
                 }
             ]
@@ -56,6 +41,21 @@
                         "startOffsets": "55,158,266,389,487,595,685,790,907,989,1072,1154,1255,1364,1463,1570,1679,1784,1903,2000,2082",
                         "endColumns": "102,107,122,97,107,89,104,116,81,82,81,100,108,98,106,108,104,118,96,81,100",
                         "endOffsets": "153,261,384,482,590,680,785,902,984,1067,1149,1250,1359,1458,1565,1674,1779,1898,1995,2077,2178"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/res/merged/debug/values-cs_values-cs.arsc.flat",
+            "map": [
+                {
+                    "source": "/Users/a1/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.2.0.aar/63b8cd8f29f3d156d26e51bbf0919eaf/res/values-cs/values-cs.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,162,271,395,497,606,692,797,914,995,1076,1160,1264,1373,1472,1578,1688,1795,1917,2015,2097",
+                        "endColumns": "106,108,123,101,108,85,104,116,80,80,83,103,108,98,105,109,106,121,97,81,100",
+                        "endOffsets": "157,266,390,492,601,687,792,909,990,1071,1155,1259,1368,1467,1573,1683,1790,1912,2010,2092,2193"
                     }
                 }
             ]
@@ -167,21 +167,6 @@
             ]
         },
         {
-            "outputFile": "/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/res/merged/debug/values-pt-rBR_values-pt-rBR.arsc.flat",
-            "map": [
-                {
-                    "source": "/Users/a1/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.2.0.aar/63b8cd8f29f3d156d26e51bbf0919eaf/res/values-pt-rBR/values-pt-rBR.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,175,283,406,512,619,708,809,927,1010,1090,1177,1284,1396,1498,1606,1713,1823,1948,2048,2133",
-                        "endColumns": "119,107,122,105,106,88,100,117,82,79,86,106,111,101,107,106,109,124,99,84,100",
-                        "endOffsets": "170,278,401,507,614,703,804,922,1005,1085,1172,1279,1391,1493,1601,1708,1818,1943,2043,2128,2229"
-                    }
-                }
-            ]
-        },
-        {
             "outputFile": "/Users/a1/Downloads/PoseEstimationForMobile-master/android_demo/demo_mace/app/build/intermediates/res/merged/debug/values-v23_values-v23.arsc.flat",
             "map": [
                 {
@@ -193,6 +178,21 @@
                         "endLines": "2,3,4,5,18,31,32,33,34,35,36",
                         "endColumns": "134,134,74,86,12,12,126,104,114,106,112",
                         "endOffsets": "185,320,395,482,1272,2074,2201,2306,2421,2528,2641"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/res/merged/debug/values-pt-rBR_values-pt-rBR.arsc.flat",
+            "map": [
+                {
+                    "source": "/Users/a1/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.2.0.aar/63b8cd8f29f3d156d26e51bbf0919eaf/res/values-pt-rBR/values-pt-rBR.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,175,283,406,512,619,708,809,927,1010,1090,1177,1284,1396,1498,1606,1713,1823,1948,2048,2133",
+                        "endColumns": "119,107,122,105,106,88,100,117,82,79,86,106,111,101,107,106,109,124,99,84,100",
+                        "endOffsets": "170,278,401,507,614,703,804,922,1005,1085,1172,1279,1391,1493,1601,1708,1818,1943,2043,2128,2229"
                     }
                 }
             ]
@@ -318,21 +318,6 @@
             ]
         },
         {
-            "outputFile": "/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/res/merged/debug/values-de_values-de.arsc.flat",
-            "map": [
-                {
-                    "source": "/Users/a1/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.2.0.aar/63b8cd8f29f3d156d26e51bbf0919eaf/res/values-de/values-de.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,160,268,391,489,601,687,792,907,984,1060,1142,1253,1356,1455,1566,1668,1775,1897,1999,2081",
-                        "endColumns": "104,107,122,97,111,85,104,114,76,75,81,110,102,98,110,101,106,121,101,81,100",
-                        "endOffsets": "155,263,386,484,596,682,787,902,979,1055,1137,1248,1351,1450,1561,1663,1770,1892,1994,2076,2177"
-                    }
-                }
-            ]
-        },
-        {
             "outputFile": "/Users/a1/Downloads/PoseEstimationForMobile-master/android_demo/demo_mace/app/build/intermediates/res/merged/debug/values-v17_values-v17.arsc.flat",
             "map": [
                 {
@@ -344,6 +329,21 @@
                         "endLines": "4,8,11,14,17,21,25,28,31,34,38,41,45,49",
                         "endColumns": "12,12,12,12,12,12,12,12,12,12,12,12,12,12",
                         "endOffsets": "223,451,609,759,931,1159,1401,1572,1746,1915,2188,2388,2592,2921"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/res/merged/debug/values-de_values-de.arsc.flat",
+            "map": [
+                {
+                    "source": "/Users/a1/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.2.0.aar/63b8cd8f29f3d156d26e51bbf0919eaf/res/values-de/values-de.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,160,268,391,489,601,687,792,907,984,1060,1142,1253,1356,1455,1566,1668,1775,1897,1999,2081",
+                        "endColumns": "104,107,122,97,111,85,104,114,76,75,81,110,102,98,110,101,106,121,101,81,100",
+                        "endOffsets": "155,263,386,484,596,682,787,902,979,1055,1137,1248,1351,1450,1561,1663,1770,1892,1994,2076,2177"
                     }
                 }
             ]
@@ -608,21 +608,6 @@
             ]
         },
         {
-            "outputFile": "/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/res/merged/debug/values-kk-rKZ_values-kk-rKZ.arsc.flat",
-            "map": [
-                {
-                    "source": "/Users/a1/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.2.0.aar/63b8cd8f29f3d156d26e51bbf0919eaf/res/values-kk-rKZ/values-kk-rKZ.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,167,275,398,501,611,696,802,921,1002,1082,1163,1266,1371,1469,1576,1685,1785,1900,1999,2080",
-                        "endColumns": "111,107,122,102,109,84,105,118,80,79,80,102,104,97,106,108,99,114,98,80,100",
-                        "endOffsets": "162,270,393,496,606,691,797,916,997,1077,1158,1261,1366,1464,1571,1680,1780,1895,1994,2075,2176"
-                    }
-                }
-            ]
-        },
-        {
             "outputFile": "/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/res/merged/debug/values-v22_values-v22.arsc.flat",
             "map": [
                 {
@@ -634,6 +619,21 @@
                         "endLines": "2,3,8,13",
                         "endColumns": "74,86,12,12",
                         "endOffsets": "125,212,548,896"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/res/merged/debug/values-kk-rKZ_values-kk-rKZ.arsc.flat",
+            "map": [
+                {
+                    "source": "/Users/a1/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.2.0.aar/63b8cd8f29f3d156d26e51bbf0919eaf/res/values-kk-rKZ/values-kk-rKZ.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,167,275,398,501,611,696,802,921,1002,1082,1163,1266,1371,1469,1576,1685,1785,1900,1999,2080",
+                        "endColumns": "111,107,122,102,109,84,105,118,80,79,80,102,104,97,106,108,99,114,98,80,100",
+                        "endOffsets": "162,270,393,496,606,691,797,916,997,1077,1158,1261,1366,1464,1571,1680,1780,1895,1994,2075,2176"
                     }
                 }
             ]
@@ -775,21 +775,6 @@
             ]
         },
         {
-            "outputFile": "/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/res/merged/debug/values-hr_values-hr.arsc.flat",
-            "map": [
-                {
-                    "source": "/Users/a1/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.2.0.aar/63b8cd8f29f3d156d26e51bbf0919eaf/res/values-hr/values-hr.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,160,268,391,488,598,684,788,907,991,1074,1160,1264,1377,1483,1588,1701,1808,1931,2028,2117",
-                        "endColumns": "104,107,122,96,109,85,103,118,83,82,85,103,112,105,104,112,106,122,96,88,100",
-                        "endOffsets": "155,263,386,483,593,679,783,902,986,1069,1155,1259,1372,1478,1583,1696,1803,1926,2023,2112,2213"
-                    }
-                }
-            ]
-        },
-        {
             "outputFile": "/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/res/merged/debug/values-pt_values-pt.arsc.flat",
             "map": [
                 {
@@ -800,6 +785,21 @@
                         "startOffsets": "55,175,283,406,512,619,708,809,927,1010,1090,1177,1284,1396,1498,1606,1713,1823,1948,2048,2133",
                         "endColumns": "119,107,122,105,106,88,100,117,82,79,86,106,111,101,107,106,109,124,99,84,100",
                         "endOffsets": "170,278,401,507,614,703,804,922,1005,1085,1172,1279,1391,1493,1601,1708,1818,1943,2043,2128,2229"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/res/merged/debug/values-hr_values-hr.arsc.flat",
+            "map": [
+                {
+                    "source": "/Users/a1/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.2.0.aar/63b8cd8f29f3d156d26e51bbf0919eaf/res/values-hr/values-hr.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,160,268,391,488,598,684,788,907,991,1074,1160,1264,1377,1483,1588,1701,1808,1931,2028,2117",
+                        "endColumns": "104,107,122,96,109,85,103,118,83,82,85,103,112,105,104,112,106,122,96,88,100",
+                        "endOffsets": "155,263,386,483,593,679,783,902,986,1069,1155,1259,1372,1478,1583,1696,1803,1926,2023,2112,2213"
                     }
                 }
             ]
@@ -1056,31 +1056,17 @@
             ]
         },
         {
-            "outputFile": "/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/res/merged/debug/values-hi_values-hi.arsc.flat",
+            "outputFile": "/Users/a1/Downloads/PoseEstimationForMobile-master/android_demo/demo_mace/app/build/intermediates/res/merged/debug/values-v12_values-v12.arsc.flat",
             "map": [
                 {
-                    "source": "/Users/a1/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.2.0.aar/63b8cd8f29f3d156d26e51bbf0919eaf/res/values-hi/values-hi.xml",
+                    "source": "/Users/a1/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.2.0.aar/63b8cd8f29f3d156d26e51bbf0919eaf/res/values-v12/values-v12.xml",
                     "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,172,280,403,508,615,700,802,924,1001,1079,1169,1278,1380,1478,1588,1688,1803,1928,2034,2113",
-                        "endColumns": "116,107,122,104,106,84,101,121,76,77,89,108,101,97,109,99,114,124,105,78,100",
-                        "endOffsets": "167,275,398,503,610,695,797,919,996,1074,1164,1273,1375,1473,1583,1683,1798,1923,2029,2108,2209"
-                    }
-                }
-            ]
-        },
-        {
-            "outputFile": "/Users/a1/Downloads/PoseEstimationForMobile-master/android_demo/demo_mace/app/build/intermediates/res/merged/debug/values-en-rIN_values-en-rIN.arsc.flat",
-            "map": [
-                {
-                    "source": "/Users/a1/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.2.0.aar/63b8cd8f29f3d156d26e51bbf0919eaf/res/values-en-rIN/values-en-rIN.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,159,267,390,490,598,682,782,897,974,1050,1132,1235,1339,1438,1543,1646,1750,1869,1969,2051",
-                        "endColumns": "103,107,122,99,107,83,99,114,76,75,81,102,103,98,104,102,103,118,99,81,100",
-                        "endOffsets": "154,262,385,485,593,677,777,892,969,1045,1127,1230,1334,1433,1538,1641,1745,1864,1964,2046,2147"
+                        "startLines": "2,5,8,9",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,279,479,598",
+                        "endLines": "4,7,8,9",
+                        "endColumns": "12,12,118,94",
+                        "endOffsets": "274,474,593,688"
                     }
                 }
             ]
@@ -1101,17 +1087,31 @@
             ]
         },
         {
-            "outputFile": "/Users/a1/Downloads/PoseEstimationForMobile-master/android_demo/demo_mace/app/build/intermediates/res/merged/debug/values-v12_values-v12.arsc.flat",
+            "outputFile": "/Users/a1/Downloads/PoseEstimationForMobile-master/android_demo/demo_mace/app/build/intermediates/res/merged/debug/values-en-rIN_values-en-rIN.arsc.flat",
             "map": [
                 {
-                    "source": "/Users/a1/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.2.0.aar/63b8cd8f29f3d156d26e51bbf0919eaf/res/values-v12/values-v12.xml",
+                    "source": "/Users/a1/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.2.0.aar/63b8cd8f29f3d156d26e51bbf0919eaf/res/values-en-rIN/values-en-rIN.xml",
                     "from": {
-                        "startLines": "2,5,8,9",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "55,279,479,598",
-                        "endLines": "4,7,8,9",
-                        "endColumns": "12,12,118,94",
-                        "endOffsets": "274,474,593,688"
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,159,267,390,490,598,682,782,897,974,1050,1132,1235,1339,1438,1543,1646,1750,1869,1969,2051",
+                        "endColumns": "103,107,122,99,107,83,99,114,76,75,81,102,103,98,104,102,103,118,99,81,100",
+                        "endOffsets": "154,262,385,485,593,677,777,892,969,1045,1127,1230,1334,1433,1538,1641,1745,1864,1964,2046,2147"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/res/merged/debug/values-hi_values-hi.arsc.flat",
+            "map": [
+                {
+                    "source": "/Users/a1/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.2.0.aar/63b8cd8f29f3d156d26e51bbf0919eaf/res/values-hi/values-hi.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,172,280,403,508,615,700,802,924,1001,1079,1169,1278,1380,1478,1588,1688,1803,1928,2034,2113",
+                        "endColumns": "116,107,122,104,106,84,101,121,76,77,89,108,101,97,109,99,114,124,105,78,100",
+                        "endOffsets": "167,275,398,503,610,695,797,919,996,1074,1164,1273,1375,1473,1583,1683,1798,1923,2029,2108,2209"
                     }
                 }
             ]
