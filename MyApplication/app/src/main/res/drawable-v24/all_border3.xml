@@ -12,6 +12,7 @@
                 android:dashGap="20px"
                 android:width="1dp"
                 android:color="#c8c8c8" />
+
             <solid android:color="#FFF" />
         </shape>
     </item>

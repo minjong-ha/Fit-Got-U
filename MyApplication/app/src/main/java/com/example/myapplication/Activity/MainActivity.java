@@ -11,7 +11,6 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Base64;
 import android.widget.Toast;
 
@@ -70,10 +69,13 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
                 Util.startJoinActivity(this);
             }*/
         }
+        /*
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        getSupportActionBar (). setDisplayShowHomeEnabled (true);
+        getSupportActionBar().setIcon(R.drawable.icon);
+        */
         HTfragment.push(new HomeTrainingFragment());
         TMfragment.push(new TrainerMatchFragment());
         DAfragment.push(new DataAnalysisFragment());

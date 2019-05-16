@@ -120,7 +120,7 @@ public class Util {
         database.close();
         dbhelper.close();
     }
-
+	
     public static String paringYoutubeUserJsonData(JSONObject jsonObject) throws JSONException {
         String userid = null;
         JSONArray contacts = jsonObject.getJSONArray("items");
@@ -163,7 +163,7 @@ public class Util {
         }
         return sdata;
     }
-
+	
     public static void startLoginActivity(Activity activity) {
         ActivityCompat.finishAffinity(activity);
         activity.startActivity(new Intent(activity.getApplicationContext(), LoginActivity.class));
