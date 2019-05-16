@@ -1,112 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.MainActivity">
-    <!--
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/appBarLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="46dp"
-            android:background="#FFFFFF"
-            app:popupTheme="@style/AppTheme.PopupOverlay">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Fit Got U"
-                android:layout_gravity="center"
-                android:id="@+id/toolbar_title"
-                android:textSize="20dp"
-                />
-
-        </android.support.v7.widget.Toolbar>
-    </android.support.design.widget.AppBarLayout>
--->
-    <LinearLayout
-        android:id="@+id/mainlinear"
-        android:layout_width="404dp"
-        android:layout_height="45dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:background="#FFFFFF"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/include"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/icon" />
-
-        <TextView
-            android:id="@+id/textView17"
-            android:layout_width="454dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="Fit Got U"
-            android:textColor="#6B6A6A"
-            android:textSize="30dp" />
-    </LinearLayout>
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
 
     <include
-        android:id="@+id/include"
-        layout="@layout/content_main"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_anchor="@+id/mainlinear"
-        app:layout_anchorGravity="bottom|center"
-        app:layout_constraintBottom_toTopOf="@+id/tablayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainlinear" />
-
-    <android.support.design.widget.TabLayout
-        android:id="@+id/tablayout"
+        layout="@layout/app_bar_main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include">
+        android:layout_height="match_parent" />
 
-        <android.support.design.widget.TabItem
-            android:id="@+id/hometraining"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="홈트레이닝" />
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_header_main"
+        app:menu="@menu/activity_main_drawer" />
 
-        <android.support.design.widget.TabItem
-            android:id="@+id/trainer_match"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="트레이너매치" />
-
-        <android.support.design.widget.TabItem
-            android:id="@+id/data_analysis"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="데이터분석" />
-
-        <android.support.design.widget.TabItem
-            android:id="@+id/mypage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="내페이지" />
-    </android.support.design.widget.TabLayout>
-
-</android.support.constraint.ConstraintLayout>
+</android.support.v4.widget.DrawerLayout>
