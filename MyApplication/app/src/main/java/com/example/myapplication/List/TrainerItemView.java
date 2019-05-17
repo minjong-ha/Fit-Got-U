@@ -36,8 +36,8 @@ public class TrainerItemView extends LinearLayout {
         textView.setText(name);
     }
 
-    public void setDistance(String distance){
-        textView2.setText(distance);
+    public void setDistance(double distance){
+        textView2.setText(Double.toString(distance).concat(" km"));
     }
 
     public void setImage(int resId){

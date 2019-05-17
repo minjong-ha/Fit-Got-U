@@ -2,9 +2,10 @@ package com.example.myapplication.List;
 
 public class TrainerItem {
     String name;
-    String distance;
     int resId;
     String youtubechannelurl;
+    double distance;
+    int resId;
 
     @Override
     public String toString() {
@@ -13,8 +14,8 @@ public class TrainerItem {
                 ", Distance='" + distance + '\'' +
                 '}';
     }
-
-    public TrainerItem(String name, String distance, int resId, String youtubechannelurl) {
+	
+    public TrainerItem(String name, double distance, int resId, String youtubechannelurl) {
         this.name = name;
         this.distance = distance;
         this.resId=resId;
@@ -29,7 +30,7 @@ public class TrainerItem {
         this.name = name;
     }
 
-    public String getDistance() {
+    public double getDistance() {
         return distance;
     }
 
@@ -40,12 +41,11 @@ public class TrainerItem {
     public String getYoutubechannelurl() {
         return youtubechannelurl;
     }
-
     public void setResId(int resId) {
         this.resId = resId;
     }
 
-    public void setDistance(String distance) {
+    public void setDistance(double distance) {
         this.distance = distance;
     }
 }

@@ -5,6 +5,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
@@ -73,7 +74,10 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar (). setDisplayShowHomeEnabled (true);
+        //toolbar.setTitle("Fit Got U");
+        //toolbar.setTitleTextColor(Color.BLACK);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        //getSupportActionBar (). setDisplayShowHomeEnabled (true);
         getSupportActionBar().setIcon(R.drawable.icon);
 
         HTfragment.push(new HomeTrainingFragment());
@@ -165,7 +169,7 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
             ChangeFragmentMain(0);
         }
     }
-
+	
     public void ChangeFragmentMain(Fragment newfragment) {
         ChangeFragmentMain(0, newfragment);
     }
@@ -221,7 +225,7 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
         ft.replace(R.id.mainfragment, mainfragment);
         ft.commit();
     }
-
+	
     private void Logout(final Activity activity) {
         UserManagement.getInstance().requestLogout(new LogoutResponseCallback() {
             @Override

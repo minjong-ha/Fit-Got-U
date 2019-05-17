@@ -9,6 +9,12 @@ import android.widget.EditText;
 
 import com.example.myapplication.Etc.Util;
 import com.example.myapplication.R;
+import com.kakao.auth.ApiResponseCallback;
+import com.kakao.network.ErrorResult;
+import com.kakao.usermgmt.UserManagement;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class JoinActivity extends AppCompatActivity {
 

@@ -23,7 +23,6 @@ public class TrainerMatch2Fragment extends Fragment implements AdapterView.OnIte
     private ArrayList<YoutubeData> youtubelist = new ArrayList<>();
     private String youtubechannelurl = null;
     private TM2_List_Item_adapter adapter;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
