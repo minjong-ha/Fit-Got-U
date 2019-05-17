@@ -143,7 +143,7 @@ public class TrainerMatchFragment extends Fragment {
                         //addItem
                         switch(count) {
                             case 0:
-								adapter.addItem(new TrainerItem("텔론", "2.1km",R.drawable.ic_launcher_background, "https://www.youtube.com/user/xordn6579"));
+								adapter.addItem(new TrainerItem("텔론", distance, R.drawable.ic_launcher_background, "https://www.youtube.com/user/xordn6579"));
                                 count++;
                                 break;
                             case 1:

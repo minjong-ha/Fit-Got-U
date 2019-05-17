@@ -5,7 +5,6 @@ public class TrainerItem {
     int resId;
     String youtubechannelurl;
     double distance;
-    int resId;
 
     @Override
     public String toString() {
