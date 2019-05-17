@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Fragment.HomeTrainingFragment2" >
+    tools:context=".Fragment.HomeTraining2Fragment" >
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraintLayout2"

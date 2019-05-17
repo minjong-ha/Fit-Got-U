@@ -8,11 +8,10 @@
         android:top="-1dp">
         <shape android:shape="rectangle" >
             <stroke
-                android:dashWidth="40px"
+                android:dashWidth="5px"
                 android:dashGap="20px"
                 android:width="1dp"
                 android:color="#c8c8c8" />
-
             <solid android:color="#FFF" />
         </shape>
     </item>

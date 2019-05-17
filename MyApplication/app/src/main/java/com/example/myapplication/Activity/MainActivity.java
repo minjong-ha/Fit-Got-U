@@ -5,6 +5,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
@@ -17,9 +18,9 @@ import android.widget.Toast;
 
 import com.example.myapplication.Etc.Util;
 import com.example.myapplication.Fragment.DataAnalysisFragment;
+import com.example.myapplication.Fragment.HomeTraining2Fragment;
+import com.example.myapplication.Fragment.HomeTraining3Fragment;
 import com.example.myapplication.Fragment.HomeTrainingFragment;
-import com.example.myapplication.Fragment.HomeTrainingFragment2;
-import com.example.myapplication.Fragment.HomeTrainingFragment3;
 import com.example.myapplication.Fragment.MyInfoFragment;
 import com.example.myapplication.Fragment.MyPageFragment;
 import com.example.myapplication.Fragment.TrainerMatchFragment;
@@ -58,11 +59,11 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
 
         //Util.startTestActivity(this);
 
-        boolean istest = true;
+        boolean istest = false;
         if (!istest) {//카카오 로그인 없이 진행
             requestMe(this);
         } else {
-            getHK();
+            //getHK();
             kakaoid = 1;
             nickname = "테스트1";
             thumbnail = "";
@@ -70,13 +71,16 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
                 Util.startJoinActivity(this);
             }*/
         }
-        /*
+
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar (). setDisplayShowHomeEnabled (true);
+        //toolbar.setTitle("Fit Got U");
+        //toolbar.setTitleTextColor(Color.BLACK);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        //getSupportActionBar (). setDisplayShowHomeEnabled (true);
         getSupportActionBar().setIcon(R.drawable.icon);
-        */
+
         HTfragment.push(new HomeTrainingFragment());
         TMfragment.push(new TrainerMatchFragment());
         DAfragment.push(new DataAnalysisFragment());
@@ -178,7 +182,7 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
                 case R.id.ht_f4:
                 case R.id.ht_f5:
                 case R.id.ht_f6:
-                    Fragment ht2 = new HomeTrainingFragment2();
+                    Fragment ht2 = new HomeTraining2Fragment();
                     args.putInt("id",id);
                     ht2.setArguments(args);
                     HTfragment.push(ht2);
@@ -187,7 +191,7 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
                 case R.string.fitness_1_1:
                 case R.string.fitness_1_2:
                 case R.string.fitness_1_3:
-                    Fragment ht3 = new HomeTrainingFragment3();
+                    Fragment ht3 = new HomeTraining3Fragment();
                     args.putInt("id",id);
                     ht3.setArguments(args);
                     HTfragment.push(ht3);
@@ -258,6 +262,6 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
             }
         } catch(Exception e) {
             e.printStackTrace();
-    }
+        }
     }
 }

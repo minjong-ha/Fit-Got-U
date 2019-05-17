@@ -16,6 +16,7 @@ import com.example.myapplication.Activity.MainActivity;
 import com.example.myapplication.Activity.TestActivity;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.InputStream;
@@ -119,7 +120,50 @@ public class Util {
         database.close();
         dbhelper.close();
     }
+	
+    public static String paringYoutubeUserJsonData(JSONObject jsonObject) throws JSONException {
+        String userid = null;
+        JSONArray contacts = jsonObject.getJSONArray("items");
 
+        if (contacts.length() > 0) {
+            userid = contacts.getJSONObject(0).getString("id");
+        }
+        return userid;
+    }
+
+    public static ArrayList<YoutubeData> paringYoutubeVideoJsonData(JSONObject jsonObject) throws JSONException {
+        ArrayList<YoutubeData> sdata = new ArrayList<YoutubeData>();
+        JSONArray contacts = jsonObject.getJSONArray("items");
+        String vodid;
+
+        for (int i = 0; i < contacts.length(); i++) {
+            JSONObject c = contacts.getJSONObject(i);
+            String kind =  c.getJSONObject("id").getString("kind");
+            if(kind.equals("youtube#video")){//재생목록은 버림
+                vodid = c.getJSONObject("id").getString("videoId");
+
+                String title = c.getJSONObject("snippet").getString("title");
+                try {
+                    title = new String(title.getBytes("8859_1"), "utf-8");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                String desc = c.getJSONObject("snippet").getString("description");
+                try {
+                    desc = new String(desc.getBytes("8859_1"), "utf-8");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                String date = c.getJSONObject("snippet").getString("publishedAt").substring(0, 10);
+                String imgUrl = c.getJSONObject("snippet").getJSONObject("thumbnails").getJSONObject("default").getString("url");
+
+                sdata.add(new YoutubeData(vodid, title, desc, imgUrl, date));
+            }
+        }
+        return sdata;
+    }
+	
     public static void startLoginActivity(Activity activity) {
         ActivityCompat.finishAffinity(activity);
         activity.startActivity(new Intent(activity.getApplicationContext(), LoginActivity.class));

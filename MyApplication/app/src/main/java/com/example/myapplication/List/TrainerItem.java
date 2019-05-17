@@ -2,7 +2,7 @@ package com.example.myapplication.List;
 
 public class TrainerItem {
     String name;
-    String distance;
+    double distance;
     int resId;
 
     @Override
@@ -13,7 +13,7 @@ public class TrainerItem {
                 '}';
     }
 
-    public TrainerItem(String name, String distance, int resId) {
+    public TrainerItem(String name, double distance, int resId) {
         this.name = name;
         this.distance = distance;
         this.resId=resId;
@@ -27,7 +27,7 @@ public class TrainerItem {
         this.name = name;
     }
 
-    public String getDistance() {
+    public double getDistance() {
         return distance;
     }
 
@@ -39,7 +39,7 @@ public class TrainerItem {
         this.resId = resId;
     }
 
-    public void setDistance(String distance) {
+    public void setDistance(double distance) {
         this.distance = distance;
     }
 }

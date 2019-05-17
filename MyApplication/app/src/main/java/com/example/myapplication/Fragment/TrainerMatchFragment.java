@@ -4,10 +4,9 @@ import android.content.Context;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
-import android.support.v4.app.Fragment;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,7 +20,6 @@ import android.widget.Toast;
 
 import com.example.myapplication.List.TrainerItem;
 import com.example.myapplication.List.TrainerItemView;
-import com.example.myapplication.List.TrainerItemView;
 import com.example.myapplication.R;
 
 import net.daum.mf.map.api.MapPOIItem;
@@ -34,15 +32,17 @@ import java.util.List;
 
 public class TrainerMatchFragment extends Fragment {
     TrainerAdapter adapter;
-
-    Button button;
-    EditText editText;
+    Button button, trainer_button;
+    EditText editText, trainer_editText;
     Geocoder geocoder;
     double latitude=37.283014,longitude=127.046355;
+    double trainer_latitude, trainer_longitude;
     MapPoint mapPoint;
     MapView mapView;
     ViewGroup mapViewContainer;
     MapPOIItem marker;
+    Location location, trainer_location;
+    int count=0;
 
     @Nullable
     @Override
@@ -50,24 +50,35 @@ public class TrainerMatchFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_trainer_match, container, false);
 
         button = (Button)view.findViewById(R.id.button);
+        trainer_button = (Button)view.findViewById(R.id.button2);
         editText = (EditText)view.findViewById(R.id.editText);
+        trainer_editText = (EditText)view.findViewById(R.id.editText2);
         geocoder = new Geocoder(getActivity());
-        marker = new MapPOIItem();
+        final ArrayList<MapPOIItem> markers = new ArrayList<>();
 
         mapView = new MapView(getActivity());
         mapViewContainer = (ViewGroup) view.findViewById(R.id.map_view);
         mapPoint = MapPoint.mapPointWithGeoCoord(latitude, longitude);
         mapView.setMapCenterPoint(mapPoint, true);
         mapViewContainer.addView(mapView);
+        location= new Location("user_location");
+        trainer_location=new Location("trainer_location");
 
+        markers.add(new MapPOIItem());
+        marker=markers.get(0);
         marker.setItemName("아주대학교");
-        mapViewed(marker, mapPoint, mapView);
+        mapViewed(marker, mapPoint, mapView, false);
+
+        //리스트뷰 객체화
+        ListView listView = (ListView) view.findViewById(R.id.listView);
+        //어댑터 객체화
+        adapter = new TrainerAdapter();
+
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 List<Address> list = null;
-
 
                 String str = editText.getText().toString();
                 try {
@@ -83,30 +94,89 @@ public class TrainerMatchFragment extends Fragment {
                     if (list.size() == 0) {
                         Toast.makeText(getActivity().getApplicationContext(), "주소를 찾을 수 없습니다", Toast.LENGTH_LONG).show();
                     } else {
+                        marker=markers.get(0);
+                        mapView.removePOIItem(marker);
                         longitude=list.get(0).getLongitude();
                         latitude=list.get(0).getLatitude();
+                        location.setLongitude(longitude);
+                        location.setLatitude(latitude);
                         mapPoint = MapPoint.mapPointWithGeoCoord(latitude, longitude);
 
                         mapView.setMapCenterPoint(mapPoint, true); // animated : true
-                        mapViewed(marker, mapPoint, mapView);
+                        mapViewed(marker, mapPoint, mapView, false);
                     }
                 }
             }
         });
 
-        //리스트뷰 객체화
-        ListView listView = (ListView) view.findViewById(R.id.listView);
+        trainer_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                List<Address> list = null;
 
-        //어댑터 객체화
-        adapter = new TrainerAdapter();
+                String str = trainer_editText.getText().toString();
+                try {
+                    list = geocoder.getFromLocationName(
+                            str, // 지역 이름
+                            10); // 읽을 개수
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    Log.e("test","입출력 오류 - 서버에서 주소변환시 에러발생");
+                }
 
-        //addItem
-        adapter.addItem(new TrainerItem("김등빨", "2.3km",R.drawable.ic_launcher_background));
-        adapter.addItem(new TrainerItem("이어깨", "3.5km",R.drawable.ic_launcher_foreground));
-        adapter.addItem(new TrainerItem("박하체", "4.8km",R.drawable.ic_launcher_background));
-        adapter.addItem(new TrainerItem("박근육", "6.3km",R.drawable.ic_launcher_foreground));
-        adapter.addItem(new TrainerItem("하정우", "8.1km",R.drawable.ic_launcher_background));
-        adapter.addItem(new TrainerItem("장가슴", "9.0km",R.drawable.ic_launcher_foreground));
+                if (list != null) {
+                    if (list.size() == 0) {
+                        Toast.makeText(getActivity().getApplicationContext(), "주소를 찾을 수 없습니다", Toast.LENGTH_LONG).show();
+                    } else {
+                        trainer_longitude=list.get(0).getLongitude();
+                        trainer_latitude=list.get(0).getLatitude();
+                        mapPoint = MapPoint.mapPointWithGeoCoord(trainer_latitude, trainer_longitude);
+                        MapPOIItem tmarker=new MapPOIItem();
+                        markers.add(tmarker);
+
+                        trainer_location.setLongitude(trainer_longitude);
+                        trainer_location.setLatitude(trainer_latitude);
+
+                        double distance=Math.round(location.distanceTo(trainer_location)/10.0)/100.0;
+                        if(distance<=0.01) distance=0.01;
+
+                        //addItem
+                        switch(count) {
+                            case 0:
+                                adapter.addItem(new TrainerItem("김등빨", distance, R.drawable.ic_launcher_background));
+                                count++;
+                                break;
+                            case 1:
+                                adapter.addItem(new TrainerItem("이어깨", distance, R.drawable.ic_launcher_foreground));
+                                count++;
+                                break;
+                            case 2:
+                                adapter.addItem(new TrainerItem("박하체", distance, R.drawable.ic_launcher_background));
+                                count++;
+                                break;
+                            case 3:
+                                adapter.addItem(new TrainerItem("박근육", distance, R.drawable.ic_launcher_foreground));
+                                count++;
+                                break;
+                            case 4:
+                                adapter.addItem(new TrainerItem("하정우", distance, R.drawable.ic_launcher_background));
+                                count++;
+                                break;
+                            case 5:
+                                adapter.addItem(new TrainerItem("장가슴", distance, R.drawable.ic_launcher_foreground));
+                                count++;
+                                break;
+                            default:
+                                break;
+                        }
+                        mapView.setMapCenterPoint(mapPoint, true); // animated : true
+                        mapViewed(tmarker, mapPoint, mapView,true);
+                    }
+                }
+            }
+        });
+
+
 
         //리스트뷰+어댑터
         listView.setAdapter(adapter);
@@ -167,37 +237,12 @@ public class TrainerMatchFragment extends Fragment {
         }
     }
 
-    public static Location findGeoPoint(Context mcontext, String address) {
-        Location loc = new Location("");
-        Geocoder coder = new Geocoder(mcontext);
-        List<Address> addr = null;// 한좌표에 대해 두개이상의 이름이 존재할수있기에 주소배열을 리턴받기 위해 설정
-
-        try {
-            addr = coder.getFromLocationName(address, 1);
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }// 몇개 까지의 주소를 원하는지 지정 1~5개 정도가 적당
-        if (addr != null) {
-            for (int i = 0; i < addr.size(); i++) {
-                Address lating = addr.get(i);
-                double lat = lating.getLatitude(); // 위도가져오기
-                double lon = lating.getLongitude(); // 경도가져오기
-                loc.setLatitude(lat);
-                loc.setLongitude(lon);
-            }
-        }
-        return loc;
-    }
-
-    public static void mapViewed(MapPOIItem marker, MapPoint mapPoint, MapView mapView){
+    public static void mapViewed(MapPOIItem marker, MapPoint mapPoint, MapView mapView, boolean trainer){
         marker.setItemName("검색 위치");
         marker.setTag(0);
         marker.setMapPoint(mapPoint);
-        // 기본으로 제공하는 BluePin 마커 모양.
-        marker.setMarkerType(MapPOIItem.MarkerType.BluePin);
-        // 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
-        marker.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin);
+        if(!trainer) marker.setMarkerType(MapPOIItem.MarkerType.BluePin);
+        else marker.setMarkerType(MapPOIItem.MarkerType.RedPin);
         mapView.addPOIItem(marker);
     }
 }
