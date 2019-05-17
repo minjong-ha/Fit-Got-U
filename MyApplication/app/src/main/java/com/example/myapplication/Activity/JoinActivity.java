@@ -9,12 +9,6 @@ import android.widget.EditText;
 
 import com.example.myapplication.Etc.Util;
 import com.example.myapplication.R;
-import com.kakao.auth.ApiResponseCallback;
-import com.kakao.network.ErrorResult;
-import com.kakao.usermgmt.UserManagement;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class JoinActivity extends AppCompatActivity {
 
@@ -35,34 +29,9 @@ public class JoinActivity extends AppCompatActivity {
                 if (weight.getText().toString().trim().equals("") || height.getText().toString().trim().equals("") || address.getText().toString().trim().equals("")) {
 
                 } else {
-                    requestUpdateProfile(activity, weight.getText().toString(), height.getText().toString(), address.getText().toString());
+                    Util.requestUpdateProfile(activity, weight.getText().toString(), height.getText().toString(), address.getText().toString());
                 }
             }
         });
-    }
-
-    private void requestUpdateProfile(final Activity activity, String weight, String height, String address) {
-        final Map<String, String> properties = new HashMap<>();
-        properties.put("weight", weight);
-        properties.put("height", height);
-        properties.put("address", address);
-
-        UserManagement.getInstance().requestUpdateProfile(new ApiResponseCallback<Long>() {
-            @Override
-            public void onSuccess(Long userId) {
-                Util.startMainActivity(activity);
-            }
-
-            @Override
-            public void onSessionClosed(ErrorResult errorResult) {
-                Util.startLoginActivity(activity);
-            }
-
-            @Override
-            public void onNotSignedUp() {
-                Util.startLoginActivity(activity);
-            }
-
-        }, properties);
     }
 }

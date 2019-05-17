@@ -11,6 +11,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Base64;
 import android.widget.Toast;
 
@@ -21,6 +22,8 @@ import com.example.myapplication.Fragment.HomeTraining3Fragment;
 import com.example.myapplication.Fragment.HomeTrainingFragment;
 import com.example.myapplication.Fragment.MyInfoFragment;
 import com.example.myapplication.Fragment.MyPageFragment;
+import com.example.myapplication.Fragment.TrainerMatch2Fragment;
+import com.example.myapplication.Fragment.TrainerMatch3Fragment;
 import com.example.myapplication.Fragment.TrainerMatchFragment;
 import com.example.myapplication.R;
 import com.kakao.network.ErrorResult;
@@ -57,25 +60,22 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
 
         //Util.startTestActivity(this);
 
-        boolean istest = true;
+        //getHK();
+        boolean istest = false;
         if (!istest) {//카카오 로그인 없이 진행
             requestMe(this);
         } else {
-            //getHK();
             kakaoid = 1;
             nickname = "테스트1";
             thumbnail = "";
-            /*if (address == null || height == null || weight == null) {
-                Util.startJoinActivity(this);
-            }*/
         }
-        /*
+
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar (). setDisplayShowHomeEnabled (true);
         getSupportActionBar().setIcon(R.drawable.icon);
-        */
+
         HTfragment.push(new HomeTrainingFragment());
         TMfragment.push(new TrainerMatchFragment());
         DAfragment.push(new DataAnalysisFragment());
@@ -166,7 +166,15 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
         }
     }
 
+    public void ChangeFragmentMain(Fragment newfragment) {
+        ChangeFragmentMain(0, newfragment);
+    }
+
     public void ChangeFragmentMain(int id) {
+        ChangeFragmentMain(id, null);
+    }
+
+    public void ChangeFragmentMain(int id, Fragment newfragment) {
         if (id != 0) {
             Bundle args = new Bundle();
             args.putInt("id", id);
@@ -198,9 +206,16 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
                     break;
                 case R.string.logout:
                     Logout(this);
-                    Util.startMainActivity(this);
+                    break;
+                case R.string.separate:
+                    Util.requestUpdateProfile(this, "", "", "");
+                    Logout(this);
                     break;
             }
+        }
+        if (newfragment != null && (newfragment instanceof TrainerMatch2Fragment || newfragment instanceof TrainerMatch3Fragment)) {
+            TMfragment.push(newfragment);
+            mainfragment = TMfragment.peek();
         }
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.mainfragment, mainfragment);
@@ -240,7 +255,7 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
                 address = result.getProperties().get("address");
                 weight = result.getProperties().get("weight");
                 height = result.getProperties().get("height");
-                if (address == null || height == null || weight == null) {
+                if (Util.Information_Filled(address, weight, height)) {
                     Util.startJoinActivity(activity);
                 }
             }

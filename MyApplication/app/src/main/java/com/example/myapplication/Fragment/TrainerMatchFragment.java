@@ -18,6 +18,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.myapplication.Activity.MainActivity;
 import com.example.myapplication.List.TrainerItem;
 import com.example.myapplication.List.TrainerItemView;
 import com.example.myapplication.R;
@@ -98,12 +99,13 @@ public class TrainerMatchFragment extends Fragment {
         adapter = new TrainerAdapter();
 
         //addItem
-        adapter.addItem(new TrainerItem("김등빨", "2.3km",R.drawable.ic_launcher_background));
-        adapter.addItem(new TrainerItem("이어깨", "3.5km",R.drawable.ic_launcher_foreground));
-        adapter.addItem(new TrainerItem("박하체", "4.8km",R.drawable.ic_launcher_background));
-        adapter.addItem(new TrainerItem("박근육", "6.3km",R.drawable.ic_launcher_foreground));
-        adapter.addItem(new TrainerItem("하정우", "8.1km",R.drawable.ic_launcher_background));
-        adapter.addItem(new TrainerItem("장가슴", "9.0km",R.drawable.ic_launcher_foreground));
+        adapter.addItem(new TrainerItem("텔론", "2.1km",R.drawable.ic_launcher_background, "https://www.youtube.com/user/xordn6579"));
+        adapter.addItem(new TrainerItem("김등빨", "2.3km",R.drawable.ic_launcher_background, null));
+        adapter.addItem(new TrainerItem("이어깨", "3.5km",R.drawable.ic_launcher_foreground, null));
+        adapter.addItem(new TrainerItem("박하체", "4.8km",R.drawable.ic_launcher_background, null));
+        adapter.addItem(new TrainerItem("박근육", "6.3km",R.drawable.ic_launcher_foreground, null));
+        adapter.addItem(new TrainerItem("하정우", "8.1km",R.drawable.ic_launcher_background, null));
+        adapter.addItem(new TrainerItem("장가슴", "9.0km",R.drawable.ic_launcher_foreground, null));
 
         //리스트뷰+어댑터
         listView.setAdapter(adapter);
@@ -113,7 +115,11 @@ public class TrainerMatchFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 TrainerItem item = (TrainerItem) adapter.getItem(position);
-                Toast.makeText(getActivity().getApplicationContext(), "선택"+position +" : "+item.getName(), Toast.LENGTH_LONG).show();
+                Bundle args = new Bundle();
+                args.putString("youtubechannelurl", item.getYoutubechannelurl());
+                TrainerMatch2Fragment tm2 = new TrainerMatch2Fragment();
+                tm2.setArguments(args);
+                ((MainActivity)getActivity()).ChangeFragmentMain(tm2);
             }
         });
         return view;

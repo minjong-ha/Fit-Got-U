@@ -4,15 +4,15 @@ public class YoutubeData {
     String videoId;
     String title;
     String desc;
-    String url;
+    String imgurl;
     String publishedAt;
 
-    public YoutubeData(String videoId, String title, String desc, String url, String publishedAt) {
+    public YoutubeData(String videoId, String title, String desc, String imgurl, String publishedAt) {
         super();
         this.videoId = videoId;
         this.title = title;
         this.desc = desc;
-        this.url = url;
+        this.imgurl = imgurl;
         this.publishedAt = publishedAt;
     }
 
@@ -40,12 +40,12 @@ public class YoutubeData {
         this.desc = desc;
     }
 
-    public String getUrl() {
-        return url;
+    public String getImgurl() {
+        return imgurl;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setImgurl(String url) {
+        this.imgurl = imgurl;
     }
 
     public String getPublishedAt() {

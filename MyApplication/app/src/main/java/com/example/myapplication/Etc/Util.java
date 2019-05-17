@@ -14,6 +14,9 @@ import com.example.myapplication.Activity.JoinActivity;
 import com.example.myapplication.Activity.LoginActivity;
 import com.example.myapplication.Activity.MainActivity;
 import com.example.myapplication.Activity.TestActivity;
+import com.kakao.auth.ApiResponseCallback;
+import com.kakao.network.ErrorResult;
+import com.kakao.usermgmt.UserManagement;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -22,6 +25,7 @@ import org.json.JSONObject;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class Util {
     public static final int DIALOG_REQUEST_CODE = 1;
@@ -162,6 +166,35 @@ public class Util {
             }
         }
         return sdata;
+    }
+
+    public static boolean Information_Filled(String weight, String height, String address) {
+        return weight == null || height == null || address == null || weight.equals("") || height.equals("") || address.equals("");
+    }
+
+    public static void requestUpdateProfile(final Activity activity, String weight, String height, String address) {
+        final Map<String, String> properties = new HashMap<>();
+        properties.put("weight", weight);
+        properties.put("height", height);
+        properties.put("address", address);
+
+        UserManagement.getInstance().requestUpdateProfile(new ApiResponseCallback<Long>() {
+            @Override
+            public void onSuccess(Long userId) {
+                Util.startMainActivity(activity);
+            }
+
+            @Override
+            public void onSessionClosed(ErrorResult errorResult) {
+                Util.startLoginActivity(activity);
+            }
+
+            @Override
+            public void onNotSignedUp() {
+                Util.startLoginActivity(activity);
+            }
+
+        }, properties);
     }
 	
     public static void startLoginActivity(Activity activity) {

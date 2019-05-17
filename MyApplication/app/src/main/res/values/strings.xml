@@ -33,6 +33,7 @@
     <string name="my_trainer">내 트레이너</string>
     <string name="app_info">앱 정보</string>
     <string name="logout">로그아웃</string>
+    <string name="separate">회원 탈퇴</string>
 
     <string name="change_id">아이디 변경</string>
 

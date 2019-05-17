@@ -4,6 +4,7 @@ public class TrainerItem {
     String name;
     String distance;
     int resId;
+    String youtubechannelurl;
 
     @Override
     public String toString() {
@@ -13,10 +14,11 @@ public class TrainerItem {
                 '}';
     }
 
-    public TrainerItem(String name, String distance, int resId) {
+    public TrainerItem(String name, String distance, int resId, String youtubechannelurl) {
         this.name = name;
         this.distance = distance;
         this.resId=resId;
+        this.youtubechannelurl=youtubechannelurl;
     }
 
     public String getName() {
@@ -33,6 +35,10 @@ public class TrainerItem {
 
     public int getResId() {
         return resId;
+    }
+
+    public String getYoutubechannelurl() {
+        return youtubechannelurl;
     }
 
     public void setResId(int resId) {
