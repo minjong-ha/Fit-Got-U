@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
         //toolbar.setTitleTextColor(Color.BLACK);
         getSupportActionBar().setDisplayShowTitleEnabled(true);
         //getSupportActionBar (). setDisplayShowHomeEnabled (true);
-        //getSupportActionBar().setIcon(R.drawable.icon);
+        getSupportActionBar().setIcon(R.drawable.icon4);
 
         HTfragment.push(new HomeTrainingFragment());
         TMfragment.push(new TrainerMatchFragment());
