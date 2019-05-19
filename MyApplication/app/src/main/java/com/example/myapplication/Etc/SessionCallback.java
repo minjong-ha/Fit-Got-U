@@ -15,7 +15,6 @@ public class SessionCallback implements ISessionCallback {
 
     @Override
     public void onSessionOpened() {
-        //Util.startJoinActivity(activity);
         Util.startMainActivity(activity);
     }
 

@@ -28,7 +28,7 @@ public class YoutubeVideoSearchTask extends AsyncTask<Void, Void, JSONObject> {
         StringBuffer postParameters = new StringBuffer();
         String link = "https://www.googleapis.com/youtube/v3/search?"
                 + "part=snippet&channelId=" + id
-                + "&key="+ key+"&maxResults=50";
+                + "&key="+ key+"&order=date&maxResults=10";
         try {
             HttpGet httpGet = new HttpGet(link);
             HttpClient client = new DefaultHttpClient();

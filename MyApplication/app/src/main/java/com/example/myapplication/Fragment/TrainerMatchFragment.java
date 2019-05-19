@@ -18,6 +18,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.myapplication.Activity.MainActivity;
 import com.example.myapplication.List.TrainerItem;
 import com.example.myapplication.List.TrainerItemView;
 import com.example.myapplication.R;
@@ -79,7 +80,6 @@ public class TrainerMatchFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 List<Address> list = null;
-
                 String str = editText.getText().toString();
                 try {
                     list = geocoder.getFromLocationName(
@@ -143,27 +143,31 @@ public class TrainerMatchFragment extends Fragment {
                         //addItem
                         switch(count) {
                             case 0:
-                                adapter.addItem(new TrainerItem("김등빨", distance, R.drawable.ic_launcher_background));
+								adapter.addItem(new TrainerItem("텔론", distance, R.drawable.ic_launcher_background, "https://www.youtube.com/user/xordn6579"));
                                 count++;
                                 break;
                             case 1:
-                                adapter.addItem(new TrainerItem("이어깨", distance, R.drawable.ic_launcher_foreground));
+                                adapter.addItem(new TrainerItem("김등빨", distance, R.drawable.ic_launcher_background, null));
                                 count++;
                                 break;
                             case 2:
-                                adapter.addItem(new TrainerItem("박하체", distance, R.drawable.ic_launcher_background));
+                                adapter.addItem(new TrainerItem("이어깨", distance, R.drawable.ic_launcher_foreground, null));
                                 count++;
                                 break;
                             case 3:
-                                adapter.addItem(new TrainerItem("박근육", distance, R.drawable.ic_launcher_foreground));
+                                adapter.addItem(new TrainerItem("박하체", distance, R.drawable.ic_launcher_background, null));
                                 count++;
                                 break;
                             case 4:
-                                adapter.addItem(new TrainerItem("하정우", distance, R.drawable.ic_launcher_background));
+                                adapter.addItem(new TrainerItem("박근육", distance, R.drawable.ic_launcher_foreground, null));
                                 count++;
                                 break;
                             case 5:
-                                adapter.addItem(new TrainerItem("장가슴", distance, R.drawable.ic_launcher_foreground));
+                                adapter.addItem(new TrainerItem("하정우", distance, R.drawable.ic_launcher_background, null));
+                                count++;
+                                break;
+                            case 6:
+                                adapter.addItem(new TrainerItem("장가슴", distance, R.drawable.ic_launcher_foreground, null));
                                 count++;
                                 break;
                             default:
@@ -176,8 +180,6 @@ public class TrainerMatchFragment extends Fragment {
             }
         });
 
-
-
         //리스트뷰+어댑터
         listView.setAdapter(adapter);
 
@@ -186,7 +188,11 @@ public class TrainerMatchFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 TrainerItem item = (TrainerItem) adapter.getItem(position);
-                Toast.makeText(getActivity().getApplicationContext(), "선택"+position +" : "+item.getName(), Toast.LENGTH_LONG).show();
+                Bundle args = new Bundle();
+                args.putString("youtubechannelurl", item.getYoutubechannelurl());
+                TrainerMatch2Fragment tm2 = new TrainerMatch2Fragment();
+                tm2.setArguments(args);
+                ((MainActivity)getActivity()).ChangeFragmentMain(tm2);
             }
         });
         return view;

@@ -2,8 +2,9 @@ package com.example.myapplication.List;
 
 public class TrainerItem {
     String name;
-    double distance;
     int resId;
+    String youtubechannelurl;
+    double distance;
 
     @Override
     public String toString() {
@@ -12,11 +13,12 @@ public class TrainerItem {
                 ", Distance='" + distance + '\'' +
                 '}';
     }
-
-    public TrainerItem(String name, double distance, int resId) {
+	
+    public TrainerItem(String name, double distance, int resId, String youtubechannelurl) {
         this.name = name;
         this.distance = distance;
         this.resId=resId;
+        this.youtubechannelurl=youtubechannelurl;
     }
 
     public String getName() {
@@ -35,6 +37,9 @@ public class TrainerItem {
         return resId;
     }
 
+    public String getYoutubechannelurl() {
+        return youtubechannelurl;
+    }
     public void setResId(int resId) {
         this.resId = resId;
     }

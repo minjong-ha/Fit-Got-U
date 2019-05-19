@@ -136,5 +136,4 @@
             android:text="트레이너" />
 
     </RadioGroup>
-
 </android.support.constraint.ConstraintLayout>

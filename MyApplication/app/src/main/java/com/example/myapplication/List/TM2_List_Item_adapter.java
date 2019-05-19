@@ -5,8 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.myapplication.Etc.ImageTask;
 import com.example.myapplication.Etc.YoutubeData;
 import com.example.myapplication.R;
 
@@ -51,6 +53,15 @@ public class TM2_List_Item_adapter extends BaseAdapter {
         desc.setText(listviewitem.getDesc());
         TextView updated = view.findViewById(R.id.tm2_updated);
         updated.setText(listviewitem.getPublishedAt());
+        ImageView image = view.findViewById(R.id.tm2_image);
+        if (listviewitem.getImgurl() != null) {
+            ImageTask task = new ImageTask();
+            try {
+                image.setImageBitmap(task.execute(listviewitem.getImgurl()).get());
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
+        }
 
         return view;
     }
