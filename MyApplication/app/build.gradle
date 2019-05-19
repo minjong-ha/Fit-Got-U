@@ -29,4 +29,5 @@ dependencies {
     implementation files('libs/YouTubeAndroidPlayerApi.jar')
     implementation files('libs/glide-full-4.7.0.jar')
     implementation files('libs/libDaumMapAndroid.jar')
+    implementation 'com.android.support:support-annotations:24.2.0'
 }
