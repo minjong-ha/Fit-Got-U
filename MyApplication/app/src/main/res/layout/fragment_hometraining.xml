@@ -26,7 +26,7 @@
                                     android:layout_height="match_parent"
                                     android:gravity="center_vertical"
                                     android:layout_marginLeft="15dp"
-                                    android:text="@string/fitness"
+                                    android:text="# 피트니스"
                                     android:textColor="#FFFFFF"
                                     android:textColorHighlight="#FFFFFF"
                                     android:textSize="20sp" />
@@ -247,7 +247,7 @@
                                     android:layout_height="match_parent"
                                     android:gravity="center_vertical"
                                     android:layout_marginLeft="15dp"
-                                    android:text="@string/yoga"
+                                    android:text="# 요가"
                                     android:textColor="#FFFFFF"
                                     android:textSize="20sp" />
 
@@ -366,7 +366,8 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:orientation="vertical"
-                                    android:background="@drawable/all_border3">
+                                    android:background="@drawable/all_border3">                              >
+
                                         <ImageButton
                                             android:id="@+id/ht_y4"
                                             android:layout_width="96dp"
