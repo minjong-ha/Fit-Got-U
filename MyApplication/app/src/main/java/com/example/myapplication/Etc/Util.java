@@ -9,6 +9,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.support.v4.app.ActivityCompat;
+import android.widget.Toast;
 
 import com.example.myapplication.Activity.JoinActivity;
 import com.example.myapplication.Activity.LoginActivity;
@@ -172,11 +173,12 @@ public class Util {
         return weight == null || height == null || address == null || weight.equals("") || height.equals("") || address.equals("");
     }
 
-    public static void requestUpdateProfile(final Activity activity, String weight, String height, String address) {
+    public static void requestUpdateProfile(final Activity activity, String weight, String height, String address, String is_user) {
         final Map<String, String> properties = new HashMap<>();
         properties.put("weight", weight);
         properties.put("height", height);
         properties.put("address", address);
+        properties.put("is_user", is_user);
 
         UserManagement.getInstance().requestUpdateProfile(new ApiResponseCallback<Long>() {
             @Override
@@ -186,6 +188,7 @@ public class Util {
 
             @Override
             public void onSessionClosed(ErrorResult errorResult) {
+                Toast.makeText(activity.getApplicationContext(), "오류가 발생했습니다." , Toast.LENGTH_SHORT).show();
                 Util.startLoginActivity(activity);
             }
 

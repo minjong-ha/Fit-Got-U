@@ -62,9 +62,9 @@ public class DA_List_Item_Adapter extends BaseAdapter {
         TextView oTextText = (TextView) convertView.findViewById(R.id.textText);
         Button oBtn = (Button) convertView.findViewById(R.id.btnSelector);
 
-        oTextDate.setText(m_oData.get(position).strDate);
-        oTextText.setText(m_oData.get(position).strText);
-        oBtn.setOnClickListener(m_oData.get(position).onClickListener);
+        oTextDate.setText(m_oData.get(position).getStrDate());
+        oTextText.setText(m_oData.get(position).getStrText());
+        oBtn.setOnClickListener(m_oData.get(position).getOnClickListener());
 
         convertView.setTag(""+position);
         return convertView;

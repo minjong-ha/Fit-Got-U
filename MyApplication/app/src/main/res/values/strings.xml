@@ -12,9 +12,9 @@
     <string name="fitness_2">운동 종류2</string>
     <string name="fitness_3">운동 종류3</string>
 
-    <string name="fitness_1_1">운동 루틴1</string>
-    <string name="fitness_1_2">운동 루틴2</string>
-    <string name="fitness_1_3">운동 루틴3</string>
+    <string name="fitness_1_1">하급 루틴</string>
+    <string name="fitness_1_2">중급 루틴</string>
+    <string name="fitness_1_3">상급 루틴</string>
 
     <string name="fitness_1_1_1">운동1</string>
     <string name="fitness_1_1_1_desc">운동1 설명이다아아아아아아아</string>

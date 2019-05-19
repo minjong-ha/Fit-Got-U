@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
     private String address;
     private String weight;
     private String height;
+    private String is_user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
         //toolbar.setTitleTextColor(Color.BLACK);
         getSupportActionBar().setDisplayShowTitleEnabled(true);
         //getSupportActionBar (). setDisplayShowHomeEnabled (true);
-        getSupportActionBar().setIcon(R.drawable.icon4);
+        getSupportActionBar().setIcon(R.drawable.icon6);
 
         HTfragment.push(new HomeTrainingFragment());
         TMfragment.push(new TrainerMatchFragment());
@@ -213,7 +214,7 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
                     Logout(this);
                     break;
                 case R.string.separate:
-                    Util.requestUpdateProfile(this, "", "", "");
+                    Util.requestUpdateProfile(this, "", "", "", "");
                     Logout(this);
                     break;
             }
@@ -260,7 +261,8 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
                 address = result.getProperties().get("address");
                 weight = result.getProperties().get("weight");
                 height = result.getProperties().get("height");
-                if (Util.Information_Filled(address, weight, height)) {
+                is_user = result.getProperties().get("is_user");
+                if (Util.Information_Filled(address, weight, height) && (is_user == null || is_user.equals(""))) {
                     Util.startJoinActivity(activity);
                 }
             }

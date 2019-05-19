@@ -18,7 +18,7 @@
                         <TableRow
                             android:layout_width="match_parent"
                             android:layout_height="12dp"
-                            android:background="@mipmap/training_category">
+                            android:background="@mipmap/training_category3">
 
                                 <TextView
                                     android:id="@+id/ht_fitness"
@@ -26,7 +26,7 @@
                                     android:layout_height="match_parent"
                                     android:gravity="center_vertical"
                                     android:layout_marginLeft="15dp"
-                                    android:text="# 피트니스"
+                                    android:text="@string/fitness"
                                     android:textColor="#FFFFFF"
                                     android:textColorHighlight="#FFFFFF"
                                     android:textSize="20sp" />
@@ -38,8 +38,10 @@
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:orientation="vertical">
+                                    android:layout_height="125dp"
+                                    android:orientation="vertical"
+                                    android:background="@drawable/all_border"
+                                    >
 
                                         <ImageButton
                                             android:id="@+id/ht_f1"
@@ -54,7 +56,7 @@
                                             android:minWidth="120dp"
                                             android:minHeight="120dp"
                                             android:scaleType="centerInside"
-                                            android:src="@drawable/fitness_1" />
+                                            android:src="@drawable/fitness3_1" />
 
                                         <TextView
                                             android:id="@+id/textView5"
@@ -69,8 +71,10 @@
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:orientation="vertical">
+                                    android:layout_height="125dp"
+                                    android:orientation="vertical"
+                                    android:background="@drawable/all_border2"
+                                    >
 
                                         <ImageButton
                                             android:id="@+id/ht_f2"
@@ -85,7 +89,7 @@
                                             android:minWidth="120dp"
                                             android:minHeight="120dp"
                                             android:scaleType="centerInside"
-                                            android:src="@drawable/fitness_2" />
+                                            android:src="@drawable/fitness3_2" />
 
                                         <TextView
                                             android:id="@+id/textView6"
@@ -101,8 +105,10 @@
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:orientation="vertical">
+                                    android:layout_height="125dp"
+                                    android:orientation="vertical"
+                                    android:background="@drawable/all_border"
+                                    >
 
                                         <ImageButton
                                             android:id="@+id/ht_f3"
@@ -117,7 +123,7 @@
                                             android:minWidth="120dp"
                                             android:minHeight="120dp"
                                             android:scaleType="centerInside"
-                                            android:src="@drawable/fitness_3" />
+                                            android:src="@drawable/fitness3_3" />
 
                                         <TextView
                                             android:id="@+id/textView7"
@@ -139,8 +145,10 @@
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:orientation="vertical">
+                                    android:layout_height="125dp"
+                                    android:orientation="vertical"
+                                    android:background="@drawable/all_border3"
+                                    >
 
                                         <ImageButton
                                             android:id="@+id/ht_f4"
@@ -155,7 +163,7 @@
                                             android:minWidth="120dp"
                                             android:minHeight="120dp"
                                             android:scaleType="centerInside"
-                                            android:src="@drawable/fitness_4" />
+                                            android:src="@drawable/fitness3_4" />
 
                                         <TextView
                                             android:id="@+id/textView8"
@@ -171,8 +179,10 @@
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:orientation="vertical">
+                                    android:layout_height="125dp"
+                                    android:orientation="vertical"
+                                    android:background="@drawable/all_border2"
+                                    >
 
                                         <ImageButton
                                             android:id="@+id/ht_f5"
@@ -187,7 +197,7 @@
                                             android:minWidth="120dp"
                                             android:minHeight="120dp"
                                             android:scaleType="centerInside"
-                                            android:src="@drawable/fitness_5" />
+                                            android:src="@drawable/fitness3_5" />
 
                                         <TextView
                                             android:id="@+id/textView9"
@@ -203,8 +213,10 @@
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:orientation="vertical">
+                                    android:layout_height="125dp"
+                                    android:orientation="vertical"
+                                    android:background="@drawable/all_border3"
+                                    >
 
                                         <ImageButton
                                             android:id="@+id/ht_f6"
@@ -219,7 +231,7 @@
                                             android:minWidth="120dp"
                                             android:minHeight="120dp"
                                             android:scaleType="centerInside"
-                                            android:src="@drawable/fitness_6" />
+                                            android:src="@drawable/fitness3_6" />
 
                                         <TextView
                                             android:id="@+id/textView10"
@@ -236,8 +248,9 @@
 
                         <TableRow
                             android:layout_width="match_parent"
-                            android:layout_height="70dp"
-                            android:background="@mipmap/yoga_category2"
+                            android:layout_height="20dp"
+                            android:layout_marginTop="-1dp"
+                            android:background="@mipmap/yoga_category3"
                             android:fadingEdge="vertical|none">
 
                                 <TextView
@@ -247,7 +260,7 @@
                                     android:layout_height="match_parent"
                                     android:gravity="center_vertical"
                                     android:layout_marginLeft="15dp"
-                                    android:text="# 요가"
+                                    android:text="@string/yoga"
                                     android:textColor="#FFFFFF"
                                     android:textSize="20sp" />
 
@@ -259,7 +272,7 @@
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
+                                    android:layout_height="125dp"
                                     android:orientation="vertical"
                                     android:background="@drawable/all_border">
 
@@ -276,24 +289,23 @@
                                             android:minWidth="120dp"
                                             android:minHeight="120dp"
                                             android:scaleType="centerInside"
-                                            android:src="@drawable/fitness2_1" />
+                                            android:src="@drawable/yoga2_1" />
 
                                         <TextView
                                             android:id="@+id/textView11"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="center"
-                                            android:text="상체운동"
+                                            android:text="하급 루틴"
                                             android:textColor="#000000"
                                             android:textSize="18dp"
-                                            android:layout_marginBottom="3dp"
-                                            app:fontFamily="sans-serif-condensed-light" />
+                                            android:layout_marginBottom="3dp" />
                                 </LinearLayout>
 
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
+                                    android:layout_height="125dp"
                                     android:orientation="vertical"
                                     android:background="@drawable/all_border2">
 
@@ -310,22 +322,21 @@
                                             android:minWidth="120dp"
                                             android:minHeight="120dp"
                                             android:scaleType="centerInside"
-                                            android:src="@drawable/fitness2_2" />
+                                            android:src="@drawable/yoga_2" />
 
                                         <TextView
                                             android:id="@+id/textView12"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="center"
-                                            android:text="허리운동"
+                                            android:text="중급 루틴"
                                             android:textColor="#000000"
-                                            android:textSize="18dp"
-                                            app:fontFamily="sans-serif-condensed-light" />
+                                            android:textSize="18dp" />
                                 </LinearLayout>
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
+                                    android:layout_height="125dp"
                                     android:orientation="vertical"
                                     android:background="@drawable/all_border">
 
@@ -342,125 +353,17 @@
                                             android:minWidth="120dp"
                                             android:minHeight="120dp"
                                             android:scaleType="centerInside"
-                                            android:src="@drawable/fitness2_3" />
+                                            android:src="@drawable/yoga_3" />
 
                                         <TextView
                                             android:id="@+id/textView13"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="center"
-                                            android:text="스쿼트"
+                                            android:text="상급 루틴"
                                             android:textColor="#000000"
-                                            android:textSize="18dp"
-                                            app:fontFamily="sans-serif-condensed-light" />
+                                            android:textSize="18dp" />
                                 </LinearLayout>
-
-                        </TableRow>
-
-                        <TableRow
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            >
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:orientation="vertical"
-                                    android:background="@drawable/all_border3">                              >
-
-                                        <ImageButton
-                                            android:id="@+id/ht_y4"
-                                            android:layout_width="96dp"
-                                            android:layout_height="90dp"
-                                            android:layout_gravity="center"
-                                            android:layout_marginTop="3dp"
-                                            android:adjustViewBounds="true"
-                                            android:background="#00000000"
-                                            android:maxWidth="120dp"
-                                            android:maxHeight="120dp"
-                                            android:minWidth="120dp"
-                                            android:minHeight="120dp"
-                                            android:scaleType="centerInside"
-                                            android:src="@drawable/fitness2_4" />
-
-                                        <TextView
-                                            android:id="@+id/textView14"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_gravity="center"
-                                            android:text="전신운동"
-                                            android:textColor="#000000"
-                                            android:textSize="18dp"
-                                            android:layout_marginBottom="3dp"
-                                            app:fontFamily="sans-serif-condensed-light" />
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:orientation="vertical"
-                                    android:background="@drawable/all_border2"
-                                    >
-
-                                        <ImageButton
-                                            android:id="@+id/ht_y5"
-                                            android:layout_width="96dp"
-                                            android:layout_height="90dp"
-                                            android:layout_gravity="center"
-                                            android:layout_marginTop="3dp"
-                                            android:adjustViewBounds="true"
-                                            android:background="#00000000"
-                                            android:maxWidth="120dp"
-                                            android:maxHeight="120dp"
-                                            android:minWidth="120dp"
-                                            android:minHeight="120dp"
-                                            android:scaleType="centerInside"
-                                            android:src="@drawable/fitness2_5" />
-
-                                        <TextView
-                                            android:id="@+id/textView15"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_gravity="center"
-                                            android:text="플랭크"
-                                            android:textColor="#000000"
-                                            android:textSize="18dp"
-                                            app:fontFamily="sans-serif-condensed-light" />
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:orientation="vertical"
-                                    android:background="@drawable/all_border3"
-                                    >
-
-                                        <ImageButton
-                                            android:id="@+id/ht_y6"
-                                            android:layout_width="96dp"
-                                            android:layout_height="90dp"
-                                            android:layout_gravity="center"
-                                            android:layout_marginTop="3dp"
-                                            android:adjustViewBounds="true"
-                                            android:background="#00000000"
-                                            android:maxWidth="120dp"
-                                            android:maxHeight="120dp"
-                                            android:minWidth="120dp"
-                                            android:minHeight="120dp"
-                                            android:scaleType="centerInside"
-                                            android:src="@drawable/fitness2_6" />
-
-                                        <TextView
-                                            android:id="@+id/textView16"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_gravity="center"
-                                            android:text="하체운동"
-                                            android:textColor="#000000"
-                                            android:textSize="18dp"
-                                            app:fontFamily="sans-serif-condensed-light" />
-                                </LinearLayout>
-
                         </TableRow>
                 </TableLayout>
         </ScrollView>
