@@ -17,18 +17,19 @@
 
                         <TableRow
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="#42A25B">
+                            android:layout_height="12dp"
+                            android:background="@mipmap/training_category">
 
                                 <TextView
                                     android:id="@+id/ht_fitness"
                                     android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="center"
-                                    android:text="@string/fitness"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center_vertical"
+                                    android:layout_marginLeft="15dp"
+                                    android:text="# 피트니스"
                                     android:textColor="#FFFFFF"
                                     android:textColorHighlight="#FFFFFF"
-                                    android:textSize="30sp" />
+                                    android:textSize="20sp" />
                         </TableRow>
 
                         <TableRow
@@ -235,17 +236,20 @@
 
                         <TableRow
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="#42A25B">
+                            android:layout_height="70dp"
+                            android:background="@mipmap/yoga_category2"
+                            android:fadingEdge="vertical|none">
 
                                 <TextView
                                     android:id="@+id/ht_yoga"
                                     android:layout_width="86dp"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="center"
-                                    android:text="@string/yoga"
+
+                                    android:layout_height="match_parent"
+                                    android:gravity="center_vertical"
+                                    android:layout_marginLeft="15dp"
+                                    android:text="# 요가"
                                     android:textColor="#FFFFFF"
-                                    android:textSize="30sp" />
+                                    android:textSize="20sp" />
 
                         </TableRow>
 

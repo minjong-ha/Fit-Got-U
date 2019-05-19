@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Base64;
 import android.widget.Toast;
 
+import com.example.myapplication.Etc.MySQLiteOpenHelper;
 import com.example.myapplication.Etc.Util;
 import com.example.myapplication.Fragment.DataAnalysisFragment;
 import com.example.myapplication.Fragment.HomeTraining2Fragment;
@@ -38,7 +40,7 @@ import java.util.Stack;
 
 public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSelectedListener {
     //private MySQLiteOpenHelper dbhelper;
-    //private SQLiteDatabase db;
+    private SQLiteDatabase sqliteDB;
 
     private Fragment mainfragment = null;
     private Stack<Fragment> HTfragment = new Stack<>();
@@ -60,7 +62,6 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
         super.onCreate(savedInstanceState);
 
         //Util.startTestActivity(this);
-
         //getHK();
         boolean istest = false;
         if (!istest) {//카카오 로그인 없이 진행
@@ -76,9 +77,9 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
         setSupportActionBar(toolbar);
         //toolbar.setTitle("Fit Got U");
         //toolbar.setTitleTextColor(Color.BLACK);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setDisplayShowTitleEnabled(true);
         //getSupportActionBar (). setDisplayShowHomeEnabled (true);
-        getSupportActionBar().setIcon(R.drawable.icon);
+        //getSupportActionBar().setIcon(R.drawable.icon);
 
         HTfragment.push(new HomeTrainingFragment());
         TMfragment.push(new TrainerMatchFragment());

@@ -9,7 +9,7 @@
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="0dp"
-        android:layout_height="45dp"
+        android:layout_height="35dp"
         android:background="#FFFFFF"
         android:minHeight="?attr/actionBarSize"
         app:layout_constraintBottom_toTopOf="@+id/include"
@@ -55,25 +55,29 @@
             android:id="@+id/hometraining"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="홈트레이닝" />
+            android:text="홈트레이닝"
+            android:textSize ="10sp"/>
 
         <android.support.design.widget.TabItem
             android:id="@+id/trainer_match"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="트레이너매치" />
+            android:text="PT매치"
+            android:textSize="10sp"/>
 
         <android.support.design.widget.TabItem
             android:id="@+id/data_analysis"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="데이터분석" />
+            android:text="데이터분석"
+            android:textSize="10sp"/>
 
         <android.support.design.widget.TabItem
             android:id="@+id/mypage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="내페이지" />
+            android:text="내페이지"
+            android:textSize="10sp"/>
     </android.support.design.widget.TabLayout>
 
 </android.support.constraint.ConstraintLayout>
