@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="80dp">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="70"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textDate"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:text="날짜"
+            android:layout_weight="60"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:textStyle="bold"
+            android:textColor="#33aabb"
+            />
+        <TextView
+            android:id="@+id/textText"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:text="내용"
+            android:layout_weight="40"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnSelector"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:text="상세운동정보"
+        android:layout_weight="20"
+        android:background="#00ff0000"
+        />
+    <View
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="5"
+        />
+</LinearLayout>

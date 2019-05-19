@@ -10,7 +10,7 @@
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="0dp"
-        android:layout_height="45dp"
+        android:layout_height="35dp"
         android:background="#FFFFFF"
         android:minHeight="?attr/actionBarSize"
         app:layout_constraintBottom_toTopOf="@+id/include"
@@ -46,15 +46,39 @@
     <android.support.design.widget.TabLayout
         android:id="@+id/tablayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include">
 
-    <android.support.design.widget.NavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:fitsSystemWindows="true"
-        app:headerLayout="@layout/nav_header_main"
-        app:menu="@menu/activity_main_drawer" />
+        <android.support.design.widget.TabItem
+            android:id="@+id/hometraining"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="홈트레이닝"
+            android:textSize ="10sp"/>
 
-</android.support.v4.widget.DrawerLayout>
+        <android.support.design.widget.TabItem
+            android:id="@+id/trainer_match"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PT매치"
+            android:textSize="10sp"/>
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/data_analysis"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="데이터분석"
+            android:textSize="10sp"/>
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/mypage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="내페이지"
+            android:textSize="10sp"/>
+    </android.support.design.widget.TabLayout>
+
+</android.support.constraint.ConstraintLayout>
