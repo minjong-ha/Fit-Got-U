@@ -18,7 +18,7 @@
                         <TableRow
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="#42A25B">
+                            android:background="#000000">
 
                                 <TextView
                                     android:id="@+id/ht_fitness"
@@ -53,7 +53,7 @@
                                             android:minWidth="120dp"
                                             android:minHeight="120dp"
                                             android:scaleType="centerInside"
-                                            android:src="@drawable/fitness_1" />
+                                            android:src="@drawable/fitness2_1" />
 
                                         <TextView
                                             android:id="@+id/textView5"
@@ -84,7 +84,7 @@
                                             android:minWidth="120dp"
                                             android:minHeight="120dp"
                                             android:scaleType="centerInside"
-                                            android:src="@drawable/fitness_2" />
+                                            android:src="@drawable/fitness2_2" />
 
                                         <TextView
                                             android:id="@+id/textView6"
@@ -116,7 +116,7 @@
                                             android:minWidth="120dp"
                                             android:minHeight="120dp"
                                             android:scaleType="centerInside"
-                                            android:src="@drawable/fitness_3" />
+                                            android:src="@drawable/fitness2_3" />
 
                                         <TextView
                                             android:id="@+id/textView7"
@@ -154,7 +154,7 @@
                                             android:minWidth="120dp"
                                             android:minHeight="120dp"
                                             android:scaleType="centerInside"
-                                            android:src="@drawable/fitness_4" />
+                                            android:src="@drawable/fitness2_4" />
 
                                         <TextView
                                             android:id="@+id/textView8"
@@ -186,7 +186,7 @@
                                             android:minWidth="120dp"
                                             android:minHeight="120dp"
                                             android:scaleType="centerInside"
-                                            android:src="@drawable/fitness_5" />
+                                            android:src="@drawable/fitness2_5" />
 
                                         <TextView
                                             android:id="@+id/textView9"
@@ -218,7 +218,7 @@
                                             android:minWidth="120dp"
                                             android:minHeight="120dp"
                                             android:scaleType="centerInside"
-                                            android:src="@drawable/fitness_6" />
+                                            android:src="@drawable/fitness2_6" />
 
                                         <TextView
                                             android:id="@+id/textView10"
@@ -236,7 +236,7 @@
                         <TableRow
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="#42A25B">
+                            android:background="#000000">
 
                                 <TextView
                                     android:id="@+id/ht_yoga"
