@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import com.example.myapplication.Etc.Util;
 import com.example.myapplication.R;
@@ -24,6 +26,7 @@ public class JoinActivity extends AppCompatActivity {
         setContentView(R.layout.activity_join);
 
         final Activity activity = this;
+        final RadioGroup rg = (RadioGroup)findViewById(R.id.radioGroup);
 
         Button b = findViewById(R.id.join_button);
         b.setOnClickListener(new View.OnClickListener() {
@@ -32,10 +35,14 @@ public class JoinActivity extends AppCompatActivity {
                 EditText weight = findViewById(R.id.join_weight_text);
                 EditText height = findViewById(R.id.join_height_text);
                 EditText address = findViewById(R.id.join_address_text);
-                if (weight.getText().toString().trim().equals("") || height.getText().toString().trim().equals("") || address.getText().toString().trim().equals("")) {
+
+                int id = rg.getCheckedRadioButtonId();
+                RadioButton rb = (RadioButton) findViewById(id);
+
+                if (weight.getText().toString().trim().equals("") || height.getText().toString().trim().equals("") || address.getText().toString().trim().equals("") || rb.getText().toString().trim().equals("")) {
 
                 } else {
-                    Util.requestUpdateProfile(activity, weight.getText().toString(), height.getText().toString(), address.getText().toString());
+                    Util.requestUpdateProfile(activity, weight.getText().toString(), height.getText().toString(), address.getText().toString(), rb.getText().toString());
                 }
             }
         });

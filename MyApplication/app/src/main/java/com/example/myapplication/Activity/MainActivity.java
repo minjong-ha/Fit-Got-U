@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Base64;
 import android.widget.Toast;
 
+import com.example.myapplication.Etc.MySQLiteOpenHelper;
 import com.example.myapplication.Etc.Util;
 import com.example.myapplication.Fragment.DataAnalysisFragment;
 import com.example.myapplication.Fragment.HomeTraining2Fragment;
@@ -38,7 +40,7 @@ import java.util.Stack;
 
 public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSelectedListener {
     //private MySQLiteOpenHelper dbhelper;
-    //private SQLiteDatabase db;
+    private SQLiteDatabase sqliteDB;
 
     private Fragment mainfragment = null;
     private Stack<Fragment> HTfragment = new Stack<>();
@@ -52,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
     private String nickname;
     private String thumbnail;
     private String address;
+    private String is_user;
     private String weight;
     private String height;
 
@@ -60,7 +63,6 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
         super.onCreate(savedInstanceState);
 
         //Util.startTestActivity(this);
-
         //getHK();
         boolean istest = false;
         if (!istest) {//카카오 로그인 없이 진행
@@ -76,9 +78,9 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
         setSupportActionBar(toolbar);
         //toolbar.setTitle("Fit Got U");
         //toolbar.setTitleTextColor(Color.BLACK);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        //getSupportActionBar().setDisplayShowTitleEnabled(true);
         //getSupportActionBar (). setDisplayShowHomeEnabled (true);
-        getSupportActionBar().setIcon(R.drawable.icon4);
+        //getSupportActionBar().setIcon(R.drawable.icon6);
 
         HTfragment.push(new HomeTrainingFragment());
         TMfragment.push(new TrainerMatchFragment());
@@ -169,7 +171,7 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
             ChangeFragmentMain(0);
         }
     }
-	
+
     public void ChangeFragmentMain(Fragment newfragment) {
         ChangeFragmentMain(0, newfragment);
     }
@@ -212,7 +214,7 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
                     Logout(this);
                     break;
                 case R.string.separate:
-                    Util.requestUpdateProfile(this, "", "", "");
+                    Util.requestUpdateProfile(this, "", "", "", "");
                     Logout(this);
                     break;
             }
@@ -225,7 +227,7 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
         ft.replace(R.id.mainfragment, mainfragment);
         ft.commit();
     }
-	
+
     private void Logout(final Activity activity) {
         UserManagement.getInstance().requestLogout(new LogoutResponseCallback() {
             @Override
@@ -259,7 +261,8 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
                 address = result.getProperties().get("address");
                 weight = result.getProperties().get("weight");
                 height = result.getProperties().get("height");
-                if (Util.Information_Filled(address, weight, height)) {
+                is_user = result.getProperties().get("is_user");
+                if (Util.Information_Filled(address, weight, height, is_user)) {
                     Util.startJoinActivity(activity);
                 }
             }

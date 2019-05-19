@@ -124,7 +124,7 @@ public class Util {
         database.close();
         dbhelper.close();
     }
-	
+
     public static String paringYoutubeUserJsonData(JSONObject jsonObject) throws JSONException {
         String userid = null;
         JSONArray contacts = jsonObject.getJSONArray("items");
@@ -168,15 +168,16 @@ public class Util {
         return sdata;
     }
 
-    public static boolean Information_Filled(String weight, String height, String address) {
-        return weight == null || height == null || address == null || weight.equals("") || height.equals("") || address.equals("");
+    public static boolean Information_Filled(String weight, String height, String address, String is_user) {
+        return weight == null || height == null || address == null || is_user == null || weight.equals("") || height.equals("") || address.equals("")  || is_user.equals("");
     }
 
-    public static void requestUpdateProfile(final Activity activity, String weight, String height, String address) {
+    public static void requestUpdateProfile(final Activity activity, String weight, String height, String address, String is_user) {
         final Map<String, String> properties = new HashMap<>();
         properties.put("weight", weight);
         properties.put("height", height);
         properties.put("address", address);
+        properties.put("is_user", is_user);
 
         UserManagement.getInstance().requestUpdateProfile(new ApiResponseCallback<Long>() {
             @Override
@@ -196,7 +197,7 @@ public class Util {
 
         }, properties);
     }
-	
+
     public static void startLoginActivity(Activity activity) {
         ActivityCompat.finishAffinity(activity);
         activity.startActivity(new Intent(activity.getApplicationContext(), LoginActivity.class));
