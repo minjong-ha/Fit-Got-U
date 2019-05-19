@@ -52,9 +52,9 @@ public class DA2_List_Item_Adapter extends BaseAdapter {
         TextView oTextCount = (TextView) convertView.findViewById(R.id.textCount);
         TextView oTextText = (TextView) convertView.findViewById(R.id.textText);
 
-        oTextExercise.setText(m_oData.get(position).strExercise);
-        oTextCount.setText(m_oData.get(position).ExerciseCount);
-        oTextText.setText(m_oData.get(position).strText);
+        oTextExercise.setText(m_oData.get(position).getStrExercise());
+        oTextCount.setText(m_oData.get(position).getExerciseCount());
+        oTextText.setText(m_oData.get(position).getStrText());
         return convertView;
     }
 }

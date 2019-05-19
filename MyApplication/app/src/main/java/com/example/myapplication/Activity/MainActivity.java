@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
     private String is_user;
     private String weight;
     private String height;
+    private String is_user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,9 +79,9 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
         setSupportActionBar(toolbar);
         //toolbar.setTitle("Fit Got U");
         //toolbar.setTitleTextColor(Color.BLACK);
-        //getSupportActionBar().setDisplayShowTitleEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(true);
         //getSupportActionBar (). setDisplayShowHomeEnabled (true);
-        //getSupportActionBar().setIcon(R.drawable.icon6);
+        getSupportActionBar().setIcon(R.drawable.icon6);
 
         HTfragment.push(new HomeTrainingFragment());
         TMfragment.push(new TrainerMatchFragment());
@@ -262,7 +263,7 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
                 weight = result.getProperties().get("weight");
                 height = result.getProperties().get("height");
                 is_user = result.getProperties().get("is_user");
-                if (Util.Information_Filled(address, weight, height, is_user)) {
+                if (Util.Information_Filled(address, weight, height) && (is_user == null || is_user.equals(""))) {
                     Util.startJoinActivity(activity);
                 }
             }

@@ -60,28 +60,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="홈트레이닝"
-            android:textSize="10sp" />
+            android:textSize ="10sp"/>
 
         <android.support.design.widget.TabItem
             android:id="@+id/trainer_match"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="PT매치"
-            android:textSize="10sp" />
+            android:textSize="10sp"/>
 
         <android.support.design.widget.TabItem
             android:id="@+id/data_analysis"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="데이터분석"
-            android:textSize="10sp" />
+            android:textSize="10sp"/>
 
         <android.support.design.widget.TabItem
             android:id="@+id/mypage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="내페이지"
-            android:textSize="10sp" />
+            android:textSize="10sp"/>
     </android.support.design.widget.TabLayout>
 
 </android.support.constraint.ConstraintLayout>
