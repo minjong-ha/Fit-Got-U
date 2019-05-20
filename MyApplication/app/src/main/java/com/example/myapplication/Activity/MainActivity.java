@@ -57,7 +57,6 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
     private String is_user;
     private String weight;
     private String height;
-    private String is_user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -263,7 +262,7 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
                 weight = result.getProperties().get("weight");
                 height = result.getProperties().get("height");
                 is_user = result.getProperties().get("is_user");
-                if (Util.Information_Filled(address, weight, height) && (is_user == null || is_user.equals(""))) {
+                if (Util.Information_Filled(address, weight, height, is_user) && (is_user == null || is_user.equals(""))) {
                     Util.startJoinActivity(activity);
                 }
             }

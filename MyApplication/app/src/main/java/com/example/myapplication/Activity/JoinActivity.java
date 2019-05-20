@@ -38,7 +38,7 @@ public class JoinActivity extends AppCompatActivity {
                 int id = rg.getCheckedRadioButtonId();
                 RadioButton rb = (RadioButton) findViewById(id);
 
-                if (Util.Information_Filled(weight.getText().toString(), height.getText().toString(), address.getText().toString())) {
+                if (Util.Information_Filled(weight.getText().toString(), height.getText().toString(), address.getText().toString(), rb.getText().toString())) {
 
                 } else {
                     Util.requestUpdateProfile(activity, weight.getText().toString(), height.getText().toString(), address.getText().toString(), rb.getText().toString());

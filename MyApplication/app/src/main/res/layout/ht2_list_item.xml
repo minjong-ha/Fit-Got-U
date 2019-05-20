@@ -45,7 +45,6 @@
         android:layout_marginRight="8dp"
         android:gravity="center_horizontal"
         android:text="TextView"
-        android:gravity="center_horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/ht2_list_image"
         app:layout_constraintTop_toBottomOf="@+id/ht2_list_name" />

@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.myapplication.Activity.MainActivity;
 import com.example.myapplication.List.MP_List_Item;
@@ -22,6 +23,17 @@ public class MyPageFragment extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_my_page, container, false);
         ListView listview = view.findViewById(R.id.mp_list);
+
+        TextView name = (TextView)view.findViewById(R.id.mp_name2);
+        TextView isuser = (TextView)view.findViewById(R.id.mp_isuser2);
+        TextView age = (TextView)view.findViewById(R.id.mp_age2);
+        TextView address = (TextView)view.findViewById(R.id.mp_address2);
+        TextView spec = (TextView)view.findViewById(R.id.mp_spec2);
+
+        name.setText(((MainActivity)getActivity()).getNickname());
+        isuser.setText(((MainActivity)getActivity()).getIs_user());
+        address.setText(((MainActivity)getActivity()).getAdress());
+        spec.setText(((MainActivity)getActivity()).getHeight()+"cm/"+(((MainActivity)getActivity()).getWeight())+"kg");
 
         ArrayList<MP_List_Item> items = new ArrayList<>();
         items.add(new MP_List_Item(R.string.my_info));
