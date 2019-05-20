@@ -33,8 +33,10 @@ import java.util.List;
 
 public class TrainerMatchFragment extends Fragment {
     TrainerAdapter adapter;
-    Button button, trainer_button;
-    EditText editText, trainer_editText;
+    //Button button;
+    //EditText editText;
+    Button trainer_button;
+    EditText trainer_editText;
     Geocoder geocoder;
     double latitude=37.283014,longitude=127.046355;
     double trainer_latitude, trainer_longitude;
@@ -50,9 +52,9 @@ public class TrainerMatchFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_trainer_match, container, false);
 
-        button = (Button)view.findViewById(R.id.button);
+        //button = (Button)view.findViewById(R.id.button);
         trainer_button = (Button)view.findViewById(R.id.button2);
-        editText = (EditText)view.findViewById(R.id.editText);
+        //editText = (EditText)view.findViewById(R.id.editText);
         trainer_editText = (EditText)view.findViewById(R.id.editText2);
         geocoder = new Geocoder(getActivity());
         final ArrayList<MapPOIItem> markers = new ArrayList<>();
@@ -76,110 +78,114 @@ public class TrainerMatchFragment extends Fragment {
         adapter = new TrainerAdapter();
 
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                List<Address> list = null;
-                String str = editText.getText().toString();
-                try {
-                    list = geocoder.getFromLocationName(
-                            str, // 지역 이름
-                            10); // 읽을 개수
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    Log.e("test","입출력 오류 - 서버에서 주소변환시 에러발생");
-                }
+//        button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+        if(((MainActivity)getActivity()).getIs_user().equals("유저")) {
+            List<Address> list = null;
+            String str = ((MainActivity) getActivity()).getAdress();
+            try {
+                list = geocoder.getFromLocationName(
+                        str, // 지역 이름
+                        10); // 읽을 개수
+            } catch (IOException e) {
+                e.printStackTrace();
+                Log.e("test", "입출력 오류 - 서버에서 주소변환시 에러발생");
+            }
 
-                if (list != null) {
-                    if (list.size() == 0) {
-                        Toast.makeText(getActivity().getApplicationContext(), "주소를 찾을 수 없습니다", Toast.LENGTH_LONG).show();
-                    } else {
-                        marker=markers.get(0);
-                        mapView.removePOIItem(marker);
-                        longitude=list.get(0).getLongitude();
-                        latitude=list.get(0).getLatitude();
-                        location.setLongitude(longitude);
-                        location.setLatitude(latitude);
-                        mapPoint = MapPoint.mapPointWithGeoCoord(latitude, longitude);
+            if (list != null) {
+                if (list.size() == 0) {
+                    Toast.makeText(getActivity().getApplicationContext(), "주소를 찾을 수 없습니다", Toast.LENGTH_LONG).show();
+                } else {
+                    marker = markers.get(0);
+                    mapView.removePOIItem(marker);
+                    longitude = list.get(0).getLongitude();
+                    latitude = list.get(0).getLatitude();
+                    location.setLongitude(longitude);
+                    location.setLatitude(latitude);
+                    mapPoint = MapPoint.mapPointWithGeoCoord(latitude, longitude);
 
-                        mapView.setMapCenterPoint(mapPoint, true); // animated : true
-                        mapViewed(marker, mapPoint, mapView, false);
-                    }
+                    mapView.setMapCenterPoint(mapPoint, true); // animated : true
+                    mapViewed(marker, mapPoint, mapView, false);
                 }
             }
-        });
 
-        trainer_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                List<Address> list = null;
+//            }
+//        });
+        }
 
-                String str = trainer_editText.getText().toString();
-                try {
-                    list = geocoder.getFromLocationName(
-                            str, // 지역 이름
-                            10); // 읽을 개수
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    Log.e("test","입출력 오류 - 서버에서 주소변환시 에러발생");
-                }
+//        trainer_button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+                if(((MainActivity)getActivity()).getIs_user().equals("트레이너")) {
+                    List<Address> list = null;
+                    String str = ((MainActivity) getActivity()).getAdress();
+                    //String str = trainer_editText.getText().toString();
+                    try {
+                        list = geocoder.getFromLocationName(
+                                str, // 지역 이름
+                                10); // 읽을 개수
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        Log.e("test", "입출력 오류 - 서버에서 주소변환시 에러발생");
+                    }
 
-                if (list != null) {
-                    if (list.size() == 0) {
-                        Toast.makeText(getActivity().getApplicationContext(), "주소를 찾을 수 없습니다", Toast.LENGTH_LONG).show();
-                    } else {
-                        trainer_longitude=list.get(0).getLongitude();
-                        trainer_latitude=list.get(0).getLatitude();
-                        mapPoint = MapPoint.mapPointWithGeoCoord(trainer_latitude, trainer_longitude);
-                        MapPOIItem tmarker=new MapPOIItem();
-                        markers.add(tmarker);
+                    if (list != null) {
+                        if (list.size() == 0) {
+                            Toast.makeText(getActivity().getApplicationContext(), "주소를 찾을 수 없습니다", Toast.LENGTH_LONG).show();
+                        } else {
+                            trainer_longitude = list.get(0).getLongitude();
+                            trainer_latitude = list.get(0).getLatitude();
+                            mapPoint = MapPoint.mapPointWithGeoCoord(trainer_latitude, trainer_longitude);
+                            MapPOIItem tmarker = new MapPOIItem();
+                            markers.add(tmarker);
 
-                        trainer_location.setLongitude(trainer_longitude);
-                        trainer_location.setLatitude(trainer_latitude);
+                            trainer_location.setLongitude(trainer_longitude);
+                            trainer_location.setLatitude(trainer_latitude);
 
-                        double distance=Math.round(location.distanceTo(trainer_location)/10.0)/100.0;
-                        if(distance<=0.01) distance=0.01;
+                            double distance = Math.round(location.distanceTo(trainer_location) / 10.0) / 100.0;
+                            if (distance <= 0.01) distance = 0.01;
 
-                        //addItem
-                        switch(count) {
-                            case 0:
-								adapter.addItem(new TrainerItem("텔론", distance, R.drawable.ic_launcher_background, "https://www.youtube.com/user/xordn6579"));
-                                count++;
-                                break;
-                            case 1:
-                                adapter.addItem(new TrainerItem("김등빨", distance, R.drawable.ic_launcher_background, null));
-                                count++;
-                                break;
-                            case 2:
-                                adapter.addItem(new TrainerItem("이어깨", distance, R.drawable.ic_launcher_foreground, null));
-                                count++;
-                                break;
-                            case 3:
-                                adapter.addItem(new TrainerItem("박하체", distance, R.drawable.ic_launcher_background, null));
-                                count++;
-                                break;
-                            case 4:
-                                adapter.addItem(new TrainerItem("박근육", distance, R.drawable.ic_launcher_foreground, null));
-                                count++;
-                                break;
-                            case 5:
-                                adapter.addItem(new TrainerItem("하정우", distance, R.drawable.ic_launcher_background, null));
-                                count++;
-                                break;
-                            case 6:
-                                adapter.addItem(new TrainerItem("장가슴", distance, R.drawable.ic_launcher_foreground, null));
-                                count++;
-                                break;
-                            default:
-                                break;
+                            //addItem
+                            switch (count) {
+                                case 0:
+                                    adapter.addItem(new TrainerItem("텔론", distance, R.drawable.ic_launcher_background, "https://www.youtube.com/user/xordn6579"));
+                                    count++;
+                                    break;
+                                case 1:
+                                    adapter.addItem(new TrainerItem("김등빨", distance, R.drawable.ic_launcher_background, null));
+                                    count++;
+                                    break;
+                                case 2:
+                                    adapter.addItem(new TrainerItem("이어깨", distance, R.drawable.ic_launcher_foreground, null));
+                                    count++;
+                                    break;
+                                case 3:
+                                    adapter.addItem(new TrainerItem("박하체", distance, R.drawable.ic_launcher_background, null));
+                                    count++;
+                                    break;
+                                case 4:
+                                    adapter.addItem(new TrainerItem("박근육", distance, R.drawable.ic_launcher_foreground, null));
+                                    count++;
+                                    break;
+                                case 5:
+                                    adapter.addItem(new TrainerItem("하정우", distance, R.drawable.ic_launcher_background, null));
+                                    count++;
+                                    break;
+                                case 6:
+                                    adapter.addItem(new TrainerItem("장가슴", distance, R.drawable.ic_launcher_foreground, null));
+                                    count++;
+                                    break;
+                                default:
+                                    break;
+                            }
+                            mapView.setMapCenterPoint(mapPoint, true); // animated : true
+                            mapViewed(tmarker, mapPoint, mapView, true);
                         }
-                        mapView.setMapCenterPoint(mapPoint, true); // animated : true
-                        mapViewed(tmarker, mapPoint, mapView,true);
                     }
+//            }
+//        });
                 }
-            }
-        });
-
         //리스트뷰+어댑터
         listView.setAdapter(adapter);
 

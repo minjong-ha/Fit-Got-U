@@ -281,4 +281,13 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
             e.printStackTrace();
         }
     }
+
+    public long getKakaoid(){ return this.kakaoid; }
+    public String getNickname(){ return this.nickname; }
+    public String getThumbnail(){ return this.thumbnail; }
+    public String getAdress(){ return this.address; }
+    public String getIs_user(){ return this.is_user; }
+    public String getWeight(){ return this.weight; }
+    public String getHeight(){ return this.height; }
+
 }
