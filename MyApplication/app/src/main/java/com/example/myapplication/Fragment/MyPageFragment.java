@@ -32,7 +32,7 @@ public class MyPageFragment extends Fragment implements View.OnClickListener {
 
         name.setText(((MainActivity)getActivity()).getNickname());
         isuser.setText(((MainActivity)getActivity()).getIs_user());
-        address.setText(((MainActivity)getActivity()).getAdress());
+        address.setText(((MainActivity)getActivity()).getAddress());
         spec.setText(((MainActivity)getActivity()).getHeight()+"cm/"+(((MainActivity)getActivity()).getWeight())+"kg");
 
         ArrayList<MP_List_Item> items = new ArrayList<>();

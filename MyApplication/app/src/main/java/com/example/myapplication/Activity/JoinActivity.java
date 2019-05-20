@@ -25,7 +25,8 @@ public class JoinActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_join);
 
-        final Activity activity = this;
+        final AppCompatActivity activity = this;
+
         final RadioGroup rg = (RadioGroup)findViewById(R.id.radioGroup);
 
         Button b = findViewById(R.id.join_button);
@@ -37,11 +38,13 @@ public class JoinActivity extends AppCompatActivity {
                 EditText address = findViewById(R.id.join_address_text);
                 int id = rg.getCheckedRadioButtonId();
                 RadioButton rb = (RadioButton) findViewById(id);
-
-                if (Util.Information_Filled(weight.getText().toString(), height.getText().toString(), address.getText().toString(), rb.getText().toString())) {
-
+                long kakaoid = getIntent().getLongExtra("kakaoid", 0);
+                if (kakaoid != 0 && Util.Information_Filled(weight.getText().toString(), height.getText().toString(), address.getText().toString(), rb.getText().toString())) {
+                    String str = Util.InsertUser(kakaoid + "", address.getText().toString(), weight.getText().toString(), height.getText().toString(), rb.getText().toString());
+                    if (str.equals("success")) {
+                        Util.startMainActivity(activity);
+                    }
                 } else {
-                    Util.requestUpdateProfile(activity, weight.getText().toString(), height.getText().toString(), address.getText().toString(), rb.getText().toString());
                 }
             }
         });

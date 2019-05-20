@@ -83,7 +83,7 @@ public class TrainerMatchFragment extends Fragment {
 //            public void onClick(View v) {
         if(((MainActivity)getActivity()).getIs_user().equals("유저")) {
             List<Address> list = null;
-            String str = ((MainActivity) getActivity()).getAdress();
+            String str = ((MainActivity) getActivity()).getAddress();
             try {
                 list = geocoder.getFromLocationName(
                         str, // 지역 이름
@@ -119,7 +119,7 @@ public class TrainerMatchFragment extends Fragment {
 //            public void onClick(View v) {
                 if(((MainActivity)getActivity()).getIs_user().equals("트레이너")) {
                     List<Address> list = null;
-                    String str = ((MainActivity) getActivity()).getAdress();
+                    String str = ((MainActivity) getActivity()).getAddress();
                     //String str = trainer_editText.getText().toString();
                     try {
                         list = geocoder.getFromLocationName(

@@ -36,6 +36,7 @@ import com.kakao.usermgmt.callback.MeV2ResponseCallback;
 import com.kakao.usermgmt.response.MeV2Response;
 
 import java.security.MessageDigest;
+import java.util.HashMap;
 import java.util.Stack;
 
 public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSelectedListener {
@@ -53,10 +54,11 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
     private long kakaoid;
     private String nickname;
     private String thumbnail;
-    private String address;
-    private String is_user;
     private String weight;
     private String height;
+    private String is_user;
+    private String address;
+    private String youtubechannelid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -208,7 +210,6 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
                     Logout(this);
                     break;
                 case R.string.separate:
-                    Util.requestUpdateProfile(this, "", "", "", "");
                     Logout(this);
                     break;
             }
@@ -252,12 +253,15 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
                 Bitmap bitmap = Util.getImagefromURL(thumbnail);
                 if (bitmap != null) {
                 }
-                address = result.getProperties().get("address");
-                weight = result.getProperties().get("weight");
-                height = result.getProperties().get("height");
-                is_user = result.getProperties().get("is_user");
-                if (Util.Information_Filled(address, weight, height, is_user) && (is_user == null || is_user.equals(""))) {
-                    Util.startJoinActivity(activity);
+                HashMap<String, String> userdata = Util.SelectUser(kakaoid + "");
+                if (userdata != null) {
+                    weight = userdata.get("weight");
+                    height = userdata.get("height");
+                    address = userdata.get("address");
+                    is_user = userdata.get("is_user");
+                }
+                if (Util.Information_Filled(weight, height, address, is_user)) {
+                    Util.startJoinActivity(activity, kakaoid);
                 }
             }
         });
@@ -279,9 +283,8 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
     public long getKakaoid(){ return this.kakaoid; }
     public String getNickname(){ return this.nickname; }
     public String getThumbnail(){ return this.thumbnail; }
-    public String getAdress(){ return this.address; }
-    public String getIs_user(){ return this.is_user; }
     public String getWeight(){ return this.weight; }
     public String getHeight(){ return this.height; }
-
+    public String getIs_user(){ return this.is_user; }
+    public String getAddress(){ return this.address; }
 }

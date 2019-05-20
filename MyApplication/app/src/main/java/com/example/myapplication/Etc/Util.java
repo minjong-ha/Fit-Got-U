@@ -67,32 +67,6 @@ public class Util {
         return bitmap;
     }
 
-    public static class ImageTask extends AsyncTask<String, Void, Bitmap> {
-        protected Bitmap doInBackground(String... urls) {
-            String url = urls[0];
-            Bitmap bitmap = null;
-            InputStream in = null;
-
-            try {
-                in = new java.net.URL(url).openStream();
-                bitmap = BitmapFactory.decodeStream(in);
-            }
-            catch (Exception e) {
-                e.printStackTrace();
-            }
-            finally {
-                try {
-                    in.close();
-                }
-                catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-
-            return bitmap;
-        }
-    }
-
     public static void UpdateDBData(Context context, String value) {
         MySQLiteOpenHelper dbhelper = new MySQLiteOpenHelper(context, "DB", null, 1);
         SQLiteDatabase database = dbhelper.getWritableDatabase();
@@ -169,35 +143,69 @@ public class Util {
         return sdata;
     }
 
-    public static boolean Information_Filled(String weight, String height, String address, String is_user) {
-        return weight == null || height == null || address == null || is_user == null || weight.equals("") || height.equals("") || address.equals("")  || is_user.equals("");
+    public static String UpdateUser(String kakaoid, String dataname, String data) {
+        String str = null;
+        try {
+            DBPHPTask task = new DBPHPTask("update_user");
+            str =  task.execute("user_id", kakaoid, dataname, data).get();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return str;
     }
 
-    public static void requestUpdateProfile(final Activity activity, String weight, String height, String address, String is_user) {
-        final Map<String, String> properties = new HashMap<>();
-        properties.put("weight", weight);
-        properties.put("height", height);
-        properties.put("address", address);
-        properties.put("is_user", is_user);
+    public static String InsertUser(String kakaoid, String address, String weight, String height, String is_user) {
+        String str = null;
+        try {
+            DBPHPTask task = new DBPHPTask("insert_user");
+            str =  task.execute("user_id", kakaoid, "home_address", address, "weight", weight, "height", height, "is_user", is_user).get();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return str;
+    }
 
-        UserManagement.getInstance().requestUpdateProfile(new ApiResponseCallback<Long>() {
-            @Override
-            public void onSuccess(Long userId) {
-                Util.startMainActivity(activity);
+    public static HashMap<String, String> SelectUser(String userid) {
+        HashMap<String, String> mHashMap = null;
+        try {
+            DBPHPTask task = new DBPHPTask("select_user");
+            mHashMap =  getJsonUser(task.execute("user_id", userid).get());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return mHashMap;
+    }
+
+    public static HashMap<String, String> getJsonUser(String JsonString) {
+        try {
+            JSONObject jsonObject = new JSONObject(JsonString);
+            JSONArray jsonArray = jsonObject.getJSONArray("fgy");
+
+            if (jsonArray.length() > 0) {
+                JSONObject item = jsonArray.getJSONObject(0);
+
+                String address = item.getString("home_address");
+                String is_trainer = item.getString("is_trainer");
+                String weight = item.getString("weight");
+                String height = item.getString("height");
+
+                HashMap<String,String> hashMap = new HashMap<>();
+
+                hashMap.put("address", address);
+                hashMap.put("is_trainer", is_trainer);
+                hashMap.put("weight", weight);
+                hashMap.put("height", height);
+
+                return hashMap;
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
-            @Override
-            public void onSessionClosed(ErrorResult errorResult) {
-                Toast.makeText(activity.getApplicationContext(), "오류가 발생했습니다." , Toast.LENGTH_SHORT).show();
-                Util.startLoginActivity(activity);
-            }
-
-            @Override
-            public void onNotSignedUp() {
-                Util.startLoginActivity(activity);
-            }
-
-        }, properties);
+    public static boolean Information_Filled(String weight, String height, String address, String is_user) {
+        return weight != null && height != null && address != null && is_user != null && !weight.equals("") && !height.equals("") && !address.equals("") && !is_user.equals("");
     }
 
     public static void startLoginActivity(Activity activity) {
@@ -205,9 +213,11 @@ public class Util {
         activity.startActivity(new Intent(activity.getApplicationContext(), LoginActivity.class));
     }
 
-    public static void startJoinActivity(Activity activity) {
+    public static void startJoinActivity(Activity activity, long kakaoid) {
+        Intent intent = new Intent(activity.getApplicationContext(), JoinActivity.class);
+        intent.putExtra("kakaoid", kakaoid);
         ActivityCompat.finishAffinity(activity);
-        activity.startActivity(new Intent(activity.getApplicationContext(), JoinActivity.class));
+        activity.startActivity(intent);
     }
 
     public static void startMainActivity(Activity activity) {

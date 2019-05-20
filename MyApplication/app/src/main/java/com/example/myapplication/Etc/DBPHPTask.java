@@ -20,7 +20,7 @@ public class DBPHPTask extends AsyncTask<String, Void, String> {
     protected String doInBackground(String... Strings) {
         HttpURLConnection conn = null;
         StringBuffer postParameters = new StringBuffer();
-        String link = "http://c.c.com/" + phpname + ".php";//쿼리php 파일 불러오기
+        String link = "http://http://ec2-18-206-220-115.compute-1.amazonaws.com/fitgotu/" + phpname + ".php";//쿼리php 파일 불러오기
         try {
             int num = 0;
             for (String str : Strings) {
