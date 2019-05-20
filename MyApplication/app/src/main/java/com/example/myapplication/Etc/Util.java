@@ -143,11 +143,11 @@ public class Util {
         return sdata;
     }
 
-    public static String UpdateUser(String kakaoid, String dataname, String data) {
+    public static String UpdateUser(String kakaoid, String address, String weight, String height) {
         String str = null;
         try {
             DBPHPTask task = new DBPHPTask("update_user");
-            str =  task.execute("user_id", kakaoid, dataname, data).get();
+            str =  task.execute("user_id", kakaoid, "home_address", address, "weight", weight, "height", height).get();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -185,14 +185,14 @@ public class Util {
                 JSONObject item = jsonArray.getJSONObject(0);
 
                 String address = item.getString("home_address");
-                String is_trainer = item.getString("is_trainer");
+                String is_user = item.getString("is_user");
                 String weight = item.getString("weight");
                 String height = item.getString("height");
 
                 HashMap<String,String> hashMap = new HashMap<>();
 
                 hashMap.put("address", address);
-                hashMap.put("is_trainer", is_trainer);
+                hashMap.put("is_user", is_user);
                 hashMap.put("weight", weight);
                 hashMap.put("height", height);
 

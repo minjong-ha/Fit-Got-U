@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
 
         //Util.startTestActivity(this);
         //getHK();
-        boolean istest = true;
+        boolean istest = false;
         if (!istest) {//카카오 로그인 없이 진행
             requestMe(this);
         } else {
@@ -260,7 +260,7 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
                     address = userdata.get("address");
                     is_user = userdata.get("is_user");
                 }
-                if (Util.Information_Filled(weight, height, address, is_user)) {
+                if (!Util.Information_Filled(weight, height, address, is_user)) {
                     Util.startJoinActivity(activity, kakaoid);
                 }
             }
