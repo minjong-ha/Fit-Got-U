@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
 
         //Util.startTestActivity(this);
         //getHK();
-        boolean istest = false;
+        boolean istest = true;
         if (!istest) {//카카오 로그인 없이 진행
             requestMe(this);
         } else {

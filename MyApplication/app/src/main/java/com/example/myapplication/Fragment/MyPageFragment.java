@@ -26,7 +26,6 @@ public class MyPageFragment extends Fragment implements View.OnClickListener {
 
         TextView name = (TextView)view.findViewById(R.id.mp_name2);
         TextView isuser = (TextView)view.findViewById(R.id.mp_isuser2);
-        TextView age = (TextView)view.findViewById(R.id.mp_age2);
         TextView address = (TextView)view.findViewById(R.id.mp_address2);
         TextView spec = (TextView)view.findViewById(R.id.mp_spec2);
 
