@@ -76,12 +76,6 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        //toolbar.setTitle("Fit Got U");
-        //toolbar.setTitleTextColor(Color.BLACK);
-        getSupportActionBar().setDisplayShowTitleEnabled(true);
-        //getSupportActionBar (). setDisplayShowHomeEnabled (true);
-        getSupportActionBar().setIcon(R.drawable.icon6);
-
         HTfragment.push(new HomeTrainingFragment());
         TMfragment.push(new TrainerMatchFragment());
         DAfragment.push(new DataAnalysisFragment());
