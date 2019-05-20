@@ -24,7 +24,8 @@
                                     android:id="@+id/ht_fitness"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:gravity="center"
+                                    android:gravity="center_vertical"
+                                    android:layout_marginLeft="15dp"
                                     android:text="@string/fitness"
                                     android:textColor="#FFFFFF"
                                     android:textColorHighlight="#FFFFFF"
@@ -39,8 +40,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="125dp"
                                     android:orientation="vertical"
-                                    android:background="@drawable/all_border"
-                                    >
+                                    android:background="@drawable/all_border">
 
                                         <ImageButton
                                             android:id="@+id/ht_f1"
@@ -106,7 +106,6 @@
                                     android:layout_height="125dp"
                                     android:orientation="vertical"
                                     android:background="@drawable/all_border">
-
                                         <ImageButton
                                             android:id="@+id/ht_f3"
                                             android:layout_width="96dp"
@@ -138,8 +137,7 @@
 
                         <TableRow
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            >
+                            android:layout_height="match_parent">
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -252,8 +250,9 @@
                                     android:id="@+id/ht_yoga"
                                     android:layout_width="86dp"
                                     android:layout_height="match_parent"
-                                    android:gravity="center"
-                                    android:text="요가        "
+                                    android:gravity="center_vertical"
+                                    android:layout_marginLeft="15dp"
+                                    android:text="@string/yoga"
                                     android:textColor="#FFFFFF"
                                     android:textSize="20sp" />
 
@@ -292,8 +291,7 @@
                                             android:text="하급 루틴"
                                             android:textColor="#000000"
                                             android:textSize="18dp"
-                                            android:layout_marginBottom="3dp"
-                                            app:fontFamily="sans-serif-condensed-light" />
+                                            android:layout_marginBottom="3dp" />
                                 </LinearLayout>
 
 
@@ -325,8 +323,7 @@
                                             android:layout_gravity="center"
                                             android:text="중급 루틴"
                                             android:textColor="#000000"
-                                            android:textSize="18dp"
-                                            app:fontFamily="sans-serif-condensed-light" />
+                                            android:textSize="18dp" />
                                 </LinearLayout>
 
                                 <LinearLayout
@@ -357,118 +354,9 @@
                                             android:layout_gravity="center"
                                             android:text="상급 루틴"
                                             android:textColor="#000000"
-                                            android:textSize="18dp"
-                                            app:fontFamily="sans-serif-condensed-light" />
+                                            android:textSize="18dp" />
                                 </LinearLayout>
-
                         </TableRow>
-                        <!--
-                                                <TableRow
-                                                    android:layout_width="match_parent"
-                                                    android:layout_height="match_parent"
-                                                    >
-
-                                                        <LinearLayout
-                                                            android:layout_width="match_parent"
-                                                            android:layout_height="match_parent"
-                                                            android:orientation="vertical"
-                                                            android:background="@drawable/all_border3">                              >
-
-                                                                <ImageButton
-                                                                    android:id="@+id/ht_y4"
-                                                                    android:layout_width="96dp"
-                                                                    android:layout_height="90dp"
-                                                                    android:layout_gravity="center"
-                                                                    android:layout_marginTop="3dp"
-                                                                    android:adjustViewBounds="true"
-                                                                    android:background="#00000000"
-                                                                    android:maxWidth="120dp"
-                                                                    android:maxHeight="120dp"
-                                                                    android:minWidth="120dp"
-                                                                    android:minHeight="120dp"
-                                                                    android:scaleType="centerInside"
-                                                                    android:src="@drawable/fitness2_4" />
-
-                                                                <TextView
-                                                                    android:id="@+id/textView14"
-                                                                    android:layout_width="wrap_content"
-                                                                    android:layout_height="wrap_content"
-                                                                    android:layout_gravity="center"
-                                                                    android:text="전신운동"
-                                                                    android:textColor="#000000"
-                                                                    android:textSize="18dp"
-                                                                    android:layout_marginBottom="3dp"
-                                                                    app:fontFamily="sans-serif-condensed-light" />
-                                                        </LinearLayout>
-
-                                                        <LinearLayout
-                                                            android:layout_width="match_parent"
-                                                            android:layout_height="match_parent"
-                                                            android:orientation="vertical"
-                                                            android:background="@drawable/all_border2"
-                                                            >
-
-                                                                <ImageButton
-                                                                    android:id="@+id/ht_y5"
-                                                                    android:layout_width="96dp"
-                                                                    android:layout_height="90dp"
-                                                                    android:layout_gravity="center"
-                                                                    android:layout_marginTop="3dp"
-                                                                    android:adjustViewBounds="true"
-                                                                    android:background="#00000000"
-                                                                    android:maxWidth="120dp"
-                                                                    android:maxHeight="120dp"
-                                                                    android:minWidth="120dp"
-                                                                    android:minHeight="120dp"
-                                                                    android:scaleType="centerInside"
-                                                                    android:src="@drawable/fitness2_5" />
-
-                                                                <TextView
-                                                                    android:id="@+id/textView15"
-                                                                    android:layout_width="wrap_content"
-                                                                    android:layout_height="wrap_content"
-                                                                    android:layout_gravity="center"
-                                                                    android:text="플랭크"
-                                                                    android:textColor="#000000"
-                                                                    android:textSize="18dp"
-                                                                    app:fontFamily="sans-serif-condensed-light" />
-                                                        </LinearLayout>
-
-                                                        <LinearLayout
-                                                            android:layout_width="match_parent"
-                                                            android:layout_height="match_parent"
-                                                            android:orientation="vertical"
-                                                            android:background="@drawable/all_border3"
-                                                            >
-
-                                                                <ImageButton
-                                                                    android:id="@+id/ht_y6"
-                                                                    android:layout_width="96dp"
-                                                                    android:layout_height="90dp"
-                                                                    android:layout_gravity="center"
-                                                                    android:layout_marginTop="3dp"
-                                                                    android:adjustViewBounds="true"
-                                                                    android:background="#00000000"
-                                                                    android:maxWidth="120dp"
-                                                                    android:maxHeight="120dp"
-                                                                    android:minWidth="120dp"
-                                                                    android:minHeight="120dp"
-                                                                    android:scaleType="centerInside"
-                                                                    android:src="@drawable/fitness2_6" />
-
-                                                                <TextView
-                                                                    android:id="@+id/textView16"
-                                                                    android:layout_width="wrap_content"
-                                                                    android:layout_height="wrap_content"
-                                                                    android:layout_gravity="center"
-                                                                    android:text="하체운동"
-                                                                    android:textColor="#000000"
-                                                                    android:textSize="18dp"
-                                                                    app:fontFamily="sans-serif-condensed-light" />
-                                                        </LinearLayout>
-
-                                                </TableRow>
-                                                -->
                 </TableLayout>
 
         </ScrollView>

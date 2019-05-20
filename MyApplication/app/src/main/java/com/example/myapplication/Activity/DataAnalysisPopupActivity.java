@@ -36,18 +36,18 @@ public class DataAnalysisPopupActivity extends AppCompatActivity {
             for (int i = 0; i < exerciseNames.size(); ++i) {
                 DA2_List_Item oItem = new DA2_List_Item();
                 String exerciseName = exerciseNames.get(i);
-                oItem.strExercise = exerciseName;
+                oItem.setStrExercise(exerciseName);
                 // todo: 운동한 횟수
-                oItem.ExerciseCount = "todo : 10회";
-                oItem.strText = sqliteHelper.getDayAnalysisText(sDay, "'" + exerciseName + "'");
+                oItem.setExerciseCount("todo : 10회");
+                oItem.setStrText(sqliteHelper.getDayAnalysisText(sDay, "'" + exerciseName + "'"));
                 oAnalysis.add(oItem);
             }
         }
         else{
             DA2_List_Item oItem = new DA2_List_Item();
-            oItem.strExercise ="";
-            oItem.ExerciseCount = "운동 기록이 없습니다.";
-            oItem.strText = "";
+            oItem.setStrExercise("");
+            oItem.setExerciseCount("운동 기록이 없습니다.");
+            oItem.setStrText("");
             oAnalysis.add(oItem);
         }
 

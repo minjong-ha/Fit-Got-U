@@ -35,11 +35,10 @@ public class JoinActivity extends AppCompatActivity {
                 EditText weight = findViewById(R.id.join_weight_text);
                 EditText height = findViewById(R.id.join_height_text);
                 EditText address = findViewById(R.id.join_address_text);
-
                 int id = rg.getCheckedRadioButtonId();
                 RadioButton rb = (RadioButton) findViewById(id);
 
-                if (weight.getText().toString().trim().equals("") || height.getText().toString().trim().equals("") || address.getText().toString().trim().equals("") || rb.getText().toString().trim().equals("")) {
+                if (Util.Information_Filled(weight.getText().toString(), height.getText().toString(), address.getText().toString())) {
 
                 } else {
                     Util.requestUpdateProfile(activity, weight.getText().toString(), height.getText().toString(), address.getText().toString(), rb.getText().toString());

@@ -9,6 +9,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.support.v4.app.ActivityCompat;
+import android.widget.Toast;
 
 import com.example.myapplication.Activity.JoinActivity;
 import com.example.myapplication.Activity.LoginActivity;
@@ -187,6 +188,7 @@ public class Util {
 
             @Override
             public void onSessionClosed(ErrorResult errorResult) {
+                Toast.makeText(activity.getApplicationContext(), "오류가 발생했습니다." , Toast.LENGTH_SHORT).show();
                 Util.startLoginActivity(activity);
             }
 

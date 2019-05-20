@@ -261,18 +261,18 @@ public class DataAnalysisFragment extends Fragment {
         for (int i = 0; i < 7; ++i) {
             DA_List_Item oItem = new DA_List_Item();
             final String sDay = getTime(i);
-            oItem.strDate = days[i] + "  (" + sDay + ")";
+            oItem.setStrDate(days[i] + "  (" + sDay + ")");
 
             final ArrayList<String> exerciseNames = sqliteHelper.countDayExercise("'"+sDay+"'");
             int count = exerciseNames.size();
 
             if(count==0){
-                oItem.strText = "운동을 하지 않았습니다.";
+                oItem.setStrText("운동을 하지 않았습니다.");
             }else{
-                oItem.strText = String.format("총 %d가지의 운동기록이 있습니다.",count);
+                oItem.setStrText(String.format("총 %d가지의 운동기록이 있습니다.",count));
             }
 
-            oItem.onClickListener = new Button.OnClickListener() {
+            oItem.setOnClickListener( new Button.OnClickListener() {
                 // 버튼 선택시 상세 운동 정보 팝업을 켬
                 @Override
                 public void onClick(View v) {
@@ -283,7 +283,7 @@ public class DataAnalysisFragment extends Fragment {
                     startActivityForResult(intent, 101);
 
                 }
-            };
+            });
             oData.add(oItem);
         }
 

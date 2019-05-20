@@ -124,6 +124,7 @@
             android:id="@+id/rbutton_user"
             android:layout_width="90dp"
             android:layout_height="match_parent"
+            android:checked="true"
             android:text="유저"
             tools:layout_editor_absoluteX="-90dp"
             tools:layout_editor_absoluteY="0dp" />
