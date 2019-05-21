@@ -149,7 +149,7 @@ public class TrainerMatchFragment extends Fragment {
 
                             ArrayList<HashMap<String, String>> trainerlist = Util.SelectTrainerList();
                             for (HashMap<String, String> t : trainerlist) {
-                                adapter.addItem(new TrainerItem(Long.parseLong(t.get("userid")), t.get("name"), distance, t.get("profile_image"), t.get("userid")));
+                                adapter.addItem(new TrainerItem(Long.parseLong(t.get("userid")), t.get("name"), distance, t.get("profile_image"), t.get("youtube")));
                             }
 
                             mapView.setMapCenterPoint(mapPoint, true); // animated : true
