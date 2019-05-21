@@ -30,6 +30,8 @@ import net.daum.mf.map.api.MapView;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
@@ -42,6 +44,8 @@ public class TrainerMatchFragment extends Fragment {
     ViewGroup mapViewContainer;
     MapPOIItem marker;
     Location location, t_location;
+    ArrayList<TrainerItem> itemList = new ArrayList<TrainerItem>() ;
+    boolean isSecond = false;
 
     @Nullable
     @Override
@@ -66,7 +70,7 @@ public class TrainerMatchFragment extends Fragment {
         //리스트뷰 객체화
         ListView listView = (ListView) view.findViewById(R.id.listView);
         //어댑터 객체화
-        adapter = new TrainerAdapter();
+        adapter = new TrainerAdapter(itemList);
         ArrayList<HashMap<String, String>> trainerlist = Util.SelectTrainerList();
 
         if (((MainActivity) getActivity()).getIs_user()!=null) {
@@ -121,13 +125,15 @@ public class TrainerMatchFragment extends Fragment {
                     MapPOIItem tmarker = new MapPOIItem();
                     markers.add(tmarker);
 
+                    if(!isSecond) {
                     t_location.setLongitude(t_longitude);
                     t_location.setLatitude(t_latitude);
 
                     double distance = Math.round(location.distanceTo(t_location) / 10.0) / 100.0;
                     if (distance <= 0.01) distance = 0.01;
 
-                    adapter.addItem(new TrainerItem(Long.parseLong(t.get("userid")), t.get("name"), distance, t.get("profile_image"), t.get("userid")));
+                        adapter.addItem(new TrainerItem(Long.parseLong(t.get("userid")), t.get("name"), distance, t.get("profile_image"), t.get("youtube")));
+                    }
 
                     mapView.setMapCenterPoint(mapPoint, true); // animated : true
                     mapViewed(tmarker, mapPoint, mapView, false);
@@ -135,8 +141,25 @@ public class TrainerMatchFragment extends Fragment {
             }
         }
 
+        Comparator<TrainerItem> dis_asc = new Comparator<TrainerItem>() {
+            @Override
+            public int compare(TrainerItem t1, TrainerItem t2) {
+                int res;
+
+                if (Double.compare(t1.getDistance(),t2.getDistance())>0) res = 1;
+                else if (Double.compare(t1.getDistance(),t2.getDistance()) == 0) res = 0;
+                else res = -1;
+                return res;
+            }
+        };
+
         //리스트뷰+어댑터
         listView.setAdapter(adapter);
+
+
+        Collections.sort(itemList, dis_asc) ;
+        adapter.notifyDataSetChanged() ;
+
 
         //리스트뷰 이벤트리스너
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -150,11 +173,21 @@ public class TrainerMatchFragment extends Fragment {
                 ((MainActivity) getActivity()).ChangeFragmentMain(tm2);
             }
         });
+        isSecond=true;
         return view;
     }
 
     class TrainerAdapter extends BaseAdapter {
-        ArrayList<TrainerItem> items = new ArrayList<TrainerItem>();
+        private ArrayList<TrainerItem> items;
+
+        public TrainerAdapter(ArrayList<TrainerItem> itemList) {
+            if (itemList == null) {
+                items = new ArrayList<TrainerItem>() ;
+            } else {
+                items = itemList ;
+            }
+        }
+        //ArrayList<TrainerItem> items = new ArrayList<TrainerItem>();
 
         @Override
         public int getCount() {
@@ -199,11 +232,13 @@ public class TrainerMatchFragment extends Fragment {
     }
 
     public void mapViewed(MapPOIItem marker, MapPoint mapPoint, MapView mapView, boolean user) {
-        marker.setItemName("검색 위치");
         marker.setTag(0);
         marker.setMapPoint(mapPoint);
         if (user) marker.setMarkerType(MapPOIItem.MarkerType.BluePin);
-        else marker.setMarkerType(MapPOIItem.MarkerType.RedPin);
+        else {
+            marker.setItemName("트레이너");
+            marker.setMarkerType(MapPOIItem.MarkerType.RedPin);
+        }
         mapView.addPOIItem(marker);
     }
 }
