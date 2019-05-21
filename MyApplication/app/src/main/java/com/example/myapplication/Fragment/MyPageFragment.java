@@ -40,11 +40,12 @@ public class MyPageFragment extends Fragment implements View.OnClickListener {
 
         ArrayList<MP_List_Item> items = new ArrayList<>();
         items.add(new MP_List_Item(R.string.my_info));
-        if (((MainActivity)getActivity()).getIs_user().equals("트레이너")) {
+        if (((MainActivity) getActivity()).getIs_user().equals("트레이너")) {
             items.add(new MP_List_Item(R.string.my_youtube));
         } else {
             items.add(new MP_List_Item(R.string.my_youtube));
         }
+
         items.add(new MP_List_Item(R.string.app_info));
         items.add(new MP_List_Item(R.string.logout));
         items.add(new MP_List_Item(R.string.separate));

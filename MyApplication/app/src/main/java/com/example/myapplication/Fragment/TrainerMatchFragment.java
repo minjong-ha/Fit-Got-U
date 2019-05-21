@@ -35,28 +35,19 @@ import java.util.List;
 
 public class TrainerMatchFragment extends Fragment {
     TrainerAdapter adapter;
-    //Button button;
-    //EditText editText;
-    Button trainer_button;
-    EditText trainer_editText;
     Geocoder geocoder;
-    double latitude=37.283014,longitude=127.046355;
-    double trainer_latitude, trainer_longitude;
+    double latitude, longitude, t_latitude, t_longitude;
     MapPoint mapPoint;
     MapView mapView;
     ViewGroup mapViewContainer;
     MapPOIItem marker;
-    Location location, trainer_location;
+    Location location, t_location;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_trainer_match, container, false);
 
-        //button = (Button)view.findViewById(R.id.button);
-        trainer_button = (Button)view.findViewById(R.id.button2);
-        //editText = (EditText)view.findViewById(R.id.editText);
-        trainer_editText = (EditText)view.findViewById(R.id.editText2);
         geocoder = new Geocoder(getActivity());
         final ArrayList<MapPOIItem> markers = new ArrayList<>();
 
@@ -65,26 +56,53 @@ public class TrainerMatchFragment extends Fragment {
         mapPoint = MapPoint.mapPointWithGeoCoord(latitude, longitude);
         mapView.setMapCenterPoint(mapPoint, true);
         mapViewContainer.addView(mapView);
-        location= new Location("user_location");
-        trainer_location=new Location("trainer_location");
+        location = new Location("user_location");
+        t_location = new Location("t_location");
 
         markers.add(new MapPOIItem());
-        marker=markers.get(0);
-        marker.setItemName("아주대학교");
-        mapViewed(marker, mapPoint, mapView, false);
+        marker = markers.get(0);
+        //mapViewed(marker, mapPoint, mapView, false);
 
         //리스트뷰 객체화
         ListView listView = (ListView) view.findViewById(R.id.listView);
         //어댑터 객체화
         adapter = new TrainerAdapter();
+        ArrayList<HashMap<String, String>> trainerlist = Util.SelectTrainerList();
 
+        if (((MainActivity) getActivity()).getIs_user()!=null) {
+            List<Address> lists = null;
+            String strs = ((MainActivity) getActivity()).getAddress();
+            try {
+                lists = geocoder.getFromLocationName(
+                        strs, // 지역 이름
+                        1); // 읽을 개수
+            } catch (IOException e) {
+                e.printStackTrace();
+                Log.e("test", "입출력 오류 - 서버에서 주소변환시 에러발생");
+            }
 
-//        button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-        if(((MainActivity)getActivity()).getIs_user().equals("유저")) {
+            if (lists != null) {
+                if (lists.size() == 0) {
+                    Toast.makeText(getActivity().getApplicationContext(), "주소를 찾을 수 없습니다", Toast.LENGTH_LONG).show();
+                } else {
+                    marker = markers.get(0);
+                    mapView.removePOIItem(marker);
+                    longitude = lists.get(0).getLongitude();
+                    latitude = lists.get(0).getLatitude();
+                    location.setLongitude(longitude);
+                    location.setLatitude(latitude);
+                    mapPoint = MapPoint.mapPointWithGeoCoord(latitude, longitude);
+                    marker.setItemName("내 위치");
+
+                    mapView.setMapCenterPoint(mapPoint, true); // animated : true
+                    mapViewed(marker, mapPoint, mapView, true);
+                }
+            }
+        }
+
+        for (HashMap<String, String> t : trainerlist) {
             List<Address> list = null;
-            String str = ((MainActivity) getActivity()).getAddress();
+            String str = t.get("address");
             try {
                 list = geocoder.getFromLocationName(
                         str, // 지역 이름
@@ -93,72 +111,30 @@ public class TrainerMatchFragment extends Fragment {
                 e.printStackTrace();
                 Log.e("test", "입출력 오류 - 서버에서 주소변환시 에러발생");
             }
-
             if (list != null) {
                 if (list.size() == 0) {
                     Toast.makeText(getActivity().getApplicationContext(), "주소를 찾을 수 없습니다", Toast.LENGTH_LONG).show();
                 } else {
-                    marker = markers.get(0);
-                    mapView.removePOIItem(marker);
-                    longitude = list.get(0).getLongitude();
-                    latitude = list.get(0).getLatitude();
-                    location.setLongitude(longitude);
-                    location.setLatitude(latitude);
-                    mapPoint = MapPoint.mapPointWithGeoCoord(latitude, longitude);
+                    t_longitude = list.get(0).getLongitude();
+                    t_latitude = list.get(0).getLatitude();
+                    mapPoint = MapPoint.mapPointWithGeoCoord(t_latitude, t_longitude);
+                    MapPOIItem tmarker = new MapPOIItem();
+                    markers.add(tmarker);
+
+                    t_location.setLongitude(t_longitude);
+                    t_location.setLatitude(t_latitude);
+
+                    double distance = Math.round(location.distanceTo(t_location) / 10.0) / 100.0;
+                    if (distance <= 0.01) distance = 0.01;
+
+                    adapter.addItem(new TrainerItem(Long.parseLong(t.get("userid")), t.get("name"), distance, t.get("profile_image"), t.get("userid")));
 
                     mapView.setMapCenterPoint(mapPoint, true); // animated : true
-                    mapViewed(marker, mapPoint, mapView, false);
+                    mapViewed(tmarker, mapPoint, mapView, false);
                 }
             }
-
-//            }
-//        });
         }
 
-//        trainer_button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-                if(((MainActivity)getActivity()).getIs_user().equals("트레이너")) {
-                    List<Address> list = null;
-                    String str = ((MainActivity) getActivity()).getAddress();
-                    //String str = trainer_editText.getText().toString();
-                    try {
-                        list = geocoder.getFromLocationName(
-                                str, // 지역 이름
-                                10); // 읽을 개수
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                        Log.e("test", "입출력 오류 - 서버에서 주소변환시 에러발생");
-                    }
-
-                    if (list != null) {
-                        if (list.size() == 0) {
-                            Toast.makeText(getActivity().getApplicationContext(), "주소를 찾을 수 없습니다", Toast.LENGTH_LONG).show();
-                        } else {
-                            trainer_longitude = list.get(0).getLongitude();
-                            trainer_latitude = list.get(0).getLatitude();
-                            mapPoint = MapPoint.mapPointWithGeoCoord(trainer_latitude, trainer_longitude);
-                            MapPOIItem tmarker = new MapPOIItem();
-                            markers.add(tmarker);
-
-                            trainer_location.setLongitude(trainer_longitude);
-                            trainer_location.setLatitude(trainer_latitude);
-
-                            double distance = Math.round(location.distanceTo(trainer_location) / 10.0) / 100.0;
-                            if (distance <= 0.01) distance = 0.01;
-
-                            ArrayList<HashMap<String, String>> trainerlist = Util.SelectTrainerList();
-                            for (HashMap<String, String> t : trainerlist) {
-                                adapter.addItem(new TrainerItem(Long.parseLong(t.get("userid")), t.get("name"), distance, t.get("profile_image"), t.get("userid")));
-                            }
-
-                            mapView.setMapCenterPoint(mapPoint, true); // animated : true
-                            mapViewed(tmarker, mapPoint, mapView, true);
-                        }
-                    }
-//            }
-//        });
-                }
         //리스트뷰+어댑터
         listView.setAdapter(adapter);
 
@@ -171,7 +147,7 @@ public class TrainerMatchFragment extends Fragment {
                 args.putString("youtube", item.getYoutube());
                 TrainerMatch2Fragment tm2 = new TrainerMatch2Fragment();
                 tm2.setArguments(args);
-                ((MainActivity)getActivity()).ChangeFragmentMain(tm2);
+                ((MainActivity) getActivity()).ChangeFragmentMain(tm2);
             }
         });
         return view;
@@ -185,7 +161,7 @@ public class TrainerMatchFragment extends Fragment {
             return items.size();
         }
 
-        public void addItem(TrainerItem item){
+        public void addItem(TrainerItem item) {
             items.add(item);
         }
 
@@ -201,13 +177,13 @@ public class TrainerMatchFragment extends Fragment {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            TrainerItemView view=null;
+            TrainerItemView view = null;
 
-            if(convertView == null){
+            if (convertView == null) {
                 //어떤 뷰든 context 객체로 받으므로 adapter의 getview에서 getApplicationContext() 로 받아옴
                 view = new TrainerItemView(getActivity().getApplicationContext());
                 //이 때 받아온 view 자체가 아이템
-            }else {
+            } else {
                 //부 재사용 (메모리 효용)
                 view = (TrainerItemView) convertView;
             }
@@ -222,11 +198,11 @@ public class TrainerMatchFragment extends Fragment {
         }
     }
 
-    public static void mapViewed(MapPOIItem marker, MapPoint mapPoint, MapView mapView, boolean trainer){
+    public void mapViewed(MapPOIItem marker, MapPoint mapPoint, MapView mapView, boolean user) {
         marker.setItemName("검색 위치");
         marker.setTag(0);
         marker.setMapPoint(mapPoint);
-        if(!trainer) marker.setMarkerType(MapPOIItem.MarkerType.BluePin);
+        if (user) marker.setMarkerType(MapPOIItem.MarkerType.BluePin);
         else marker.setMarkerType(MapPOIItem.MarkerType.RedPin);
         mapView.addPOIItem(marker);
     }
