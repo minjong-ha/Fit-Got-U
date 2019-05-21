@@ -102,7 +102,9 @@
         app:layout_constraintHorizontal_bias="0.451"
         app:layout_constraintStart_toEndOf="@+id/textView3"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="1.0" >
+    <requestFocus />
+    </EditText>
 
     <RadioGroup
         android:id="@+id/radioGroup"

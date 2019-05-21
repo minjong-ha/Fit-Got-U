@@ -143,29 +143,51 @@ public class Util {
         return sdata;
     }
 
-    public static String UpdateUser(String kakaoid, String address, String weight, String height, String youtubechannelid) {//트레이너 포함
-        String str = null;
-        try {
-            DBPHPTask task = new DBPHPTask("update_user");
-            str =  task.execute("user_id", kakaoid, "home_address", address, "weight", weight, "height", height, "youtubechannelid", youtubechannelid).get();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return str;
-    }
-
-    public static String InsertUser(String kakaoid, String address, String weight, String height, String is_user) {
+    public static String InsertUser(String kakaoid, String name, String profile_image, String address, String weight, String height, String is_user) {//트레이너 포함
         String str = null;
         try {
             DBPHPTask task = new DBPHPTask("insert_user");
-            str =  task.execute("user_id", kakaoid, "home_address", address, "weight", weight, "height", height, "is_user", is_user).get();
+            str = task.execute("user_id", kakaoid, "username", name, "profile_image", profile_image, "home_address", address, "weight", weight, "height", height, "is_user", is_user).get();
         } catch (Exception e) {
             e.printStackTrace();
         }
         return str;
     }
 
-    public static HashMap<String, String> SelectUser(String userid) {
+    public static String UpdateUser(String kakaoid, String address, String weight, String height, String youtube) {//트레이너 포함
+        String str = null;
+        try {
+            DBPHPTask task = new DBPHPTask("update_user");
+            str =  task.execute("user_id", kakaoid, "home_address", address, "weight", weight, "height", height, "youtube", youtube).get();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return str;
+    }
+
+    public static String UpdateUser_Auto(String kakaoid, String name, String profile_image) {//트레이너 포함
+        String str = null;
+        try {
+            DBPHPTask task = new DBPHPTask("update_user_auto");
+            str =  task.execute("user_id", kakaoid, "username", name, "profile_image", profile_image).get();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return str;
+    }
+
+    public static String DeleteUser(String kakaoid) {//트레이너 포함
+        String str = null;
+        try {
+            DBPHPTask task = new DBPHPTask("delete_user");
+            str =  task.execute("user_id", kakaoid).get();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return str;
+    }
+
+    public static HashMap<String, String> SelectUser(String userid) {//트레이너 포함
         HashMap<String, String> mHashMap = null;
         try {
             DBPHPTask task = new DBPHPTask("select_user");
@@ -183,7 +205,6 @@ public class Util {
 
             if (jsonArray.length() > 0) {
                 JSONObject item = jsonArray.getJSONObject(0);
-
                 String address = item.getString("home_address");
                 String is_user = item.getString("is_user");
                 String weight = item.getString("weight");
@@ -207,7 +228,7 @@ public class Util {
     public static ArrayList<HashMap<String, String>> SelectTrainerList() {
         ArrayList<HashMap<String, String>> mArrayList = new ArrayList<>();
         try {
-            DBPHPTask task = new DBPHPTask("select_trainerlist");
+            DBPHPTask task = new DBPHPTask("select_trainer_list");
             mArrayList =  getJsonTrainerList(task.execute().get());
         } catch (Exception e) {
             e.printStackTrace();
@@ -225,19 +246,23 @@ public class Util {
                 JSONObject item = jsonArray.getJSONObject(i);
 
                 String userid = item.getString("user_id");
+                String name = item.getString("username");
+                String profile_image = item.getString("profile_image");
                 String address = item.getString("home_address");
                 String is_user = item.getString("is_user");
-                String youtubechannelid = item.getString("youtubechannelid");
-                if (youtubechannelid == null) {
-                    youtubechannelid = "";
+                String youtube = item.getString("youtube");
+                if (youtube == null) {
+                    youtube = "";
                 }
 
                 HashMap<String,String> hashMap = new HashMap<>();
 
                 hashMap.put("userid", userid);
+                hashMap.put("name", name);
+                hashMap.put("profile_image", profile_image);
                 hashMap.put("address", address);
                 hashMap.put("is_user", is_user);
-                hashMap.put("youtubechannelid", youtubechannelid);
+                hashMap.put("youtube", youtube);
 
                 mArrayList.add(hashMap);
             }
@@ -256,9 +281,11 @@ public class Util {
         activity.startActivity(new Intent(activity.getApplicationContext(), LoginActivity.class));
     }
 
-    public static void startJoinActivity(Activity activity, long kakaoid) {
+    public static void startJoinActivity(Activity activity, long kakaoid, String name, String profile_image) {
         Intent intent = new Intent(activity.getApplicationContext(), JoinActivity.class);
         intent.putExtra("kakaoid", kakaoid);
+        intent.putExtra("username", name);
+        intent.putExtra("profile_image", profile_image);
         ActivityCompat.finishAffinity(activity);
         activity.startActivity(intent);
     }

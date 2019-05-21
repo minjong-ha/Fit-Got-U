@@ -39,8 +39,10 @@ public class JoinActivity extends AppCompatActivity {
                 int id = rg.getCheckedRadioButtonId();
                 RadioButton rb = (RadioButton) findViewById(id);
                 long kakaoid = getIntent().getLongExtra("kakaoid", 0);
+                String username = getIntent().getStringExtra("username");
+                String profile_image = getIntent().getStringExtra("profile_image");
                 if (kakaoid != 0 && Util.Information_Filled(weight.getText().toString(), height.getText().toString(), address.getText().toString(), rb.getText().toString())) {
-                    String str = Util.InsertUser(kakaoid + "", address.getText().toString(), weight.getText().toString(), height.getText().toString(), rb.getText().toString());
+                    String str = Util.InsertUser(kakaoid + "", username, profile_image, address.getText().toString(), weight.getText().toString(), height.getText().toString(), rb.getText().toString());
                     if (str.equals("success")) {
                         Util.startMainActivity(activity);
                     }

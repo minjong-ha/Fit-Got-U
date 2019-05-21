@@ -6,10 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.myapplication.Activity.MainActivity;
+import com.example.myapplication.Etc.Util;
 import com.example.myapplication.List.MP_List_Item;
 import com.example.myapplication.List.MP_List_Item_Adapter;
 import com.example.myapplication.R;
@@ -28,11 +30,13 @@ public class MyPageFragment extends Fragment implements View.OnClickListener {
         TextView isuser = (TextView)view.findViewById(R.id.mp_isuser2);
         TextView address = (TextView)view.findViewById(R.id.mp_address2);
         TextView spec = (TextView)view.findViewById(R.id.mp_spec2);
+        ImageView profile = (ImageView)view.findViewById(R.id.mp_profile);
 
         name.setText(((MainActivity)getActivity()).getNickname());
         isuser.setText(((MainActivity)getActivity()).getIs_user());
         address.setText(((MainActivity)getActivity()).getAddress());
         spec.setText(((MainActivity)getActivity()).getHeight()+"cm/"+(((MainActivity)getActivity()).getWeight())+"kg");
+        profile.setImageBitmap(Util.getImagefromURL(((MainActivity)getActivity()).getThumbnail()));
 
         ArrayList<MP_List_Item> items = new ArrayList<>();
         items.add(new MP_List_Item(R.string.my_info));

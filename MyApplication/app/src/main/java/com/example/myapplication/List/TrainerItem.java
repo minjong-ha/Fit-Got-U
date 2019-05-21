@@ -1,9 +1,10 @@
 package com.example.myapplication.List;
 
 public class TrainerItem {
+    long kakaoid;
     String name;
-    int resId;
-    String youtubechannelurl;
+    String profile_image;
+    String youtube;
     double distance;
 
     @Override
@@ -14,11 +15,20 @@ public class TrainerItem {
                 '}';
     }
 	
-    public TrainerItem(String name, double distance, int resId, String youtubechannelurl) {
+    public TrainerItem(long kakaoid, String name, double distance, String profile_image, String youtube) {
+        this.kakaoid = kakaoid;
         this.name = name;
         this.distance = distance;
-        this.resId=resId;
-        this.youtubechannelurl=youtubechannelurl;
+        this.profile_image=profile_image;
+        this.youtube=youtube;
+    }
+
+    public long getKakaoid() {
+        return kakaoid;
+    }
+
+    public void setKakaoid(long kakaoid) {
+        this.kakaoid = kakaoid;
     }
 
     public String getName() {
@@ -29,19 +39,24 @@ public class TrainerItem {
         this.name = name;
     }
 
+    public String getProfile_image() {
+        return profile_image;
+    }
+
+    public void setProfile_image(String profile_image) {
+        this.profile_image = profile_image;
+    }
+
+    public String getYoutube() {
+        return youtube;
+    }
+
+    public void setYoutube(String youtube) {
+        this.youtube = youtube;
+    }
+
     public double getDistance() {
         return distance;
-    }
-
-    public int getResId() {
-        return resId;
-    }
-
-    public String getYoutubechannelurl() {
-        return youtubechannelurl;
-    }
-    public void setResId(int resId) {
-        this.resId = resId;
     }
 
     public void setDistance(double distance) {

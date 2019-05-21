@@ -1,12 +1,14 @@
 package com.example.myapplication.List;
 
 import android.content.Context;
+import android.net.Uri;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.myapplication.Etc.Util;
 import com.example.myapplication.R;
 
 public class TrainerItemView extends LinearLayout {
@@ -40,8 +42,8 @@ public class TrainerItemView extends LinearLayout {
         textView2.setText(Double.toString(distance).concat(" km"));
     }
 
-    public void setImage(int resId){
-        imageView.setImageResource(resId);
+    public void setImage(String youtube){
+        imageView.setImageBitmap(Util.getImagefromURL(youtube));
     }
 
 }

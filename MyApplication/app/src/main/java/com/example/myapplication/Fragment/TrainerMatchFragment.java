@@ -148,8 +148,9 @@ public class TrainerMatchFragment extends Fragment {
                             if (distance <= 0.01) distance = 0.01;
 
                             ArrayList<HashMap<String, String>> trainerlist = Util.SelectTrainerList();
-
-                            adapter.addItem(new TrainerItem("텔론", distance, R.drawable.ic_launcher_background, "https://www.youtube.com/user/xordn6579"));
+                            for (HashMap<String, String> t : trainerlist) {
+                                adapter.addItem(new TrainerItem(Long.parseLong(t.get("userid")), t.get("name"), distance, t.get("profile_image"), t.get("userid")));
+                            }
 
                             mapView.setMapCenterPoint(mapPoint, true); // animated : true
                             mapViewed(tmarker, mapPoint, mapView, true);
@@ -167,7 +168,7 @@ public class TrainerMatchFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 TrainerItem item = (TrainerItem) adapter.getItem(position);
                 Bundle args = new Bundle();
-                args.putString("youtubechannelurl", item.getYoutubechannelurl());
+                args.putString("youtube", item.getYoutube());
                 TrainerMatch2Fragment tm2 = new TrainerMatch2Fragment();
                 tm2.setArguments(args);
                 ((MainActivity)getActivity()).ChangeFragmentMain(tm2);
@@ -215,7 +216,7 @@ public class TrainerMatchFragment extends Fragment {
             TrainerItem item = items.get(position);
             view.setName(item.getName());
             view.setDistance(item.getDistance());
-            view.setImage(item.getResId());
+            view.setImage(item.getProfile_image());
 
             return view;
         }

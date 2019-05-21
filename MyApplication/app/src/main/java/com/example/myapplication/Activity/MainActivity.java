@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
     private String height;
     private String is_user;
     private String address;
-    private String youtubechannelid = "";
+    private String youtube = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -210,6 +210,7 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
                     Logout(this);
                     break;
                 case R.string.separate:
+                    Util.DeleteUser(kakaoid + "");
                     Logout(this);
                     break;
             }
@@ -250,9 +251,6 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
                 kakaoid = result.getId();
                 nickname = result.getNickname();
                 thumbnail = result.getThumbnailImagePath();
-                Bitmap bitmap = Util.getImagefromURL(thumbnail);
-                if (bitmap != null) {
-                }
                 HashMap<String, String> userdata = Util.SelectUser(kakaoid + "");
                 if (userdata != null) {
                     weight = userdata.get("weight");
@@ -261,7 +259,9 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
                     is_user = userdata.get("is_user");
                 }
                 if (!Util.Information_Filled(weight, height, address, is_user)) {
-                    Util.startJoinActivity(activity, kakaoid);
+                    Util.startJoinActivity(activity, kakaoid, nickname, thumbnail);
+                } else {
+                    Util.UpdateUser_Auto(kakaoid + "", nickname, thumbnail);
                 }
             }
         });
@@ -336,11 +336,11 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
         this.address = address;
     }
 
-    public String getYoutubechannelid() {
-        return youtubechannelid;
+    public String getYoutube() {
+        return youtube;
     }
 
-    public void setYoutubechannelid(String youtubechannelid) {
-        this.youtubechannelid = youtubechannelid;
+    public void setYoutube(String youtube) {
+        this.youtube = youtube;
     }
 }

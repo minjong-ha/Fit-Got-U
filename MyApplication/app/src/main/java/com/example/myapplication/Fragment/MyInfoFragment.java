@@ -78,10 +78,10 @@ public class MyInfoFragment extends Fragment {
                         ((MainActivity)getActivity()).setWeight(changed);
                         break;
                     case 3:
-                        ((MainActivity)getActivity()).setYoutubechannelid(changed);
+                        ((MainActivity)getActivity()).setYoutube(changed);
                         break;
                 }
-                Util.UpdateUser(((MainActivity)getActivity()).getKakaoid() + "", ((MainActivity)getActivity()).getAddress(), ((MainActivity)getActivity()).getWeight(), ((MainActivity)getActivity()).getHeight(), ((MainActivity)getActivity()).getYoutubechannelid());
+                Util.UpdateUser(((MainActivity)getActivity()).getKakaoid() + "", ((MainActivity)getActivity()).getAddress(), ((MainActivity)getActivity()).getWeight(), ((MainActivity)getActivity()).getHeight(), ((MainActivity)getActivity()).getYoutube());
                 Toast.makeText(getActivity().getApplicationContext(), "변경되었습니다.", Toast.LENGTH_SHORT).show();
             }
         }

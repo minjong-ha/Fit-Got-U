@@ -21,20 +21,20 @@ import java.util.ArrayList;
 
 public class TrainerMatch2Fragment extends Fragment implements AdapterView.OnItemClickListener {
     private ArrayList<YoutubeData> youtubelist = new ArrayList<>();
-    private String youtubechannelurl = null;
+    private String youtube = null;
     private TM2_List_Item_adapter adapter;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_trainer_match2, container, false);
         if (getArguments() != null) {
-            youtubechannelurl = getArguments().getString("youtubechannelurl");
+            youtube = getArguments().getString("youtube");
         }
         try {
-            if (youtubechannelurl != null) {
-                youtubechannelurl = ParsingUrl(youtubechannelurl);
-                if (youtubechannelurl != null) {
-                    YoutubeVideoSearchTask task2 = new YoutubeVideoSearchTask(getString(R.string.google_api_key), youtubechannelurl);
+            if (youtube != null) {
+                youtube = ParsingUrl(youtube);
+                if (youtube != null) {
+                    YoutubeVideoSearchTask task2 = new YoutubeVideoSearchTask(getString(R.string.google_api_key), youtube);
                     youtubelist = Util.paringYoutubeVideoJsonData(task2.execute().get());
                 }
             }
