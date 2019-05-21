@@ -17,6 +17,7 @@ package com.example;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Camera;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -69,6 +70,18 @@ public class CameraActivity extends Activity {
         setContentView(R.layout.activity_camera);
 
         TextView explain = (TextView)findViewById(R.id.text);
+
+        TextView exerciseCountBtn = (TextView)findViewById(R.id.exeercisecount);
+        TextView validCountBtn = (TextView)findViewById(R.id.validcount);
+        TextView upperCountBtn = (TextView)findViewById(R.id.uppercount);
+        TextView lowerCountBtn = (TextView)findViewById(R.id.lowercount);
+
+        exerciseCountBtn.setText(""+Calculate.exerciseCount);
+        validCountBtn.setText(""+Calculate.validCount);
+        upperCountBtn.setText(""+Calculate.uppperCount);
+        lowerCountBtn.setText(""+Calculate.lowerCount);
+        //이거 자동업데이트 어떻게 해야할까
+
         if (null == savedInstanceState) {
             getFragmentManager()
                     .beginTransaction()
@@ -84,7 +97,8 @@ public class CameraActivity extends Activity {
     }
 
     public void onClick(View view){
-        Log.d("result", "exerciseCount: " + Calculate.exerciseCount);
+        Log.d("result", "exerciseCount: " + Calculate.exerciseCount +" validCount: " + Calculate.validCount);
+        Log.d("result", "upperCount: " + Calculate.uppperCount + " lowerCount: " + Calculate.lowerCount);
         Log.d("result", "left: " + Calculate.left);
         finish();
 
@@ -99,6 +113,10 @@ public class CameraActivity extends Activity {
         } else {
             mLoaderCallback.onManagerConnected(LoaderCallbackInterface.SUCCESS);
         }
+
+
+
+
     }
 
     @Override

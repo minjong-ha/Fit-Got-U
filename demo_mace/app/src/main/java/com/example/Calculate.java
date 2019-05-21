@@ -1,9 +1,17 @@
 package com.example;
 
+import android.app.Activity;
 import android.graphics.PointF;
+import android.media.AudioManager;
+import android.media.SoundPool;
+import android.speech.tts.TextToSpeech;
 import android.util.Log;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.concurrent.CopyOnWriteArrayList;
 /**
  * Created by a1 on 09/05/2019.
@@ -23,17 +31,18 @@ public class Calculate {
     static ArrayList<Double> tmpList1 = new ArrayList<Double>();
     static ArrayList<Double> tmpList2 = new ArrayList<Double>();
     static int exerciseCount = 0;
+    static int validCount = 0;
+    static int uppperCount = 0;
+    static int lowerCount = 0;
 
-    static CopyOnWriteArrayList<PointF> lastPoints;
+    static CopyOnWriteArrayList<PointF> lastPoints = new CopyOnWriteArrayList<>();
 
     public void main(CopyOnWriteArrayList<PointF> Points){
 
-        //Point validate check;
-        /*if(Calculate.lastPoints.isEmpty() == true) {
+        //=====
+        if(Calculate.lastPoints.isEmpty() == true)
             Calculate.lastPoints = Points;
-        }*/
-
-
+        //=====
 
         PointF p0 = Points.get(0); //top
         PointF p1 = Points.get(1); //neck
@@ -52,13 +61,26 @@ public class Calculate {
 
 
         if(info.compareTo("스쿼트") == 0) {
-            double leftAng = Cal_Angle(p11,p12,p13); //left
-            double rightAng = Cal_Angle(p8,p9,p10);   //right
+            if(isPointFValidate(Calculate.lastPoints.get(11), p11)
+                    && isPointFValidate(Calculate.lastPoints.get(12), p12)
+                    && isPointFValidate(Calculate.lastPoints.get(13), p13)
+                    && isPointFValidate(Calculate.lastPoints.get(8), p8)
+                    && isPointFValidate(Calculate.lastPoints.get(9), p9)
+                    && isPointFValidate(Calculate.lastPoints.get(10), p10)) {
+                double leftAng = Cal_Angle(p11, p12, p13); //left
+                double rightAng = Cal_Angle(p8, p9, p10);   //right
 
-            Log.d("checkangle", Double.toString(leftAng));
-            squatAngleCheck2(leftAng, rightAng);
-            Calculate.left.add((int)leftAng);
-           // squatAngleCheck(leftAng, rightAng);
+                Log.d("checkangle", Double.toString(leftAng) + " " + Double.toString(rightAng));
+
+                squatAngleCheck2(leftAng, rightAng);
+                Calculate.left.add((int) leftAng);
+                // squatAngleCheck(leftAng, rightAng);
+
+                lastPoints = Points;
+            }
+            else {
+                //do nothing
+            }
         }
 
         else if(info.compareTo("팔벌리기") == 0)
@@ -76,7 +98,9 @@ public class Calculate {
         if(Angle < 0)
             Angle += 180;
 
-        return Angle;
+        Angle = 180 - Angle;
+
+       return Angle;
     }
 
     public void PointCheck(){
@@ -96,6 +120,7 @@ public class Calculate {
 
 
         if(Calculate.minAng1 == 360 || Calculate.minAng2 == 360) {
+
             Calculate.minAng1 = Angle1;
             Calculate.minAng2 = Angle2;
         }
@@ -117,10 +142,10 @@ public class Calculate {
 
     public void squatAngleCheck2(double Angle1, double Angle2) {
 
-        int limitUpAngle = 115;
+        int limitUpAngle = 140;
         int limitDownAngle = 70;
         int lowestAngle = 80; // for proper
-        int highestAngle = 100; // for proper
+        int highestAngle = 110; // for proper
 
         if((Angle1 < limitUpAngle && Angle1 > limitDownAngle) || (Angle2 < limitUpAngle && Angle2 > limitDownAngle)) {
             Calculate.isExercise = true;
@@ -137,13 +162,37 @@ public class Calculate {
             Calculate.minAng1 = minList(tmpList1);
             Calculate.minAng2 = minList(tmpList2);
             //feedback if needed
+            if(Calculate.minAng1 > highestAngle || Calculate.minAng2 > highestAngle) {
+                Calculate.uppperCount++;
+                squatUpperFeedback();
+            }
+            else if(Calculate.minAng1 < lowestAngle || Calculate.minAng2 < lowestAngle) {
+                Calculate.lowerCount++;
+                squatLowerFeedback();
+            }
+            else {
+                successFeedback();
+            }
+
 
             Calculate.tmpList1.clear();
             Calculate.tmpList2.clear();
 
             Calculate.exerciseCount++;
+            Calculate.validCount = Calculate.exerciseCount - (Calculate.uppperCount + Calculate.lowerCount);
+
         }
 
+    }
+    public void squatLowerFeedback() {
+
+    }
+
+    public void squatUpperFeedback() {
+
+    }
+
+    public void successFeedback() {
 
     }
 
@@ -164,8 +213,27 @@ public class Calculate {
 
         left.clear();
         right.clear();
-        //tmpList.clear();
+        tmpList1.clear();
+        tmpList2.clear();
+        lastPoints.clear();
+
         isExercise = false;
         exerciseCount = 0;
+        validCount = 0;
+        lowerCount = 0;
+        uppperCount = 0;
+    }
+
+    public double getDistance(double x1, double y1, double x2, double y2) {
+        return Math.sqrt(Math.pow(Math.abs(x2-x1), 2) + Math.pow(Math.abs(y2-y1), 2));
+    }
+
+    public boolean isPointFValidate(PointF last, PointF current) {
+        int limit = 5;
+
+        if(getDistance(last.x, last.y, current.x, current.y) <= limit)
+            return true;
+
+        return false;
     }
 }
