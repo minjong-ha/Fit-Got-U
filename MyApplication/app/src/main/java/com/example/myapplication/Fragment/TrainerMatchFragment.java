@@ -19,6 +19,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.myapplication.Activity.MainActivity;
+import com.example.myapplication.Etc.Util;
 import com.example.myapplication.List.TrainerItem;
 import com.example.myapplication.List.TrainerItemView;
 import com.example.myapplication.R;
@@ -29,6 +30,7 @@ import net.daum.mf.map.api.MapView;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class TrainerMatchFragment extends Fragment {
@@ -45,7 +47,6 @@ public class TrainerMatchFragment extends Fragment {
     ViewGroup mapViewContainer;
     MapPOIItem marker;
     Location location, trainer_location;
-    int count=0;
 
     @Nullable
     @Override
@@ -146,39 +147,10 @@ public class TrainerMatchFragment extends Fragment {
                             double distance = Math.round(location.distanceTo(trainer_location) / 10.0) / 100.0;
                             if (distance <= 0.01) distance = 0.01;
 
-                            //addItem
-                            switch (count) {
-                                case 0:
-                                    adapter.addItem(new TrainerItem("텔론", distance, R.drawable.ic_launcher_background, "https://www.youtube.com/user/xordn6579"));
-                                    count++;
-                                    break;
-                                case 1:
-                                    adapter.addItem(new TrainerItem("김등빨", distance, R.drawable.ic_launcher_background, null));
-                                    count++;
-                                    break;
-                                case 2:
-                                    adapter.addItem(new TrainerItem("이어깨", distance, R.drawable.ic_launcher_foreground, null));
-                                    count++;
-                                    break;
-                                case 3:
-                                    adapter.addItem(new TrainerItem("박하체", distance, R.drawable.ic_launcher_background, null));
-                                    count++;
-                                    break;
-                                case 4:
-                                    adapter.addItem(new TrainerItem("박근육", distance, R.drawable.ic_launcher_foreground, null));
-                                    count++;
-                                    break;
-                                case 5:
-                                    adapter.addItem(new TrainerItem("하정우", distance, R.drawable.ic_launcher_background, null));
-                                    count++;
-                                    break;
-                                case 6:
-                                    adapter.addItem(new TrainerItem("장가슴", distance, R.drawable.ic_launcher_foreground, null));
-                                    count++;
-                                    break;
-                                default:
-                                    break;
-                            }
+                            ArrayList<HashMap<String, String>> trainerlist = Util.SelectTrainerList();
+
+                            adapter.addItem(new TrainerItem("텔론", distance, R.drawable.ic_launcher_background, "https://www.youtube.com/user/xordn6579"));
+
                             mapView.setMapCenterPoint(mapPoint, true); // animated : true
                             mapViewed(tmarker, mapPoint, mapView, true);
                         }

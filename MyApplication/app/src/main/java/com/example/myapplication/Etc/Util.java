@@ -204,6 +204,49 @@ public class Util {
         return null;
     }
 
+    public static ArrayList<HashMap<String, String>> SelectTrainerList() {
+        ArrayList<HashMap<String, String>> mArrayList = new ArrayList<>();
+        try {
+            DBPHPTask task = new DBPHPTask("select_trainerlist");
+            mArrayList =  getJsonTrainerList(task.execute().get());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return mArrayList;
+    }
+
+    public static ArrayList<HashMap<String, String>> getJsonTrainerList(String JsonString) {
+        ArrayList<HashMap<String, String>> mArrayList = new ArrayList<>();
+        try {
+            JSONObject jsonObject = new JSONObject(JsonString);
+            JSONArray jsonArray = jsonObject.getJSONArray("fgy");
+
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject item = jsonArray.getJSONObject(i);
+
+                String userid = item.getString("user_id");
+                String address = item.getString("home_address");
+                String is_user = item.getString("is_user");
+                String youtubechannelid = item.getString("youtubechannelid");
+                if (youtubechannelid == null) {
+                    youtubechannelid = "";
+                }
+
+                HashMap<String,String> hashMap = new HashMap<>();
+
+                hashMap.put("userid", userid);
+                hashMap.put("address", address);
+                hashMap.put("is_user", is_user);
+                hashMap.put("youtubechannelid", youtubechannelid);
+
+                mArrayList.add(hashMap);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return mArrayList;
+    }
+
     public static boolean Information_Filled(String weight, String height, String address, String is_user) {
         return weight != null && height != null && address != null && is_user != null && !weight.equals("") && !height.equals("") && !address.equals("") && !is_user.equals("");
     }
