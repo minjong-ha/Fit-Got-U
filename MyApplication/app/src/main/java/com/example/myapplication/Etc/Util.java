@@ -143,11 +143,11 @@ public class Util {
         return sdata;
     }
 
-    public static String UpdateUser(String kakaoid, String address, String weight, String height) {
+    public static String UpdateUser(String kakaoid, String address, String weight, String height, String youtubechannelid) {//트레이너 포함
         String str = null;
         try {
             DBPHPTask task = new DBPHPTask("update_user");
-            str =  task.execute("user_id", kakaoid, "home_address", address, "weight", weight, "height", height).get();
+            str =  task.execute("user_id", kakaoid, "home_address", address, "weight", weight, "height", height, "youtubechannelid", youtubechannelid).get();
         } catch (Exception e) {
             e.printStackTrace();
         }

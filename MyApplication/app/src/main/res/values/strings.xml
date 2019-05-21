@@ -29,13 +29,16 @@
     <string name="fitness_1_1_6">운동6</string>
     <string name="fitness_1_1_6_desc">운동6 설명이다아아아아아아아</string>
 
-    <string name="my_info">내 정보</string>
+    <string name="my_info">내 정보 변경</string>
     <string name="my_trainer">내 트레이너</string>
     <string name="app_info">앱 정보</string>
     <string name="logout">로그아웃</string>
     <string name="separate">회원 탈퇴</string>
 
-    <string name="change_id">아이디 변경</string>
+    <string name="change_address">주소 변경</string>
+    <string name="change_height">키 변경</string>
+    <string name="change_weight">몸무게 변경</string>
+    <string name="change_youtubechannelid">유튜브 주소 변경</string>
 
     <string name="dialog_ht_start_text">이 운동 루틴을 실행하시겠습니까?</string>
 

@@ -7,46 +7,46 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.R;
 
 public class InfoChangeActivity extends AppCompatActivity {
-    Button IdChange, IdCancel;
-    EditText ChangedId;
+    Button Change, Cancel;
+    EditText Changed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_info);
 
-        IdChange = (Button) findViewById(R.id.IdChange);
-        IdCancel = (Button) findViewById(R.id.IdCancel);
-        ChangedId = (EditText) findViewById(R.id.ChangedId);
+        String name = getString(getIntent().getIntExtra("whatchange", 0));
+        TextView nameview = (TextView) findViewById(R.id.ci_name);
+        nameview.setText(name);
 
-        IdChange.setOnClickListener(new View.OnClickListener() {
+        Change = (Button) findViewById(R.id.IdChange);
+        Cancel = (Button) findViewById(R.id.IdCancel);
+        Changed = (EditText) findViewById(R.id.ChangedId);
+
+        Change.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String CId = ChangedId.getText().toString();
+                String CId = Changed.getText().toString();
                 if (CId.length() == 0) {
                     Toast.makeText(getApplicationContext(), "입력하지 않으셨습니다.", Toast.LENGTH_LONG).show();
                 } else {
                     Intent intent = new Intent();
-                    intent.putExtra("name",CId);
+                    intent.putExtra("changed",CId);
                     setResult(Activity.RESULT_OK, intent);
-
                     finish();
                 }
             }
         });
         
-        IdCancel.setOnClickListener(new View.OnClickListener() {
+        Cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.putExtra("name","NULLNAME");
-                setResult(Activity.RESULT_OK, intent);
-
                 finish();
             }
         });

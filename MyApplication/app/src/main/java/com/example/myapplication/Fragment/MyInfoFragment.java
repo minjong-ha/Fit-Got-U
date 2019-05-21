@@ -14,6 +14,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.myapplication.Activity.InfoChangeActivity;
+import com.example.myapplication.Activity.MainActivity;
+import com.example.myapplication.Etc.Util;
 import com.example.myapplication.List.MP_List_Item;
 import com.example.myapplication.List.MP_List_Item_Adapter;
 import com.example.myapplication.R;
@@ -25,6 +27,8 @@ import java.util.ArrayList;
  */
 public class MyInfoFragment extends Fragment {
     MP_List_Item_Adapter listadapter;
+    ArrayList<MP_List_Item> items;
+    int pos = 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -33,8 +37,13 @@ public class MyInfoFragment extends Fragment {
 
         ListView listview = view.findViewById(R.id.mi_list);
 
-        ArrayList<MP_List_Item> items = new ArrayList<>();
-        items.add(new MP_List_Item(R.string.change_id));
+        items = new ArrayList<>();
+        items.add(new MP_List_Item(R.string.change_address));
+        items.add(new MP_List_Item(R.string.change_height));
+        items.add(new MP_List_Item(R.string.change_weight));
+        if (((MainActivity)getActivity()).getIs_user().equals("트레이너")) {
+            items.add(new MP_List_Item(R.string.change_youtubechannelid));
+        }
 
         listadapter = new MP_List_Item_Adapter(getContext(), R.layout.mp_list_item, items);
         listview.setAdapter(listadapter);
@@ -42,12 +51,10 @@ public class MyInfoFragment extends Fragment {
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                switch(position) {
-                    case 0:
-                        Intent intent = new Intent(getActivity().getApplicationContext(), InfoChangeActivity.class);
-                        startActivityForResult(intent, 101);
-                        break;
-                }
+                pos = position;
+                Intent intent = new Intent(getActivity().getApplicationContext(), InfoChangeActivity.class);
+                intent.putExtra("whatchange", items.get(position).getNameId());
+                startActivityForResult(intent, 101);
             }
         });
 
@@ -59,9 +66,23 @@ public class MyInfoFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == Activity.RESULT_OK) {
             if(requestCode == 101){
-                String name = data.getStringExtra("name");
-                if(name.equals("NULLNAME")) Toast.makeText(getActivity().getApplicationContext(), "이름 변경을 취소하였습니다.",Toast.LENGTH_LONG).show();
-                else Toast.makeText(getActivity().getApplicationContext(), "변경된 이름 : " + name, Toast.LENGTH_LONG).show();
+                String changed = data.getStringExtra("changed");
+                switch (pos) {
+                    case 0:
+                        ((MainActivity)getActivity()).setAddress(changed);
+                        break;
+                    case 1:
+                        ((MainActivity)getActivity()).setHeight(changed);
+                        break;
+                    case 2:
+                        ((MainActivity)getActivity()).setWeight(changed);
+                        break;
+                    case 3:
+                        ((MainActivity)getActivity()).setYoutubechannelid(changed);
+                        break;
+                }
+                Util.UpdateUser(((MainActivity)getActivity()).getKakaoid() + "", ((MainActivity)getActivity()).getAddress(), ((MainActivity)getActivity()).getWeight(), ((MainActivity)getActivity()).getHeight(), ((MainActivity)getActivity()).getYoutubechannelid());
+                Toast.makeText(getActivity().getApplicationContext(), "변경되었습니다.", Toast.LENGTH_SHORT).show();
             }
         }
     }

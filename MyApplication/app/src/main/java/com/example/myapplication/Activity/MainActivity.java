@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
     private String height;
     private String is_user;
     private String address;
-    private String youtubechannelid;
+    private String youtubechannelid = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -280,11 +280,67 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
         }
     }
 
-    public long getKakaoid(){ return this.kakaoid; }
-    public String getNickname(){ return this.nickname; }
-    public String getThumbnail(){ return this.thumbnail; }
-    public String getWeight(){ return this.weight; }
-    public String getHeight(){ return this.height; }
-    public String getIs_user(){ return this.is_user; }
-    public String getAddress(){ return this.address; }
+    public long getKakaoid() {
+        return kakaoid;
+    }
+
+    public void setKakaoid(long kakaoid) {
+        this.kakaoid = kakaoid;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public String getThumbnail() {
+        return thumbnail;
+    }
+
+    public void setThumbnail(String thumbnail) {
+        this.thumbnail = thumbnail;
+    }
+
+    public String getWeight() {
+        return weight;
+    }
+
+    public void setWeight(String weight) {
+        this.weight = weight;
+    }
+
+    public String getHeight() {
+        return height;
+    }
+
+    public void setHeight(String height) {
+        this.height = height;
+    }
+
+    public String getIs_user() {
+        return is_user;
+    }
+
+    public void setIs_user(String is_user) {
+        this.is_user = is_user;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getYoutubechannelid() {
+        return youtubechannelid;
+    }
+
+    public void setYoutubechannelid(String youtubechannelid) {
+        this.youtubechannelid = youtubechannelid;
+    }
 }
