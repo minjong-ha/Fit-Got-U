@@ -64,7 +64,6 @@ public class DataAnalysisFragment extends Fragment {
 
 
     public DataAnalysisFragment() {
-
     }
 
     @Override
@@ -75,9 +74,6 @@ public class DataAnalysisFragment extends Fragment {
 
         // sqlite
         final MySQLiteOpenHelper sqliteHelper = new MySQLiteOpenHelper(c, "jelly.db", null, 3);
-
-        sqliteHelper.insertExerciseDataTest();
-
         //이미지 부분
         int jointValues[] = getJointValue(sqliteHelper);
         showImage(jointValues);
@@ -98,9 +94,9 @@ public class DataAnalysisFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 // TODO : click event
+                sqliteHelper.insertTest();
                 testJointValue();
             }
-
             protected void testJointValue() {
                 int jointValues[] = new int[12];
 
@@ -119,7 +115,6 @@ public class DataAnalysisFragment extends Fragment {
 
                 TextView temp = (TextView) view.findViewById(R.id.textView);
             }
-
         });
 
         return view;
@@ -261,15 +256,13 @@ public class DataAnalysisFragment extends Fragment {
         for (int i = 0; i < 7; ++i) {
             DA_List_Item oItem = new DA_List_Item();
             final String sDay = getTime(i);
-            oItem.setStrDate(days[i] + "  (" + sDay + ")");
+            oItem.setStrDate(days[i] + "  (" + sDay.substring(0,10) + ")");
 
-            final ArrayList<String> exerciseNames = sqliteHelper.countDayExercise("'"+sDay+"'");
-            int count = exerciseNames.size();
-
-            if(count==0){
+            final int exerciseCount = sqliteHelper.countDayExercise(sDay);
+            if(exerciseCount==0){
                 oItem.setStrText("운동을 하지 않았습니다.");
             }else{
-                oItem.setStrText(String.format("총 %d가지의 운동기록이 있습니다.",count));
+                oItem.setStrText(String.format("총 %d가지의 운동기록이 있습니다.",exerciseCount));
             }
 
             oItem.setOnClickListener( new Button.OnClickListener() {
@@ -278,8 +271,7 @@ public class DataAnalysisFragment extends Fragment {
                 public void onClick(View v) {
                     Intent intent = new Intent(c.getApplicationContext(), DataAnalysisPopupActivity.class);
 
-                    intent.putExtra("date","'"+sDay+"'");
-                    intent.putExtra("exerciseNames",exerciseNames);
+                    intent.putExtra("date",sDay);
                     startActivityForResult(intent, 101);
 
                 }

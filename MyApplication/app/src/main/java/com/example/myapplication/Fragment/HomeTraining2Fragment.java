@@ -1,5 +1,7 @@
 package com.example.myapplication.Fragment;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -51,9 +53,12 @@ public class HomeTraining2Fragment extends Fragment implements AdapterView.OnIte
 
         ListView listview = view.findViewById(R.id.ht2_list);
         items.clear();
-        items.add(new HT2_List_Item("image1", R.string.fitness_1_1, "하급자를 위한 루틴입니다.\n"+"운동을 처음 하는 분께 추천드립니다!"));
-        items.add(new HT2_List_Item("image2", R.string.fitness_1_2, "중급자를 위한 루틴입니다.\n"+"기초 동작에 숙달 후 도전하세요!"));
-        items.add(new HT2_List_Item("image3", R.string.fitness_1_3, "상급자를 위한 루틴입니다.\n"+"고난도의 동작이 많습니다!"));
+        int bitmap1 = R.mipmap.easy_level;
+        int bitmap2 = R.mipmap.middle_level;
+        int bitmap3 = R.mipmap.difficult_level;
+        items.add(new HT2_List_Item(bitmap1, R.string.fitness_1_1, "하급자를 위한 루틴입니다.\n"+"운동을 처음 하는 분께 추천드립니다!"));
+        items.add(new HT2_List_Item(bitmap2, R.string.fitness_1_2, "중급자를 위한 루틴입니다.\n"+"기초 동작에 숙달 후 도전하세요!"));
+        items.add(new HT2_List_Item(bitmap3, R.string.fitness_1_3, "상급자를 위한 루틴입니다.\n"+"고난도의 동작이 많습니다!"));
 
         HT2_List_Item_Adapter listadapter = new HT2_List_Item_Adapter(getContext(), R.layout.ht2_list_item, items);
         listview.setAdapter(listadapter);

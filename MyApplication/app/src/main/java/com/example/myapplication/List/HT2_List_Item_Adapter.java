@@ -1,6 +1,7 @@
 package com.example.myapplication.List;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,6 +50,8 @@ public class HT2_List_Item_Adapter extends BaseAdapter {
 
         HT2_List_Item listviewitem = items.get(i);
         ImageView image = view.findViewById(R.id.ht2_list_image);//이미지 따로 처리해줘야됨
+        int image_src = listviewitem.getImage();
+        image.setImageResource(image_src);
         TextView name = view.findViewById(R.id.ht2_list_name);
         name.setText(context.getString(listviewitem.getNameId()));
         TextView desc = view.findViewById(R.id.ht2_list_desc);

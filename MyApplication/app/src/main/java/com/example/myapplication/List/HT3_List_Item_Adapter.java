@@ -48,6 +48,7 @@ public class HT3_List_Item_Adapter extends BaseAdapter {
 
         HT3_List_Item listviewitem = items.get(i);
         ImageView image = view.findViewById(R.id.ht3_list_image);//이미지 따로 처리해줘야됨
+        image.setImageResource(listviewitem.getImageId());
         TextView name = view.findViewById(R.id.ht3_list_name);
         name.setText(context.getString(listviewitem.getNameId()));
 

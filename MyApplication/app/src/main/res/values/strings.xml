@@ -5,8 +5,8 @@
     <string name="dbVersion">1</string>
     <string name="dbtag">SQLite_Jelly</string>
 
-    <string name="fitness">피트니스</string>
-    <string name="yoga">요가</string>'
+    <string name="fitness"># 피트니스</string>
+    <string name="yoga"># 요가</string>'
 
     <string name="fitness_1">운동 종류1</string>
     <string name="fitness_2">운동 종류2</string>
@@ -16,10 +16,10 @@
     <string name="fitness_1_2">중급 루틴</string>
     <string name="fitness_1_3">상급 루틴</string>
 
-    <string name="fitness_1_1_1">운동1</string>
-    <string name="fitness_1_1_1_desc">운동1 설명이다아아아아아아아</string>
-    <string name="fitness_1_1_2">운동2</string>
-    <string name="fitness_1_1_2_desc">운동2 설명이다아아아아아아아</string>
+    <string name="fitness_1_1_1">스쿼트</string>
+    <string name="fitness_1_1_1_desc">허리에 굴곡을 유지하며 무릎이 발끝을 벗어나지 않게 한 상태로 무릎을 굽힙니다.</string>
+    <string name="fitness_1_1_2">플랭크</string>
+    <string name="fitness_1_1_2_desc">허리의 코어를 유지하며 위 그림과 같은 자세를 유지합니다.</string>
     <string name="fitness_1_1_3">운동3</string>
     <string name="fitness_1_1_3_desc">운동3 설명이다아아아아아아아</string>
     <string name="fitness_1_1_4">운동4</string>

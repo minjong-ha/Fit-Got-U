@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Pair;
 import android.widget.ListView;
 
 import com.example.myapplication.Etc.MySQLiteOpenHelper;
@@ -26,20 +27,21 @@ public class DataAnalysisPopupActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String sDay = intent.getExtras().getString("date");
-        ArrayList<String> exerciseNames = intent.getExtras().getStringArrayList("exerciseNames");
 
         final MySQLiteOpenHelper sqliteHelper = new MySQLiteOpenHelper(getApplicationContext(), "jelly.db", null, 3);
 
+        ArrayList<Pair<Pair<String,String>,Integer>> tempArray = sqliteHelper.getDescribe(sDay);
         // 리스트 박스.
         ArrayList<DA2_List_Item> oAnalysis = new ArrayList<>();
-        if (exerciseNames.size() != 0) {
-            for (int i = 0; i < exerciseNames.size(); ++i) {
+
+        if (tempArray.size() != 0) {
+            for (int i = 0; i < tempArray.size(); ++i) {
                 DA2_List_Item oItem = new DA2_List_Item();
-                String exerciseName = exerciseNames.get(i);
-                oItem.setStrExercise(exerciseName);
-                // todo: 운동한 횟수
-                oItem.setExerciseCount("todo : 10회");
-                oItem.setStrText(sqliteHelper.getDayAnalysisText(sDay, "'" + exerciseName + "'"));
+                Pair<Pair<String,String>,Integer> tempPair = tempArray.get(i);
+                String exercisetime = " ("+tempPair.first.second.substring(11,13)+"시 "+ tempPair.first.second.substring(14,16)+ "분)";
+                oItem.setStrExercise(tempPair.first.first+ exercisetime);
+                oItem.setExerciseCount("운동횟수 : "+ tempPair.second);
+                oItem.setStrText(sqliteHelper.getDayAnalysisText(tempPair.first.second, tempPair.first.first));
                 oAnalysis.add(oItem);
             }
         }

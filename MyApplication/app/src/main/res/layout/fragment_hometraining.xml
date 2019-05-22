@@ -55,7 +55,7 @@
                                             android:minWidth="120dp"
                                             android:minHeight="120dp"
                                             android:scaleType="centerInside"
-                                            android:src="@drawable/fitness3_1" />
+                                            android:src="@mipmap/upper_body" />
 
                                         <TextView
                                             android:id="@+id/textView5"
@@ -87,7 +87,7 @@
                                             android:minWidth="120dp"
                                             android:minHeight="120dp"
                                             android:scaleType="centerInside"
-                                            android:src="@drawable/fitness3_2" />
+                                            android:src="@mipmap/belly" />
 
                                         <TextView
                                             android:id="@+id/textView6"
@@ -119,7 +119,7 @@
                                             android:minWidth="120dp"
                                             android:minHeight="120dp"
                                             android:scaleType="centerInside"
-                                            android:src="@drawable/fitness3_3" />
+                                            android:src="@mipmap/squat" />
 
                                         <TextView
                                             android:id="@+id/textView7"
@@ -158,7 +158,7 @@
                                             android:minWidth="120dp"
                                             android:minHeight="120dp"
                                             android:scaleType="centerInside"
-                                            android:src="@drawable/fitness3_4" />
+                                            android:src="@mipmap/full_body" />
 
                                         <TextView
                                             android:id="@+id/textView8"
@@ -191,7 +191,7 @@
                                             android:minWidth="120dp"
                                             android:minHeight="120dp"
                                             android:scaleType="centerInside"
-                                            android:src="@drawable/fitness3_5" />
+                                            android:src="@mipmap/flank" />
 
                                         <TextView
                                             android:id="@+id/textView9"
@@ -224,7 +224,7 @@
                                             android:minWidth="120dp"
                                             android:minHeight="120dp"
                                             android:scaleType="centerInside"
-                                            android:src="@drawable/fitness3_6" />
+                                            android:src="@mipmap/lower_body" />
 
                                         <TextView
                                             android:id="@+id/textView10"
@@ -281,7 +281,7 @@
                                             android:minWidth="120dp"
                                             android:minHeight="120dp"
                                             android:scaleType="centerInside"
-                                            android:src="@drawable/yoga2_1" />
+                                            android:src="@mipmap/easy_yoga" />
 
                                         <TextView
                                             android:id="@+id/textView11"
@@ -314,7 +314,7 @@
                                             android:minWidth="120dp"
                                             android:minHeight="120dp"
                                             android:scaleType="centerInside"
-                                            android:src="@drawable/yoga_2" />
+                                            android:src="@mipmap/difficult_yoga" />
 
                                         <TextView
                                             android:id="@+id/textView12"
@@ -345,7 +345,7 @@
                                             android:minWidth="120dp"
                                             android:minHeight="120dp"
                                             android:scaleType="centerInside"
-                                            android:src="@drawable/yoga_3" />
+                                            android:src="@mipmap/very_difficult_yoga" />
 
                                         <TextView
                                             android:id="@+id/textView13"
