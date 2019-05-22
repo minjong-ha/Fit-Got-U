@@ -1,17 +1,17 @@
 #Internal package file, do not edit.
-#Mon May 13 18:40:13 KST 2019
+#Tue May 21 20:55:23 KST 2019
 4.path=classes.dex
 8.set=NATIVE_RESOURCE
-6.path=lib/armeabi-v7a/libopencv_java3.so
+6.path=classes.dex
 0.baseType=DIRECTORY
 5.baseType=DIRECTORY
 1.base=/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/transforms/stripDebugSymbol/debug/0
 8.path=lib/armeabi-v7a/libtensorflowlite_jni.so
-3.base=/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/transforms/dexMerger/debug/34
+3.base=/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/transforms/dexMerger/debug/14
 4.set=DEX
-5.base=/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/transforms/dexMerger/debug/36
-7.base=/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/transforms/dexMerger/debug/33
-9.base=/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/transforms/dexMerger/debug/35
+5.base=/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/transforms/stripDebugSymbol/debug/0
+7.base=/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/transforms/dexMerger/debug/13
+9.base=/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/transforms/dexMerger/debug/15
 1.baseType=DIRECTORY
 0.set=NATIVE_RESOURCE
 6.baseType=DIRECTORY
@@ -21,22 +21,22 @@
 1.path=lib/armeabi-v7a/libjupiter_opencv_320.so
 7.baseType=DIRECTORY
 3.path=classes.dex
-5.path=classes.dex
+5.path=lib/armeabi-v7a/libopencv_java3.so
 0.base=/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/transforms/stripDebugSymbol/debug/0
 7.path=classes.dex
 9.path=classes.dex
-6.set=NATIVE_RESOURCE
-2.base=/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/transforms/dexMerger/debug/32
-4.base=/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/transforms/dexMerger/debug/31
+6.set=DEX
+2.base=/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/transforms/dexMerger/debug/12
+4.base=/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/transforms/dexMerger/debug/11
 3.baseType=DIRECTORY
-6.base=/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/transforms/stripDebugSymbol/debug/0
+6.base=/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/transforms/dexMerger/debug/16
 8.base=/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/transforms/stripDebugSymbol/debug/0
 2.set=DEX
 8.baseType=DIRECTORY
 9.set=DEX
 count=10
 4.baseType=DIRECTORY
-5.set=DEX
+5.set=NATIVE_RESOURCE
 9.baseType=DIRECTORY
 0.path=lib/armeabi-v7a/libmace_mobile_jni.so
 1.set=NATIVE_RESOURCE

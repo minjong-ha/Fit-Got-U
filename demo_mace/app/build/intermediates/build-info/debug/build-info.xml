@@ -5,27 +5,32 @@
     build-mode="COLD"
     density="420dpi"
     format="10"
+    ir-eligibility="COMPATIBLE"
     plugin-version="3.0.1"
-    timestamp="1558353395776"
+    timestamp="1558522745852"
     token="-5206984262781354276"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="0" />
+        duration="135" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="0" />
+        duration="10" />
     <task
         name="verifier"
-        duration="0" />
+        duration="1" />
+
+    <artifact
+        location="/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
+        type="SPLIT" />
 
     <build
         build-mode="FULL"
-        timestamp="1558353032257"
+        timestamp="1558521185210"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
@@ -43,10 +48,10 @@
             location="/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/split-apk/debug/slices/slice_1.apk"
             type="SPLIT" />
         <artifact
-            location="/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
+            location="/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/split-apk/debug/dep/dependencies.apk"
             type="SPLIT" />
         <artifact
-            location="/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/split-apk/debug/dep/dependencies.apk"
+            location="/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
             type="SPLIT" />
         <artifact
             location="/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
@@ -67,15 +72,11 @@
     <build
         build-mode="COLD"
         ir-eligibility="COMPATIBLE"
-        timestamp="1558353235116"
+        timestamp="1558522745852"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
             type="SPLIT" />
     </build>
-    <build
-        build-mode="COLD"
-        timestamp="1558353395776"
-        verifier="COLD_SWAP_REQUESTED" />
 
 </instant-run>

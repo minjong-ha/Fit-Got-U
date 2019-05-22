@@ -34,10 +34,14 @@ public class Calculate {
     static int validCount = 0;
     static int uppperCount = 0;
     static int lowerCount = 0;
+    static int index = 0;
+
+    static ArrayList<Double> minL = new ArrayList<Double>();
+    static ArrayList<Double> minR = new ArrayList<Double>();
 
     static CopyOnWriteArrayList<PointF> lastPoints = new CopyOnWriteArrayList<>();
 
-    public void main(CopyOnWriteArrayList<PointF> Points){
+    public static void main(CopyOnWriteArrayList<PointF> Points){
 
         //=====
         if(Calculate.lastPoints.isEmpty() == true)
@@ -61,117 +65,117 @@ public class Calculate {
 
 
         if(info.compareTo("스쿼트") == 0) {
-            if(isPointFValidate(Calculate.lastPoints.get(11), p11)
-                    && isPointFValidate(Calculate.lastPoints.get(12), p12)
-                    && isPointFValidate(Calculate.lastPoints.get(13), p13)
-                    && isPointFValidate(Calculate.lastPoints.get(8), p8)
-                    && isPointFValidate(Calculate.lastPoints.get(9), p9)
-                    && isPointFValidate(Calculate.lastPoints.get(10), p10)) {
+//            if(isPointFValidate(Calculate.lastPoints.get(11), p11)
+//                    && isPointFValidate(Calculate.lastPoints.get(12), p12)
+//                    && isPointFValidate(Calculate.lastPoints.get(13), p13)
+//                    && isPointFValidate(Calculate.lastPoints.get(8), p8)
+//                    && isPointFValidate(Calculate.lastPoints.get(9), p9)
+//                    && isPointFValidate(Calculate.lastPoints.get(10), p10)) {
                 double leftAng = Cal_Angle(p11, p12, p13); //left
                 double rightAng = Cal_Angle(p8, p9, p10);   //right
 
-                Log.d("checkangle", Double.toString(leftAng) + " " + Double.toString(rightAng));
+                //Log.d("checkangle", Double.toString(leftAng) + " " + Double.toString(rightAng));
 
                 squatAngleCheck2(leftAng, rightAng);
-                Calculate.left.add((int) leftAng);
-                // squatAngleCheck(leftAng, rightAng);
+                //Calculate.left.add((int) leftAng);
+                //squatAngleCheck(leftAng, rightAng);
 
-                lastPoints = Points;
-            }
-            else {
+                //lastPoints = Points;
+           // }
+            /*else {
                 //do nothing
-            }
+            }*/
         }
 
         else if(info.compareTo("팔벌리기") == 0)
             Cal_Angle(p3,p4,p5);
     }
 
-    public double Cal_Angle(PointF top, PointF center, PointF bottom) {
+    public static double Cal_Angle(PointF top, PointF center, PointF bottom) {
 
         double x1 = top.x - center.x;
         double y1 = top.y - center.y;
         double x2 = bottom.x - center.x;
         double y2 = bottom.y - center.y;
 
-        double Angle = (Math.atan(y1 / x1) - Math.atan(y2 / x2)) * 180 / Math.PI;
-        if(Angle < 0)
-            Angle += 180;
+        double Angle = Math.abs((Math.atan2(y2, x2) - Math.atan2(y1, x1)) * 180 / Math.PI);
 
-        Angle = 180 - Angle;
+        if (Angle >= 180)
+            Angle = 360 - Angle;
 
-       return Angle;
+        return Angle;
     }
 
     public void PointCheck(){
         //좌표로 오류 체크
     }
 
-    public void squatAngleCheck(double Angle1, double Angle2){
+    public static void squatAngleCheck(double Angle1, double Angle2){
 
         double bestAngle1, bestAngle2 = 90;
         int count = 0;
         int checkcount = 1;
         float correct=0, lower=0, upper = 0;
         int bestAngle = 90;
-        float lowerbound = 0;
-        float upperbound = 0;
-        ArrayList<Double> min = new ArrayList<Double>();
 
+        if( (Angle1 > 0 && Angle1 <= 180) && (Angle2 > 0 && Angle2 <= 180) ) {
+            if (index == 0) {
+                minL.add(Angle1);
+                minR.add(Angle2);
+                index++;
+                Log.d("index", Integer.toString(index));
+            } else if (((minL.get(index - 1) > Angle1) && (minL.get(index - 1) * 0.95 <= Angle1)) && ((minL.get(index - 1) > Angle2) && (minL.get(index - 1) * 0.95 <= Angle2))) {
+                minL.add(Angle1);
+                minR.add(Angle2);
 
-        if(Calculate.minAng1 == 360 || Calculate.minAng2 == 360) {
+                Log.d("LminAngle", Double.toString(Angle1));
 
-            Calculate.minAng1 = Angle1;
-            Calculate.minAng2 = Angle2;
-        }
-
-        else if(Calculate.minAng1 >= Angle1){
-            Calculate.minAng1 = Angle1;
-            checkcount = 1;
-        }
-
-        else if(minAng1 < Angle1){
-            if(checkcount == 1){
-                min.add(minAng1);
-                count++;
+                index++;
             }
-            minAng1 = Angle1;
-            checkcount--;
+
+            //Log.d("LminAngle", minL.get(index - 1).toString());
         }
     }
 
-    public void squatAngleCheck2(double Angle1, double Angle2) {
+    public static void squatAngleCheck2(double Angle1, double Angle2) {
 
-        int limitUpAngle = 140;
-        int limitDownAngle = 70;
+        int limitUpAngle = 150;
+        int limitDownAngle = 60;
         int lowestAngle = 80; // for proper
-        int highestAngle = 110; // for proper
+        int highestAngle = 100; // for proper
 
-        if((Angle1 < limitUpAngle && Angle1 > limitDownAngle) || (Angle2 < limitUpAngle && Angle2 > limitDownAngle)) {
+        if((Angle1 < limitUpAngle && Angle1 > limitDownAngle)) {
             Calculate.isExercise = true;
         }
 
-        if(Calculate.isExercise == true && ((Angle1 < highestAngle && Angle1 > lowestAngle) || (Angle2 <highestAngle && Angle2 > lowestAngle))) {
+        if(Calculate.isExercise == true && (Angle1 < limitUpAngle && Angle1 > limitDownAngle)) {
             Calculate.tmpList1.add(Angle1);
             Calculate.tmpList2.add(Angle2);
         }
 
-        if(Calculate.tmpList1.isEmpty() == false && Calculate.tmpList2.isEmpty() == false && (Angle1 >= limitUpAngle || Angle2 >= limitUpAngle)) {
+        if(Calculate.tmpList1.isEmpty() == false && Angle1 >= limitUpAngle) {
             Calculate.isExercise = false;
 
             Calculate.minAng1 = minList(tmpList1);
             Calculate.minAng2 = minList(tmpList2);
+
+            Calculate.left.add((int)Calculate.minAng1);
+
+            Log.d("checkangle", Double.toString(minAng1));
+
             //feedback if needed
-            if(Calculate.minAng1 > highestAngle || Calculate.minAng2 > highestAngle) {
+            if(Calculate.minAng1 >= highestAngle) {
                 Calculate.uppperCount++;
-                squatUpperFeedback();
+                Log.d("error", "hello world");
+                //squatUpperFeedback();
             }
-            else if(Calculate.minAng1 < lowestAngle || Calculate.minAng2 < lowestAngle) {
+            else if(Calculate.minAng1 <= lowestAngle) {
                 Calculate.lowerCount++;
-                squatLowerFeedback();
+                Log.d("error", "HELLO WORLD");
+                //squatLowerFeedback();
             }
             else {
-                successFeedback();
+                //successFeedback();
             }
 
 
@@ -196,13 +200,15 @@ public class Calculate {
 
     }
 
-    public double minList (ArrayList<Double> list) {
+    public static double minList (ArrayList<Double> list) {
         double min = 9999;
+        Log.d("checkangle", Calculate.tmpList1.toString());
         for(int i = 0; i < list.size(); i++) {
             if(min > list.get(i)) {
                 min = list.get(i);
             }
         }
+        Log.d("checkangle", Double.toString(min));
         return min;
     }
 

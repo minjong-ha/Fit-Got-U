@@ -16,6 +16,8 @@
 package com.example;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Camera;
 import android.os.Bundle;
@@ -29,6 +31,9 @@ import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.LoaderCallbackInterface;
 import org.opencv.android.OpenCVLoader;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 /**
  * Main {@code Activity} class for the Camera app.
  */
@@ -40,6 +45,8 @@ public class CameraActivity extends Activity {
     }
 
     public static boolean isOpenCVInit = false;
+
+    Timer timer = new Timer();
 
     private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(this) {
         @Override
@@ -76,10 +83,32 @@ public class CameraActivity extends Activity {
         TextView upperCountBtn = (TextView)findViewById(R.id.uppercount);
         TextView lowerCountBtn = (TextView)findViewById(R.id.lowercount);
 
+        /*
         exerciseCountBtn.setText(""+Calculate.exerciseCount);
         validCountBtn.setText(""+Calculate.validCount);
         upperCountBtn.setText(""+Calculate.uppperCount);
         lowerCountBtn.setText(""+Calculate.lowerCount);
+        */
+
+
+
+        TimerTask tt = new TimerTask() {
+            @Override
+            public void run() {
+                exerciseCountBtn.clearComposingText();
+                validCountBtn.clearComposingText();
+                upperCountBtn.clearComposingText();
+                lowerCountBtn.clearComposingText();
+
+                exerciseCountBtn.setText(""+Calculate.exerciseCount);
+                validCountBtn.setText(""+Calculate.validCount);
+                upperCountBtn.setText(""+Calculate.uppperCount);
+                lowerCountBtn.setText(""+Calculate.lowerCount);
+            }
+        };
+
+        //timer.schedule(tt, 10, 1000);
+
         //이거 자동업데이트 어떻게 해야할까
 
         if (null == savedInstanceState) {
@@ -100,9 +129,34 @@ public class CameraActivity extends Activity {
         Log.d("result", "exerciseCount: " + Calculate.exerciseCount +" validCount: " + Calculate.validCount);
         Log.d("result", "upperCount: " + Calculate.uppperCount + " lowerCount: " + Calculate.lowerCount);
         Log.d("result", "left: " + Calculate.left);
-        finish();
+        Log.d("resulr", Calculate.left.toString());
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 
-        //Calculate.varInit();
+        alertDialogBuilder.setTitle("운동결과");
+        alertDialogBuilder
+                .setMessage("Total: " + Calculate.exerciseCount +"\nValid: " + Calculate.validCount + "\n Upper: " + Calculate.uppperCount + "\nLower: " + Calculate.lowerCount)
+                .setCancelable(false)
+                .setPositiveButton("종료",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(
+                                    DialogInterface dialog, int id) {
+                                // 프로그램을 종료한다
+                                CameraActivity.this.finish();
+                            }
+                        });
+
+        // 다이얼로그 생성
+        AlertDialog alertDialog = alertDialogBuilder.create();
+
+        // 다이얼로그 보여주기
+        alertDialog.show();
+
+        Calculate.varInit();
+
+      //  timer.cancel();
+        //finish();
+
+
     }
 
     @Override
