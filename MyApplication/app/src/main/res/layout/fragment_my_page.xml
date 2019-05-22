@@ -4,19 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     android:orientation="vertical"
     tools:context=".Fragment.MyPageFragment">
 
     <TableLayout
         android:id="@+id/tableLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="149dp"
+        android:background="@drawable/border_top"
         android:minHeight="160dp"
         android:stretchColumns="0,1,2">
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/mp_profile"
@@ -39,7 +41,8 @@
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight = "1" >
+                    android:layout_weight="1"
+                    android:paddingTop="5dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -96,7 +99,8 @@
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight = "1" >
+                    android:layout_weight="1"
+                    android:paddingTop="10dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -125,8 +129,8 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:layout_weight="0.5">
+                        android:layout_weight="0.5"
+                        android:orientation="vertical">
 
                         <TextView
                             android:id="@+id/mp_isuser"
