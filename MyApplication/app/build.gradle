@@ -26,6 +26,7 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     implementation 'com.android.support:support-v4:27.1.1'
     implementation group: 'com.kakao.sdk', name: 'usermgmt', version: project.KAKAO_SDK_VERSION
+    implementation group: 'com.kakao.sdk', name: 'newtone', version: project.KAKAO_SPEECH_VERSION
     implementation files('libs/YouTubeAndroidPlayerApi.jar')
     implementation files('libs/glide-full-4.7.0.jar')
     implementation files('libs/libDaumMapAndroid.jar')
