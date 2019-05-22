@@ -10,6 +10,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -25,6 +26,7 @@ import com.example.myapplication.Fragment.HomeTraining3Fragment;
 import com.example.myapplication.Fragment.HomeTrainingFragment;
 import com.example.myapplication.Fragment.MyInfoFragment;
 import com.example.myapplication.Fragment.MyPageFragment;
+import com.example.myapplication.Fragment.SimpleDialogFragment;
 import com.example.myapplication.Fragment.TrainerMatch2Fragment;
 import com.example.myapplication.Fragment.TrainerMatch3Fragment;
 import com.example.myapplication.Fragment.TrainerMatchFragment;
@@ -209,6 +211,9 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
                 case R.string.logout:
                     Logout(this);
                     break;
+                case R.string.app_info:
+                    showSimpleDialog();
+                    break;
                 case R.string.separate:
                     Util.DeleteUser(kakaoid + "");
                     Logout(this);
@@ -222,6 +227,17 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.mainfragment, mainfragment);
         ft.commit();
+    }
+
+    private void showSimpleDialog() {
+        DialogFragment newFragment = new SimpleDialogFragment();
+        Bundle args = new Bundle();
+        args.putString("title", getString(R.string.ai_title));
+        args.putString("text", getString(R.string.ai_content));
+        args.putString("postext", "확인");
+        newFragment.setArguments(args);
+        newFragment.setTargetFragment(mainfragment, Util.DIALOG_REQUEST_CODE);
+        newFragment.show(getSupportFragmentManager(), "simpledialog");
     }
 
     private void Logout(final Activity activity) {

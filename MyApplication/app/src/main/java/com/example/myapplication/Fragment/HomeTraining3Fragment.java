@@ -69,8 +69,10 @@ public class HomeTraining3Fragment extends Fragment implements AdapterView.OnIte
     private void showSimpleDialog() {
         DialogFragment newFragment = new SimpleDialogFragment();
         Bundle args = new Bundle();
-        args.putString("title", "운동 루틴 시작");
+        args.putString("title", getString(R.string.dialog_ht_start_title));
         args.putString("text", getString(R.string.dialog_ht_start_text));
+        args.putString("postext", "시작");
+        args.putString("negtext", "취소");
         newFragment.setArguments(args);
         newFragment.setTargetFragment(this, Util.DIALOG_REQUEST_CODE);
         newFragment.show(getFragmentManager(), "simpledialog");

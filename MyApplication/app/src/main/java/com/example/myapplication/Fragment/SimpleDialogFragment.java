@@ -25,11 +25,16 @@ public class SimpleDialogFragment extends DialogFragment {
         Bundle arg = getArguments();
         String title = arg.getString("title");
         String text = arg.getString("text");
+        String postext = arg.getString("postext");
+        String negtext = null;
+        if (arg.getString("negtext") != null) {
+            negtext = arg.getString("negtext");
+        }
 
         TextView tv = (TextView)view.findViewById(R.id.dialog_simple_text);
         tv.setText(text);
 
-        builder.setPositiveButton("실행",
+        builder.setPositiveButton(postext,
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         Intent intent = new Intent();
@@ -37,12 +42,14 @@ public class SimpleDialogFragment extends DialogFragment {
                         dismiss();
                     }
                 });
-        builder.setNegativeButton("취소",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        dismiss();
-                    }
-                });
+        if (negtext != null) {
+            builder.setNegativeButton(negtext,
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dismiss();
+                        }
+                    });
+        }
 
         builder.setTitle(title);
 
