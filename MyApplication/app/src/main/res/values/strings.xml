@@ -37,7 +37,7 @@
     <string name="separate">회원 탈퇴</string>
 
     <string name="ai_title">앱 정보</string>
-    <string name="ai_content">제작 : 곤약젤리\n\n제작자 : 누구누구누구누구누구누구</string>
+    <string name="ai_content">제작 : 곤약젤리\n\n제작자 : 이종호, 이정우, 정의현, 하민종, 황성휘\n\n버전 정보 : 1.0 ver</string>
 
     <string name="change_address">주소 변경</string>
     <string name="change_height">키 변경</string>
