@@ -30,7 +30,7 @@
                 android:maxHeight="120dp"
                 android:minWidth="120dp"
                 android:minHeight="120dp"
-                android:src="@drawable/icon8" />
+                android:src="@drawable/chicken_bear2" />
 
             <TableLayout
                 android:layout_width="273dp"

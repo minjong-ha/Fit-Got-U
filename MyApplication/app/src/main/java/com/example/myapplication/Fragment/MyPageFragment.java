@@ -36,7 +36,8 @@ public class MyPageFragment extends Fragment implements View.OnClickListener {
         isuser.setText(((MainActivity)getActivity()).getIs_user());
         address.setText(((MainActivity)getActivity()).getAddress());
         spec.setText(((MainActivity)getActivity()).getHeight()+"cm/"+(((MainActivity)getActivity()).getWeight())+"kg");
-        profile.setImageBitmap(Util.getImagefromURL(((MainActivity)getActivity()).getThumbnail()));
+        String path = ((MainActivity)getActivity()).getThumbnail();
+        if(path!=null && !path.equals("")) profile.setImageBitmap(Util.getImagefromURL(path));
 
         ArrayList<MP_List_Item> items = new ArrayList<>();
         items.add(new MP_List_Item(R.string.my_info));
