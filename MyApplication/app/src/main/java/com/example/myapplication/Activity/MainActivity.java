@@ -5,8 +5,6 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
@@ -18,7 +16,6 @@ import android.support.v7.widget.Toolbar;
 import android.util.Base64;
 import android.widget.Toast;
 
-import com.example.myapplication.Etc.MySQLiteOpenHelper;
 import com.example.myapplication.Etc.Util;
 import com.example.myapplication.Fragment.DataAnalysisFragment;
 import com.example.myapplication.Fragment.HomeTraining2Fragment;
@@ -292,7 +289,7 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
                 if (!Util.Information_Filled(weight, height, address, is_user)) {
                     Util.startJoinActivity(activity, kakaoid, nickname, thumbnail);
                 } else {
-                    Util.UpdateUser_Auto(kakaoid + "", nickname, thumbnail);
+                    //Util.UpdateUser_Auto(kakaoid + "", nickname, thumbnail);
                 }
             }
         });
