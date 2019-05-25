@@ -76,7 +76,9 @@ public class Calculate {
 
                 //Log.d("checkangle", Double.toString(leftAng) + " " + Double.toString(rightAng));
 
+            if(DrawView.isAllDone == true) {
                 squatAngleCheck2(leftAng, rightAng);
+            }
                 //Calculate.left.add((int) leftAng);
                 //squatAngleCheck(leftAng, rightAng);
 
@@ -228,6 +230,10 @@ public class Calculate {
         validCount = 0;
         lowerCount = 0;
         uppperCount = 0;
+
+        DrawView.isAllDone = false;
+        DrawView.shapeCount = 0;
+        DrawView.isShapeValid = false;
     }
 
     public double getDistance(double x1, double y1, double x2, double y2) {

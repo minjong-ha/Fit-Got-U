@@ -3204,7 +3204,9 @@ public final class R {
     public static final int notification_template_icon_low_bg=0x7f07006d;
     public static final int notification_tile_bg=0x7f07006e;
     public static final int notify_panel_notification_icon_bg=0x7f07006f;
-    public static final int tile=0x7f070070;
+    public static final int sil_correct=0x7f070070;
+    public static final int sil_wrong=0x7f070071;
+    public static final int tile=0x7f070072;
   }
   public static final class id {
     public static final int action0=0x7f080000;

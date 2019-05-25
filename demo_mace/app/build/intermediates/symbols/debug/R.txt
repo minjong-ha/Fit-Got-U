@@ -728,7 +728,9 @@ int drawable notification_template_icon_bg 0x7f07006c
 int drawable notification_template_icon_low_bg 0x7f07006d
 int drawable notification_tile_bg 0x7f07006e
 int drawable notify_panel_notification_icon_bg 0x7f07006f
-int drawable tile 0x7f070070
+int drawable sil_correct 0x7f070070
+int drawable sil_wrong 0x7f070071
+int drawable tile 0x7f070072
 int id action0 0x7f080000
 int id action_bar 0x7f080001
 int id action_bar_activity_content 0x7f080002

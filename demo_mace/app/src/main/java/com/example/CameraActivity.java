@@ -21,6 +21,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Camera;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -90,24 +91,6 @@ public class CameraActivity extends Activity {
         lowerCountBtn.setText(""+Calculate.lowerCount);
         */
 
-
-
-        TimerTask tt = new TimerTask() {
-            @Override
-            public void run() {
-                exerciseCountBtn.clearComposingText();
-                validCountBtn.clearComposingText();
-                upperCountBtn.clearComposingText();
-                lowerCountBtn.clearComposingText();
-
-                exerciseCountBtn.setText(""+Calculate.exerciseCount);
-                validCountBtn.setText(""+Calculate.validCount);
-                upperCountBtn.setText(""+Calculate.uppperCount);
-                lowerCountBtn.setText(""+Calculate.lowerCount);
-            }
-        };
-
-        //timer.schedule(tt, 10, 1000);
 
         //이거 자동업데이트 어떻게 해야할까
 

@@ -16,18 +16,27 @@
 package com.example;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PointF;
+import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 
 import java.util.concurrent.CopyOnWriteArrayList;
 
 
 public class DrawView extends View {
+
+    static boolean isShapeValid = false;
+    static int shapeCount = 0;
+    static boolean isAllDone = false;
 
     public static final int COLOR_TOP = Color.parseColor("#980000");
     public static final int COLOR_NECK = Color.parseColor("#ff0000");
@@ -203,6 +212,39 @@ public class DrawView extends View {
 
         //9-10 r_knee - r_ankle
         canvas.drawLine(p9.x, p9.y, p10.x, p10.y, mPaint);
+
+        Paint paint = new Paint();
+
+        if(DrawView.shapeCount > 20) {
+            paint.setAlpha(0); // you can change number to change the transparency level
+            DrawView.isAllDone = true;
+        }
+        else {
+            paint.setAlpha(150);
+        }
+        Bitmap imageForCorrect = BitmapFactory.decodeResource(getResources(), R.drawable.sil_correct);
+        Bitmap imageForWrong = BitmapFactory.decodeResource(getResources(), R.drawable.sil_wrong);
+
+        //DisplayMetrics metrics = getBaseContext().getResources().getDisplayMetrics();
+        int width = mWidth;
+        int height = mHeight;
+
+        if(DrawView.isAllDone == false) {
+            DrawView.isShapeValid = establishBody(p0, p13, p10);
+        }
+
+        if(DrawView.isShapeValid == true) {
+            //green image
+            canvas.drawBitmap(imageForCorrect, null, new RectF(0, 0, width, height), paint);
+        }
+        else if(DrawView.isShapeValid == false) {
+            canvas.drawBitmap(imageForWrong, null, new RectF(0, 0, width, height), paint);
+        }
+
+
+
+
+
     }
 
     @Override
@@ -228,4 +270,26 @@ public class DrawView extends View {
         mRatioX = ((float) mImgWidth) / mWidth;
         mRatioY = ((float) mImgHeight) / mHeight;
     }
+
+    public boolean establishBody(PointF p0, PointF p13, PointF p10){
+         float HeadX = p0.x;
+         float HEadY = p0.y;
+         PointF Head = p0;
+         PointF LFoot = p13;
+         PointF RFoot = p10;
+
+        Log.d("HEAD & ANKLE POINT", Head.toString() + ", " + LFoot.toString() + " ," + RFoot.toString());
+
+        if(p0.y < 700 && p13.x < 650 && p13.y > 1000 && p10.x > 460 && p10.y > 1000) {
+            if(DrawView.isShapeValid == true) {
+                DrawView.shapeCount++;
+            }
+            return true;
+        }
+        else {
+            DrawView.shapeCount = 0;
+            return false;
+        }
+    }
+
 }
