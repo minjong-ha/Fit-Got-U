@@ -5,9 +5,8 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.DialogFragment;
@@ -18,7 +17,6 @@ import android.support.v7.widget.Toolbar;
 import android.util.Base64;
 import android.widget.Toast;
 
-import com.example.myapplication.Etc.MySQLiteOpenHelper;
 import com.example.myapplication.Etc.Util;
 import com.example.myapplication.Fragment.DataAnalysisFragment;
 import com.example.myapplication.Fragment.HomeTraining2Fragment;
@@ -31,6 +29,11 @@ import com.example.myapplication.Fragment.TrainerMatch2Fragment;
 import com.example.myapplication.Fragment.TrainerMatch3Fragment;
 import com.example.myapplication.Fragment.TrainerMatchFragment;
 import com.example.myapplication.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.kakao.network.ErrorResult;
 import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.LogoutResponseCallback;
@@ -66,6 +69,24 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        FirebaseInstanceId.getInstance().getInstanceId()
+                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                        if (!task.isSuccessful()) {
+                            System.out.println("getInstanceId failed" + task.getException());
+                            return;
+                        }
+
+                        // Get new Instance ID token
+                        String token = task.getResult().getToken();
+
+                        // Log and toast
+                        System.out.println("aaaaaaa:" + token);
+                    }
+                });
+
         //SpeechRecognizerManager.getInstance().initializeLibrary(getApplicationContext());
         //TextToSpeechManager.getInstance().initializeLibrary(getApplicationContext());
         /*ttsClient = new TextToSpeechClient.Builder()

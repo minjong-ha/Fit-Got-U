@@ -6,27 +6,19 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.AsyncTask;
 import android.support.v4.app.ActivityCompat;
-import android.widget.Toast;
 
 import com.example.myapplication.Activity.JoinActivity;
 import com.example.myapplication.Activity.LoginActivity;
 import com.example.myapplication.Activity.MainActivity;
 import com.example.myapplication.Activity.TestActivity;
-import com.kakao.auth.ApiResponseCallback;
-import com.kakao.network.ErrorResult;
-import com.kakao.usermgmt.UserManagement;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 public class Util {
     public static final int DIALOG_REQUEST_CODE = 1;
