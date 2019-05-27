@@ -1,6 +1,7 @@
 package com.example.myapplication.List;
 
 import android.content.Context;
+import android.net.Uri;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.ImageView;
