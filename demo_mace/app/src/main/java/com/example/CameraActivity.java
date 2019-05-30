@@ -104,15 +104,15 @@ public class CameraActivity extends Activity {
         String message = intent.getStringExtra("exercise");
         explain.setText(message);
 
-        Calculate mes = new Calculate();
-        mes.info = message;
+        Calculate.info = message;
+        Calculate.setContext(this.getApplicationContext());
     }
 
     public void onClick(View view){
         Log.d("result", "exerciseCount: " + Calculate.exerciseCount +" validCount: " + Calculate.validCount);
         Log.d("result", "upperCount: " + Calculate.uppperCount + " lowerCount: " + Calculate.lowerCount);
         Log.d("result", "left: " + Calculate.left);
-        Log.d("resulr", Calculate.left.toString());
+        Log.d("result", Calculate.left.toString());
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 
         alertDialogBuilder.setTitle("운동결과");

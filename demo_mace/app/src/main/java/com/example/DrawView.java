@@ -29,6 +29,8 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 
+import org.opencv.core.Point;
+
 import java.util.concurrent.CopyOnWriteArrayList;
 
 
@@ -72,6 +74,10 @@ public class DrawView extends View {
             COLOR_BACKGROUND
     };
     private Paint mPaint;
+
+    //=====
+    private Paint validPaint;
+    //=====
 
     public DrawView(Context context) {
         super(context);
@@ -131,7 +137,7 @@ public class DrawView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        if (mPaint == null) {
+        /*if (mPaint == null) {
             mPaint = new Paint();
             mPaint.setStyle(Paint.Style.FILL);
             mPaint.setAntiAlias(true);
@@ -150,7 +156,7 @@ public class DrawView extends View {
         }
 
         mPaint.setColor(Color.parseColor("#6fa8dc"));
-        mPaint.setStrokeWidth(5);
+        mPaint.setStrokeWidth(5);*/
 
         if (mDrawPoint.size() <= 0)
             return;
@@ -171,10 +177,7 @@ public class DrawView extends View {
         PointF p12 = mDrawPoint.get(12); //l_knee
         PointF p13 = mDrawPoint.get(13); //l_ankle
 
-        //Calculate cal = new Calculate();
-        Calculate.main(mDrawPoint);
-
-        //0-1 top - neck
+       /* //0-1 top - neck
         canvas.drawLine(p0.x, p0.y, p1.x, p1.y, mPaint);
 
         //1-2 neck - r_shoulder
@@ -211,17 +214,121 @@ public class DrawView extends View {
         canvas.drawLine(p8.x, p8.y, p9.x, p9.y, mPaint);
 
         //9-10 r_knee - r_ankle
-        canvas.drawLine(p9.x, p9.y, p10.x, p10.y, mPaint);
+        canvas.drawLine(p9.x, p9.y, p10.x, p10.y, mPaint);*/
+
 
         Paint paint = new Paint();
 
+        validPaint = new Paint();
+
+        Log.d("checkangle", p2.toString());
+
+        //여기가 오버레이
         if(DrawView.shapeCount > 20) {
             paint.setAlpha(0); // you can change number to change the transparency level
             DrawView.isAllDone = true;
+
+            if(Calculate.info.compareTo("스쿼트") == 0){
+
+                validPaint.setColor(Color.GREEN);
+                validPaint.setStrokeWidth(15);
+                //최적의 운동 각도 보여주는 부분
+                    //11-12 l_hip - l_knee
+                    canvas.drawLine(630, 900, 461, 960, validPaint);
+
+                    //12-13 l_knee - l_ankle
+                    canvas.drawLine(461, 960, 540, 1140, validPaint);
+
+
+                //현재 사용자의 각도 보여주는 부분
+                    //0-1 top - neck
+                    canvas.drawLine(p0.x, p0.y, p1.x, p1.y, mPaint);
+
+                    //1-11 neck - l_hip
+                    canvas.drawLine(p1.x, p1.y, p11.x, p11.y, mPaint);
+
+                    //11-12 l_hip - l_knee
+                    canvas.drawLine(p11.x, p11.y, p12.x, p12.y, mPaint);
+
+                    //12-13 l_knee - l_ankle
+                    canvas.drawLine(p12.x, p12.y, p13.x, p13.y, mPaint);
+
+                    //1-8 neck - r_hip
+                    canvas.drawLine(p1.x, p1.y, p8.x, p8.y, mPaint);
+
+                    //8-9 r_hip - r_knee
+                    canvas.drawLine(p8.x, p8.y, p9.x, p9.y, mPaint);
+
+                    //9-10 r_knee - r_ankle
+                    canvas.drawLine(p9.x, p9.y, p10.x, p10.y, mPaint);
+
+            }
+            Calculate.main(mDrawPoint);
         }
         else {
             paint.setAlpha(150);
+
+            if (mPaint == null) {
+                mPaint = new Paint();
+                mPaint.setStyle(Paint.Style.FILL);
+                mPaint.setAntiAlias(true);
+            }
+
+            canvas.drawColor(Color.TRANSPARENT);
+
+            int colorIndex = 0;
+            for (PointF pointF : mDrawPoint) {
+//            if (pointF.x == 0 && pointF.y == 0) {
+//                colorIndex++;
+//                continue;
+//            }
+                mPaint.setColor(mColorArray[colorIndex++]);
+                canvas.drawCircle(pointF.x, pointF.y, 8, mPaint);
+            }
+
+            mPaint.setColor(Color.parseColor("#6fa8dc"));
+            mPaint.setStrokeWidth(5);
+
+            //0-1 top - neck
+            canvas.drawLine(p0.x, p0.y, p1.x, p1.y, mPaint);
+
+            //1-2 neck - r_shoulder
+            canvas.drawLine(p1.x, p1.y, p2.x, p2.y, mPaint);
+
+            //2-3 r_shoulder - r_elbow
+            canvas.drawLine(p2.x, p2.y, p3.x, p3.y, mPaint);
+
+            //3-4 r_elbow - r_wrist
+            canvas.drawLine(p3.x, p3.y, p4.x, p4.y, mPaint);
+
+            //1-5 neck - l_shoulder
+            canvas.drawLine(p1.x, p1.y, p5.x, p5.y, mPaint);
+
+            //5-6 l_shoulder - l_elbow
+            canvas.drawLine(p5.x, p5.y, p6.x, p6.y, mPaint);
+
+            //6-7 l_elbow - l_wrist
+            canvas.drawLine(p6.x, p6.y, p7.x, p7.y, mPaint);
+
+            //1-11 neck - l_hip
+            canvas.drawLine(p1.x, p1.y, p11.x, p11.y, mPaint);
+
+            //11-12 l_hip - l_knee
+            canvas.drawLine(p11.x, p11.y, p12.x, p12.y, mPaint);
+
+            //12-13 l_knee - l_ankle
+            canvas.drawLine(p12.x, p12.y, p13.x, p13.y, mPaint);
+
+            //1-8 neck - r_hip
+            canvas.drawLine(p1.x, p1.y, p8.x, p8.y, mPaint);
+
+            //8-9 r_hip - r_knee
+            canvas.drawLine(p8.x, p8.y, p9.x, p9.y, mPaint);
+
+            //9-10 r_knee - r_ankle
+            canvas.drawLine(p9.x, p9.y, p10.x, p10.y, mPaint);
         }
+
         Bitmap imageForCorrect = BitmapFactory.decodeResource(getResources(), R.drawable.sil_correct);
         Bitmap imageForWrong = BitmapFactory.decodeResource(getResources(), R.drawable.sil_wrong);
 
@@ -240,11 +347,6 @@ public class DrawView extends View {
         else if(DrawView.isShapeValid == false) {
             canvas.drawBitmap(imageForWrong, null, new RectF(0, 0, width, height), paint);
         }
-
-
-
-
-
     }
 
     @Override
