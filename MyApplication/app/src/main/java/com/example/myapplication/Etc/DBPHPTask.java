@@ -11,16 +11,22 @@ import java.net.URL;
 
 public class DBPHPTask extends AsyncTask<String, Void, String> {
     private String phpname;
+    private String address = "http://ec2-54-158-199-36.compute-1.amazonaws.com/fitgotu/";
 
     public DBPHPTask(String phpname) {
         this.phpname = phpname;
+    }
+
+    public DBPHPTask(String phpname, String newaddress) {
+        this.phpname = phpname;
+        this.address = newaddress;
     }
 
     @Override
     protected String doInBackground(String... Strings) {
         HttpURLConnection conn = null;
         StringBuffer postParameters = new StringBuffer();
-        String link = "http://ec2-18-212-145-125.compute-1.amazonaws.com/fitgotu/" + phpname + ".php";//쿼리php 파일 불러오기
+        String link = address + phpname + ".php";//쿼리php 파일 불러오기
         try {
             int num = 0;
             for (String str : Strings) {

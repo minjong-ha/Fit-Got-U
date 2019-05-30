@@ -65,27 +65,11 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
     private String is_user;
     private String address;
     private String youtube = "";
+    private String firebasetoken;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        FirebaseInstanceId.getInstance().getInstanceId()
-                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
-                        if (!task.isSuccessful()) {
-                            System.out.println("getInstanceId failed" + task.getException());
-                            return;
-                        }
-
-                        // Get new Instance ID token
-                        String token = task.getResult().getToken();
-
-                        // Log and toast
-                        System.out.println("aaaaaaa:" + token);
-                    }
-                });
 
         //SpeechRecognizerManager.getInstance().initializeLibrary(getApplicationContext());
         //TextToSpeechManager.getInstance().initializeLibrary(getApplicationContext());
@@ -313,7 +297,30 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
                 if (!Util.Information_Filled(weight, height, address, is_user)) {
                     Util.startJoinActivity(activity, kakaoid, nickname, thumbnail);
                 } else {
-                    Util.UpdateUser_Auto(kakaoid + "", nickname, thumbnail);
+                    //Util.UpdateUser_Auto(kakaoid + "", nickname, thumbnail);
+
+                    FirebaseInstanceId.getInstance().getInstanceId()
+                            .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                                    if (!task.isSuccessful()) {
+                                        System.out.println("getInstanceId failed" + task.getException());
+                                        return;
+                                    }
+
+                                    // Get new Instance ID token
+                                    firebasetoken = task.getResult().getToken();
+                                    System.out.println("aaaaaaaaaaaaaa" + firebasetoken);
+                                    if (kakaoid != 0) {
+                                        String exist = Util.SelectFirebaseToken(kakaoid + "");
+                                        if (exist.equals("")) {
+                                            Util.InsertFirebaseToken(kakaoid + "", firebasetoken);
+                                        } else if (!exist.equals(firebasetoken)) {
+                                            Util.UpdateFirebaseToken(kakaoid + "", firebasetoken);
+                                        }
+                                    }
+                                }
+                            });
                 }
             }
         });

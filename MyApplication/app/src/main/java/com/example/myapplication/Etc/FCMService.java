@@ -19,10 +19,5 @@ public class FCMService extends FirebaseMessagingService {
     @Override
     public void onNewToken(String token) {
         System.out.println("eeeeeeeeeeeeeeeeeeeeee" + token);
-        sendRegistrationToServer(token);
-    }
-
-    private void sendRegistrationToServer(String token) {
-
     }
 }

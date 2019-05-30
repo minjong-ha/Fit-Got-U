@@ -264,6 +264,65 @@ public class Util {
         return mArrayList;
     }
 
+    public static String InsertFirebaseToken(String kakaoid, String token) {
+        String str = null;
+        try {
+            DBPHPTask task = new DBPHPTask("insert_token");
+            str =  task.execute("id", kakaoid, "token", token).get();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return str;
+    }
+
+    public static String UpdateFirebaseToken(String kakaoid, String token) {
+        String str = null;
+        try {
+            DBPHPTask task = new DBPHPTask("update_token");
+            str =  task.execute("id", kakaoid, "token", token).get();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return str;
+    }
+
+    public static String SelectFirebaseToken(String userid) {
+        String str = "";
+        try {
+            DBPHPTask task = new DBPHPTask("select_token");
+            str =  getJsonFirebaseToken(task.execute("id", userid).get());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return str;
+    }
+
+    public static String getJsonFirebaseToken(String JsonString) {
+        try {
+            JSONObject jsonObject = new JSONObject(JsonString);
+            JSONArray jsonArray = jsonObject.getJSONArray("fgy");
+
+            if (jsonArray.length() > 0) {
+                JSONObject item = jsonArray.getJSONObject(0);
+                return item.getString("token");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
+    public static String sendNotification(String kakaoid) {
+        String str = null;
+        try {
+            DBPHPTask task = new DBPHPTask("null", "http://ec2-54-158-199-36.compute-1.amazonaws.com:4000/");
+            str =  task.execute("id", kakaoid).get();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return str;
+    }
+
     public static boolean Information_Filled(String weight, String height, String address, String is_user) {
         return weight != null && height != null && address != null && is_user != null && !weight.equals("") && !height.equals("") && !address.equals("") && !is_user.equals("");
     }
