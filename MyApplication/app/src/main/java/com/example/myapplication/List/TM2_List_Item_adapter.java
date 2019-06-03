@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.myapplication.Etc.ImageTask;
+import com.example.myapplication.Etc.Util;
 import com.example.myapplication.Etc.YoutubeData;
 import com.example.myapplication.R;
 
@@ -42,7 +43,7 @@ public class TM2_List_Item_adapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        if(view==null){
+        if(view == null){
             view=inflater.inflate(layout,viewGroup,false);
         }
 
@@ -55,12 +56,7 @@ public class TM2_List_Item_adapter extends BaseAdapter {
         updated.setText(listviewitem.getPublishedAt());
         ImageView image = view.findViewById(R.id.tm2_image);
         if (listviewitem.getImgurl() != null) {
-            ImageTask task = new ImageTask();
-            try {
-                image.setImageBitmap(task.execute(listviewitem.getImgurl()).get());
-            } catch(Exception e) {
-                e.printStackTrace();
-            }
+            Util.getImagefromURL(listviewitem.getImgurl(), image);
         }
 
         return view;

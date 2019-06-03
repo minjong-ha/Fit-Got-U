@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
+import android.view.View;
+import android.widget.ImageView;
+
 import androidx.core.app.ActivityCompat;
 
 import com.example.myapplication.Activity.JoinActivity;
@@ -48,15 +51,13 @@ public class Util {
         return mArrayList;
     }
 
-    public static Bitmap getImagefromURL(String path) {
-        Bitmap bitmap = null;
+    public static void getImagefromURL(String path, ImageView view) {
         try {
-            ImageTask task = new ImageTask();
-            bitmap = task.execute(path).get();
+            ImageTask task = new ImageTask(view);
+            task.execute(path);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return bitmap;
     }
 
     public static void UpdateDBData(Context context, String value) {
@@ -157,17 +158,6 @@ public class Util {
         return str;
     }
 
-    public static String UpdateUser_Auto(String kakaoid, String name, String profile_image) {//트레이너 포함
-        String str = null;
-        try {
-            DBPHPTask task = new DBPHPTask("update_user_auto");
-            str =  task.execute("user_id", kakaoid, "username", name, "profile_image", profile_image).get();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return str;
-    }
-
     public static String DeleteUser(String kakaoid) {//트레이너 포함
         String str = null;
         try {
@@ -243,6 +233,8 @@ public class Util {
                 String address = item.getString("home_address");
                 String is_user = item.getString("is_user");
                 String youtube = item.getString("youtube");
+                String weight = item.getString("weight");
+                String height = item.getString("height");
                 if (youtube == null) {
                     youtube = "";
                 }
@@ -255,6 +247,8 @@ public class Util {
                 hashMap.put("address", address);
                 hashMap.put("is_user", is_user);
                 hashMap.put("youtube", youtube);
+                hashMap.put("weight", weight);
+                hashMap.put("height", height);
 
                 mArrayList.add(hashMap);
             }
@@ -310,6 +304,91 @@ public class Util {
             e.printStackTrace();
         }
         return "";
+    }
+
+    public static String InsertSupscription(String uid, String tid) {
+        String str = null;
+        try {
+            DBPHPTask task = new DBPHPTask("insert_supscription");
+            str = task.execute("user_id", uid, "trainer_id", tid).get();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return str;
+    }
+
+    public static String UpdateSupscription(String id, String status) {
+        String str = null;
+        try {
+            DBPHPTask task = new DBPHPTask("update_supscription");
+            str =  task.execute("id", id, "status", status).get();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return str;
+    }
+
+    public static String DeleteSupscription(String id) {
+        String str = null;
+        try {
+            DBPHPTask task = new DBPHPTask("delete_supscription");
+            str =  task.execute("id", id).get();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return str;
+    }
+
+    public static ArrayList<HashMap<String, String>> SelectSupscriptionbyUser(String userid) {
+        ArrayList<HashMap<String, String>> mArrayList = new ArrayList<>();
+        try {
+            DBPHPTask task = new DBPHPTask("select_supscription_by_user");
+            mArrayList =  getJsonSupscription(task.execute("user_id", userid).get());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return mArrayList;
+    }
+
+    public static ArrayList<HashMap<String, String>> SelectSupscriptionbyTrainer(String trainerid) {
+        ArrayList<HashMap<String, String>> mArrayList = new ArrayList<>();
+        try {
+            DBPHPTask task = new DBPHPTask("select_supscription_by_trainer");
+            mArrayList =  getJsonSupscription(task.execute("trainer_id", trainerid).get());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return mArrayList;
+    }
+
+    public static ArrayList<HashMap<String, String>> getJsonSupscription(String JsonString) {
+        ArrayList<HashMap<String, String>> mArrayList = new ArrayList<>();
+        try {
+            JSONObject jsonObject = new JSONObject(JsonString);
+            JSONArray jsonArray = jsonObject.getJSONArray("fgy");
+
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject item = jsonArray.getJSONObject(i);
+
+                String id = item.getString("id");
+                String userid = item.getString("user_id");
+                String trainerid = item.getString("trainer_id");
+                String status = item.getString("status");
+
+                HashMap<String,String> hashMap = new HashMap<>();
+
+                hashMap.put("id", id);
+                hashMap.put("userid", userid);
+                hashMap.put("trainerid", trainerid);
+                hashMap.put("status", status);
+
+                mArrayList.add(hashMap);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return mArrayList;
     }
 
     public static String sendNotification(String targetid, String title, String content, String action) {

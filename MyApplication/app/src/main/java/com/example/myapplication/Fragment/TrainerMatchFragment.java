@@ -129,7 +129,7 @@ public class TrainerMatchFragment extends Fragment {
                     double distance = Math.round(location.distanceTo(t_location) / 10.0) / 100.0;
                     if (distance <= 0.01) distance = 0.01;
 
-                        adapter.addItem(new TrainerItem(Long.parseLong(t.get("userid")), t.get("name"), distance, t.get("profile_image"), t.get("youtube")));
+                        adapter.addItem(new TrainerItem(Long.parseLong(t.get("userid")), t.get("name"), distance, t.get("profile_image"), t.get("youtube"), t.get("address"), t.get("height"), t.get("weight")));
                     }
 
                     mapView.setMapCenterPoint(mapPoint, true); // animated : true
@@ -165,6 +165,10 @@ public class TrainerMatchFragment extends Fragment {
                 TrainerItem item = (TrainerItem) adapter.getItem(position);
                 Bundle args = new Bundle();
                 args.putString("youtube", item.getYoutube());
+                args.putString("name", item.getName());
+                args.putString("address", item.getAddress());
+                args.putString("height", item.getHeight());
+                args.putString("weight", item.getWeight());
                 TrainerMatch2Fragment tm2 = new TrainerMatch2Fragment();
                 tm2.setArguments(args);
                 ((MainActivity) getActivity()).ChangeFragmentMain(tm2);

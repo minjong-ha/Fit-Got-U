@@ -42,7 +42,7 @@ public class TrainerItemView extends LinearLayout {
     }
 
     public void setImage(String youtube){
-        imageView.setImageBitmap(Util.getImagefromURL(youtube));
+        Util.getImagefromURL(youtube, imageView);
     }
 
 }

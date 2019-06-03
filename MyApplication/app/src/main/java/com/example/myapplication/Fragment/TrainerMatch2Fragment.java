@@ -7,7 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.myapplication.Activity.MainActivity;
 import com.example.myapplication.Etc.Util;
@@ -22,14 +24,41 @@ import java.util.ArrayList;
 public class TrainerMatch2Fragment extends Fragment implements AdapterView.OnItemClickListener {
     private ArrayList<YoutubeData> youtubelist = new ArrayList<>();
     private String youtube = null;
+    private String name = "";
+    private String address = "";
+    private String height = "";
+    private String weight = "";
     private TM2_List_Item_adapter adapter;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_trainer_match2, container, false);
         if (getArguments() != null) {
             youtube = getArguments().getString("youtube");
+            name = getArguments().getString("name");
+            address = getArguments().getString("address");
+            height = getArguments().getString("height");
+            weight = getArguments().getString("weight");
         }
+
+        TextView view1 = view.findViewById(R.id.tm2_profile_name);
+        view1.setText(name);
+        TextView view2 = view.findViewById(R.id.tm2_profile_address);
+        view2.setText(address);
+        TextView view3 = view.findViewById(R.id.tm2_profile_height);
+        view3.setText(height);
+        TextView view4 = view.findViewById(R.id.tm2_profile_weight);
+        view4.setText(weight);
+
+        ImageButton button = view.findViewById(R.id.tm2_profile_subscription);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
         try {
             if (youtube != null) {
                 youtube = ParsingUrl(youtube);
