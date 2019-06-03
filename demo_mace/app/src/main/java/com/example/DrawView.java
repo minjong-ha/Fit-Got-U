@@ -225,11 +225,12 @@ public class DrawView extends View {
 
         //여기가 오버레이
         if(DrawView.shapeCount > 20) {
-            paint.setAlpha(0); // you can change number to change the transparency level
+            //paint.setAlpha(0); // you can change number to change the transparency level
             DrawView.isAllDone = true;
 
             if(Calculate.info.compareTo("스쿼트") == 0){
 
+                /*
                 validPaint.setColor(Color.GREEN);
                 validPaint.setStrokeWidth(15);
                 //최적의 운동 각도 보여주는 부분
@@ -238,6 +239,7 @@ public class DrawView extends View {
 
                     //12-13 l_knee - l_ankle
                     canvas.drawLine(461, 960, 540, 1140, validPaint);
+                    */
 
 
                 //현재 사용자의 각도 보여주는 부분
@@ -261,6 +263,41 @@ public class DrawView extends View {
 
                     //9-10 r_knee - r_ankle
                     canvas.drawLine(p9.x, p9.y, p10.x, p10.y, mPaint);
+
+            }
+            if(Calculate.info.compareTo("런지") == 0){
+
+                validPaint.setColor(Color.GREEN);
+                validPaint.setStrokeWidth(15);
+                //최적의 운동 각도 보여주는 부분
+                //11-12 l_hip - l_knee
+                canvas.drawLine(630, 900, 461, 960, validPaint);
+
+                //12-13 l_knee - l_ankle
+                canvas.drawLine(461, 960, 540, 1140, validPaint);
+
+
+                //현재 사용자의 각도 보여주는 부분
+                //0-1 top - neck
+                canvas.drawLine(p0.x, p0.y, p1.x, p1.y, mPaint);
+
+                //1-11 neck - l_hip
+                canvas.drawLine(p1.x, p1.y, p11.x, p11.y, mPaint);
+
+                //11-12 l_hip - l_knee
+                canvas.drawLine(p11.x, p11.y, p12.x, p12.y, mPaint);
+
+                //12-13 l_knee - l_ankle
+                canvas.drawLine(p12.x, p12.y, p13.x, p13.y, mPaint);
+
+                //1-8 neck - r_hip
+                canvas.drawLine(p1.x, p1.y, p8.x, p8.y, mPaint);
+
+                //8-9 r_hip - r_knee
+                canvas.drawLine(p8.x, p8.y, p9.x, p9.y, mPaint);
+
+                //9-10 r_knee - r_ankle
+                canvas.drawLine(p9.x, p9.y, p10.x, p10.y, mPaint);
 
             }
             Calculate.main(mDrawPoint);
@@ -331,6 +368,8 @@ public class DrawView extends View {
 
         Bitmap imageForCorrect = BitmapFactory.decodeResource(getResources(), R.drawable.sil_correct);
         Bitmap imageForWrong = BitmapFactory.decodeResource(getResources(), R.drawable.sil_wrong);
+        Bitmap imageForSquat = BitmapFactory.decodeResource(getResources(), R.drawable.squat_sill);
+        Bitmap imageForLunge = BitmapFactory.decodeResource(getResources(), R.drawable.lunge_sil);
 
         //DisplayMetrics metrics = getBaseContext().getResources().getDisplayMetrics();
         int width = mWidth;
@@ -340,12 +379,20 @@ public class DrawView extends View {
             DrawView.isShapeValid = establishBody(p0, p13, p10);
         }
 
-        if(DrawView.isShapeValid == true) {
+        if(DrawView.isShapeValid == true && DrawView.isAllDone == false) {
             //green image
             canvas.drawBitmap(imageForCorrect, null, new RectF(0, 0, width, height), paint);
         }
         else if(DrawView.isShapeValid == false) {
             canvas.drawBitmap(imageForWrong, null, new RectF(0, 0, width, height), paint);
+        }
+        else if(DrawView.isAllDone == true && Calculate.info.compareTo("스쿼트") == 0) {
+            paint.setAlpha(150);
+            canvas.drawBitmap(imageForSquat, null, new RectF(0, 0, width, height), paint);
+        }
+        else if(DrawView.isAllDone == true && Calculate.info.compareTo("런지") == 0) {
+            paint.setAlpha(150);
+            canvas.drawBitmap(imageForLunge, null, new RectF(0, 0, width, height), paint);
         }
     }
 

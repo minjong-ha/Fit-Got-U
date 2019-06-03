@@ -47,8 +47,6 @@ public class CameraActivity extends Activity {
 
     public static boolean isOpenCVInit = false;
 
-    Timer timer = new Timer();
-
     private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(this) {
         @Override
         public void onManagerConnected(int status) {
@@ -78,19 +76,6 @@ public class CameraActivity extends Activity {
         setContentView(R.layout.activity_camera);
 
         TextView explain = (TextView)findViewById(R.id.text);
-
-        TextView exerciseCountBtn = (TextView)findViewById(R.id.exeercisecount);
-        TextView validCountBtn = (TextView)findViewById(R.id.validcount);
-        TextView upperCountBtn = (TextView)findViewById(R.id.uppercount);
-        TextView lowerCountBtn = (TextView)findViewById(R.id.lowercount);
-
-        /*
-        exerciseCountBtn.setText(""+Calculate.exerciseCount);
-        validCountBtn.setText(""+Calculate.validCount);
-        upperCountBtn.setText(""+Calculate.uppperCount);
-        lowerCountBtn.setText(""+Calculate.lowerCount);
-        */
-
 
         //이거 자동업데이트 어떻게 해야할까
 
@@ -124,6 +109,7 @@ public class CameraActivity extends Activity {
                             public void onClick(
                                     DialogInterface dialog, int id) {
                                 // 프로그램을 종료한다
+                                Calculate.varInit();
                                 CameraActivity.this.finish();
                             }
                         });
@@ -133,8 +119,6 @@ public class CameraActivity extends Activity {
 
         // 다이얼로그 보여주기
         alertDialog.show();
-
-        Calculate.varInit();
 
       //  timer.cancel();
         //finish();

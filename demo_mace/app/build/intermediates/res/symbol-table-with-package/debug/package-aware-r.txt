@@ -731,7 +731,8 @@ int drawable notification_tile_bg 0x7f07006e
 int drawable notify_panel_notification_icon_bg 0x7f07006f
 int drawable sil_correct 0x7f070070
 int drawable sil_wrong 0x7f070071
-int drawable tile 0x7f070072
+int drawable squat_sill 0x7f070072
+int drawable tile 0x7f070073
 int id action0 0x7f080000
 int id action_bar 0x7f080001
 int id action_bar_activity_content 0x7f080002
@@ -995,7 +996,10 @@ int raw step_back 0x7f0b000b
 int raw step_close 0x7f0b000c
 int raw ten 0x7f0b000d
 int raw three 0x7f0b000e
-int raw two 0x7f0b000f
+int raw too_high 0x7f0b000f
+int raw too_low 0x7f0b0010
+int raw two 0x7f0b0011
+int raw well_done 0x7f0b0012
 int string abc_action_bar_home_description 0x7f0c0000
 int string abc_action_bar_home_description_format 0x7f0c0001
 int string abc_action_bar_home_subtitle_description_format 0x7f0c0002

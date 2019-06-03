@@ -3206,7 +3206,8 @@ public final class R {
     public static final int notify_panel_notification_icon_bg=0x7f07006f;
     public static final int sil_correct=0x7f070070;
     public static final int sil_wrong=0x7f070071;
-    public static final int tile=0x7f070072;
+    public static final int squat_sill=0x7f070072;
+    public static final int tile=0x7f070073;
   }
   public static final class id {
     public static final int action0=0x7f080000;
@@ -3478,7 +3479,10 @@ public final class R {
     public static final int step_close=0x7f0b000c;
     public static final int ten=0x7f0b000d;
     public static final int three=0x7f0b000e;
-    public static final int two=0x7f0b000f;
+    public static final int too_high=0x7f0b000f;
+    public static final int too_low=0x7f0b0010;
+    public static final int two=0x7f0b0011;
+    public static final int well_done=0x7f0b0012;
   }
   public static final class string {
     public static final int abc_action_bar_home_description=0x7f0c0000;
