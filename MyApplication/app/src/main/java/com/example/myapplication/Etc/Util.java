@@ -312,11 +312,11 @@ public class Util {
         return "";
     }
 
-    public static String sendNotification(String kakaoid) {
+    public static String sendNotification(String targetid, String title, String content, String action) {
         String str = null;
         try {
             DBPHPTask task = new DBPHPTask("null", "http://ec2-54-158-199-36.compute-1.amazonaws.com:4000/");
-            str =  task.execute("id", kakaoid).get();
+            str =  task.execute("targetid", targetid, "title", title, "content", content, "action", action).get();
         } catch (Exception e) {
             e.printStackTrace();
         }

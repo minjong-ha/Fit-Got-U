@@ -44,8 +44,7 @@ import java.security.MessageDigest;
 import java.util.HashMap;
 import java.util.Stack;
 
-public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSelectedListener/*, TextToSpeechListener*/ {
-    //private MySQLiteOpenHelper dbhelper;
+public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSelectedListener {
     private SQLiteDatabase sqliteDB;
 
     private Fragment mainfragment = null;
@@ -56,7 +55,6 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
     private String maintitle = "";
     private int menu = -1;//1~4까지. 현재 선택 fragment 구별
 
-    //private TextToSpeechClient ttsClient;
     private long kakaoid;
     private String nickname;
     private String thumbnail;
@@ -70,19 +68,6 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        //SpeechRecognizerManager.getInstance().initializeLibrary(getApplicationContext());
-        //TextToSpeechManager.getInstance().initializeLibrary(getApplicationContext());
-        /*ttsClient = new TextToSpeechClient.Builder()
-                .setSpeechMode(TextToSpeechClient.NEWTONE_TALK_1)// 음성합성방식
-                .setSpeechSpeed(1.0)// 발음 속도(0.5~4.0)
-                .setSpeechVoice(TextToSpeechClient.VOICE_WOMAN_READ_CALM)//TTS 음색 모드 설정(여성 차분한 낭독체)
-                .setListener(this)
-                .build();*/
-
-        //ttsClient.setSpeechText("안녕하세요.");   //뉴톤톡 하고자 하는 문자열을 미리 세팅.
-        //ttsClient.play();       //세팅된 문자열을 합성하여 재생.
-        //필요한 곳에 넣기
 
         //Util.startTestActivity(this);
         //getHK();
@@ -181,9 +166,6 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
                 break;
         }
         if (realback) {
-            //super.onBackPressed();
-            /*SpeechRecognizerManager.getInstance().finalizeLibrary();
-            TextToSpeechManager.getInstance().finalizeLibrary();*/
             ActivityCompat.finishAffinity(this);
         } else {
             ChangeFragmentMain(0);
@@ -402,18 +384,4 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
     public void setYoutube(String youtube) {
         this.youtube = youtube;
     }
-
-    /*@Override
-    public void onFinished() {
-        int intSentSize = ttsClient.getSentDataSize();      //세션 중에 전송한 데이터 사이즈
-        int intRecvSize = ttsClient.getReceivedDataSize();  //세션 중에 전송받은 데이터 사이즈
-
-        final String strInacctiveText = "handleFinished() SentSize : " + intSentSize + "  RecvSize : " + intRecvSize;
-        System.out.println(strInacctiveText);
-    }
-
-    @Override
-    public void onError(int code, String message) {
-        System.out.println("TTS error : " + code + "-" + message);
-    }*/
 }
