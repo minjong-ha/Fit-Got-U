@@ -30,7 +30,7 @@ public class TrainerItemView extends LinearLayout {
         inflater.inflate(R.layout.trainer_item, this, true);
 
         textView = (TextView)findViewById(R.id.textView);
-        textView2 = (TextView)findViewById(R.id.textView2);
+        textView2 = (TextView)findViewById(R.id.textView22);
         imageView = (ImageView)findViewById(R.id.imageView);
     }
     public void setName(String name){

@@ -26,9 +26,12 @@
 
         <activity android:name=".Activity.TestActivity" />
         <activity android:name=".Activity.JoinActivity" />
-        <activity
-            android:name=".Activity.LoginActivity"
-            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity android:name=".calendar.ScheduleMain"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+        <activity android:name=".calendar.etc.DateDialog"
+            android:theme = "@style/NoTitleDialog"/>
+        <activity android:name=".Activity.LoginActivity"
+            android:theme = "@style/Theme.Design.Light.NoActionBar"/>
         <activity
             android:name=".Activity.InfoChangeActivity"
             android:label="이름 변경"

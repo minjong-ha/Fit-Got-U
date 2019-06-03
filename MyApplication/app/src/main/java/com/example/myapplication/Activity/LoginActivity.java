@@ -2,8 +2,8 @@ package com.example.myapplication.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.Etc.SessionCallback;
 import com.example.myapplication.R;

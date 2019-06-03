@@ -2,6 +2,11 @@ package com.example.myapplication.Fragment;
 
 import android.content.Context;
 import android.content.Intent;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.Random;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -26,6 +31,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Random;
+
+import androidx.fragment.app.Fragment;
 
 
 public class DataAnalysisFragment extends Fragment {
