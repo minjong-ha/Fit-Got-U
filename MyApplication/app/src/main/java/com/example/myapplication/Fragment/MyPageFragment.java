@@ -1,7 +1,9 @@
 package com.example.myapplication.Fragment;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +17,7 @@ import com.example.myapplication.Etc.Util;
 import com.example.myapplication.List.MP_List_Item;
 import com.example.myapplication.List.MP_List_Item_Adapter;
 import com.example.myapplication.R;
+import com.example.myapplication.calendar.ScheduleMain;
 
 import java.util.ArrayList;
 
@@ -41,10 +44,10 @@ public class MyPageFragment extends Fragment implements View.OnClickListener {
 
         ArrayList<MP_List_Item> items = new ArrayList<>();
         items.add(new MP_List_Item(R.string.my_info));
-        if (((MainActivity) getActivity()).getIs_user().equals("트레이너")) {
-            items.add(new MP_List_Item(R.string.my_youtube));
+        if (((MainActivity)getActivity()).getIs_user().equals("트레이너")) {
+            items.add(new MP_List_Item(R.string.my_trainee));
         } else {
-            items.add(new MP_List_Item(R.string.my_youtube));
+            items.add(new MP_List_Item(R.string.my_trainee));
         }
 
         items.add(new MP_List_Item(R.string.app_info));
@@ -57,7 +60,14 @@ public class MyPageFragment extends Fragment implements View.OnClickListener {
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ((MainActivity)getActivity()).ChangeFragmentMain(((MP_List_Item) listadapter.getItem(position)).getNameId());
+                MP_List_Item mplit = (MP_List_Item) listadapter.getItem(position);
+                if(getString(mplit.getNameId()).equals("회원 관리")) {
+                    Intent intent1 = new Intent(getActivity(), ScheduleMain.class);
+                    startActivityForResult(intent1, 102);
+                }
+                else {
+                    ((MainActivity)getActivity()).ChangeFragmentMain(mplit.getNameId());
+                }
             }
         });
 

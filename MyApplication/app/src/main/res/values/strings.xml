@@ -31,7 +31,7 @@
 
     <string name="my_info">내 정보 변경</string>
     <string name="my_trainer">내 트레이너</string>
-    <string name="my_youtube">유튜브 관리</string>
+    <string name="my_trainee">회원 관리</string>
     <string name="app_info">앱 정보</string>
     <string name="logout">로그아웃</string>
     <string name="separate">회원 탈퇴</string>

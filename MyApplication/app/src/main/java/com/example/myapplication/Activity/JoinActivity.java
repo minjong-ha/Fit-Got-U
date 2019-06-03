@@ -1,8 +1,7 @@
 package com.example.myapplication.Activity;
 
-import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,12 +10,6 @@ import android.widget.RadioGroup;
 
 import com.example.myapplication.Etc.Util;
 import com.example.myapplication.R;
-import com.kakao.auth.ApiResponseCallback;
-import com.kakao.network.ErrorResult;
-import com.kakao.usermgmt.UserManagement;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class JoinActivity extends AppCompatActivity {
 

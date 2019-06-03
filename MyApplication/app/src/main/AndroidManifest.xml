@@ -15,6 +15,10 @@
         android:theme="@style/AppTheme">
         <activity android:name=".Activity.TestActivity"></activity>
         <activity android:name=".Activity.JoinActivity" />
+        <activity android:name=".calendar.ScheduleMain"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+        <activity android:name=".calendar.etc.DateDialog"
+            android:theme = "@style/NoTitleDialog"/>
         <activity android:name=".Activity.LoginActivity"
             android:theme = "@style/Theme.Design.Light.NoActionBar"/>
         <activity
