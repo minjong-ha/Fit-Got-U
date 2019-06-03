@@ -9,7 +9,10 @@ import android.util.Pair;
 
 import java.io.File;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashSet;
 
 public class MySQLiteOpenHelper extends SQLiteOpenHelper implements Serializable {
     final private String[] bodyPart = {"좌측 팔 하박", "좌측 팔 상박", "좌측 다리 하박", "좌측 다리 상박",
@@ -129,11 +132,11 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper implements Serializable
     }
 
     //*******
-    public void updateRecordCount(int recordID, int exerciseCount){
+    public void updateRecordCount(int recordID, int exerciseCount) {
         SQLiteDatabase db = openDB();
         if (db != null) {
             String sql = "UPDATE EXERCISE_RECORD SET Exercise_count = " + exerciseCount +
-                    " WHERE Id = "+ recordID +";";
+                    " WHERE Id = " + recordID + ";";
             db.execSQL(sql);
         }
 
@@ -169,16 +172,16 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper implements Serializable
     public void insertTest() {
         final int TEST_SIZE = 5;
 
-        int recordID = insertRecord("스쿼트", "2019-05-21-04-51-25", 0);
+        int recordID = insertRecord("스쿼트", "2019-06-03-04-51-25", 0);
         for (int i = 0; i < TEST_SIZE; i++) {
-            insertDescribe(recordID, bodyPart[i], i+5);
+            insertDescribe(recordID, bodyPart[i], i + 5);
         }
 
-        updateRecordCount(recordID,5);
+        updateRecordCount(recordID, 5);
 
-        recordID = insertRecord("플랭크", "2019-05-21-04-51-26", 5);
+        recordID = insertRecord("플랭크", "2019-06-02-04-51-26", 5);
         for (int i = 0; i < TEST_SIZE; i++) {
-            insertDescribe(recordID, bodyPart[i + 3], (i+5) * -1);
+            insertDescribe(recordID, bodyPart[i + 3], (i + 5) * -1);
         }
 
     }
@@ -208,14 +211,14 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper implements Serializable
             Cursor cursor = null;
 
 
-            if(exerciseDate!=null && exerciseName !=null) {
+            if (exerciseDate != null && exerciseName != null) {
                 recordID = getRecordID(exerciseName, exerciseDate);
-                recordIDCondition  =   " AND Record_id = " + recordID ;
+                recordIDCondition = " AND Record_id = " + recordID;
             }
 
 
             String sqlSelectP_Angle = "SELECT AVG(Weak_angle) as average FROM EXERCISE_DESCRIBE WHERE Weak_part = " + partName +
-                   recordIDCondition + ";";
+                    recordIDCondition + ";";
             cursor = db.rawQuery(sqlSelectP_Angle, null);
 
             if (cursor.moveToNext()) {
@@ -235,37 +238,36 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper implements Serializable
         exerciseDate = "'" + exerciseDate.substring(0, 10) + "%'";
 
         if (db != null) {
-            String query = "SELECT COUNT(Exercise_name) FROM EXERCISE_RECORD WHERE Exercise_date like " + exerciseDate + ";";
+            String query = "SELECT Exercise_name FROM EXERCISE_RECORD " + exerciseDate + ";";
             System.out.println(query);
             cursor = db.rawQuery(query, null);
 
-            if(cursor.moveToNext()){
-               exerciseCount =  cursor.getInt(0);
+            if (cursor.moveToNext()) {
+                exerciseCount = cursor.getInt(0);
             }
 
-            }
+        }
 
         return exerciseCount;
     }  // 쿼리를 가짐
 
-    public ArrayList<Pair<Pair<String,String>,Integer>> getDescribe(String exerciseDate){
+    public ArrayList<Pair<Pair<String, String>, Integer>> getDescribe(String exerciseDate) {
         SQLiteDatabase db = openDB();
         Cursor cursor = null;
 
         exerciseDate = "'" + exerciseDate.substring(0, 10) + "%'";
 
-        ArrayList<Pair<Pair<String,String>,Integer>> exerciseNames = new ArrayList<Pair<Pair<String,String>,Integer>>();
+        ArrayList<Pair<Pair<String, String>, Integer>> exerciseNames = new ArrayList<Pair<Pair<String, String>, Integer>>();
 
         if (db != null) {
             String query = "SELECT Exercise_name, Exercise_date, Exercise_count FROM EXERCISE_RECORD WHERE Exercise_date like " + exerciseDate + ";";
-            System.out.println(query);
             cursor = db.rawQuery(query, null);
 
             if (cursor != null && cursor.getCount() > 0) {
                 cursor.moveToFirst();
                 while (!cursor.isAfterLast()) {
 
-                    exerciseNames.add( Pair.create(Pair.create(cursor.getString(0),cursor.getString(1)),cursor.getInt(2)));
+                    exerciseNames.add(Pair.create(Pair.create(cursor.getString(0), cursor.getString(1)), cursor.getInt(2)));
                     cursor.moveToNext();
                 }
 
@@ -308,6 +310,57 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper implements Serializable
         return analysisText(getJointValues(exerciseDate, exerciseName));
     }
 
+    // 달력에 운동 데이터 날림
+    public HashSet<String> getExerciseData() {
+        HashSet<String> dates = new HashSet<String>();
 
+        SQLiteDatabase db = openDB();
+        Cursor cursor = null;
 
+        if (db != null) {
+            String query = "SELECT distinct Exercise_date FROM EXERCISE_RECORD WHERE Exercise_date " + ";";
+            System.out.println(query);
+            cursor = db.rawQuery(query, null);
+
+            if (cursor != null && cursor.getCount() > 0) {
+                cursor.moveToFirst();
+                while (!cursor.isAfterLast()) {
+                    String tmp_date = cursor.getString(0);
+                    dates.add(tmp_date.substring(0, 10));
+
+                    cursor.moveToNext();
+                }
+            }
+        }
+        return dates;
+    }
+
+    public String getExerciseText(String exerciseDate) {
+        SQLiteDatabase db = openDB();
+        Cursor cursor = null;
+
+        String result = "";
+        int result_count=0;
+
+        if (db != null) {
+            String query = "SELECT Exercise_name, Exercise_count FROM EXERCISE_RECORD WHERE Exercise_date like " + exerciseDate + ";";
+            cursor = db.rawQuery(query, null);
+
+            if (cursor != null && cursor.getCount() > 0) {
+                cursor.moveToFirst();
+                while (!cursor.isAfterLast()) {
+                    String exerciseName = cursor.getString(0);
+                    int exerciseCount = cursor.getInt(1);
+
+                    result += exerciseName + " " + exerciseCount + "회 ";
+                    result_count++;
+
+                    if(result_count%3==0) result+="\n";
+
+                    cursor.moveToNext();
+                }
+            }
+        }
+        return result;
+    }
 }

@@ -1,8 +1,9 @@
 package com.example.myapplication.Activity;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.Etc.Util;
 import com.example.myapplication.R;

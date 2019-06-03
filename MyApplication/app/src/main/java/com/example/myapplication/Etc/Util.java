@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
-import android.support.v4.app.ActivityCompat;
 import androidx.core.app.ActivityCompat;
 
 import com.example.myapplication.Activity.JoinActivity;
