@@ -1,0 +1,4 @@
+#Mon May 27 19:28:52 KST 2019
+base.0=/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/transforms/dexMerger/debug/44
+path.0=classes.dex
+renamed.0=classes.dex
