@@ -73,11 +73,13 @@ public class TrainerMatch2Fragment extends Fragment implements AdapterView.OnIte
                     //button.setImageDrawable();
                     subid = Util.InsertSubscription(((MainActivity)getActivity()).getKakaoid() + "", trainerid);
                     Toast.makeText(getActivity().getApplicationContext(), "신청하였습니다.", Toast.LENGTH_SHORT).show();
+                    Util.sendNotification(trainerid, ((MainActivity)getActivity()).getNickname() + "님의 신청", "식단과 루틴을 제공해주세요", "1");
                 } else {
                     //button.setImageDrawable();
                     Util.DeleteSubscription(subid);
                     subid = "";
                     Toast.makeText(getActivity().getApplicationContext(), "신청을 취소했습니다.", Toast.LENGTH_SHORT).show();
+                    Util.sendNotification(trainerid, ((MainActivity)getActivity()).getNickname() + "님의 신청 취소", "신청이 취소되었습니다.", "1");
                 }
             }
         });
