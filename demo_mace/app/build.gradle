@@ -11,7 +11,7 @@ android {
         vectorDrawables.useSupportLibrary = true
         externalNativeBuild {
             cmake {
-                //arguments  '-DANDROID_TOOLCHAIN=clang', '-DANDROID_STL=gnustl_static'
+                //arguments  '-DANDROID_TOOLCHAIN=clang', '-DANDROID_STL=c++_shared'
                 cppFlags "-std=c++11","-frtti", "-fexceptions"
             }
         }
