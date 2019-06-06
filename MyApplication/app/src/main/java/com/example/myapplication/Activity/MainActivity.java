@@ -30,6 +30,7 @@ import com.example.myapplication.Fragment.TrainerMatch2Fragment;
 import com.example.myapplication.Fragment.TrainerMatch3Fragment;
 import com.example.myapplication.Fragment.TrainerMatchFragment;
 import com.example.myapplication.R;
+import com.example.myapplication.calendar.ScheduleFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.tabs.TabLayout;
@@ -131,7 +132,7 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
 
     @Override
     public void onBackPressed() {
-        boolean realback  = true;
+        boolean realback  = false;
         switch (menu) {
             case 1:
                 if (HTfragment.size() > 1) {
@@ -213,6 +214,10 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
                     break;
                 case R.string.my_trainee:
                     MPfragment.push(new TraineeManageFragment());
+                    mainfragment = MPfragment.peek();
+                    break;
+                case R.string.my_calender:
+                    MPfragment.push(new ScheduleFragment());
                     mainfragment = MPfragment.peek();
                     break;
                 case R.string.logout:

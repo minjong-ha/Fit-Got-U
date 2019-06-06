@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,6 +33,7 @@ public class TrainerMatch2Fragment extends Fragment implements AdapterView.OnIte
     private String height = "";
     private String weight = "";
     private String trainerid = "";
+    private String profile_image = "";
     private TM2_List_Item_adapter adapter;
     private String subid = "";
 
@@ -46,6 +48,7 @@ public class TrainerMatch2Fragment extends Fragment implements AdapterView.OnIte
             address = getArguments().getString("address");
             height = getArguments().getString("height");
             weight = getArguments().getString("weight");
+            profile_image = getArguments().getString("profile_image");
         }
 
         TextView view1 = view.findViewById(R.id.tm2_profile_name);
@@ -83,6 +86,11 @@ public class TrainerMatch2Fragment extends Fragment implements AdapterView.OnIte
                 }
             }
         });
+
+        ImageView image = view.findViewById(R.id.tm2_profile_image);
+        if (!profile_image.equals("")) {
+            Util.getImagefromURL(profile_image, image);
+        }
 
         try {
             if (youtube != null) {

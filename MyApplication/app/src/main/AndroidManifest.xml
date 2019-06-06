@@ -29,7 +29,7 @@
         android:theme="@style/Theme.AppCompat.DayNight.Dialog.Alert" />
         <activity android:name=".Activity.TestActivity" />
         <activity android:name=".Activity.JoinActivity" />
-        <activity android:name=".calendar.ScheduleMain"
+        <activity android:name=".calendar.ScheduleFragment"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
         <activity android:name=".calendar.etc.DateDialog"
             android:theme = "@style/NoTitleDialog"/>

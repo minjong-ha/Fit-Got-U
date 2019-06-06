@@ -17,7 +17,7 @@ import com.example.myapplication.Etc.Util;
 import com.example.myapplication.List.MP_List_Item;
 import com.example.myapplication.List.MP_List_Item_Adapter;
 import com.example.myapplication.R;
-import com.example.myapplication.calendar.ScheduleMain;
+import com.example.myapplication.calendar.ScheduleFragment;
 
 import java.util.ArrayList;
 
@@ -46,7 +46,9 @@ public class MyPageFragment extends Fragment implements View.OnClickListener {
         items.add(new MP_List_Item(R.string.my_info));
         if (((MainActivity)getActivity()).getIs_user().equals("트레이너")) {
             items.add(new MP_List_Item(R.string.my_trainee));
+            items.add(new MP_List_Item(R.string.my_calender));
         } else {
+            items.add(new MP_List_Item(R.string.my_calender));
         }
 
         items.add(new MP_List_Item(R.string.app_info));
@@ -61,7 +63,7 @@ public class MyPageFragment extends Fragment implements View.OnClickListener {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 MP_List_Item mplit = (MP_List_Item) listadapter.getItem(position);
                 if(getString(mplit.getNameId()).equals("회원 관리")) {
-                    Intent intent1 = new Intent(getActivity(), ScheduleMain.class);
+                    Intent intent1 = new Intent(getActivity(), ScheduleFragment.class);
                     startActivityForResult(intent1, 102);
                 }
                 else {

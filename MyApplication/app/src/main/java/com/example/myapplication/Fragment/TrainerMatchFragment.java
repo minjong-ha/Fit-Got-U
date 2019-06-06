@@ -171,6 +171,7 @@ public class TrainerMatchFragment extends Fragment {
                 args.putString("address", item.getAddress());
                 args.putString("height", item.getHeight());
                 args.putString("weight", item.getWeight());
+                args.putString("profile_image", item.getProfile_image());
                 TrainerMatch2Fragment tm2 = new TrainerMatch2Fragment();
                 tm2.setArguments(args);
                 ((MainActivity) getActivity()).ChangeFragmentMain(tm2);

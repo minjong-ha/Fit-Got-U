@@ -3,10 +3,12 @@ package com.example.myapplication.calendar;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,18 +23,17 @@ import com.example.myapplication.databinding.CalendarListBinding;
 
 import java.util.ArrayList;
 
-public class ScheduleMain extends AppCompatActivity {
+public class ScheduleFragment extends Fragment {
     private CalendarListBinding binding;
     private CalendarListViewModel model;
 
     Context sm;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.schedule_calendar);
-        binding = DataBindingUtil.setContentView(this, R.layout.schedule_calendar);
-        model = ViewModelProviders.of(this).get(CalendarListViewModel.class);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_schedule, container, false);
+        model = ViewModelProviders.of(getActivity()).get(CalendarListViewModel.class);
         binding.setModel(model);
         binding.setLifecycleOwner(this);
 
@@ -40,6 +41,8 @@ public class ScheduleMain extends AppCompatActivity {
         if (model != null) {
             model.initCalendarList();
         }
+
+        return binding.getRoot();
     }
 
     private void observe() {
@@ -64,7 +67,7 @@ public class ScheduleMain extends AppCompatActivity {
                         new RecyclerViewOnItemClickListener.OnItemClickListener() {
                             @Override
                             public void onItemClick(View v, int position) {
-                                Intent intent = new Intent(getApplicationContext(), DateDialog.class);
+                                Intent intent = new Intent(getActivity().getApplicationContext(), DateDialog.class);
                                 startActivityForResult(intent, 103);
                             }
                         /*
