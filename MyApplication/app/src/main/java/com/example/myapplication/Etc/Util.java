@@ -5,8 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Bitmap;
-import android.view.View;
 import android.widget.ImageView;
 
 import androidx.core.app.ActivityCompat;
@@ -306,10 +304,10 @@ public class Util {
         return "";
     }
 
-    public static String InsertSupscription(String uid, String tid) {
+    public static String InsertSubscription(String uid, String tid) {
         String str = null;
         try {
-            DBPHPTask task = new DBPHPTask("insert_supscription");
+            DBPHPTask task = new DBPHPTask("insert_subscription");
             str = task.execute("user_id", uid, "trainer_id", tid).get();
         } catch (Exception e) {
             e.printStackTrace();
@@ -317,10 +315,10 @@ public class Util {
         return str;
     }
 
-    public static String UpdateSupscription(String id, String status) {
+    public static String UpdateSubscription(String id, String status) {
         String str = null;
         try {
-            DBPHPTask task = new DBPHPTask("update_supscription");
+            DBPHPTask task = new DBPHPTask("update_subscription");
             str =  task.execute("id", id, "status", status).get();
         } catch (Exception e) {
             e.printStackTrace();
@@ -328,10 +326,10 @@ public class Util {
         return str;
     }
 
-    public static String DeleteSupscription(String id) {
+    public static String DeleteSubscription(String id) {
         String str = null;
         try {
-            DBPHPTask task = new DBPHPTask("delete_supscription");
+            DBPHPTask task = new DBPHPTask("delete_subscription");
             str =  task.execute("id", id).get();
         } catch (Exception e) {
             e.printStackTrace();
@@ -339,29 +337,29 @@ public class Util {
         return str;
     }
 
-    public static ArrayList<HashMap<String, String>> SelectSupscriptionbyUser(String userid) {
+    public static ArrayList<HashMap<String, String>> SelectSubscriptionbyUser(String userid) {
         ArrayList<HashMap<String, String>> mArrayList = new ArrayList<>();
         try {
-            DBPHPTask task = new DBPHPTask("select_supscription_by_user");
-            mArrayList =  getJsonSupscription(task.execute("user_id", userid).get());
+            DBPHPTask task = new DBPHPTask("select_subscription_by_user");
+            mArrayList =  getJsonSubscription(task.execute("user_id", userid).get());
         } catch (Exception e) {
             e.printStackTrace();
         }
         return mArrayList;
     }
 
-    public static ArrayList<HashMap<String, String>> SelectSupscriptionbyTrainer(String trainerid) {
+    public static ArrayList<HashMap<String, String>> SelectSubscriptionbyTrainer(String trainerid) {
         ArrayList<HashMap<String, String>> mArrayList = new ArrayList<>();
         try {
-            DBPHPTask task = new DBPHPTask("select_supscription_by_trainer");
-            mArrayList =  getJsonSupscription(task.execute("trainer_id", trainerid).get());
+            DBPHPTask task = new DBPHPTask("select_subscription_by_trainer");
+            mArrayList =  getJsonSubscription(task.execute("trainer_id", trainerid).get());
         } catch (Exception e) {
             e.printStackTrace();
         }
         return mArrayList;
     }
 
-    public static ArrayList<HashMap<String, String>> getJsonSupscription(String JsonString) {
+    public static ArrayList<HashMap<String, String>> getJsonSubscription(String JsonString) {
         ArrayList<HashMap<String, String>> mArrayList = new ArrayList<>();
         try {
             JSONObject jsonObject = new JSONObject(JsonString);

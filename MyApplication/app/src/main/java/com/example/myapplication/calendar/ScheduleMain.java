@@ -1,5 +1,10 @@
 package com.example.myapplication.calendar;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
@@ -7,24 +12,12 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Toast;
-
-import com.example.myapplication.Activity.MainActivity;
+import com.example.myapplication.R;
 import com.example.myapplication.calendar.etc.DateDialog;
-import com.example.myapplication.databinding.CalendarListBinding;
 import com.example.myapplication.calendar.ui.CalendarAdapter;
 import com.example.myapplication.calendar.ui.CalendarListViewModel;
 import com.example.myapplication.calendar.ui.RecyclerViewOnItemClickListener;
-import com.example.myapplication.R;
+import com.example.myapplication.databinding.CalendarListBinding;
 
 import java.util.ArrayList;
 

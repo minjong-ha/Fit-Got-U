@@ -1,17 +1,13 @@
 package com.example.myapplication.calendar.etc;
 
 
+import android.os.Bundle;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.myapplication.databinding.DayItemBinding;
 
 import com.example.myapplication.R;
-
-import android.content.Context;
-import android.os.Bundle;
-import android.view.LayoutInflater;
-
-import android.view.View;
-import android.widget.TextView;
+import com.example.myapplication.databinding.DayItemBinding;
 
 public class DateDialog extends AppCompatActivity {
     private DayItemBinding binding;

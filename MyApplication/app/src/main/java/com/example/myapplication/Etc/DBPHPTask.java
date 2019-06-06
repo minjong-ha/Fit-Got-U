@@ -11,7 +11,7 @@ import java.net.URL;
 
 public class DBPHPTask extends AsyncTask<String, Void, String> {
     private String phpname;
-    private String address = "http://ec2-54-158-199-36.compute-1.amazonaws.com/fitgotu/";
+    private String address = "http://ec2-54-158-199-36.compute-1.amazonaws.com/fitgotu/";//util의 sendNotification도 바꿔야되요!
 
     public DBPHPTask(String phpname) {
         this.phpname = phpname;

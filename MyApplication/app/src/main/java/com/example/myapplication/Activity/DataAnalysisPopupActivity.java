@@ -2,9 +2,10 @@ package com.example.myapplication.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.util.Pair;
 import android.widget.ListView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.Etc.MySQLiteOpenHelper;
 import com.example.myapplication.List.DA2_List_Item;

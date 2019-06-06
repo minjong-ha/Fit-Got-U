@@ -3,20 +3,19 @@ package com.example.myapplication.calendar.ui;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import java.util.Calendar;
-import java.util.List;
-
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.example.myapplication.R;
-
 import com.example.myapplication.calendar.etc.DateDialog;
 import com.example.myapplication.databinding.CalendarHeaderBinding;
 import com.example.myapplication.databinding.DayItemBinding;
 import com.example.myapplication.databinding.EmptyDayBinding;
+
+import java.util.Calendar;
+import java.util.List;
 
 public class CalendarAdapter extends RecyclerView.Adapter {
     private final int HEADER_TYPE = 0;

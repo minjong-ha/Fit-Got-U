@@ -2,11 +2,6 @@ package com.example.myapplication.Fragment;
 
 import android.content.Context;
 import android.content.Intent;
-
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.Random;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -19,6 +14,8 @@ import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
+
 import com.example.myapplication.Activity.DataAnalysisPopupActivity;
 import com.example.myapplication.Etc.MySQLiteOpenHelper;
 import com.example.myapplication.List.DA_List_Item;
@@ -26,8 +23,10 @@ import com.example.myapplication.List.DA_List_Item_Adapter;
 import com.example.myapplication.R;
 
 import java.text.SimpleDateFormat;
-
-import androidx.fragment.app.Fragment;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.Random;
 
 
 public class DataAnalysisFragment extends Fragment {

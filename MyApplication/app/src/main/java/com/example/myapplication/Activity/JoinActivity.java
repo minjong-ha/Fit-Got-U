@@ -1,12 +1,13 @@
 package com.example.myapplication.Activity;
 
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.Etc.Util;
 import com.example.myapplication.R;

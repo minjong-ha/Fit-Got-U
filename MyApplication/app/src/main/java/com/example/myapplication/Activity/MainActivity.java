@@ -25,6 +25,7 @@ import com.example.myapplication.Fragment.HomeTrainingFragment;
 import com.example.myapplication.Fragment.MyInfoFragment;
 import com.example.myapplication.Fragment.MyPageFragment;
 import com.example.myapplication.Fragment.SimpleDialogFragment;
+import com.example.myapplication.Fragment.TraineeManageFragment;
 import com.example.myapplication.Fragment.TrainerMatch2Fragment;
 import com.example.myapplication.Fragment.TrainerMatch3Fragment;
 import com.example.myapplication.Fragment.TrainerMatchFragment;
@@ -208,6 +209,10 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
                     break;
                 case R.string.my_info:
                     MPfragment.push(new MyInfoFragment());
+                    mainfragment = MPfragment.peek();
+                    break;
+                case R.string.my_trainee:
+                    MPfragment.push(new TraineeManageFragment());
                     mainfragment = MPfragment.peek();
                     break;
                 case R.string.logout:

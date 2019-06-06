@@ -9,9 +9,7 @@ import android.util.Pair;
 
 import java.io.File;
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashSet;
 
 public class MySQLiteOpenHelper extends SQLiteOpenHelper implements Serializable {

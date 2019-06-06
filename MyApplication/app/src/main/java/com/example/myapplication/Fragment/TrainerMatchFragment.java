@@ -4,8 +4,6 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +12,9 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.example.myapplication.Activity.MainActivity;
 import com.example.myapplication.Etc.Util;
@@ -164,6 +165,7 @@ public class TrainerMatchFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 TrainerItem item = (TrainerItem) adapter.getItem(position);
                 Bundle args = new Bundle();
+                args.putString("trainerid", item.getKakaoid() + "");
                 args.putString("youtube", item.getYoutube());
                 args.putString("name", item.getName());
                 args.putString("address", item.getAddress());

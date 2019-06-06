@@ -23,7 +23,10 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-
+        <activity
+        android:name=".Activity.ReplyForTraineeActivity"
+        android:label="식단 및 루틴"
+        android:theme="@style/Theme.AppCompat.DayNight.Dialog.Alert" />
         <activity android:name=".Activity.TestActivity" />
         <activity android:name=".Activity.JoinActivity" />
         <activity android:name=".calendar.ScheduleMain"

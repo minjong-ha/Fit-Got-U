@@ -8,7 +8,6 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.myapplication.Etc.ImageTask;
 import com.example.myapplication.Etc.Util;
 import com.example.myapplication.Etc.YoutubeData;
 import com.example.myapplication.R;

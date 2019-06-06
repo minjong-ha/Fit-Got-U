@@ -1,9 +1,7 @@
 package com.example.myapplication.Fragment;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +9,8 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
 
 import com.example.myapplication.Activity.MainActivity;
 import com.example.myapplication.Etc.Util;
@@ -47,7 +47,6 @@ public class MyPageFragment extends Fragment implements View.OnClickListener {
         if (((MainActivity)getActivity()).getIs_user().equals("트레이너")) {
             items.add(new MP_List_Item(R.string.my_trainee));
         } else {
-            items.add(new MP_List_Item(R.string.my_trainee));
         }
 
         items.add(new MP_List_Item(R.string.app_info));
