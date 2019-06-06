@@ -15,6 +15,7 @@
 
 package com.example;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -44,9 +45,8 @@ import android.media.ImageReader;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
-import android.support.annotation.NonNull;
-import android.support.v13.app.FragmentCompat;
-import android.support.v4.content.ContextCompat;
+import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import android.util.Log;
 import android.util.Size;
 import android.view.LayoutInflater;
@@ -69,8 +69,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Basic fragments for the Camera.
  */
-public class Camera2BasicFragment extends Fragment
-        implements FragmentCompat.OnRequestPermissionsResultCallback {
+public class Camera2BasicFragment extends Fragment {
 
     /**
      * Tag for the {@link Log}.
@@ -533,9 +532,10 @@ public class Camera2BasicFragment extends Fragment
     /**
      * Opens the camera specified by {@link Camera2BasicFragment#cameraId}.
      */
+    @SuppressLint("MissingPermission")
     private void openCamera(int width, int height) {
         if (!checkedPermissions && !allPermissionsGranted()) {
-            FragmentCompat.requestPermissions(this, getRequiredPermissions(), PERMISSIONS_REQUEST_CODE);
+            requestPermissions(getRequiredPermissions(), PERMISSIONS_REQUEST_CODE);
             return;
         } else {
             checkedPermissions = true;

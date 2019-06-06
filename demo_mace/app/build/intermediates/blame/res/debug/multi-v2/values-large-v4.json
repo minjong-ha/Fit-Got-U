@@ -1,10 +1,27 @@
 {
     "logs": [
         {
-            "outputFile": "/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-large-v4/values-large-v4.xml",
+            "outputFile": "D:\\Programming\\GitHub\\Fit-Got-U\\demo_mace\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-large-v4\\values-large-v4.xml",
             "map": [
                 {
-                    "source": "/Users/a1/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.2.0.aar/63b8cd8f29f3d156d26e51bbf0919eaf/res/values-large-v4/values-large-v4.xml",
+                    "source": "C:\\Users\\Administrator\\.gradle\\caches\\transforms-2\\files-2.1\\82c5624a4b05af4a3cbf67b6b0330638\\res\\values-large-v4\\values-large-v4.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,177",
+                        "endColumns": "121,133",
+                        "endOffsets": "172,306"
+                    },
+                    "to": {
+                        "startLines": "11,12",
+                        "startColumns": "4,4",
+                        "startOffsets": "752,874",
+                        "endColumns": "121,133",
+                        "endOffsets": "869,1003"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Administrator\\.gradle\\caches\\transforms-2\\files-2.1\\e79b6a2590d2b10373348a6d4ad5c477\\res\\values-large-v4\\values-large-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10",
                         "startColumns": "4,4,4,4,4,4,4,4,4",

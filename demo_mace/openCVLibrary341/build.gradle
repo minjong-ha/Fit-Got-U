@@ -98,7 +98,7 @@ android {
         abortOnError false
     }
     defaultConfig {
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdkVersion 26
     }
 
@@ -107,10 +107,6 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_6
-        targetCompatibility JavaVersion.VERSION_1_6
     }
 
     sourceSets {

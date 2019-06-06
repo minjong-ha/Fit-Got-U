@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-hdpi-v4/values-hdpi-v4.xml",
+            "outputFile": "D:\\Programming\\GitHub\\Fit-Got-U\\demo_mace\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-hdpi-v4\\values-hdpi-v4.xml",
             "map": [
                 {
-                    "source": "/Users/a1/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.2.0.aar/63b8cd8f29f3d156d26e51bbf0919eaf/res/values-hdpi-v4/values-hdpi-v4.xml",
+                    "source": "C:\\Users\\Administrator\\.gradle\\caches\\transforms-2\\files-2.1\\e79b6a2590d2b10373348a6d4ad5c477\\res\\values-hdpi-v4\\values-hdpi-v4.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
