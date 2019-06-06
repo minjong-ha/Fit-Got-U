@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">39276108877-sr2u6etcvb1fkm4arr9vps2gggee3tui.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://fitgotu-110fc.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">39276108877</string>
+    <string name="google_api_key" translatable="false">AIzaSyCzw0yPLVixAuZN91dNslDctpiX-xkHVTw</string>
+    <string name="google_app_id" translatable="false">1:39276108877:android:13c3c6a65bcbec53</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCzw0yPLVixAuZN91dNslDctpiX-xkHVTw</string>
+    <string name="google_storage_bucket" translatable="false">fitgotu-110fc.appspot.com</string>
+    <string name="project_id" translatable="false">fitgotu-110fc</string>
+</resources>

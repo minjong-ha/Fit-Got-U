@@ -93,9 +93,7 @@ apply plugin: 'com.android.library'
 println "OpenCV: " + project.buildscript.sourceFile
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion '26.0.2'
-    //buildToolsVersion "27.0.3" // not needed since com.android.tools.build:gradle:3.0.0
+    compileSdkVersion 28
     lintOptions {
         abortOnError false
     }

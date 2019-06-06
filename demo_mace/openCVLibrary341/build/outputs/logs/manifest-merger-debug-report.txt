@@ -1,37 +1,37 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/openCVLibrary341/java/AndroidManifest.xml:2:1-8:12
-INJECTED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/openCVLibrary341/java/AndroidManifest.xml:2:1-8:12
-INJECTED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/openCVLibrary341/java/AndroidManifest.xml:2:1-8:12
-INJECTED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/openCVLibrary341/java/AndroidManifest.xml:2:1-8:12
-INJECTED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/openCVLibrary341/java/AndroidManifest.xml:2:1-8:12
-INJECTED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/openCVLibrary341/java/AndroidManifest.xml:2:1-8:12
-INJECTED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/openCVLibrary341/java/AndroidManifest.xml:2:1-8:12
+ADDED from D:\Programming\GitHub\Fit-Got-U\demo_mace\openCVLibrary341\java\AndroidManifest.xml:2:1-7:12
+INJECTED from D:\Programming\GitHub\Fit-Got-U\demo_mace\openCVLibrary341\java\AndroidManifest.xml:2:1-7:12
+INJECTED from D:\Programming\GitHub\Fit-Got-U\demo_mace\openCVLibrary341\java\AndroidManifest.xml:2:1-7:12
+INJECTED from D:\Programming\GitHub\Fit-Got-U\demo_mace\openCVLibrary341\java\AndroidManifest.xml:2:1-7:12
+INJECTED from D:\Programming\GitHub\Fit-Got-U\demo_mace\openCVLibrary341\java\AndroidManifest.xml:2:1-7:12
+INJECTED from D:\Programming\GitHub\Fit-Got-U\demo_mace\openCVLibrary341\java\AndroidManifest.xml:2:1-7:12
+INJECTED from D:\Programming\GitHub\Fit-Got-U\demo_mace\openCVLibrary341\java\AndroidManifest.xml:2:1-7:12
 	package
-		ADDED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/openCVLibrary341/java/AndroidManifest.xml:3:7-27
-		INJECTED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/openCVLibrary341/java/AndroidManifest.xml
-		INJECTED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/openCVLibrary341/java/AndroidManifest.xml
+		ADDED from D:\Programming\GitHub\Fit-Got-U\demo_mace\openCVLibrary341\java\AndroidManifest.xml:3:7-27
+		INJECTED from D:\Programming\GitHub\Fit-Got-U\demo_mace\openCVLibrary341\java\AndroidManifest.xml
+		INJECTED from D:\Programming\GitHub\Fit-Got-U\demo_mace\openCVLibrary341\java\AndroidManifest.xml
 	android:versionName
-		ADDED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/openCVLibrary341/java/AndroidManifest.xml:5:7-34
-		INJECTED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/openCVLibrary341/java/AndroidManifest.xml
-		INJECTED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/openCVLibrary341/java/AndroidManifest.xml
+		ADDED from D:\Programming\GitHub\Fit-Got-U\demo_mace\openCVLibrary341\java\AndroidManifest.xml:5:7-34
+		INJECTED from D:\Programming\GitHub\Fit-Got-U\demo_mace\openCVLibrary341\java\AndroidManifest.xml
+		INJECTED from D:\Programming\GitHub\Fit-Got-U\demo_mace\openCVLibrary341\java\AndroidManifest.xml
 	xmlns:android
-		ADDED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/openCVLibrary341/java/AndroidManifest.xml:2:11-69
+		ADDED from D:\Programming\GitHub\Fit-Got-U\demo_mace\openCVLibrary341\java\AndroidManifest.xml:2:11-69
 	android:versionCode
-		ADDED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/openCVLibrary341/java/AndroidManifest.xml:4:7-33
-		INJECTED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/openCVLibrary341/java/AndroidManifest.xml
-		INJECTED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/openCVLibrary341/java/AndroidManifest.xml
+		ADDED from D:\Programming\GitHub\Fit-Got-U\demo_mace\openCVLibrary341\java\AndroidManifest.xml:4:7-33
+		INJECTED from D:\Programming\GitHub\Fit-Got-U\demo_mace\openCVLibrary341\java\AndroidManifest.xml
+		INJECTED from D:\Programming\GitHub\Fit-Got-U\demo_mace\openCVLibrary341\java\AndroidManifest.xml
 uses-sdk
-ADDED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/openCVLibrary341/java/AndroidManifest.xml:7:5-73
-INJECTED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/openCVLibrary341/java/AndroidManifest.xml:7:5-73
-INJECTED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/openCVLibrary341/java/AndroidManifest.xml:7:5-73
-INJECTED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/openCVLibrary341/java/AndroidManifest.xml:7:5-73
-INJECTED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/openCVLibrary341/java/AndroidManifest.xml:7:5-73
+INJECTED from D:\Programming\GitHub\Fit-Got-U\demo_mace\openCVLibrary341\java\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from D:\Programming\GitHub\Fit-Got-U\demo_mace\openCVLibrary341\java\AndroidManifest.xml
+INJECTED from D:\Programming\GitHub\Fit-Got-U\demo_mace\openCVLibrary341\java\AndroidManifest.xml
+INJECTED from D:\Programming\GitHub\Fit-Got-U\demo_mace\openCVLibrary341\java\AndroidManifest.xml
+INJECTED from D:\Programming\GitHub\Fit-Got-U\demo_mace\openCVLibrary341\java\AndroidManifest.xml
 	android:targetSdkVersion
-		ADDED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/openCVLibrary341/java/AndroidManifest.xml:7:41-70
-		INJECTED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/openCVLibrary341/java/AndroidManifest.xml
-		INJECTED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/openCVLibrary341/java/AndroidManifest.xml
+		INJECTED from D:\Programming\GitHub\Fit-Got-U\demo_mace\openCVLibrary341\java\AndroidManifest.xml
+		ADDED from D:\Programming\GitHub\Fit-Got-U\demo_mace\openCVLibrary341\java\AndroidManifest.xml
+		INJECTED from D:\Programming\GitHub\Fit-Got-U\demo_mace\openCVLibrary341\java\AndroidManifest.xml
 	android:minSdkVersion
-		ADDED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/openCVLibrary341/java/AndroidManifest.xml:7:15-40
-		INJECTED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/openCVLibrary341/java/AndroidManifest.xml
-		INJECTED from /mydev/PoseEstimationForMobile/android_demo/demo_mace/openCVLibrary341/java/AndroidManifest.xml
+		INJECTED from D:\Programming\GitHub\Fit-Got-U\demo_mace\openCVLibrary341\java\AndroidManifest.xml
+		ADDED from D:\Programming\GitHub\Fit-Got-U\demo_mace\openCVLibrary341\java\AndroidManifest.xml
+		INJECTED from D:\Programming\GitHub\Fit-Got-U\demo_mace\openCVLibrary341\java\AndroidManifest.xml

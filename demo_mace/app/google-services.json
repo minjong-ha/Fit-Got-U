@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "39276108877",
+    "firebase_url": "https://fitgotu-110fc.firebaseio.com",
+    "project_id": "fitgotu-110fc",
+    "storage_bucket": "fitgotu-110fc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:39276108877:android:13c3c6a65bcbec53",
+        "android_client_info": {
+          "package_name": "com.example"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "39276108877-fv4u50aqhbhpo483jj7pe3rqqdrij6fl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example",
+            "certificate_hash": "45380b0a881d4c048d91676c57fc2878668a0f7e"
+          }
+        },
+        {
+          "client_id": "39276108877-sr2u6etcvb1fkm4arr9vps2gggee3tui.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzw0yPLVixAuZN91dNslDctpiX-xkHVTw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "39276108877-sr2u6etcvb1fkm4arr9vps2gggee3tui.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
