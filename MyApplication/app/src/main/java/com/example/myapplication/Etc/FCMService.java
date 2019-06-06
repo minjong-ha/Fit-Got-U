@@ -11,6 +11,7 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
 import com.example.myapplication.Activity.JoinActivity;
+import com.example.myapplication.Activity.MainActivity;
 import com.example.myapplication.R;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
@@ -30,7 +31,7 @@ public class FCMService extends FirebaseMessagingService {
 
     private void showNotification(RemoteMessage remoteMessage) {
 
-        Intent notificationIntent = new Intent(this, JoinActivity.class);  // 알림 클릭 시 이동할 액티비티 지정
+        Intent notificationIntent = new Intent(this, MainActivity.class);  // 알림 클릭 시 이동할 액티비티 지정
         notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
