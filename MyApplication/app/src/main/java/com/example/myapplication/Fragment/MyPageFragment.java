@@ -48,6 +48,7 @@ public class MyPageFragment extends Fragment implements View.OnClickListener {
             items.add(new MP_List_Item(R.string.my_trainee));
             items.add(new MP_List_Item(R.string.my_calender));
         } else {
+            items.add(new MP_List_Item(R.string.my_trainee));
             items.add(new MP_List_Item(R.string.my_calender));
         }
 
