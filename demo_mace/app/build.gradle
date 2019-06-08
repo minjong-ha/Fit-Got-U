@@ -11,12 +11,10 @@ android {
         vectorDrawables.useSupportLibrary = true
         externalNativeBuild {
             cmake {
-                //arguments  '-DANDROID_TOOLCHAIN=clang', '-DANDROID_STL=c++_shared'
-                cppFlags "-std=c++11","-frtti", "-fexceptions"
+                arguments '-DANDROID_STL=gnustl_static'
+                cppFlags "-std=c++11 -fopenmp"
+                abiFilters "armeabi-v7a"
             }
-        }
-        ndk{
-            abiFilters 'armeabi-v7a'
         }
     }
     dataBinding {
@@ -26,9 +24,6 @@ android {
         cmake {
             path "CMakeLists.txt"
         }
-//        ndkBuild {
-//            path 'src/main/jni/Android.mk'
-//        }
     }
     lintOptions {
         abortOnError false
@@ -42,10 +37,6 @@ android {
     aaptOptions {
         noCompress "tflite"
     }
-
-    /*jackOptions {
-        enabled true
-    }*/
 
     sourceSets {
         main {
@@ -82,8 +73,8 @@ dependencies {
     implementation name:'tensorflow-lite', ext:'aar'
 
     implementation project(':openCVLibrary341')
-//    implementation 'org.tensorflow:tensorflow-lite:+'
     implementation project(':macelibrary')
+    //    implementation 'org.tensorflow:tensorflow-lite:+'
 }
 
 apply plugin: 'com.google.gms.google-services'//밑에 넣어야됨

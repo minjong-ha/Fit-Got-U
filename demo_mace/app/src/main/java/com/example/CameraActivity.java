@@ -41,8 +41,8 @@ import java.util.TimerTask;
 public class CameraActivity extends Activity {
 
     static {
-//        System.loadLibrary("opencv_java");
         System.loadLibrary("opencv_java3");
+        //System.loadLibrary("native-lib");
     }
 
     public static boolean isOpenCVInit = false;

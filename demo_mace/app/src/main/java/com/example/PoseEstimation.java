@@ -56,10 +56,10 @@ public abstract class PoseEstimation {
         float[] floatValues = new float[lengthValues];
         floatBuffer = FloatBuffer.wrap(floatValues, 0, lengthValues);
         kernelPath = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "mace";
-        File file = new File(kernelPath);
+        /*File file = new File(kernelPath);
         if (!file.exists()) {
             file.mkdir();
-        }
+        }*/
 
         int result = JniMaceUtils.maceMobilenetSetAttrs(
                 2, 0,

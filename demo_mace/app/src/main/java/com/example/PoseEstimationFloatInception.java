@@ -18,12 +18,12 @@ package com.example;
 import android.app.Activity;
 import android.util.Log;
 
+import com.xiaomi.mace.JniMaceUtils;
+
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 import org.opencv.core.Size;
 import org.opencv.imgproc.Imgproc;
-
-import com.xiaomi.mace.JniMaceUtils;
 
 import java.io.IOException;
 
@@ -93,7 +93,7 @@ public class PoseEstimationFloatInception extends PoseEstimation {
             int index = 0;
             for (int x = 0; x < 96; x++) {
                 for (int y = 0; y < 96; y++) {
-                    tempArray[index] = result[x * getOutputSizeY() * 14 + y * 14 + i];
+                    //tempArray[index] = result[x * getOutputSizeY() * 14 + y * 14 + i];
                     index++;
                 }
             }

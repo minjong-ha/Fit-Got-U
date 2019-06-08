@@ -70,7 +70,7 @@ MaceContext& GetMaceContext() {
 
 }  // namespace
 
-JNIEXPORT jint JNICALL Java_com_xiaomi_mace_JniMaceUtils_maceMobilenetSetAttrs(
+extern "C" JNIEXPORT jint JNICALL Java_com_xiaomi_mace_JniMaceUtils_maceMobilenetSetAttrs(
     JNIEnv *env, jclass thisObj, jint omp_num_threads, jint cpu_affinity_policy,
     jint gpu_perf_hint, jint gpu_priority_hint, jstring kernel_path) {
   MaceContext &mace_context = GetMaceContext();
@@ -108,7 +108,7 @@ JNIEXPORT jint JNICALL Java_com_xiaomi_mace_JniMaceUtils_maceMobilenetSetAttrs(
   return JNI_OK;
 }
 
-JNIEXPORT jint JNICALL
+extern "C" JNIEXPORT jint JNICALL
 Java_com_xiaomi_mace_JniMaceUtils_maceMobilenetCreateEngine(
     JNIEnv *env, jclass thisObj, jstring model_name_str, jstring device) {
   MaceContext &mace_context = GetMaceContext();
@@ -159,7 +159,7 @@ Java_com_xiaomi_mace_JniMaceUtils_maceMobilenetCreateEngine(
          JNI_OK : JNI_ERR;
 }
 
-JNIEXPORT jfloatArray JNICALL
+extern "C" JNIEXPORT jfloatArray JNICALL
 Java_com_xiaomi_mace_JniMaceUtils_maceMobilenetClassify(
     JNIEnv *env, jclass thisObj, jfloatArray input_data) {
   MaceContext &mace_context = GetMaceContext();
