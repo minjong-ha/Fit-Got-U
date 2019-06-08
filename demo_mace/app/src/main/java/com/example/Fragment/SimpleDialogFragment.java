@@ -16,6 +16,7 @@ import com.example.R;
 
 public class SimpleDialogFragment extends DialogFragment {
     private int nameid;
+    private String negtext = null;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -28,7 +29,6 @@ public class SimpleDialogFragment extends DialogFragment {
         String title = arg.getString("title");
         String text = arg.getString("text");
         String postext = arg.getString("postext");
-        String negtext = null;
         if (arg.getString("negtext") != null) {
             negtext = arg.getString("negtext");
         }
@@ -40,6 +40,9 @@ public class SimpleDialogFragment extends DialogFragment {
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         Intent intent = new Intent();
+                        if (negtext != null) {
+                            intent.putExtra("negtext", negtext);
+                        }
                         getTargetFragment().onActivityResult(getTargetRequestCode(), Activity.RESULT_OK, intent);
                         dismiss();
                     }

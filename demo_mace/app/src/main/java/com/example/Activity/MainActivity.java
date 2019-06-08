@@ -29,6 +29,7 @@ import com.example.Fragment.TraineeManageFragment;
 import com.example.Fragment.TrainerMatch2Fragment;
 import com.example.Fragment.TrainerMatch3Fragment;
 import com.example.Fragment.TrainerMatchFragment;
+import com.example.PoseEstimation.Camera2BasicFragment;
 import com.example.R;
 import com.example.calendar.ScheduleFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -232,9 +233,14 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
                     break;
             }
         }
-        if (newfragment != null && (newfragment instanceof TrainerMatch2Fragment || newfragment instanceof TrainerMatch3Fragment)) {
-            TMfragment.push(newfragment);
-            mainfragment = TMfragment.peek();
+        if (newfragment != null) {
+            if (newfragment instanceof TrainerMatch2Fragment || newfragment instanceof TrainerMatch3Fragment) {
+                TMfragment.push(newfragment);
+                mainfragment = TMfragment.peek();
+            } else if (newfragment instanceof Camera2BasicFragment) {
+                HTfragment.push(newfragment);
+                mainfragment = HTfragment.peek();
+            }
         }
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.mainfragment, mainfragment);

@@ -19,8 +19,6 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.DialogFragment;
-import android.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageInfo;
@@ -52,13 +50,21 @@ import android.view.Surface;
 import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
 
+import com.example.Activity.MainActivity;
 import com.example.R;
+
+import org.opencv.android.BaseLoaderCallback;
+import org.opencv.android.LoaderCallbackInterface;
+import org.opencv.android.OpenCVLoader;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -72,7 +78,16 @@ import java.util.concurrent.TimeUnit;
 /**
  * Basic fragments for the Camera.
  */
-public class Camera2BasicFragment extends Fragment {
+public class Camera2BasicFragment extends Fragment implements View.OnClickListener {
+
+    static {
+        System.loadLibrary("opencv_java3");
+        //System.loadLibrary("native-lib");
+    }
+
+    public static boolean isOpenCVInit = false;
+
+    private BaseLoaderCallback mLoaderCallback = null;
 
     /**
      * Tag for the {@link Log}.
@@ -186,6 +201,7 @@ public class Camera2BasicFragment extends Fragment {
                     cameraOpenCloseLock.release();
                     currentCameraDevice.close();
                     cameraDevice = null;
+
                     Activity activity = getActivity();
                     if (null != activity) {
                         activity.finish();
@@ -325,17 +341,54 @@ public class Camera2BasicFragment extends Fragment {
         }
     }
 
-    public static Camera2BasicFragment newInstance() {
-        return new Camera2BasicFragment();
-    }
-
     /**
      * Layout the preview and buttons.
      */
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_camera2_basic, container, false);
+        View view = inflater.inflate(R.layout.fragment_pose, container, false);
+
+        mLoaderCallback = new BaseLoaderCallback(getActivity().getApplicationContext()) {
+            @Override
+            public void onManagerConnected(int status) {
+                switch (status) {
+                    case LoaderCallbackInterface.SUCCESS:
+                        isOpenCVInit = true;
+                        break;
+                    case LoaderCallbackInterface.INCOMPATIBLE_MANAGER_VERSION:
+                        break;
+                    case LoaderCallbackInterface.INIT_FAILED:
+                        break;
+                    case LoaderCallbackInterface.INSTALL_CANCELED:
+                        break;
+                    case LoaderCallbackInterface.MARKET_ERROR:
+                        break;
+                    default: {
+                        super.onManagerConnected(status);
+                    }
+                    break;
+                }
+            }
+        };
+
+        String message = null;
+        if (getArguments() != null) {
+            message = getArguments().getString("exercise");
+        }
+
+        view.findViewById(R.id.pose_exit).setOnClickListener(this);
+
+        TextView explain = (TextView)view.findViewById(R.id.pose_exercise);
+        if (message == null) {
+            message = "스쿼트";
+        }
+        explain.setText(message);
+
+        Calculate.info = message;
+        Calculate.setContext(getActivity().getApplicationContext());
+
+        return view;
     }
 
     /**
@@ -344,7 +397,7 @@ public class Camera2BasicFragment extends Fragment {
     @Override
     public void onViewCreated(final View view, Bundle savedInstanceState) {
         textureView = view.findViewById(R.id.texture);
-        textView = view.findViewById(R.id.text);
+        textView = view.findViewById(R.id.pose_exercise);
         layout_frame = view.findViewById(R.id.layout_frame);
         drawView = view.findViewById(R.id.drawview);
         if (classifier != null)
@@ -371,6 +424,11 @@ public class Camera2BasicFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        if (!OpenCVLoader.initDebug()) {
+            OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION, getActivity().getApplicationContext(), mLoaderCallback);
+        } else {
+            mLoaderCallback.onManagerConnected(LoaderCallbackInterface.SUCCESS);
+        }
         startBackgroundThread();
 
         // When the screen is turned off and turned back on, the SurfaceTexture is already
@@ -395,6 +453,34 @@ public class Camera2BasicFragment extends Fragment {
     public void onDestroy() {
         classifier.close();
         super.onDestroy();
+    }
+
+    public void onClick(View view){
+        Log.d("result", "exerciseCount: " + Calculate.exerciseCount +" validCount: " + Calculate.validCount);
+        Log.d("result", "upperCount: " + Calculate.uppperCount + " lowerCount: " + Calculate.lowerCount);
+        Log.d("result", "left: " + Calculate.left);
+        Log.d("result", Calculate.left.toString());
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getContext());
+
+        alertDialogBuilder.setTitle("운동결과");
+        alertDialogBuilder
+                .setMessage("Total: " + Calculate.exerciseCount +"\nValid: " + Calculate.validCount + "\n Upper: " + Calculate.uppperCount + "\nLower: " + Calculate.lowerCount)
+                .setCancelable(false)
+                .setPositiveButton("종료",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(
+                                    DialogInterface dialog, int id) {
+                                // 프로그램을 종료한다
+                                Calculate.varInit();
+                                ((MainActivity)getActivity()).onBackPressed();
+                            }
+                        });
+        // 다이얼로그 생성
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        // 다이얼로그 보여주기
+        alertDialog.show();
+        //  timer.cancel();
+        //finish();
     }
 
     /**

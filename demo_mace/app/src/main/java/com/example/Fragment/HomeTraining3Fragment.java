@@ -19,6 +19,7 @@ import com.example.Activity.MainActivity;
 import com.example.Etc.Util;
 import com.example.List.HT3_List_Item;
 import com.example.List.HT3_List_Item_Adapter;
+import com.example.PoseEstimation.Camera2BasicFragment;
 import com.example.R;
 
 import java.util.ArrayList;
@@ -97,11 +98,14 @@ public class HomeTraining3Fragment extends Fragment implements AdapterView.OnIte
 
         if (requestCode == Util.DIALOG_REQUEST_CODE) {
             if (resultCode == Activity.RESULT_OK) {
-                Bundle args = new Bundle();
-                args.putString("exercise", "스쿼트");//nameid
-                TrainerMatch3Fragment tm3 = new TrainerMatch3Fragment();
-                tm3.setArguments(args);
-                ((MainActivity)getActivity()).ChangeFragmentMain(tm3);
+                String negtext = data.getStringExtra("negtext");
+                if (negtext != null) {
+                    Camera2BasicFragment cb = new Camera2BasicFragment();
+                    Bundle args = new Bundle();
+                    args.putString("exercise", "스쿼트");//nameid
+                    cb.setArguments(args);
+                    ((MainActivity)getActivity()).ChangeFragmentMain(cb);
+                }
             }
         }
     }

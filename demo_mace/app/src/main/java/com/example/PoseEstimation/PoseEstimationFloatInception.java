@@ -72,12 +72,12 @@ public class PoseEstimationFloatInception extends PoseEstimation {
 
     @Override
     protected void runInference() {
-        //float[] result = JniMaceUtils.maceMobilenetClassify(floatBuffer.array());
+        float[] result = JniMaceUtils.maceMobilenetClassify(floatBuffer.array());
 
         if (mPrintPointArray == null)
             mPrintPointArray = new float[2][14];
 
-        if (!CameraActivity.isOpenCVInit)
+        if (!Camera2BasicFragment.isOpenCVInit)
             return;
 
         //先进行高斯滤波,5*5 가우스 필터링
@@ -93,7 +93,7 @@ public class PoseEstimationFloatInception extends PoseEstimation {
             int index = 0;
             for (int x = 0; x < 96; x++) {
                 for (int y = 0; y < 96; y++) {
-                    //tempArray[index] = result[x * getOutputSizeY() * 14 + y * 14 + i];
+                    tempArray[index] = result[x * getOutputSizeY() * 14 + y * 14 + i];
                     index++;
                 }
             }
