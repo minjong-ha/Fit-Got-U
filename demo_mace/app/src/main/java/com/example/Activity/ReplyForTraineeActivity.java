@@ -8,9 +8,11 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.Etc.Util;
 import com.example.R;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -22,6 +24,8 @@ public class ReplyForTraineeActivity extends AppCompatActivity {
     HashMap<String, String> values = null;
     private String traineeName = null;
     private String traineeID = null;
+    private String trainername = null;
+    private String trainerID = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +36,8 @@ public class ReplyForTraineeActivity extends AppCompatActivity {
         Intent intent = getIntent();
         traineeName = intent.getExtras().getString("name");
         traineeID = intent.getExtras().getString("traineeID");
+        trainerID = intent.getExtras().getString("trainerID");
+        trainername = intent.getExtras().getString("trainername");
 
         //스피너 초기화
         setDateSpinner();
@@ -70,9 +76,25 @@ public class ReplyForTraineeActivity extends AppCompatActivity {
                         .setPositiveButton("확인",
                                 new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
-                                        // todo : 보낼 때 일어나는 데이터 전송
-
-                                        dialog.dismiss();
+                                        HashMap<String, String> values = getValues();
+                                        boolean check = false;
+                                        for (String value : values.values()) {
+                                            if (value.equals("")) {
+                                                check = true;
+                                                break;
+                                            }
+                                        }
+                                        if (check) {
+                                            Toast.makeText(getApplicationContext(), "빈 부분이 있습니다.", Toast.LENGTH_LONG).show();
+                                            dialog.cancel();
+                                        } else {
+                                            String ss = Util.InsertRoutine(traineeID, trainerID, values.get("date")
+                                                    , values.get("morning_meal"), values.get("lunch_meal"), values.get("dinner_meal")
+                                                    , values.get("set"), values.get("routine"));
+                                            System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaa" + ss);
+                                            Util.sendNotification(traineeID, "추천 식단과 루틴",trainername + "님이 " + values.get("date") + " 자 추천 식단과 루틴을 보냈습니다.", "1");
+                                            finish();
+                                        }
                                     }
                                 });
                 AlertDialog alertDialog = alertDialogBuilder.create();

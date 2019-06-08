@@ -88,6 +88,8 @@ public class TraineeManageFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(c.getApplicationContext(), ReplyForTraineeActivity.class);
+                    intent.putExtra("trainerID", ((MainActivity)getActivity()).getKakaoid() + "");
+                    intent.putExtra("trainername",((MainActivity)getActivity()).getNickname());
                     intent.putExtra("traineeID",TLI.getTraineeID());
                     intent.putExtra("name",TLI.getName());
                     startActivityForResult(intent, 101);
@@ -132,7 +134,5 @@ public class TraineeManageFragment extends Fragment {
     private void refresh(){
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         ft.detach(this).attach(this).commit();
-
-
     }
 }

@@ -8,10 +8,6 @@ add_library(libopencv_java3 SHARED IMPORTED )
 set_target_properties(libopencv_java3 PROPERTIES
     IMPORTED_LOCATION "${libs}/${ANDROID_ABI}/libopencv_java3.so")
 
-#add_library(libopencv_java SHARED IMPORTED )
-#set_target_properties(libopencv_java PROPERTIES
-#    IMPORTED_LOCATION "${libs}/${ANDROID_ABI}/libopencv_java.so")
-
 add_library(libopencv_calib3d STATIC IMPORTED )
 set_target_properties(libopencv_calib3d PROPERTIES
     IMPORTED_LOCATION "${libs}/${ANDROID_ABI}/libopencv_calib3d.a")
@@ -110,7 +106,6 @@ target_link_libraries(
 
     #为了避免额外安装 opencv manager 的 apk, 添加这两个动态链接库文件
     libopencv_java3     #opencv manager
-    #libopencv_java      #opencv manager
 
     #编译 opencv 需要依赖的静态链接库
     libopencv_calib3d
