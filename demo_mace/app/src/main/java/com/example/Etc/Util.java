@@ -185,6 +185,7 @@ public class Util {
 
             if (jsonArray.length() > 0) {
                 JSONObject item = jsonArray.getJSONObject(0);
+                String username = item.getString("username");
                 String address = item.getString("home_address");
                 String is_user = item.getString("is_user");
                 String weight = item.getString("weight");
@@ -192,6 +193,7 @@ public class Util {
 
                 HashMap<String,String> hashMap = new HashMap<>();
 
+                hashMap.put("username", username);
                 hashMap.put("address", address);
                 hashMap.put("is_user", is_user);
                 hashMap.put("weight", weight);

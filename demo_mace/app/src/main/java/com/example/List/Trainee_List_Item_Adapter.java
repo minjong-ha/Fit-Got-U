@@ -64,7 +64,7 @@ public class Trainee_List_Item_Adapter extends BaseAdapter {
         oTextWeight.setText(m_oData.get(position).getWeight());
         oTextSex.setText(m_oData.get(position).getSex());
         oTextAddress.setText((m_oData.get(position).getAddress()));
-        if(m_oData.get(position).getIsAccept()=="1") {
+        if(m_oData.get(position).getIsAccept().equals("1")) {
             oBtn.setVisibility(View.VISIBLE);
             oBtn.setOnClickListener(m_oData.get(position).getOnClickListenerDetail());
             oBtn.setBackgroundColor(Color.TRANSPARENT);

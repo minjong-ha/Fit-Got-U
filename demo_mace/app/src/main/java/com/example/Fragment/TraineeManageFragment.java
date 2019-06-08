@@ -14,7 +14,9 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.Activity.MainActivity;
 import com.example.Activity.ReplyForTraineeActivity;
+import com.example.Etc.Util;
 import com.example.List.Trainee_List_Item;
 import com.example.List.Trainee_List_Item_Adapter;
 import com.example.R;
@@ -42,34 +44,28 @@ public class TraineeManageFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_trainee_management, container, false);
         c = view.getContext();
 
-        ArrayList<HashMap<String, String>> trainee_info = new ArrayList<HashMap<String, String>>();
+        ArrayList<HashMap<String, String>> trainee_info = new ArrayList<>();
 
-        //todo 값 가져와서 trainee_info에 할당
-        // trainee_info = Util.값 가져오는 코드 넣어야함
-        // Test코드 나중에 삭제
-        trainee_info = testTraineeList();
+        ArrayList<HashMap<String, String>> sub = Util.SelectSubscriptionbyTrainer(((MainActivity)getActivity()).getKakaoid() + "");
+        for (HashMap<String, String> temp : sub) {
+            HashMap<String, String> userdata = Util.SelectUser(temp.get("userid"));
+            if (userdata != null) {
+                HashMap<String, String> tmp_hash = new HashMap<>();
+                tmp_hash.put("subid", temp.get("id"));
+                tmp_hash.put("traineeID", temp.get("userid"));
+                tmp_hash.put("isAccept", temp.get("status"));
+
+                tmp_hash.put("address", userdata.get("address"));
+                tmp_hash.put("name", userdata.get("username"));
+                tmp_hash.put("sex", "남");
+                tmp_hash.put("tall", userdata.get("height"));
+                tmp_hash.put("weight", userdata.get("weight"));
+                trainee_info.add(tmp_hash);
+            }
+        }
         setTraineeList(trainee_info);
 
         return view;
-    }
-    //Budle 정보 전달 인자
-
-    private ArrayList<HashMap<String, String>> testTraineeList(){
-        ArrayList<HashMap<String, String>> trainee_info = new ArrayList<HashMap<String, String>>();
-
-        for(int i = 1 ; i <5 ; i++) {
-            HashMap<String, String> tmp_hash = new HashMap<>();
-            tmp_hash.put("traineeID", "테스트아이디: "+i);
-            tmp_hash.put("address", "주소"+i);
-            tmp_hash.put("name", "회원"+i);
-            tmp_hash.put("sex", "남"+i);
-            tmp_hash.put("tall", "1"+i*10);
-            tmp_hash.put("weight", ""+i*10);
-            tmp_hash.put("isAccept", ((i%2==0)?"0":"1"));
-            trainee_info.add(tmp_hash);
-        }
-
-        return trainee_info;
     }
 
     private void setTraineeList(ArrayList<HashMap<String, String>> trainee_info) {
@@ -79,6 +75,7 @@ public class TraineeManageFragment extends Fragment {
 
             final Trainee_List_Item TLI = new Trainee_List_Item();
 
+            TLI.setSubid(trainee_info.get(i).get("subid"));
             TLI.setTraineeID(trainee_info.get(i).get("traineeID"));
             TLI.setAddress(trainee_info.get(i).get("address"));
             TLI.setName(trainee_info.get(i).get("name"));
@@ -101,7 +98,9 @@ public class TraineeManageFragment extends Fragment {
                 // 버튼 선택시 식단/루틴 팝업을 켬
                 @Override
                 public void onClick(View v) {
+                    Util.UpdateSubscription(TLI.getSubid(), "1");
                     TLI.setIsAccept("1");
+                    Util.sendNotification(TLI.getTraineeID(), ((MainActivity)getActivity()).getNickname() + "님의 수락", "식단 요청이 수락되었습니다.", "1");
                     Toast.makeText(getActivity().getApplicationContext(), "출력할 문자열", Toast.LENGTH_LONG).show();
                     refresh();
                 }
@@ -111,8 +110,10 @@ public class TraineeManageFragment extends Fragment {
                 // 버튼 선택시 식단/루틴 팝업을 켬
                 @Override
                 public void onClick(View v) {
-                    //todo 데이터베이스 지우는 함수
-
+                    Util.DeleteSubscription(TLI.getSubid());
+                    Util.sendNotification(TLI.getTraineeID(), ((MainActivity)getActivity()).getNickname() + "님의 거절", "식단 요청이 거절되었습니다.", "1");
+                    Toast.makeText(getActivity().getApplicationContext(), "출력할 문자열", Toast.LENGTH_LONG).show();
+                    refresh();
                 }
             });
 

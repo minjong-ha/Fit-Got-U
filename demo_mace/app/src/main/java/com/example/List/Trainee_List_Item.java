@@ -3,6 +3,7 @@ package com.example.List;
 import android.view.View;
 
 public class Trainee_List_Item {
+    private String subid;
     private String traineeID;
     private String name;
     private String weight;
@@ -18,6 +19,9 @@ public class Trainee_List_Item {
 
     // get
 
+    public String getSubid() {
+        return subid;
+    }
     public String getTraineeID() {
         return traineeID;
     }
@@ -51,6 +55,9 @@ public class Trainee_List_Item {
 
     // set
 
+    public void setSubid(String subid) {
+        this.subid = subid;
+    }
     public void setTraineeID(String traineeID) {
         this.traineeID = traineeID;
     }
