@@ -397,7 +397,7 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
     @Override
     public void onViewCreated(final View view, Bundle savedInstanceState) {
         textureView = view.findViewById(R.id.texture);
-        textView = view.findViewById(R.id.pose_exercise);
+        textView = view.findViewById(R.id.pose_frame);
         layout_frame = view.findViewById(R.id.layout_frame);
         drawView = view.findViewById(R.id.drawview);
         if (classifier != null)
