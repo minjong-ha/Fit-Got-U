@@ -17,6 +17,7 @@ android {
             }
         }
     }
+    useLibrary 'org.apache.http.legacy'
     dataBinding {
         enabled = true
     }

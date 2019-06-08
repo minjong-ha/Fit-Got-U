@@ -19,24 +19,24 @@
                 android:layout_height="match_parent">
 
 
-    <com.example.AutoFitFrameLayout
+    <com.example.PoseEstimation.AutoFitFrameLayout
         android:id="@+id/layout_frame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true">
 
-        <com.example.AutoFitTextureView
+        <com.example.PoseEstimation.AutoFitTextureView
             android:id="@+id/texture"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
 
-        <com.example.DrawView
+        <com.example.PoseEstimation.DrawView
             android:id="@+id/drawview"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
 
-    </com.example.AutoFitFrameLayout>
+    </com.example.PoseEstimation.AutoFitFrameLayout>
 
     <LinearLayout
         android:id="@+id/layout_bottom"
