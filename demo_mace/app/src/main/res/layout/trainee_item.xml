@@ -65,13 +65,44 @@
             android:text="내용" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/btnDetail"
+    <FrameLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="20"
-        android:background="#ffffff"
-        android:text="상세정보" />
+        android:visibility="visible" >
+
+        <Button
+            android:id="@+id/btnDetail"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:layout_weight="20"
+            android:background="#ffffff"
+            android:text="상세정보"
+        />
+
+        <LinearLayout
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:layout_weight="20"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnAccept"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="#ffffff"
+                android:text="승낙" />
+
+            <Button
+                android:id="@+id/btnDeny"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="#ffffff"
+                android:text="거절" />
+        </LinearLayout>
+    </FrameLayout>
 
     <View
         android:layout_width="0dp"

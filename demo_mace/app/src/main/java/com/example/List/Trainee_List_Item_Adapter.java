@@ -55,6 +55,8 @@ public class Trainee_List_Item_Adapter extends BaseAdapter {
         TextView oTextSex = (TextView) convertView.findViewById(R.id.textSex);
         TextView oTextAddress = (TextView) convertView.findViewById(R.id.textAddress);
         Button oBtn = (Button) convertView.findViewById(R.id.btnDetail);
+        Button oBtnAccept =(Button) convertView.findViewById(R.id.btnAccept);
+        Button oBtnDeny =(Button) convertView.findViewById(R.id.btnDeny);
 
 
         oTextName.setText(m_oData.get(position).getName());
@@ -62,9 +64,22 @@ public class Trainee_List_Item_Adapter extends BaseAdapter {
         oTextWeight.setText(m_oData.get(position).getWeight());
         oTextSex.setText(m_oData.get(position).getSex());
         oTextAddress.setText((m_oData.get(position).getAddress()));
-        oBtn.setOnClickListener(m_oData.get(position).getOnClickListener());
-
-        oBtn.setBackgroundColor(Color.TRANSPARENT);
+        if(m_oData.get(position).getIsAccept()=="1") {
+            oBtn.setVisibility(View.VISIBLE);
+            oBtn.setOnClickListener(m_oData.get(position).getOnClickListenerDetail());
+            oBtn.setBackgroundColor(Color.TRANSPARENT);
+            oBtnAccept.setVisibility(View.INVISIBLE);
+            oBtnDeny.setVisibility(View.INVISIBLE);
+        }
+        else {
+            oBtn.setVisibility(View.INVISIBLE);
+            oBtnAccept.setVisibility(View.VISIBLE);
+            oBtnDeny.setVisibility(View.VISIBLE);
+            oBtnAccept.setOnClickListener(m_oData.get(position).getOnClickListenerAccept());
+            oBtnDeny.setOnClickListener(m_oData.get(position).getOnClickListenerDeny());
+            oBtnAccept.setBackgroundColor(Color.TRANSPARENT);
+            oBtnDeny.setBackgroundColor(Color.TRANSPARENT);
+        }
 
         convertView.setTag(""+position);
         return convertView;

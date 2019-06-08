@@ -9,8 +9,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.Activity.ReplyForTraineeActivity;
 import com.example.List.Trainee_List_Item;
@@ -26,6 +28,7 @@ public class TraineeManageFragment extends Fragment {
     // view 및 context 변수
     private View view;
     private Context c;
+    ListAdapter oAdapter;
     //listViwe
     private ListView m_oListView = null;
 
@@ -62,6 +65,7 @@ public class TraineeManageFragment extends Fragment {
             tmp_hash.put("sex", "남"+i);
             tmp_hash.put("tall", "1"+i*10);
             tmp_hash.put("weight", ""+i*10);
+            tmp_hash.put("isAccept", ((i%2==0)?"0":"1"));
             trainee_info.add(tmp_hash);
         }
 
@@ -81,7 +85,8 @@ public class TraineeManageFragment extends Fragment {
             TLI.setSex(trainee_info.get(i).get("sex"));
             TLI.setTall(trainee_info.get(i).get("tall")+"cm");
             TLI.setWeight(trainee_info.get(i).get("weight")+"kg");
-            TLI.setOnClickListener(new Button.OnClickListener() {
+            TLI.setIsAccept(trainee_info.get(i).get("isAccept"));
+            TLI.setOnClickListenerDetail(new Button.OnClickListener() {
                 // 버튼 선택시 식단/루틴 팝업을 켬
                 @Override
                 public void onClick(View v) {
@@ -89,6 +94,25 @@ public class TraineeManageFragment extends Fragment {
                     intent.putExtra("traineeID",TLI.getTraineeID());
                     intent.putExtra("name",TLI.getName());
                     startActivityForResult(intent, 101);
+                }
+            });
+
+            TLI.setOnClickListenerAccept(new Button.OnClickListener() {
+                // 버튼 선택시 식단/루틴 팝업을 켬
+                @Override
+                public void onClick(View v) {
+                    TLI.setIsAccept("1");
+                    Toast.makeText(getActivity().getApplicationContext(), "출력할 문자열", Toast.LENGTH_LONG).show();
+                    refresh();
+                }
+            });
+
+            TLI.setOnClickListenerDeny(new Button.OnClickListener() {
+                // 버튼 선택시 식단/루틴 팝업을 켬
+                @Override
+                public void onClick(View v) {
+                    //todo 데이터베이스 지우는 함수
+
                 }
             });
 
@@ -100,8 +124,14 @@ public class TraineeManageFragment extends Fragment {
     private void connectAdapter(ArrayList<Trainee_List_Item> oData) {
         // ListView, Adapter 생성 및 연결 ------------------------
         m_oListView = (ListView) view.findViewById(R.id.trainee_manage_listView);
-        ListAdapter oAdapter = new Trainee_List_Item_Adapter(oData);
+        oAdapter = new Trainee_List_Item_Adapter(oData);
         m_oListView.setAdapter(oAdapter);
     }
 
+    private void refresh(){
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        ft.detach(this).attach(this).commit();
+
+
+    }
 }

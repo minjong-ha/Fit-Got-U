@@ -31,7 +31,7 @@ public class DateDialog extends AppCompatActivity {
         per_set.setText("세트당 10회!");
         routine=(TextView) findViewById(R.id.routine);
         routine.setText("유산소 15분 → 스쿼트 4세트 → 레그레이즈 4세트 → 플랭크 30분 → 윗몸일으키기 50회 → 팔굽혀펴기 100회");
-
+        record=(TextView) findViewById(R.id.record);
         //mBinding = DataBindingUtil.setContentView(this, R.layout.item_day);
         //mBinding.meal.setText("식사");
     }
