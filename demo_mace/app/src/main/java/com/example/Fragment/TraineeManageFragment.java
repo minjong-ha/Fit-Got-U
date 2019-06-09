@@ -101,9 +101,9 @@ public class TraineeManageFragment extends Fragment {
                 // 버튼 선택시 식단/루틴 팝업을 켬
                 @Override
                 public void onClick(View v) {
+                    //todo 데이터베이스에도 변경사항 반영
                     TLI.setIsAccept("1");
-                    Toast.makeText(getActivity().getApplicationContext(), "출력할 문자열", Toast.LENGTH_LONG).show();
-                    refresh();
+                    ((Trainee_List_Item_Adapter)oAdapter).notifyDataSetChanged();
                 }
             });
 
@@ -111,8 +111,9 @@ public class TraineeManageFragment extends Fragment {
                 // 버튼 선택시 식단/루틴 팝업을 켬
                 @Override
                 public void onClick(View v) {
-                    //todo 데이터베이스 지우는 함수
 
+                    //todo 데이터베이스 지우는 함수
+                    refresh();
                 }
             });
 
@@ -131,7 +132,5 @@ public class TraineeManageFragment extends Fragment {
     private void refresh(){
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         ft.detach(this).attach(this).commit();
-
-
     }
 }

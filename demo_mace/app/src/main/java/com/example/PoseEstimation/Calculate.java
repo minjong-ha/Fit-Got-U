@@ -5,16 +5,20 @@ import android.graphics.PointF;
 import android.media.MediaPlayer;
 import android.util.Log;
 
+import com.example.Activity.MainActivity;
+import com.example.Etc.MySQLiteOpenHelper;
 import com.example.R;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.concurrent.CopyOnWriteArrayList;
+
 /**
  * Created by a1 on 09/05/2019.
  */
 
 
-public class Calculate{
+public class Calculate {
     static String info;
     static double minAng1 = 360; //init
     static double minAng2 = 360; //init
@@ -42,9 +46,6 @@ public class Calculate{
     static Context context = null;
 
     static String status = null;
-
-
-
 
     public static void main(CopyOnWriteArrayList<PointF> Points) {
 
@@ -76,7 +77,8 @@ public class Calculate{
                     && isPointFValidate(Calculate.lastPoints.get(13), p13)
                     && isPointFValidate(Calculate.lastPoints.get(8), p8)
                     && isPointFValidate(Calculate.lastPoints.get(9), p9)
-                    && isPointFValidate(Calculate.lastPoints.get(10), p10))*/ {
+                    && isPointFValidate(Calculate.lastPoints.get(10), p10))*/
+            {
                 double leftAng = Cal_Angle(p11, p12, p13); //left
                 double rightAng = Cal_Angle(p8, p9, p10);   //right
 
@@ -95,13 +97,30 @@ public class Calculate{
             double leftAng = Cal_Angle(p11, p12, p13); //left
             double rightAng = Cal_Angle(p8, p9, p10);   //right
 
-            if(DrawView.isAllDone == true) {
+            if (DrawView.isAllDone == true) {
                 lungeAngleCheck(leftAng, rightAng, Points);
             }
         }
 
 
     }
+
+
+    static private String todayDate() {
+        Calendar cal = Calendar.getInstance();
+        int year = cal.get(cal.YEAR);
+        int month = cal.get(cal.MONTH) + 1;
+        int date = cal.get(cal.DATE);
+
+        return year+"-"+dateFormat(month+"")+"-"+dateFormat(date+"");
+    }
+
+    static private String dateFormat(String raw_date) {
+        if (raw_date.length() == 1)
+            return "0" + raw_date;
+        return raw_date;
+    }
+
 
     public static double Cal_Angle(PointF top, PointF center, PointF bottom) {
 
@@ -118,43 +137,36 @@ public class Calculate{
         return Angle;
     }
 
-    public void PointCheck(){
+    public void PointCheck() {
         //좌표로 오류 체크
     }
 
-    public static void squatAngleCheck(double Angle1, double Angle2){
+    public static void squatAngleCheck(double Angle1, double Angle2) {
 
         double bestAngle = 65;
         double upperAngle = 80;
         double lowerAngle = 52;
-        if(index == -1 && Angle2 == 0.0){
+        if (index == -1 && Angle2 == 0.0) {
             index = 0;
-        }
-
-        else if(index == 0 && Angle2 > 0){
+        } else if (index == 0 && Angle2 > 0) {
             rtAngle = Angle2;
             index = 1;
-        }
-
-        else if(index == 2){
+        } else if (index == 2) {
             rtAngle = 170;
-            if(Angle2 >= rtAngle)
+            if (Angle2 >= rtAngle)
                 index = 0;
-        }
-
-        else if(index == 1 && Angle2 > 0){
+        } else if (index == 1 && Angle2 > 0) {
             //if((minL.get(minL.size()-1) > Angle2) && (minL.get(minL.size()-1) * 0.95 <= Angle2)){
-            if((rtAngle > Angle2) && (rtAngle * 0.75 <= Angle2)){
+            if ((rtAngle > Angle2) && (rtAngle * 0.75 <= Angle2)) {
                 rtAngle = Angle2;
-            }
-            else if(Angle2 > rtAngle * 1.5){
-                if(rtAngle < lowerAngle)
+            } else if (Angle2 > rtAngle * 1.5) {
+                if (rtAngle < lowerAngle)
                     //Log.d("LOW Angle", Double.toString(rtAngle));
                     Calculate.lowerCount++;
-                else if(rtAngle > upperAngle)
+                else if (rtAngle > upperAngle)
                     //Log.d("UP Angle", Double.toString(rtAngle));
                     Calculate.uppperCount++;
-                else if(rtAngle >= lowerAngle && rtAngle <= upperAngle)
+                else if (rtAngle >= lowerAngle && rtAngle <= upperAngle)
                     //Log.d("VALID Angle", Double.toString(rtAngle));
                     Calculate.validCount++;
 
@@ -194,14 +206,18 @@ public class Calculate{
 
             Calculate.left.add((int) Calculate.minAng1);
 
-            if(minHead_y > 450) {
+            if (minHead_y > 450) {
                 //feedback if needed
                 if (Calculate.minAng1 >= highestAngle) {
                     Calculate.uppperCount++;
                     Calculate.status = "up";
 
+                    MySQLiteOpenHelperForPose.insertDescribe(MySQLiteOpenHelperForPose.getRecordID(),"좌측 다리 상박",(int)Calculate.minAng1);
+                    MySQLiteOpenHelperForPose.insertDescribe(MySQLiteOpenHelperForPose.getRecordID(),"우측 다리 상박",(int)Calculate.minAng1);
+
                     Runnable r = new VoiceFeedback();
                     Thread thread = new Thread(r);
+
                     thread.start();
                     try {
                         thread.join();
@@ -213,6 +229,9 @@ public class Calculate{
                 } else if (Calculate.minAng1 <= lowestAngle) {
                     Calculate.lowerCount++;
                     Calculate.status = "down";
+
+                    MySQLiteOpenHelperForPose.insertDescribe(MySQLiteOpenHelperForPose.getRecordID(),"좌측 다리 상박",-1*(int)Calculate.minAng1);
+                    MySQLiteOpenHelperForPose.insertDescribe(MySQLiteOpenHelperForPose.getRecordID(),"우측 다리 상박",-1*(int)Calculate.minAng1);
 
                     Runnable r = new VoiceFeedback();
                     Thread thread = new Thread(r);
@@ -243,13 +262,13 @@ public class Calculate{
             Calculate.tmpList1.clear();
             Calculate.tmpList2.clear();
             Calculate.headPoint.clear();
-            
+
             Calculate.validCount = Calculate.exerciseCount - (Calculate.uppperCount + Calculate.lowerCount);
 
         }
     }
 
-    public static void lungeAngleCheck(double Angle1, double Angle2, CopyOnWriteArrayList<PointF> Points){
+    public static void lungeAngleCheck(double Angle1, double Angle2, CopyOnWriteArrayList<PointF> Points) {
 
         int limitUpAngle = 150;
         int limitDownAngle = 60;
@@ -266,7 +285,7 @@ public class Calculate{
             Calculate.headPoint.add(Points.get(0));
         }
 
-        if (Calculate.tmpList1.isEmpty() == false && (Angle1 >= limitUpAngle && Angle2 >=limitUpAngle)) {
+        if (Calculate.tmpList1.isEmpty() == false && (Angle1 >= limitUpAngle && Angle2 >= limitUpAngle)) {
             Calculate.isExercise = false;
 
             Calculate.minAng1 = minList(tmpList1);
@@ -276,7 +295,7 @@ public class Calculate{
 
             Calculate.left.add((int) Calculate.minAng1);
 
-            if(minHead_y > 450) {
+            if (minHead_y > 450) {
                 //feedback if needed
                 if (Calculate.minAng1 >= highestAngle || Calculate.minAng2 >= highestAngle) {
                     Calculate.uppperCount++;
@@ -345,13 +364,13 @@ public class Calculate{
 
     }
 
-    public static double minList (ArrayList<Double> list) {
+    public static double minList(ArrayList<Double> list) {
         double min = 9999;
         double index = 0;
 
         Log.d("checkangle", Calculate.tmpList1.toString());
-        for(int i = 0; i < list.size(); i++) {
-            if(min > list.get(i)) {
+        for (int i = 0; i < list.size(); i++) {
+            if (min > list.get(i)) {
                 min = list.get(i);
                 index = i;
             }
@@ -360,13 +379,13 @@ public class Calculate{
         return min;
     }
 
-    public static int minIndex (ArrayList<Double> list) {
+    public static int minIndex(ArrayList<Double> list) {
         double min = 9999;
         int index = 0;
 
         Log.d("checkangle", Calculate.tmpList1.toString());
-        for(int i = 0; i < list.size(); i++) {
-            if(min > list.get(i)) {
+        for (int i = 0; i < list.size(); i++) {
+            if (min > list.get(i)) {
                 min = list.get(i);
                 index = i;
             }
@@ -405,13 +424,13 @@ public class Calculate{
     }
 
     public static double getDistance(double x1, double y1, double x2, double y2) {
-        return Math.sqrt(Math.pow(Math.abs(x2-x1), 2) + Math.pow(Math.abs(y2-y1), 2));
+        return Math.sqrt(Math.pow(Math.abs(x2 - x1), 2) + Math.pow(Math.abs(y2 - y1), 2));
     }
 
     public static boolean isPointFValidate(PointF last, PointF current) {
         int limit = 5;
 
-        if(getDistance(last.x, last.y, current.x, current.y) <= limit)
+        if (getDistance(last.x, last.y, current.x, current.y) <= limit)
             return true;
 
         return false;
@@ -430,27 +449,25 @@ class VoiceFeedback implements Runnable {
         MediaPlayer down = MediaPlayer.create(Calculate.context, R.raw.too_high);
         MediaPlayer good = MediaPlayer.create(Calculate.context, R.raw.well_done);
 
-        if(Calculate.status.equals("down")) {
+        if (Calculate.status.equals("down")) {
             up.start();
             try {
                 Thread.sleep(1500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        }
-        else if(Calculate.status.equals("up")) {
+        } else if (Calculate.status.equals("up")) {
             down.start();
             try {
                 Thread.sleep(1500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        }
-        else if(Calculate.status.equals("right")) {
+        } else if (Calculate.status.equals("right")) {
             good.start();
             try {
                 Thread.sleep(1000);
-            } catch(InterruptedException e) {
+            } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
@@ -462,5 +479,6 @@ class VoiceFeedback implements Runnable {
         down.release();
         good.release();
     }
+
 
 }

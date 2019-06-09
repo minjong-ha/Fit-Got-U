@@ -208,7 +208,6 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper implements Serializable
         if (db != null) {
             Cursor cursor = null;
 
-
             if (exerciseDate != null && exerciseName != null) {
                 recordID = getRecordID(exerciseName, exerciseDate);
                 recordIDCondition = " AND Record_id = " + recordID;
@@ -220,7 +219,7 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper implements Serializable
             cursor = db.rawQuery(sqlSelectP_Angle, null);
 
             if (cursor.moveToNext()) {
-                jointValue = cursor.getInt(0);
+                jointValue = (int)cursor.getDouble(0);
             } else {
                 jointValue = 0;
             }
@@ -233,15 +232,19 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper implements Serializable
         SQLiteDatabase db = openDB();
         Cursor cursor = null;
         int exerciseCount = 0;
-        exerciseDate = "'" + exerciseDate.substring(0, 10) + "%'";
+        exerciseDate = "'" + exerciseDate + "%'";
 
         if (db != null) {
-            String query = "SELECT Exercise_name FROM EXERCISE_RECORD " + exerciseDate + ";";
+            String query = "SELECT Exercise_name FROM EXERCISE_RECORD where Exercise_date LIKE " + exerciseDate + ";";
             System.out.println(query);
             cursor = db.rawQuery(query, null);
 
-            if (cursor.moveToNext()) {
-                exerciseCount = cursor.getInt(0);
+            if (cursor != null && cursor.getCount() > 0) {
+                cursor.moveToFirst();
+                while (!cursor.isAfterLast()) {
+                    exerciseCount++;
+                    cursor.moveToNext();
+                }
             }
 
         }
