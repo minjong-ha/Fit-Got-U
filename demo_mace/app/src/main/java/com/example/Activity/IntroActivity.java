@@ -27,7 +27,7 @@ public class IntroActivity extends Activity {
         setContentView(R.layout.activity_intro);
         init();
 
-        handler.postDelayed(runnable, 2000);
+        handler.postDelayed(runnable, 1500);
     }
 
     public void init() {

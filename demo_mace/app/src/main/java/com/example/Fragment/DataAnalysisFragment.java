@@ -31,8 +31,8 @@ import java.util.Random;
 
 public class DataAnalysisFragment extends Fragment {
     //body이미지 변수선언
-    private final int POINT_STANDARD_YELLO_RED = 15; // 노란 또는 빨강 기준
-    private final int POINT_STANDARD_YELLO_GREEN = 5;
+    private final int POINT_STANDARD_YELLO_RED = 60; // 노란 또는 빨강 기준
+    private final int POINT_STANDARD_YELLO_GREEN = 30;
     private ImageView imageView_l_arm1, imageView_r_arm1, imageView_l_arm2, imageView_r_arm2,
             imageView_l_leg1, imageView_r_leg1, imageView_l_leg2, imageView_r_leg2,
             imageView_m_body, imageView_m_hip, imageView_l_sholder, imageView_r_sholder;
@@ -59,8 +59,13 @@ public class DataAnalysisFragment extends Fragment {
 
         // sqlite
         final MySQLiteOpenHelper sqliteHelper = new MySQLiteOpenHelper(c, "jelly.db", null, 3);
+
         //이미지 부분
         int jointValues[] = getJointValue(sqliteHelper);
+
+        for(int i = 0; i <jointValues.length ; i++) {
+            if(jointValues[i]<0) jointValues[i] *= -1;
+        }
         showImage(jointValues);
 
         // 점수 부분을 계산
@@ -75,6 +80,7 @@ public class DataAnalysisFragment extends Fragment {
 
         //TestButton
         Button button1 = (Button) view.findViewById(R.id.button1);
+        button1.setVisibility(View.INVISIBLE);
         button1.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {

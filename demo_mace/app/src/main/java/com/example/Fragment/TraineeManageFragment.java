@@ -100,6 +100,7 @@ public class TraineeManageFragment extends Fragment {
                 public void onClick(View v) {
                     Util.UpdateSubscription(TLI.getSubid(), "1");
                     TLI.setIsAccept("1");
+                    ((Trainee_List_Item_Adapter)oAdapter).notifyDataSetChanged();
                     Util.sendNotification(TLI.getTraineeID(), ((MainActivity)getActivity()).getNickname() + "님의 수락", "식단 요청이 수락되었습니다.", "1");
                     Toast.makeText(getActivity().getApplicationContext(), "출력할 문자열", Toast.LENGTH_LONG).show();
                     refresh();
@@ -132,7 +133,5 @@ public class TraineeManageFragment extends Fragment {
     private void refresh(){
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         ft.detach(this).attach(this).commit();
-
-
     }
 }

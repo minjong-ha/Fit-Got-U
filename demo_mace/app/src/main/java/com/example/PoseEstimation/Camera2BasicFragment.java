@@ -86,8 +86,11 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
     }
 
     public static boolean isOpenCVInit = false;
-
+    public static MySQLiteOpenHelperForPose dbHelper ;
     private BaseLoaderCallback mLoaderCallback = null;
+
+    //운동 ID
+    private int recordID;
 
     /**
      * Tag for the {@link Log}.
@@ -386,6 +389,8 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
         explain.setText(message);
 
         Calculate.info = message;
+        dbHelper = new MySQLiteOpenHelperForPose(getActivity().getApplicationContext(), "jelly.db", null, 3);
+        recordID = dbHelper.insertRecord("스쿼트", dbHelper.todayDate(),0);
         Calculate.setContext(getActivity().getApplicationContext());
 
         return view;
@@ -470,6 +475,9 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
                         new DialogInterface.OnClickListener() {
                             public void onClick(
                                     DialogInterface dialog, int id) {
+                                dbHelper.updateRecordCount(recordID,Calculate.exerciseCount);
+                                MySQLiteOpenHelperForPose.setRecordID(-1);
+                                dbHelper.close();
                                 // 프로그램을 종료한다
                                 Calculate.varInit();
                                 ((MainActivity)getActivity()).onBackPressed();
