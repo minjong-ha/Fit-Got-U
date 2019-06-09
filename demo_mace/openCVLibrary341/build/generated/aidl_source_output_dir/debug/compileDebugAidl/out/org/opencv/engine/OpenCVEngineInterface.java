@@ -1,3 +1,7 @@
+/*
+ * This file is auto-generated.  DO NOT MODIFY.
+ * Original file: D:\\Programming\\GitHub\\Fit-Got-U\\demo_mace\\openCVLibrary341\\java\\src\\org\\opencv\\engine\\OpenCVEngineInterface.aidl
+ */
 package org.opencv.engine;
 /**
 * Class provides a Java interface for OpenCV Engine Service. It's synchronous with native OpenCVEngine class.
