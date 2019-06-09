@@ -44,7 +44,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="40"
-                android:autofillHints="년" />
+                android:autofillHints="년"
+                android:minWidth="140dp" />
 
             <Spinner
                 android:id="@+id/spinner_month"
@@ -132,9 +133,10 @@
                 android:layout_height="wrap_content"
                 android:text = "세트 당"
                 android:layout_margin="10dp"/>
+
             <Spinner
                 android:id="@+id/spinner_setCount"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp" />
             <TextView
