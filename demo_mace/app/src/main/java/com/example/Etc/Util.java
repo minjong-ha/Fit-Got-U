@@ -391,6 +391,70 @@ public class Util {
         return mArrayList;
     }
 
+    public static String InsertRoutine(String uid, String tid, String date, String breakm, String lunchm, String dinnerm, String setm, String routinem) {
+        String str = null;
+        try {
+            DBPHPTask task = new DBPHPTask("insert_routine");
+            str = task.execute("user_id", uid, "trainer_id", tid, "date_message", date,
+                    "break_message", breakm, "lunch_message", lunchm, "dinner_message", dinnerm,
+                    "set_message", setm, "routine_message", routinem).get();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return str;
+    }
+
+    public static ArrayList<HashMap<String, String>> SelectRoutine(String userid) {
+        ArrayList<HashMap<String, String>> mArrayList = new ArrayList<>();
+        try {
+            DBPHPTask task = new DBPHPTask("select_routine");
+            mArrayList =  getJsonRoutine(task.execute("user_id", userid).get());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return mArrayList;
+    }
+
+    public static ArrayList<HashMap<String, String>> getJsonRoutine(String JsonString) {
+        ArrayList<HashMap<String, String>> mArrayList = new ArrayList<>();
+        try {
+            JSONObject jsonObject = new JSONObject(JsonString);
+            JSONArray jsonArray = jsonObject.getJSONArray("fgy");
+
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject item = jsonArray.getJSONObject(i);
+
+                String id = item.getString("id");
+                String userid = item.getString("user_id");
+                String trainerid = item.getString("trainer_id");
+                String date_message = item.getString("date_message");
+                String break_message = item.getString("break_message");
+                String lunch_message = item.getString("lunch_message");
+                String dinner_message = item.getString("dinner_message");
+                String set_message = item.getString("set_message");
+                String routine_message = item.getString("routine_message");
+
+                HashMap<String,String> hashMap = new HashMap<>();
+
+                hashMap.put("id", id);
+                hashMap.put("userid", userid);
+                hashMap.put("trainerid", trainerid);
+                hashMap.put("date_message", date_message);
+                hashMap.put("break_message", break_message);
+                hashMap.put("lunch_message", lunch_message);
+                hashMap.put("dinner_message", dinner_message);
+                hashMap.put("set_message", set_message);
+                hashMap.put("routine_message", routine_message);
+
+                mArrayList.add(hashMap);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return mArrayList;
+    }
+
     public static String sendNotification(String targetid, String title, String content, String action) {
         String str = null;
         try {

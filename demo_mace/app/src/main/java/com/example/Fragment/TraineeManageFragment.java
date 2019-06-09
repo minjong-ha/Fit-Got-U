@@ -88,6 +88,8 @@ public class TraineeManageFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(c.getApplicationContext(), ReplyForTraineeActivity.class);
+                    intent.putExtra("trainerID", ((MainActivity)getActivity()).getKakaoid() + "");
+                    intent.putExtra("trainername",((MainActivity)getActivity()).getNickname());
                     intent.putExtra("traineeID",TLI.getTraineeID());
                     intent.putExtra("name",TLI.getName());
                     startActivityForResult(intent, 101);
@@ -102,7 +104,7 @@ public class TraineeManageFragment extends Fragment {
                     TLI.setIsAccept("1");
                     ((Trainee_List_Item_Adapter)oAdapter).notifyDataSetChanged();
                     Util.sendNotification(TLI.getTraineeID(), ((MainActivity)getActivity()).getNickname() + "님의 수락", "식단 요청이 수락되었습니다.", "1");
-                    Toast.makeText(getActivity().getApplicationContext(), "출력할 문자열", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity().getApplicationContext(), "승낙하였습니다.", Toast.LENGTH_LONG).show();
                     refresh();
                 }
             });
@@ -113,7 +115,7 @@ public class TraineeManageFragment extends Fragment {
                 public void onClick(View v) {
                     Util.DeleteSubscription(TLI.getSubid());
                     Util.sendNotification(TLI.getTraineeID(), ((MainActivity)getActivity()).getNickname() + "님의 거절", "식단 요청이 거절되었습니다.", "1");
-                    Toast.makeText(getActivity().getApplicationContext(), "출력할 문자열", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity().getApplicationContext(), "거절하였습니다.", Toast.LENGTH_LONG).show();
                     refresh();
                 }
             });

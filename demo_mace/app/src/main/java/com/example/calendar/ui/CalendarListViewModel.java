@@ -2,9 +2,9 @@ package com.example.calendar.ui;
 
 import androidx.lifecycle.ViewModel;
 
-import com.example.calendar.etc.DateFormat;
 import com.example.calendar.etc.Keys;
 import com.example.calendar.etc.TSLiveData;
+import com.example.calendar.etc.DateFormat;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -15,6 +15,7 @@ public class CalendarListViewModel extends ViewModel {
 
     public TSLiveData<String> mTitle = new TSLiveData<>();
     public TSLiveData<ArrayList<Object>> mCalendarList = new TSLiveData<>(new ArrayList<>());
+    public String date;
 
     public int mCenterPosition;
 
@@ -46,7 +47,7 @@ public class CalendarListViewModel extends ViewModel {
         setTitle(cal.getTimeInMillis());
 
         ArrayList<Object> calendarList = new ArrayList<>();
-        for (int i = -300; i < 300; i++) {
+        for (int i = -3; i < 2; i++) {
             try {
                 GregorianCalendar calendar = new GregorianCalendar(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + i, 1, 0, 0, 0);
                 if (i == 0) {
@@ -61,6 +62,7 @@ public class CalendarListViewModel extends ViewModel {
                     calendarList.add(Keys.EMPTY);
                 }
                 for (int j = 1; j <= max; j++) {
+                    if(true){}
                     calendarList.add(new GregorianCalendar(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), j));
                 }
             } catch (Exception e) {
