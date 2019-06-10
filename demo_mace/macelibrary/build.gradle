@@ -42,6 +42,13 @@ android {
             jni.srcDirs = ['src/cpp']
         }
     }
+
+    task ndkClean(type: Delete) {
+        delete fileTree('.externalNativeBuild') {
+            exclude defaultConfig.ndk.abiFilters.collect { '**/' + it }
+        }
+    }
+    tasks.findByPath(':clean').dependsOn ndkClean
 }
 
 dependencies {

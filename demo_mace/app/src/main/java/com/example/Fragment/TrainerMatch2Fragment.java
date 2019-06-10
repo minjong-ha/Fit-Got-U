@@ -36,6 +36,7 @@ public class TrainerMatch2Fragment extends Fragment implements AdapterView.OnIte
     private String profile_image = "";
     private TM2_List_Item_adapter adapter;
     private String subid = "";
+    private ImageButton button;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -59,7 +60,7 @@ public class TrainerMatch2Fragment extends Fragment implements AdapterView.OnIte
         view3.setText(height);
         TextView view4 = view.findViewById(R.id.tm2_profile_weight);
         view4.setText(weight);
-        ImageButton button = view.findViewById(R.id.tm2_profile_subscription);
+        button = view.findViewById(R.id.tm2_profile_subscription);
 
         ArrayList<HashMap<String, String>> mysub = Util.SelectSubscriptionbyUser(((MainActivity)getActivity()).getKakaoid() + "");
         for (HashMap<String, String> sub : mysub) {
@@ -73,12 +74,12 @@ public class TrainerMatch2Fragment extends Fragment implements AdapterView.OnIte
             @Override
             public void onClick(View view) {
                 if (subid.equals("")) {
-                    //button.setImageDrawable();
+                    button.setImageDrawable(getResources().getDrawable(R.drawable.meal_routine)); //button.setImageDrawable();
                     subid = Util.InsertSubscription(((MainActivity)getActivity()).getKakaoid() + "", trainerid);
                     Toast.makeText(getActivity().getApplicationContext(), "신청하였습니다.", Toast.LENGTH_SHORT).show();
                     Util.sendNotification(trainerid, ((MainActivity)getActivity()).getNickname() + "님의 신청", "식단과 루틴을 제공해주세요", "1");
                 } else {
-                    //button.setImageDrawable();
+                    button.setImageDrawable(getResources().getDrawable(R.drawable.meal_routine2));//button.setImageDrawable();
                     Util.DeleteSubscription(subid);
                     subid = "";
                     Toast.makeText(getActivity().getApplicationContext(), "신청을 취소했습니다.", Toast.LENGTH_SHORT).show();

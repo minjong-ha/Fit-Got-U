@@ -275,7 +275,7 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
                     new Runnable() {
                         @Override
                         public void run() {
-                            textView.setText(String.valueOf(Calculate.exerciseCount));
+                            textView.setText(text);
                             //=====
                             //32ms, 34ms 등 시간 출력
                             Log.d("here", text);
@@ -510,7 +510,7 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
                 //=====
                 Integer facing = characteristics.get(CameraCharacteristics.LENS_FACING);
                 //LENS_FACING_BACK 으로 카메라 전면으로 바꿈
-                if (facing != null && facing == CameraCharacteristics.LENS_FACING_BACK) {
+                if (facing != null && facing == CameraCharacteristics.LENS_FACING_FRONT) {
                     continue;
                 }
 

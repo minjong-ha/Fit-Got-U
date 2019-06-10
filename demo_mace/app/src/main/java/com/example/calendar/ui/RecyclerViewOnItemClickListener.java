@@ -1,16 +1,24 @@
 package com.example.calendar.ui;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.Activity.MainActivity;
+import com.example.calendar.ScheduleFragment;
+
 
 public class RecyclerViewOnItemClickListener extends RecyclerView.SimpleOnItemTouchListener {
 
     private OnItemClickListener mListener;
     private GestureDetector mGestureDetector;
+    private int currentPosition;
+
     public RecyclerViewOnItemClickListener(Context context, final RecyclerView recyclerView, OnItemClickListener listener) {
         this.mListener = listener;
 
@@ -35,7 +43,9 @@ public class RecyclerViewOnItemClickListener extends RecyclerView.SimpleOnItemTo
     public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
         View child = rv.findChildViewUnder(e.getX(), e.getY());
         if (child != null && mListener != null && mGestureDetector.onTouchEvent(e)) {
+            currentPosition = rv.getChildAdapterPosition(child);
             mListener.onItemClick(child, rv.getChildAdapterPosition(child));
+            Toast.makeText(rv.getContext(), Integer.toString(currentPosition), Toast.LENGTH_LONG).show();
             return true;
         }
         return false;
