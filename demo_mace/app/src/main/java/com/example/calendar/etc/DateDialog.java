@@ -8,11 +8,14 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-
+import com.example.Activity.MainActivity;
 import com.example.Etc.MySQLiteOpenHelper;
+import com.example.Etc.Util;
 import com.example.R;
 import com.example.databinding.DayItemBinding;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class DateDialog extends AppCompatActivity {
     private DayItemBinding binding;
@@ -30,8 +33,11 @@ public class DateDialog extends AppCompatActivity {
 
         final MySQLiteOpenHelper sqliteHelper = new MySQLiteOpenHelper(a, "jelly.db", null, 3);
 
+        //ArrayList<HashMap<String, String>> sub = Util.SelectSubscriptionbyTrainer(((MainActivity)getActivity()).getKakaoid() + "");
+        //HashMap<String, String> = Util.SelectSubscriptionbyTrainer((((MainActivity)getActivity()).getKakaoid()+"");
+
         morning = (TextView)findViewById(R.id.morning);
-        morning.setText("사과 1/2개, 닭가슴살 150g");
+        morning.setText("고구마 1개");
         lunch =(TextView) findViewById(R.id.lunch);
         lunch.setText("고구마 50개");
         dinner=(TextView) findViewById(R.id.dinner);

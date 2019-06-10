@@ -48,11 +48,18 @@ public class HomeTraining3Fragment extends Fragment implements AdapterView.OnIte
 
         items.add(new HT3_List_Item(R.mipmap.squat, R.string.fitness_1_1_1, R.string.fitness_1_1_1_desc));
         items.add(new HT3_List_Item(R.mipmap.flank, R.string.fitness_1_1_2, R.string.fitness_1_1_2_desc));
-        items.add(new HT3_List_Item(R.mipmap.flank, R.string.fitness_1_1_3, R.string.fitness_1_1_3_desc));
 
         HT3_List_Item_Adapter listadapter = new HT3_List_Item_Adapter(getContext(), R.layout.ht3_list_item, items);
         listview.setAdapter(listadapter);
         listview.setOnItemClickListener(this);
+
+        Button start = (Button)view.findViewById(R.id.ht3_start);
+        start.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showSimpleDialog();
+            }
+        });
 
         return view;
     }
@@ -62,7 +69,7 @@ public class HomeTraining3Fragment extends Fragment implements AdapterView.OnIte
         showHTDialog(i);
     }
 
-    /*private void showSimpleDialog() {
+    private void showSimpleDialog() {
         DialogFragment newFragment = new SimpleDialogFragment();
         Bundle args = new Bundle();
         args.putString("title", getString(R.string.dialog_ht_start_title));
@@ -72,7 +79,7 @@ public class HomeTraining3Fragment extends Fragment implements AdapterView.OnIte
         newFragment.setArguments(args);
         newFragment.setTargetFragment(this, Util.DIALOG_REQUEST_CODE);
         newFragment.show(getFragmentManager(), "simpledialog");
-    }*/
+    }
 
     private void showHTDialog(int pos) {
         DialogFragment newFragment = new HTDialogFragment();
@@ -80,7 +87,6 @@ public class HomeTraining3Fragment extends Fragment implements AdapterView.OnIte
         args.putString("title", getString(items.get(pos).getNameId()));
         args.putInt("imageid", items.get(pos).getImageId());
         args.putString("desc", getString(items.get(pos).getDescId()));
-        args.putInt("nameid", items.get(pos).getNameId());
         newFragment.setArguments(args);
         newFragment.setTargetFragment(this, Util.DIALOG_REQUEST_CODE);
         newFragment.show(getFragmentManager(), "htdialog");
@@ -92,11 +98,14 @@ public class HomeTraining3Fragment extends Fragment implements AdapterView.OnIte
 
         if (requestCode == Util.DIALOG_REQUEST_CODE) {
             if (resultCode == Activity.RESULT_OK) {
-                Camera2BasicFragment cb = new Camera2BasicFragment();
-                Bundle args = new Bundle();
-                args.putString("exercise", getString(data.getIntExtra("exercise", 0)));
-                cb.setArguments(args);
-                ((MainActivity)getActivity()).ChangeFragmentMain(cb);
+                String negtext = data.getStringExtra("negtext");
+                if (negtext != null) {
+                    Camera2BasicFragment cb = new Camera2BasicFragment();
+                    Bundle args = new Bundle();
+                    args.putString("exercise", "스쿼트");//nameid
+                    cb.setArguments(args);
+                    ((MainActivity)getActivity()).ChangeFragmentMain(cb);
+                }
             }
         }
     }

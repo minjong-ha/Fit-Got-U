@@ -10,77 +10,68 @@
         android:id="@+id/constraintLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/tm2_list"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/tm2_profile_image"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="88dp"
+            android:layout_height="94dp"
             android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
             android:src="@mipmap/ic_launcher"
+            app:layout_constraintEnd_toStartOf="@+id/tm2_profile_name"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tm2_profile_name"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
+            android:layout_width="75dp"
+            android:layout_height="26dp"
             android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
             android:text="이름"
             android:textColor="#000000"
-            android:textSize="30dp"
+            android:textSize="20dp"
             app:layout_constraintStart_toEndOf="@+id/tm2_profile_image"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tm2_profile_address"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
+            android:layout_width="298dp"
+            android:layout_height="21dp"
             android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
             android:text="주소"
             android:textColor="#756F6F"
-            android:textSize="24dp"
+            android:textSize="15dp"
             app:layout_constraintStart_toEndOf="@+id/tm2_profile_image"
             app:layout_constraintTop_toBottomOf="@+id/tm2_profile_name" />
 
         <TextView
             android:id="@+id/tm2_profile_height"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="34dp"
+            android:layout_height="21dp"
             android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
             android:layout_weight="1"
             android:text="키"
             android:textColor="#756F6F"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/tm2_profile_name"
-            app:layout_constraintTop_toBottomOf="@+id/tm2_profile_height2" />
+            app:layout_constraintStart_toEndOf="@+id/tm2_profile_height2"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tm2_profile_height2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
             android:layout_weight="1"
             android:text="키"
             android:textColor="#756F6F"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tm2_profile_name"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -89,47 +80,49 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="16dp"
             android:layout_weight="1"
             android:text="몸무게"
             android:textColor="#756F6F"
+            app:layout_constraintBottom_toTopOf="@+id/tm2_profile_address"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/tm2_profile_address"
-            app:layout_constraintTop_toBottomOf="@+id/tm2_profile_weight2" />
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/tm2_profile_weight2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/tm2_profile_weight2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
             android:layout_weight="1"
             android:text="몸무게"
             android:textColor="#756F6F"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/tm2_profile_address"
-            app:layout_constraintTop_toBottomOf="@+id/tm2_profile_height" />
+            app:layout_constraintStart_toEndOf="@+id/tm2_profile_height"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
             android:id="@+id/tm2_profile_subscription"
-            android:layout_width="100dp"
-            android:layout_height="27dp"
+            android:layout_width="185dp"
+            android:layout_height="37dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:layout_weight="1"
+            android:background="#00000000"
+            android:scaleType="fitXY"
             android:src="@drawable/meal_routine2"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.688"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tm2_profile_address" />
+            app:layout_constraintTop_toBottomOf="@+id/tm2_profile_address"
+            app:layout_constraintVertical_bias="0.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -139,7 +132,6 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 </androidx.constraintlayout.widget.ConstraintLayout>

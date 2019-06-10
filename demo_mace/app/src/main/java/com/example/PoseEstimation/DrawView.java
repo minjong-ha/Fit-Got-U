@@ -267,8 +267,8 @@ public class DrawView extends View {
             }
             if(Calculate.info.compareTo("런지") == 0){
 
-               // validPaint.setColor(Color.GREEN);
-                //validPaint.setStrokeWidth(15);
+                validPaint.setColor(Color.GREEN);
+                validPaint.setStrokeWidth(15);
                 //최적의 운동 각도 보여주는 부분
                 //11-12 l_hip - l_knee
                 canvas.drawLine(630, 900, 461, 960, validPaint);
