@@ -1,6 +1,6 @@
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Original file: C:\\Users\\LEEJH\\Downloads\\Fit-Got-U-master\\Fit-Got-U-master\\demo_mace\\openCVLibrary341\\java\\src\\org\\opencv\\engine\\OpenCVEngineInterface.aidl
+ * Original file: C:\\Users\\JiWookHwang\\Documents\\GitHub\\Fit-Got-U\\demo_mace\\openCVLibrary341\\java\\src\\org\\opencv\\engine\\OpenCVEngineInterface.aidl
  */
 package org.opencv.engine;
 /**
