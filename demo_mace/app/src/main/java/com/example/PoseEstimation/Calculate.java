@@ -3,8 +3,8 @@ package com.example.PoseEstimation;
 import android.content.Context;
 import android.graphics.PointF;
 import android.media.MediaPlayer;
-import android.util.Log;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.example.R;
 

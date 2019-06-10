@@ -5,15 +5,12 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Pair;
 
 import androidx.annotation.Nullable;
 
 import java.io.File;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.HashSet;
 
 public class MySQLiteOpenHelperForPose extends SQLiteOpenHelper implements Serializable {
     static final private String[] bodyPart = {"좌측 팔 하박", "좌측 팔 상박", "좌측 다리 하박", "좌측 다리 상박",

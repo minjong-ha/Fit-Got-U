@@ -2,18 +2,16 @@ package com.example.calendar.ui;
 
 import android.app.Activity;
 import android.app.Application;
-import android.content.Context;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.ViewModel;
 
 import com.example.Activity.MainActivity;
 import com.example.Etc.Util;
+import com.example.calendar.etc.DateFormat;
 import com.example.calendar.etc.Keys;
 import com.example.calendar.etc.TSLiveData;
-import com.example.calendar.etc.DateFormat;
 
 import java.util.ArrayList;
 import java.util.Calendar;

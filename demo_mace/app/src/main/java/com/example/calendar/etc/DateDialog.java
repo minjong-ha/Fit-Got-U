@@ -4,18 +4,13 @@ package com.example.calendar.etc;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.Activity.MainActivity;
+
 import com.example.Etc.MySQLiteOpenHelper;
-import com.example.Etc.Util;
 import com.example.R;
 import com.example.databinding.DayItemBinding;
-
-import java.util.ArrayList;
-import java.util.HashMap;
 
 public class DateDialog extends AppCompatActivity {
     private DayItemBinding binding;

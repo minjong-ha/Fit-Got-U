@@ -1,6 +1,5 @@
 package com.example.calendar.ui;
 
-import android.app.Activity;
 import android.content.Context;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
@@ -8,9 +7,6 @@ import android.view.View;
 import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.Activity.MainActivity;
-import com.example.calendar.ScheduleFragment;
 
 
 public class RecyclerViewOnItemClickListener extends RecyclerView.SimpleOnItemTouchListener {
