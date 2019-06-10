@@ -14,6 +14,7 @@ import com.example.databinding.CalendarHeaderBinding;
 import com.example.databinding.DayItemBinding;
 import com.example.databinding.EmptyDayBinding;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -22,10 +23,15 @@ public class CalendarAdapter extends RecyclerView.Adapter {
     private final int EMPTY_TYPE = 1;
     private final int DAY_TYPE = 2;
 
+    private CalendarListViewModel CLV;
     private List<Object> mCalendarList;
+    ArrayList<Integer> setDate;
 
     public CalendarAdapter(List<Object> calendarList) {
         mCalendarList = calendarList;
+    }
+    public CalendarAdapter(List<Object> calendarList, ArrayList<Integer> setDate) {
+        mCalendarList = calendarList; this.setDate=setDate;
     }
 
     public void setCalendarList(List<Object> calendarList) {
@@ -85,15 +91,16 @@ public class CalendarAdapter extends RecyclerView.Adapter {
             Object item = mCalendarList.get(position);
             CalendarViewModel model = new CalendarViewModel();
 
-            try {
-                if (DateDialog.morning.getText().toString() != null || !DateDialog.morning.getText().toString().equals("")) {
-                    //후에 전송받았을 때로 바꿈
-                    holder.SetTextMeal();
+            for(int i=0; i<setDate.size(); i++) {
+                //System.out.println("position = "+position + " setDate.get(i) = "+setDate.get(i));
+                if (position == setDate.get(i)) {
+                    try {
+                        holder.SetTextMeal();
+                        holder.SetTextRoutine();
+                    } catch (NullPointerException e) {
+                        holder.SetTextFail();
+                    }
                 }
-            }catch(NullPointerException e){
-                holder.SetTextRoutine();
-                holder.SetTextMeal();
-                holder.SetTextRecord();
             }
             if (item instanceof Calendar) {
                 model.setCalendar((Calendar) item);
@@ -158,7 +165,11 @@ public class CalendarAdapter extends RecyclerView.Adapter {
         }
 
         public void SetTextRecord(){
-            binding.record.setText("기록");
+            //binding.record.setText("기록");
+        }
+
+        public void SetTextFail(){
+            //  binding.record.setText("탈락");
         }
 
         private void setViewModel(CalendarViewModel model) {

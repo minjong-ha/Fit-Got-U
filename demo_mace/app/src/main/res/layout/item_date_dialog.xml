@@ -94,7 +94,7 @@
             android:gravity="center_vertical"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:text="KFC 6조각(9시 이후)"
+            android:text=""
             android:textColor="@color/dayColor" />
     </LinearLayout>
 
@@ -130,7 +130,7 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:textColor="@color/dayColor" />
-
+<!--
     <TextView
         android:id="@+id/textView28"
         android:layout_width="match_parent"
@@ -149,5 +149,5 @@
         android:gravity="center_vertical"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:textColor="@color/dayColor" />
+        android:textColor="@color/dayColor" />-->
 </LinearLayout>

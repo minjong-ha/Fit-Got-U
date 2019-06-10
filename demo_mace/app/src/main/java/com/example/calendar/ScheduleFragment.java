@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import com.example.Activity.MainActivity;
 import com.example.R;
 import com.example.calendar.etc.DateDialog;
 import com.example.calendar.ui.CalendarAdapter;
@@ -39,7 +40,7 @@ public class ScheduleFragment extends Fragment {
 
         observe();
         if (model != null) {
-            model.initCalendarList();
+            model.initCalendarList(((MainActivity)getActivity()).getKakaoid() + "");
         }
 
         return binding.getRoot();
@@ -55,7 +56,7 @@ public class ScheduleFragment extends Fragment {
                     adapter.setCalendarList(objects);
                 } else {
                     StaggeredGridLayoutManager manager = new StaggeredGridLayoutManager(7, StaggeredGridLayoutManager.VERTICAL);
-                    adapter = new CalendarAdapter(objects);
+                    adapter = new CalendarAdapter(objects, model.getSetDate());
                     view.setLayoutManager(manager);
                     view.setAdapter(adapter);
                     if (model.mCenterPosition >= 0) {
@@ -68,6 +69,13 @@ public class ScheduleFragment extends Fragment {
                             @Override
                             public void onItemClick(View v, int position) {
                                 Intent intent = new Intent(getActivity().getApplicationContext(), DateDialog.class);
+                                intent.putExtra("position",position);
+                                intent.putExtra("kakaoId", ((MainActivity)getActivity()).getKakaoid() + "");
+                                intent.putIntegerArrayListExtra("setDate", model.getSetDate());
+                                intent.putStringArrayListExtra("setBreak", model.getSetBreak());
+                                Bundle extras = new Bundle();
+                                extras.putSerializable("PosiToDate",model.getPosiToDate());
+                                intent.putExtras(extras);
                                 startActivityForResult(intent, 103);
                             }
                         /*

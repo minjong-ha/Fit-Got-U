@@ -58,17 +58,17 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:textColor="#33CC33" />
-
-            <TextView
-                android:id="@+id/record"
-                android:layout_width="226dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
                 android:textColor="#13289c" />
-        </LinearLayout>
+            <!--
+                        <TextView
+                            android:id="@+id/record"
+                            android:layout_width="226dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"android:textColor="#33CC33" />
+                -->
+                    </LinearLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-</layout>
+            </layout>

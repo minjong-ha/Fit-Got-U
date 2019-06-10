@@ -343,7 +343,7 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper implements Serializable
         int result_count=0;
 
         if (db != null) {
-            String query = "SELECT Exercise_name, Exercise_count FROM EXERCISE_RECORD WHERE Exercise_date like " + exerciseDate + " AND Exercise_count != 0;";
+            String query = "SELECT Exercise_name, Exercise_count FROM EXERCISE_RECORD WHERE Exercise_date like '" + exerciseDate + "%' AND Exercise_count != 0;";
             cursor = db.rawQuery(query, null);
 
             if (cursor != null && cursor.getCount() > 0) {
