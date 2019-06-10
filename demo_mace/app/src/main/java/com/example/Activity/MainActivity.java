@@ -240,6 +240,9 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
             } else if (newfragment instanceof Camera2BasicFragment) {
                 HTfragment.push(newfragment);
                 mainfragment = HTfragment.peek();
+            } else if (newfragment instanceof DataAnalysisFragment) {
+                MPfragment.push(newfragment);
+                mainfragment = MPfragment.peek();
             }
         }
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();

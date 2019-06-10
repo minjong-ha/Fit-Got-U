@@ -65,7 +65,7 @@ public class TrainerMatch2Fragment extends Fragment implements AdapterView.OnIte
         ArrayList<HashMap<String, String>> mysub = Util.SelectSubscriptionbyUser(((MainActivity)getActivity()).getKakaoid() + "");
         for (HashMap<String, String> sub : mysub) {
             if (sub.get("trainerid").equals(trainerid)) {
-                //button.setImageDrawable();
+                button.setImageDrawable(getResources().getDrawable(R.drawable.meal_routine)); //button.setImageDrawable();
                 subid = sub.get("id");
                 break;
             }

@@ -12,6 +12,7 @@ public class Trainee_List_Item {
     private String sex; //남 또는 여
     private String isAccept;
     private View.OnClickListener onClickListenerDetail;
+    private View.OnClickListener onClickListenerInfo;
     private View.OnClickListener onClickListenerAccept;
     private View.OnClickListener onClickListenerDeny;
 
@@ -42,6 +43,9 @@ public class Trainee_List_Item {
     }
     public View.OnClickListener getOnClickListenerDetail() {
         return onClickListenerDetail;
+    }
+    public View.OnClickListener getOnClickListenerInfo() {
+        return onClickListenerInfo;
     }
     public String getIsAccept() {
         return isAccept;
@@ -78,6 +82,9 @@ public class Trainee_List_Item {
     }
     public void setOnClickListenerDetail(View.OnClickListener onClickListener) {
         this.onClickListenerDetail = onClickListener;
+    }
+    public void setOnClickListenerInfo(View.OnClickListener onClickListener) {
+        this.onClickListenerInfo = onClickListener;
     }
     public void setIsAccept(String isAccept) {
         this.isAccept = isAccept;

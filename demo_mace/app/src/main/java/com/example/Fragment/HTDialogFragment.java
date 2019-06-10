@@ -20,7 +20,7 @@ public class HTDialogFragment extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        LayoutInflater inflater = getActivity().getLayoutInflater();
+        final LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.dialog_ht, null);
         builder.setView(view);
 
@@ -28,6 +28,7 @@ public class HTDialogFragment extends DialogFragment {
         String title = arg.getString("title");
         int imageid = arg.getInt("imageid");
         String desc = arg.getString("desc");
+        final int nameid = arg.getInt("nameid");
 
         ImageView iv = (ImageView) view.findViewById(R.id.dialog_ht_image);
         if (imageid != 0) {
@@ -36,11 +37,18 @@ public class HTDialogFragment extends DialogFragment {
         TextView tv2 = (TextView)view.findViewById(R.id.dialog_ht_desc);
         tv2.setText(desc);
 
-        builder.setPositiveButton("확인",
+        builder.setPositiveButton("시작",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         Intent intent = new Intent();
+                        intent.putExtra("exercise", nameid);
                         getTargetFragment().onActivityResult(getTargetRequestCode(), Activity.RESULT_OK, intent);
+                        dismiss();
+                    }
+                });
+        builder.setNegativeButton("취소",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
                         dismiss();
                     }
                 });

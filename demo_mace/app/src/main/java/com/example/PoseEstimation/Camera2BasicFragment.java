@@ -59,6 +59,8 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
 import com.example.Activity.MainActivity;
+import com.example.Etc.MySQLiteOpenHelper;
+import com.example.Etc.Util;
 import com.example.R;
 
 import org.opencv.android.BaseLoaderCallback;
@@ -70,6 +72,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
@@ -274,7 +277,7 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
                     new Runnable() {
                         @Override
                         public void run() {
-                            textView.setText(text);
+                            textView.setText(String.valueOf(Calculate.exerciseCount));
                             //=====
                             //32ms, 34ms 등 시간 출력
                             Log.d("here", text);
@@ -479,6 +482,7 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
                                 dbHelper.close();
                                 // 프로그램을 종료한다
                                 Calculate.varInit();
+                                doJoint();
                                 ((MainActivity)getActivity()).onBackPressed();
                             }
                         });
@@ -491,6 +495,17 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
         msgTxt.setTextSize(30);
         //  timer.cancel();
         //finish();
+    }
+
+    public void doJoint() {
+        final MySQLiteOpenHelper sqliteHelper = new MySQLiteOpenHelper(getContext(), "jelly.db", null, 3);
+        int jointValues[] = sqliteHelper.getJointValues(null,null);
+        int[] joint = Util.SelectExerciseJoint(((MainActivity)getActivity()).getKakaoid() + "");
+        if (joint != null) {
+            Util.UpdateExerciseJoint(((MainActivity)getActivity()).getKakaoid() + "", jointValues);
+        } else {
+            Util.InsertExerciseJoint(((MainActivity)getActivity()).getKakaoid() + "", jointValues);
+        }
     }
 
     /**
@@ -512,7 +527,7 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
                 //=====
                 Integer facing = characteristics.get(CameraCharacteristics.LENS_FACING);
                 //LENS_FACING_BACK 으로 카메라 전면으로 바꿈
-                if (facing != null && facing == CameraCharacteristics.LENS_FACING_FRONT) {
+                if (facing != null && facing == CameraCharacteristics.LENS_FACING_BACK) {
                     continue;
                 }
 

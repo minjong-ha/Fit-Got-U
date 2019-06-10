@@ -46,11 +46,8 @@ public class MyPageFragment extends Fragment implements View.OnClickListener {
         items.add(new MP_List_Item(R.string.my_info));
         if (((MainActivity)getActivity()).getIs_user().equals("트레이너")) {
             items.add(new MP_List_Item(R.string.my_trainee));
-            items.add(new MP_List_Item(R.string.my_calender));
-        } else {
-            items.add(new MP_List_Item(R.string.my_trainee));
-            items.add(new MP_List_Item(R.string.my_calender));
         }
+        items.add(new MP_List_Item(R.string.my_calender));
 
         items.add(new MP_List_Item(R.string.app_info));
         items.add(new MP_List_Item(R.string.logout));

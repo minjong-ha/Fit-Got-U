@@ -18,6 +18,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.Activity.DataAnalysisPopupActivity;
 import com.example.Etc.MySQLiteOpenHelper;
+import com.example.Etc.Util;
 import com.example.List.DA_List_Item;
 import com.example.List.DA_List_Item_Adapter;
 import com.example.R;
@@ -47,8 +48,14 @@ public class DataAnalysisFragment extends Fragment {
     // time
     private SimpleDateFormat mFormat = new SimpleDateFormat("yyyy-MM-dd");
 
+    private boolean istainerside = false;
+
 
     public DataAnalysisFragment() {
+    }
+
+    public DataAnalysisFragment(boolean istainerside) {
+        this.istainerside = istainerside;
     }
 
     @Override
@@ -61,7 +68,19 @@ public class DataAnalysisFragment extends Fragment {
         final MySQLiteOpenHelper sqliteHelper = new MySQLiteOpenHelper(c, "jelly.db", null, 3);
 
         //이미지 부분
-        int jointValues[] = getJointValue(sqliteHelper);
+        int jointValues[];
+
+        if (istainerside) {
+            jointValues = Util.SelectExerciseJoint(getArguments().getString("traineeID"));
+            view.findViewById(R.id.textViewPoint).setVisibility(View.GONE);
+            view.findViewById(R.id.textView).setVisibility(View.GONE);
+            view.findViewById(R.id.listView).setVisibility(View.GONE);
+            view.findViewById(R.id.textView3).setVisibility(View.GONE);
+            view.findViewById(R.id.tablerow).setVisibility(View.GONE);
+            view.findViewById(R.id.tablerow2).setVisibility(View.GONE);
+        } else {
+            jointValues = getJointValue(sqliteHelper);
+        }
 
         for(int i = 0; i <jointValues.length ; i++) {
             if(jointValues[i]<0) jointValues[i] *= -1;
@@ -272,7 +291,6 @@ public class DataAnalysisFragment extends Fragment {
 
         // 어뎁터 연결 메소드 호출
         connectAdapter(oData);
-
     }
 
     // 리스트뷰 어뎁터 생성 및 연결

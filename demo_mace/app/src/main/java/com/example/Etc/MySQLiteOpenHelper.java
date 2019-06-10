@@ -189,7 +189,6 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper implements Serializable
         int[] jointValues = new int[12];
 
         if (db != null) {
-
             for (int i = 0; i < 12; i++) {
                 String partName = bodyPart[i];
                 jointValues[i] = calcJointValue(partName, exerciseDate, exerciseName);

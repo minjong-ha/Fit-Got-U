@@ -40,7 +40,7 @@ public class FCMService extends FirebaseMessagingService {
         String channel = "FGU";
         String nchannel = "FGUC";
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, channel)
-        .setSmallIcon(R.mipmap.ic_launcher)
+        .setSmallIcon(R.drawable.icon_fgy)
         .setContentTitle(title)
         .setContentText(message)
         .setAutoCancel(true)

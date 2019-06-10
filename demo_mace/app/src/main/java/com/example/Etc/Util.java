@@ -391,6 +391,67 @@ public class Util {
         return mArrayList;
     }
 
+    public static String InsertExerciseJoint(String uid, int[] joint) {
+        String str = null;
+        try {
+            DBPHPTask task = new DBPHPTask("insert_exercise_joint");
+            str = task.execute("user_id", uid, "j1", joint[0] + "", "j2", joint[1] + "", "j3", joint[2] + "",
+                    "j4", joint[3] + "", "j5", joint[4] + "", "j6", joint[5] + "", "j7", joint[6] + "",
+                    "j8", joint[7] + "", "j9", joint[8] + "", "j10", joint[9] + "", "j11", joint[10] + "",
+                    "j12", joint[11] + "").get();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return str;
+    }
+
+    public static String UpdateExerciseJoint(String uid, int[] joint) {
+        String str = null;
+        try {
+            DBPHPTask task = new DBPHPTask("update_exercise_joint");
+            str = task.execute("user_id", uid, "j1", joint[0] + "", "j2", joint[1] + "", "j3", joint[2] + "",
+                    "j4", joint[3] + "", "j5", joint[4] + "", "j6", joint[5] + "", "j7", joint[6] + "",
+                    "j8", joint[7] + "", "j9", joint[8] + "", "j10", joint[9] + "", "j11", joint[10] + "",
+                    "j12", joint[11] + "").get();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return str;
+    }
+
+    public static int[] SelectExerciseJoint(String userid) {
+        int[] joint = null;
+        try {
+            DBPHPTask task = new DBPHPTask("select_exercise_record");
+            joint =  getJsonExerciseJoint(task.execute("user_id", userid).get());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return joint;
+    }
+
+    public static int[] getJsonExerciseJoint(String JsonString) {
+        int[] joint = null;
+        try {
+            JSONObject jsonObject = new JSONObject(JsonString);
+            JSONArray jsonArray = jsonObject.getJSONArray("fgy");
+
+            if (jsonArray.length() > 0) {
+                int[] joint2 = new int[12];
+                JSONObject item = jsonArray.getJSONObject(0);
+
+                for (int i = 0; i < 12; i++) {
+                    joint2[i] =  Integer.parseInt(item.keys().next());
+                }
+                joint = joint2;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return joint;
+    }
+
     public static String InsertRoutine(String uid, String tid, String date, String breakm, String lunchm, String dinnerm, String setm, String routinem) {
         String str = null;
         try {

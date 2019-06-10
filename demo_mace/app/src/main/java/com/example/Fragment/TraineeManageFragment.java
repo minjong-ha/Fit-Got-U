@@ -14,6 +14,7 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.Activity.LittleDAPopupActivity;
 import com.example.Activity.MainActivity;
 import com.example.Activity.ReplyForTraineeActivity;
 import com.example.Etc.Util;
@@ -90,6 +91,16 @@ public class TraineeManageFragment extends Fragment {
                     Intent intent = new Intent(c.getApplicationContext(), ReplyForTraineeActivity.class);
                     intent.putExtra("trainerID", ((MainActivity)getActivity()).getKakaoid() + "");
                     intent.putExtra("trainername",((MainActivity)getActivity()).getNickname());
+                    intent.putExtra("traineeID",TLI.getTraineeID());
+                    intent.putExtra("name",TLI.getName());
+                    startActivityForResult(intent, 101);
+                }
+            });
+
+            TLI.setOnClickListenerInfo(new Button.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(c.getApplicationContext(), LittleDAPopupActivity.class);
                     intent.putExtra("traineeID",TLI.getTraineeID());
                     intent.putExtra("name",TLI.getName());
                     startActivityForResult(intent, 101);
