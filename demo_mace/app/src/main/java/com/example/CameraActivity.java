@@ -102,7 +102,7 @@ public class CameraActivity extends Activity {
 
         alertDialogBuilder.setTitle("운동결과");
         alertDialogBuilder
-                .setMessage("Total: " + Calculate.exerciseCount +"\nValid: " + Calculate.validCount + "\n Upper: " + Calculate.uppperCount + "\nLower: " + Calculate.lowerCount)
+                .setMessage("전체운동횟수: " + Calculate.exerciseCount +"\n유효운동횟수: " + Calculate.validCount)
                 .setCancelable(false)
                 .setPositiveButton("종료",
                         new DialogInterface.OnClickListener() {
@@ -119,6 +119,9 @@ public class CameraActivity extends Activity {
 
         // 다이얼로그 보여주기
         alertDialog.show();
+
+        TextView msgTxt = (TextView) alertDialog.findViewById(android.R.id.message);
+        msgTxt.setTextSize(30);
 
       //  timer.cancel();
         //finish();

@@ -3,9 +3,12 @@ package com.example;
 import android.content.Context;
 import android.graphics.PointF;
 import android.media.MediaPlayer;
+import android.media.PlaybackParams;
 import android.util.Log;
+import android.os.AsyncTask;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.concurrent.CopyOnWriteArrayList;
 /**
  * Created by a1 on 09/05/2019.
@@ -31,9 +34,8 @@ public class Calculate{
     static int validCount = 0;
     static int uppperCount = 0;
     static int lowerCount = 0;
-    static int index = -1;
-
     static double rtAngle = 0;
+    static int i = 0;
 
     static CopyOnWriteArrayList<PointF> lastPoints = new CopyOnWriteArrayList<>();
 
@@ -47,8 +49,6 @@ public class Calculate{
     public static void main(CopyOnWriteArrayList<PointF> Points) {
 
         //=====
-        if (Calculate.lastPoints.isEmpty() == true)
-            Calculate.lastPoints = Points;
         //=====
 
         PointF p0 = Points.get(0); //top
@@ -67,7 +67,6 @@ public class Calculate{
         PointF p13 = Points.get(13); //l_ankle
 
 
-        Log.d("errorcheck", "1");
         if (info.compareTo("스쿼트") == 0) {
             /*if (isPointFValidate(Calculate.lastPoints.get(11), p11)
                     && isPointFValidate(Calculate.lastPoints.get(12), p12)
@@ -78,12 +77,11 @@ public class Calculate{
                 double leftAng = Cal_Angle(p11, p12, p13); //left
                 double rightAng = Cal_Angle(p8, p9, p10);   //right
 
-                Log.d("errorcheck", "2");
                 //Log.d("checkangle", Double.toString(leftAng) + " " + Double.toString(rightAng));
 
                 if (DrawView.isAllDone == true) {
-                    squatAngleCheck2(leftAng, rightAng, Points);
-                    Log.d("errorcheck", "3");
+                    squatAngleCheck1(leftAng, rightAng);
+                    //squatAngleCheck2(leftAng, rightAng, Points);
                 }
 
             }
@@ -116,53 +114,61 @@ public class Calculate{
         return Angle;
     }
 
-    public void PointCheck(){
-        //좌표로 오류 체크
-    }
+    public static void squatAngleCheck1(double la, double ra){
 
-    public static void squatAngleCheck(double Angle1, double Angle2){
+        int bestAngle = 60;
+        int UpLimitAngle = 90;
+        int LowLimitAngle = 40;
 
-        double bestAngle = 65;
-        double upperAngle = 80;
-        double lowerAngle = 52;
-        if(index == -1 && Angle2 == 0.0){
-            index = 0;
-        }
+        if(i == 0){
+            rtAngle = la;
+            i = 0;
 
-        else if(index == 0 && Angle2 > 0){
-            rtAngle = Angle2;
-            index = 1;
-        }
-
-        else if(index == 2){
-            rtAngle = 170;
-            if(Angle2 >= rtAngle)
-                index = 0;
-        }
-
-        else if(index == 1 && Angle2 > 0){
-            //if((minL.get(minL.size()-1) > Angle2) && (minL.get(minL.size()-1) * 0.95 <= Angle2)){
-            if((rtAngle > Angle2) && (rtAngle * 0.75 <= Angle2)){
-                rtAngle = Angle2;
-            }
-            else if(Angle2 > rtAngle * 1.5){
-                if(rtAngle < lowerAngle)
-                    //Log.d("LOW Angle", Double.toString(rtAngle));
-                    Calculate.lowerCount++;
-                else if(rtAngle > upperAngle)
-                    //Log.d("UP Angle", Double.toString(rtAngle));
-                    Calculate.uppperCount++;
-                else if(rtAngle >= lowerAngle && rtAngle <= upperAngle)
-                    //Log.d("VALID Angle", Double.toString(rtAngle));
-                    Calculate.validCount++;
-
-                index = 2;
-                rtAngle = 0;
-
-                Calculate.exerciseCount++;
-                Calculate.validCount = Calculate.exerciseCount - (Calculate.uppperCount + Calculate.lowerCount);
+            if(la <= 170){
+                rtAngle = la;
+                i = 1;
             }
         }
+
+        else if(i == 1){
+            if(la <= rtAngle && la >= rtAngle * 0.75){
+                rtAngle = la;
+                Log.d("123456789", Double.toString(rtAngle));
+            }
+
+            else if(la > rtAngle){
+                if(la >= 170){
+                    async ass = new async();
+
+                    if(rtAngle > UpLimitAngle){
+                        Calculate.uppperCount++;
+                        i = 0;
+                        Calculate.status = "up";
+                        ass.execute(Calculate.status);
+                    }
+
+                    else if(rtAngle <= UpLimitAngle && rtAngle >= LowLimitAngle){
+                        Calculate.validCount++;
+                        i = 0;
+                        Calculate.status = "right";
+                        ass.execute(Calculate.status);
+                    }
+
+                    else if(rtAngle < LowLimitAngle){
+                        Calculate.lowerCount++;
+                        i = 0;
+                        Calculate.status = "down";
+                        ass.execute(Calculate.status);
+                    }
+
+                    Calculate.exerciseCount = Calculate.lowerCount + Calculate.validCount + Calculate.lowerCount;
+                }
+            }
+
+
+        }
+
+
     }
 
     public static void squatAngleCheck2(double Angle1, double Angle2, CopyOnWriteArrayList<PointF> Points) {
@@ -170,7 +176,7 @@ public class Calculate{
         int limitUpAngle = 150;
         int limitDownAngle = 60;
         int lowestAngle = 80; // for proper
-        int highestAngle = 100; // for proper
+        int highestAngle = 90; // for proper
 
         if ((Angle1 < limitUpAngle && Angle1 > limitDownAngle)) {
             Calculate.isExercise = true;
@@ -193,45 +199,29 @@ public class Calculate{
             Calculate.left.add((int) Calculate.minAng1);
 
             if(minHead_y > 450) {
+                async ass = new async();
                 //feedback if needed
                 if (Calculate.minAng1 >= highestAngle) {
                     Calculate.uppperCount++;
                     Calculate.status = "up";
-
-                    Runnable r = new VoiceFeedback();
-                    Thread thread = new Thread(r);
-                    thread.start();
-                    try {
-                        thread.join();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    //==
+                    ass.execute(Calculate.status);
+                    //ass.cancel(true);
+                    //==
 
                     //squatUpperFeedback();
                 } else if (Calculate.minAng1 <= lowestAngle) {
                     Calculate.lowerCount++;
                     Calculate.status = "down";
 
-                    Runnable r = new VoiceFeedback();
-                    Thread thread = new Thread(r);
-                    thread.start();
-                    try {
-                        thread.join();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    ass.execute(Calculate.status);
+                    //ass.cancel(true);
                     //squatLowerFeedback();
                 } else {
                     Calculate.status = "right";
 
-                    Runnable r = new VoiceFeedback();
-                    Thread thread = new Thread(r);
-                    thread.start();
-                    try {
-                        thread.join();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    ass.execute(Calculate.status);
+                    //ass.cancel(true);
                     //successFeedback();
                 }
 
@@ -241,9 +231,8 @@ public class Calculate{
             Calculate.tmpList1.clear();
             Calculate.tmpList2.clear();
             Calculate.headPoint.clear();
-            
-            Calculate.validCount = Calculate.exerciseCount - (Calculate.uppperCount + Calculate.lowerCount);
 
+            Calculate.validCount = Calculate.exerciseCount - (Calculate.uppperCount + Calculate.lowerCount);
         }
     }
 
@@ -275,19 +264,12 @@ public class Calculate{
             Calculate.left.add((int) Calculate.minAng1);
 
             if(minHead_y > 450) {
+                async ass = new async();
                 //feedback if needed
                 if (Calculate.minAng1 >= highestAngle || Calculate.minAng2 >= highestAngle) {
                     Calculate.uppperCount++;
                     Calculate.status = "up";
-
-                    Runnable r = new VoiceFeedback();
-                    Thread thread = new Thread(r);
-                    thread.start();
-                    try {
-                        thread.join();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    ass.execute(Calculate.status);
 
                     //squatUpperFeedback();
                 } /*else if (Calculate.minAng1 <= lowestAngle || Calculate.minAng2 <= lowestAngle) {
@@ -305,15 +287,8 @@ public class Calculate{
                     //squatLowerFeedback();
                 }*/ else {
                     Calculate.status = "right";
+                    ass.execute(Calculate.status);
 
-                    Runnable r = new VoiceFeedback();
-                    Thread thread = new Thread(r);
-                    thread.start();
-                    try {
-                        thread.join();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
                     //successFeedback();
                 }
 
@@ -327,19 +302,6 @@ public class Calculate{
             Calculate.validCount = Calculate.exerciseCount - (Calculate.uppperCount + Calculate.lowerCount);
 
         }
-
-    }
-
-
-    public void squatLowerFeedback() {
-
-    }
-
-    public void squatUpperFeedback() {
-
-    }
-
-    public void successFeedback() {
 
     }
 
@@ -383,7 +345,6 @@ public class Calculate{
         right.clear();
         tmpList1.clear();
         tmpList2.clear();
-        lastPoints.clear();
         headPoint.clear();
 
         isExercise = false;
@@ -392,8 +353,7 @@ public class Calculate{
         lowerCount = 0;
         uppperCount = 0;
         rtAngle = 0;
-        index = -1;
-
+        i = 0;
 
         status = null;
 
@@ -420,15 +380,21 @@ public class Calculate{
     }
 }
 
+class async extends AsyncTask<String, Void, String>{
 
-class VoiceFeedback implements Runnable {
     @Override
-    public void run() {
-        MediaPlayer up = MediaPlayer.create(Calculate.context, R.raw.too_low);
-        MediaPlayer down = MediaPlayer.create(Calculate.context, R.raw.too_high);
+    protected void onPreExecute(){
+        super.onPreExecute();
+    }
+
+    @Override
+    protected String doInBackground(String... strings) {
+
+        MediaPlayer down = MediaPlayer.create(Calculate.context, R.raw.too_low);
+        MediaPlayer up = MediaPlayer.create(Calculate.context, R.raw.too_high);
         MediaPlayer good = MediaPlayer.create(Calculate.context, R.raw.well_done);
 
-        if(Calculate.status.equals("down")) {
+        if(strings[0].equals("up")){
             up.start();
             try {
                 Thread.sleep(1500);
@@ -436,7 +402,8 @@ class VoiceFeedback implements Runnable {
                 e.printStackTrace();
             }
         }
-        else if(Calculate.status.equals("up")) {
+
+        else if(strings[0].equals("down")) {
             down.start();
             try {
                 Thread.sleep(1500);
@@ -444,21 +411,33 @@ class VoiceFeedback implements Runnable {
                 e.printStackTrace();
             }
         }
-        else if(Calculate.status.equals("right")) {
+
+        else if(strings[0].equals("right")){
             good.start();
             try {
-                Thread.sleep(1000);
-            } catch(InterruptedException e) {
+                Thread.sleep(1500);
+            } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
-
         up.stop();
-        down.stop();
-        good.stop();
         up.release();
+        down.stop();
         down.release();
+        good.stop();
         good.release();
+
+        return Calculate.status;
     }
 
+    @Override
+    protected void onProgressUpdate(Void... values){
+        super.onProgressUpdate(values);
+    }
+
+    @Override
+    protected void onPostExecute(String s) {
+        super.onPostExecute(s);
+    }
 }
+

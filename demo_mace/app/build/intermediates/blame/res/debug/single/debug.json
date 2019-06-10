@@ -96,12 +96,12 @@
         "source": "/Users/a1/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.2.0.aar/63b8cd8f29f3d156d26e51bbf0919eaf/res/layout/abc_alert_dialog_title_material.xml"
     },
     {
-        "merged": "/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_scrubber_primary_mtrl_alpha.9.png.flat",
-        "source": "/Users/a1/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.2.0.aar/63b8cd8f29f3d156d26e51bbf0919eaf/res/drawable-mdpi-v4/abc_scrubber_primary_mtrl_alpha.9.png"
-    },
-    {
         "merged": "/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_btn_radio_to_on_mtrl_000.png.flat",
         "source": "/Users/a1/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.2.0.aar/63b8cd8f29f3d156d26e51bbf0919eaf/res/drawable-hdpi-v4/abc_btn_radio_to_on_mtrl_000.png"
+    },
+    {
+        "merged": "/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_scrubber_primary_mtrl_alpha.9.png.flat",
+        "source": "/Users/a1/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.2.0.aar/63b8cd8f29f3d156d26e51bbf0919eaf/res/drawable-mdpi-v4/abc_scrubber_primary_mtrl_alpha.9.png"
     },
     {
         "merged": "/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_cab_background_top_mtrl_alpha.9.png.flat",
@@ -192,12 +192,12 @@
         "source": "/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/src/main/res/drawable-xhdpi/ic_action_info.png"
     },
     {
-        "merged": "/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/res/merged/debug/drawable-ldrtl-hdpi-v17_abc_spinner_mtrl_am_alpha.9.png.flat",
-        "source": "/Users/a1/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.2.0.aar/63b8cd8f29f3d156d26e51bbf0919eaf/res/drawable-ldrtl-hdpi-v17/abc_spinner_mtrl_am_alpha.9.png"
-    },
-    {
         "merged": "/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/res/merged/debug/raw_stay_pose.ogg.flat",
         "source": "/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/src/main/res/raw/stay_pose.ogg"
+    },
+    {
+        "merged": "/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/res/merged/debug/drawable-ldrtl-hdpi-v17_abc_spinner_mtrl_am_alpha.9.png.flat",
+        "source": "/Users/a1/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.2.0.aar/63b8cd8f29f3d156d26e51bbf0919eaf/res/drawable-ldrtl-hdpi-v17/abc_spinner_mtrl_am_alpha.9.png"
     },
     {
         "merged": "/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/res/merged/debug/drawable_abc_seekbar_track_material.xml.flat",
@@ -300,12 +300,12 @@
         "source": "/Users/a1/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.2.0.aar/63b8cd8f29f3d156d26e51bbf0919eaf/res/color/abc_btn_colored_text_material.xml"
     },
     {
-        "merged": "/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/res/merged/debug/color_abc_primary_text_disable_only_material_light.xml.flat",
-        "source": "/Users/a1/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.2.0.aar/63b8cd8f29f3d156d26e51bbf0919eaf/res/color/abc_primary_text_disable_only_material_light.xml"
-    },
-    {
         "merged": "/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_textfield_activated_mtrl_alpha.9.png.flat",
         "source": "/Users/a1/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.2.0.aar/63b8cd8f29f3d156d26e51bbf0919eaf/res/drawable-hdpi-v4/abc_textfield_activated_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/res/merged/debug/color_abc_primary_text_disable_only_material_light.xml.flat",
+        "source": "/Users/a1/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.2.0.aar/63b8cd8f29f3d156d26e51bbf0919eaf/res/color/abc_primary_text_disable_only_material_light.xml"
     },
     {
         "merged": "/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_list_selector_disabled_holo_light.9.png.flat",
@@ -372,12 +372,12 @@
         "source": "/Users/a1/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.2.0.aar/63b8cd8f29f3d156d26e51bbf0919eaf/res/color/abc_hint_foreground_material_light.xml"
     },
     {
-        "merged": "/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_notification_bg_normal.9.png.flat",
-        "source": "/Users/a1/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.2.0.aar/63b8cd8f29f3d156d26e51bbf0919eaf/res/drawable-hdpi-v4/notification_bg_normal.9.png"
-    },
-    {
         "merged": "/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/res/merged/debug/drawable-hdpi_ic_action_info.png.flat",
         "source": "/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/src/main/res/drawable-hdpi/ic_action_info.png"
+    },
+    {
+        "merged": "/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_notification_bg_normal.9.png.flat",
+        "source": "/Users/a1/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.2.0.aar/63b8cd8f29f3d156d26e51bbf0919eaf/res/drawable-hdpi-v4/notification_bg_normal.9.png"
     },
     {
         "merged": "/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_abc_btn_switch_to_on_mtrl_00012.9.png.flat",
@@ -480,12 +480,12 @@
         "source": "/Users/a1/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.2.0.aar/63b8cd8f29f3d156d26e51bbf0919eaf/res/layout-v11/notification_template_big_media.xml"
     },
     {
-        "merged": "/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_list_pressed_holo_light.9.png.flat",
-        "source": "/Users/a1/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.2.0.aar/63b8cd8f29f3d156d26e51bbf0919eaf/res/drawable-xxhdpi-v4/abc_list_pressed_holo_light.9.png"
-    },
-    {
         "merged": "/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/res/merged/debug/layout_abc_action_menu_item_layout.xml.flat",
         "source": "/Users/a1/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.2.0.aar/63b8cd8f29f3d156d26e51bbf0919eaf/res/layout/abc_action_menu_item_layout.xml"
+    },
+    {
+        "merged": "/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_list_pressed_holo_light.9.png.flat",
+        "source": "/Users/a1/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.2.0.aar/63b8cd8f29f3d156d26e51bbf0919eaf/res/drawable-xxhdpi-v4/abc_list_pressed_holo_light.9.png"
     },
     {
         "merged": "/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/res/merged/debug/color-v23_design_tint_password_toggle.xml.flat",
@@ -526,6 +526,10 @@
     {
         "merged": "/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_popup_background_mtrl_mult.9.png.flat",
         "source": "/Users/a1/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.2.0.aar/63b8cd8f29f3d156d26e51bbf0919eaf/res/drawable-xhdpi-v4/abc_popup_background_mtrl_mult.9.png"
+    },
+    {
+        "merged": "/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/res/merged/debug/drawable-hdpi_lunge_sil.png.flat",
+        "source": "/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/src/main/res/drawable-hdpi/lunge_sil.png"
     },
     {
         "merged": "/mydev/PoseEstimationForMobile/android_demo/demo_mace/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_ic_star_half_black_36dp.png.flat",
