@@ -103,7 +103,7 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper implements Serializable
 
             sql = "SELECT Id From EXERCISE_RECORD WHERE " +
                     "Exercise_name = " + exerciseName + " AND " +
-                    "Exercise_date = " + exerciseDate + " ;";
+                    "Exercise_date = " + exerciseDate + " AND Exercise_count != 0 ;";
             Cursor cursor = null;
 
             cursor = db.rawQuery(sql, null);
@@ -150,7 +150,7 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper implements Serializable
             String sql;
             sql = "select Id from EXERCISE_RECORD where " +
                     "Exercise_name = " + exerciseName + " AND " +
-                    "Exercise_date = " + exerciseDate + ";";
+                    "Exercise_date = " + exerciseDate + " AND Exercise_count != 0;";
             Cursor cursor = null;
             cursor = db.rawQuery(sql, null);
 
@@ -235,7 +235,7 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper implements Serializable
         exerciseDate = "'" + exerciseDate + "%'";
 
         if (db != null) {
-            String query = "SELECT Exercise_name FROM EXERCISE_RECORD where Exercise_date LIKE " + exerciseDate + ";";
+            String query = "SELECT Exercise_name FROM EXERCISE_RECORD where Exercise_date LIKE " + exerciseDate + " AND Exercise_count != 0;";
             System.out.println(query);
             cursor = db.rawQuery(query, null);
 
@@ -261,7 +261,7 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper implements Serializable
         ArrayList<Pair<Pair<String, String>, Integer>> exerciseNames = new ArrayList<Pair<Pair<String, String>, Integer>>();
 
         if (db != null) {
-            String query = "SELECT Exercise_name, Exercise_date, Exercise_count FROM EXERCISE_RECORD WHERE Exercise_date like " + exerciseDate + ";";
+            String query = "SELECT Exercise_name, Exercise_date, Exercise_count FROM EXERCISE_RECORD WHERE Exercise_date like " + exerciseDate + " AND Exercise_count != 0;";
             cursor = db.rawQuery(query, null);
 
             if (cursor != null && cursor.getCount() > 0) {
@@ -319,7 +319,7 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper implements Serializable
         Cursor cursor = null;
 
         if (db != null) {
-            String query = "SELECT distinct Exercise_date FROM EXERCISE_RECORD WHERE Exercise_date " + ";";
+            String query = "SELECT distinct Exercise_date FROM EXERCISE_RECORD WHERE Exercise_date AND Exercise_count != 0 " + ";";
             System.out.println(query);
             cursor = db.rawQuery(query, null);
 
@@ -344,7 +344,7 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper implements Serializable
         int result_count=0;
 
         if (db != null) {
-            String query = "SELECT Exercise_name, Exercise_count FROM EXERCISE_RECORD WHERE Exercise_date like " + exerciseDate + ";";
+            String query = "SELECT Exercise_name, Exercise_count FROM EXERCISE_RECORD WHERE Exercise_date like " + exerciseDate + " AND Exercise_count != 0;";
             cursor = db.rawQuery(query, null);
 
             if (cursor != null && cursor.getCount() > 0) {
