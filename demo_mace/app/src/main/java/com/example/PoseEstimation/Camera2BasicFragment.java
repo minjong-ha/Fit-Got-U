@@ -275,7 +275,7 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
                     new Runnable() {
                         @Override
                         public void run() {
-                            textView.setText(text);
+                            textView.setText(String.valueOf(Calculate.exerciseCount));
                             //=====
                             //32ms, 34ms 등 시간 출력
                             Log.d("here", text);
