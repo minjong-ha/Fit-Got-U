@@ -173,7 +173,7 @@ public class Calculate{
 
     public static void squatAngleCheck2(double Angle1, double Angle2, CopyOnWriteArrayList<PointF> Points) {
 
-        int limitUpAngle = 165;
+        int limitUpAngle = 150;
         int limitDownAngle = 55;
         int lowestAngle = 65; // for proper
         int highestAngle = 85; // for proper

@@ -510,7 +510,7 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
                 //=====
                 Integer facing = characteristics.get(CameraCharacteristics.LENS_FACING);
                 //LENS_FACING_BACK 으로 카메라 전면으로 바꿈
-                if (facing != null && facing == CameraCharacteristics.LENS_FACING_FRONT) {
+                if (facing != null && facing == CameraCharacteristics.LENS_FACING_BACK) {
                     continue;
                 }
 
