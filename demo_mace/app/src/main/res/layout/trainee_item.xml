@@ -73,12 +73,11 @@
 
         <Button
             android:id="@+id/btnDetail"
-            android:layout_width="80dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="20"
             android:background="#ffffff"
-            android:text="상세정보"
-        />
+            android:text="식단/루틴 제공" />
 
         <LinearLayout
             android:layout_width="80dp"
