@@ -3,14 +3,12 @@ package com.example.PoseEstimation;
 import android.content.Context;
 import android.graphics.PointF;
 import android.media.MediaPlayer;
-import android.media.PlaybackParams;
 import android.util.Log;
 import android.os.AsyncTask;
 
 import com.example.R;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.concurrent.CopyOnWriteArrayList;
 /**
  * Created by a1 on 09/05/2019.
@@ -204,6 +202,9 @@ public class Calculate{
                 if (Calculate.minAng2 >= highestAngle) {
                     Calculate.uppperCount++;
                     Calculate.status = "up";
+                    MySQLiteOpenHelperForPose.insertDescribe(MySQLiteOpenHelperForPose.getRecordID(),"좌측 다리 상박",(int)Calculate.minAng1);
+                    MySQLiteOpenHelperForPose.insertDescribe(MySQLiteOpenHelperForPose.getRecordID(),"우측 다리 상박",(int)Calculate.minAng1);
+
                     //==
                     ass.execute(Calculate.status);
                     //ass.cancel(true);
@@ -213,6 +214,8 @@ public class Calculate{
                 } else if (Calculate.minAng2 <= lowestAngle) {
                     Calculate.lowerCount++;
                     Calculate.status = "down";
+                    MySQLiteOpenHelperForPose.insertDescribe(MySQLiteOpenHelperForPose.getRecordID(),"좌측 다리 상박",-1*(int)Calculate.minAng1);
+                    MySQLiteOpenHelperForPose.insertDescribe(MySQLiteOpenHelperForPose.getRecordID(),"우측 다리 상박",-1*(int)Calculate.minAng1);
 
                     ass.execute(Calculate.status);
                     //ass.cancel(true);
@@ -270,11 +273,16 @@ public class Calculate{
                     Calculate.uppperCount++;
                     Calculate.status = "up";
                     ass.execute(Calculate.status);
+                    MySQLiteOpenHelperForPose.insertDescribe(MySQLiteOpenHelperForPose.getRecordID(),"좌측 다리 상박",(int)Calculate.minAng1);
+                    MySQLiteOpenHelperForPose.insertDescribe(MySQLiteOpenHelperForPose.getRecordID(),"우측 다리 상박",(int)Calculate.minAng1);
 
                     //squatUpperFeedback();
                 } /*else if (Calculate.minAng1 <= lowestAngle || Calculate.minAng2 <= lowestAngle) {
                     Calculate.lowerCount++;
                     Calculate.status = "down";
+
+      MySQLiteOpenHelperForPose.insertDescribe(MySQLiteOpenHelperForPose.getRecordID(),"좌측 다리 상박",-1*(int)Calculate.minAng1);
+                    MySQLiteOpenHelperForPose.insertDescribe(MySQLiteOpenHelperForPose.getRecordID(),"우측 다리 상박",-1*(int)Calculate.minAng1);
 
                     Runnable r = new VoiceFeedback();
                     Thread thread = new Thread(r);
