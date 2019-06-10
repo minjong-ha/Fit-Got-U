@@ -3,22 +3,21 @@ package com.example.PoseEstimation;
 import android.content.Context;
 import android.graphics.PointF;
 import android.media.MediaPlayer;
+import android.media.PlaybackParams;
 import android.util.Log;
+import android.os.AsyncTask;
 
-import com.example.Activity.MainActivity;
-import com.example.Etc.MySQLiteOpenHelper;
 import com.example.R;
 
 import java.util.ArrayList;
-import java.util.Calendar;
+import java.util.Arrays;
 import java.util.concurrent.CopyOnWriteArrayList;
-
 /**
  * Created by a1 on 09/05/2019.
  */
 
 
-public class Calculate {
+public class Calculate{
     static String info;
     static double minAng1 = 360; //init
     static double minAng2 = 360; //init
@@ -37,9 +36,8 @@ public class Calculate {
     static int validCount = 0;
     static int uppperCount = 0;
     static int lowerCount = 0;
-    static int index = -1;
-
     static double rtAngle = 0;
+    static int i = 0;
 
     static CopyOnWriteArrayList<PointF> lastPoints = new CopyOnWriteArrayList<>();
 
@@ -47,11 +45,12 @@ public class Calculate {
 
     static String status = null;
 
+
+
+
     public static void main(CopyOnWriteArrayList<PointF> Points) {
 
         //=====
-        if (Calculate.lastPoints.isEmpty() == true)
-            Calculate.lastPoints = Points;
         //=====
 
         PointF p0 = Points.get(0); //top
@@ -70,24 +69,19 @@ public class Calculate {
         PointF p13 = Points.get(13); //l_ankle
 
 
-        Log.d("errorcheck", "1");
         if (info.compareTo("스쿼트") == 0) {
             /*if (isPointFValidate(Calculate.lastPoints.get(11), p11)
                     && isPointFValidate(Calculate.lastPoints.get(12), p12)
                     && isPointFValidate(Calculate.lastPoints.get(13), p13)
                     && isPointFValidate(Calculate.lastPoints.get(8), p8)
                     && isPointFValidate(Calculate.lastPoints.get(9), p9)
-                    && isPointFValidate(Calculate.lastPoints.get(10), p10))*/
-            {
+                    && isPointFValidate(Calculate.lastPoints.get(10), p10))*/ {
                 double leftAng = Cal_Angle(p11, p12, p13); //left
                 double rightAng = Cal_Angle(p8, p9, p10);   //right
 
-                Log.d("errorcheck", "2");
-                //Log.d("checkangle", Double.toString(leftAng) + " " + Double.toString(rightAng));
-
                 if (DrawView.isAllDone == true) {
+                    //squatAngleCheck1(leftAng, rightAng);
                     squatAngleCheck2(leftAng, rightAng, Points);
-                    Log.d("errorcheck", "3");
                 }
 
             }
@@ -97,30 +91,13 @@ public class Calculate {
             double leftAng = Cal_Angle(p11, p12, p13); //left
             double rightAng = Cal_Angle(p8, p9, p10);   //right
 
-            if (DrawView.isAllDone == true) {
+            if(DrawView.isAllDone == true) {
                 lungeAngleCheck(leftAng, rightAng, Points);
             }
         }
 
 
     }
-
-
-    static private String todayDate() {
-        Calendar cal = Calendar.getInstance();
-        int year = cal.get(cal.YEAR);
-        int month = cal.get(cal.MONTH) + 1;
-        int date = cal.get(cal.DATE);
-
-        return year+"-"+dateFormat(month+"")+"-"+dateFormat(date+"");
-    }
-
-    static private String dateFormat(String raw_date) {
-        if (raw_date.length() == 1)
-            return "0" + raw_date;
-        return raw_date;
-    }
-
 
     public static double Cal_Angle(PointF top, PointF center, PointF bottom) {
 
@@ -137,54 +114,69 @@ public class Calculate {
         return Angle;
     }
 
-    public void PointCheck() {
-        //좌표로 오류 체크
-    }
+    public static void squatAngleCheck1(double la, double ra){
 
-    public static void squatAngleCheck(double Angle1, double Angle2) {
+        int bestAngle = 53;
+        int UpLimitAngle = 80;
+        int LowLimitAngle = 40;
+        int TmpAngle = 0;
 
-        double bestAngle = 65;
-        double upperAngle = 80;
-        double lowerAngle = 52;
-        if (index == -1 && Angle2 == 0.0) {
-            index = 0;
-        } else if (index == 0 && Angle2 > 0) {
-            rtAngle = Angle2;
-            index = 1;
-        } else if (index == 2) {
-            rtAngle = 170;
-            if (Angle2 >= rtAngle)
-                index = 0;
-        } else if (index == 1 && Angle2 > 0) {
-            //if((minL.get(minL.size()-1) > Angle2) && (minL.get(minL.size()-1) * 0.95 <= Angle2)){
-            if ((rtAngle > Angle2) && (rtAngle * 0.75 <= Angle2)) {
-                rtAngle = Angle2;
-            } else if (Angle2 > rtAngle * 1.5) {
-                if (rtAngle < lowerAngle)
-                    //Log.d("LOW Angle", Double.toString(rtAngle));
-                    Calculate.lowerCount++;
-                else if (rtAngle > upperAngle)
-                    //Log.d("UP Angle", Double.toString(rtAngle));
-                    Calculate.uppperCount++;
-                else if (rtAngle >= lowerAngle && rtAngle <= upperAngle)
-                    //Log.d("VALID Angle", Double.toString(rtAngle));
-                    Calculate.validCount++;
+        if(i == 0){
+            rtAngle = la;
+            i = 0;
 
-                index = 2;
-                rtAngle = 0;
-
-                Calculate.exerciseCount++;
-                Calculate.validCount = Calculate.exerciseCount - (Calculate.uppperCount + Calculate.lowerCount);
+            if(la <= 170){
+                rtAngle = la;
+                i = 1;
             }
         }
+
+        else if(i == 1){
+            if(la <= rtAngle && la >= rtAngle * 0.75){
+                rtAngle = la;
+            }
+
+            else if(la > rtAngle){
+                if(la > 170){
+                    async ass = new async();
+
+                    if(rtAngle > UpLimitAngle){
+                        Calculate.uppperCount++;
+                        i = 0;
+                        Calculate.status = "up";
+                        ass.execute(Calculate.status);
+                    }
+
+                    else if(rtAngle <= UpLimitAngle && rtAngle >= LowLimitAngle){
+                        Calculate.validCount++;
+                        i = 0;
+                        Calculate.status = "right";
+                        ass.execute(Calculate.status);
+                    }
+
+                    else if(rtAngle < LowLimitAngle){
+                        Calculate.lowerCount++;
+                        i = 0;
+                        Calculate.status = "down";
+                        ass.execute(Calculate.status);
+                    }
+
+                    Calculate.exerciseCount = Calculate.lowerCount + Calculate.validCount + Calculate.lowerCount;
+                }
+            }
+
+
+        }
+
+
     }
 
     public static void squatAngleCheck2(double Angle1, double Angle2, CopyOnWriteArrayList<PointF> Points) {
 
-        int limitUpAngle = 150;
-        int limitDownAngle = 60;
-        int lowestAngle = 80; // for proper
-        int highestAngle = 100; // for proper
+        int limitUpAngle = 165;
+        int limitDownAngle = 55;
+        int lowestAngle = 65; // for proper
+        int highestAngle = 85; // for proper
 
         if ((Angle1 < limitUpAngle && Angle1 > limitDownAngle)) {
             Calculate.isExercise = true;
@@ -196,7 +188,7 @@ public class Calculate {
             Calculate.headPoint.add(Points.get(0));
         }
 
-        if (Calculate.tmpList1.isEmpty() == false && Angle1 >= limitUpAngle) {
+        if (Calculate.tmpList1.isEmpty() == false && Angle2 >= limitUpAngle) {
             Calculate.isExercise = false;
 
             Calculate.minAng1 = minList(tmpList1);
@@ -206,53 +198,30 @@ public class Calculate {
 
             Calculate.left.add((int) Calculate.minAng1);
 
-            if (minHead_y > 450) {
+            if(minHead_y > 350) {
+                async ass = new async();
                 //feedback if needed
-                if (Calculate.minAng1 >= highestAngle) {
+                if (Calculate.minAng2 >= highestAngle) {
                     Calculate.uppperCount++;
                     Calculate.status = "up";
-
-                    MySQLiteOpenHelperForPose.insertDescribe(MySQLiteOpenHelperForPose.getRecordID(),"좌측 다리 상박",(int)Calculate.minAng1);
-                    MySQLiteOpenHelperForPose.insertDescribe(MySQLiteOpenHelperForPose.getRecordID(),"우측 다리 상박",(int)Calculate.minAng1);
-
-                    Runnable r = new VoiceFeedback();
-                    Thread thread = new Thread(r);
-
-                    thread.start();
-                    try {
-                        thread.join();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    //==
+                    ass.execute(Calculate.status);
+                    //ass.cancel(true);
+                    //==
 
                     //squatUpperFeedback();
-                } else if (Calculate.minAng1 <= lowestAngle) {
+                } else if (Calculate.minAng2 <= lowestAngle) {
                     Calculate.lowerCount++;
                     Calculate.status = "down";
 
-                    MySQLiteOpenHelperForPose.insertDescribe(MySQLiteOpenHelperForPose.getRecordID(),"좌측 다리 상박",-1*(int)Calculate.minAng1);
-                    MySQLiteOpenHelperForPose.insertDescribe(MySQLiteOpenHelperForPose.getRecordID(),"우측 다리 상박",-1*(int)Calculate.minAng1);
-
-                    Runnable r = new VoiceFeedback();
-                    Thread thread = new Thread(r);
-                    thread.start();
-                    try {
-                        thread.join();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    ass.execute(Calculate.status);
+                    //ass.cancel(true);
                     //squatLowerFeedback();
                 } else {
                     Calculate.status = "right";
 
-                    Runnable r = new VoiceFeedback();
-                    Thread thread = new Thread(r);
-                    thread.start();
-                    try {
-                        thread.join();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    ass.execute(Calculate.status);
+                    //ass.cancel(true);
                     //successFeedback();
                 }
 
@@ -264,16 +233,15 @@ public class Calculate {
             Calculate.headPoint.clear();
 
             Calculate.validCount = Calculate.exerciseCount - (Calculate.uppperCount + Calculate.lowerCount);
-
         }
     }
 
-    public static void lungeAngleCheck(double Angle1, double Angle2, CopyOnWriteArrayList<PointF> Points) {
+    public static void lungeAngleCheck(double Angle1, double Angle2, CopyOnWriteArrayList<PointF> Points){
 
         int limitUpAngle = 150;
         int limitDownAngle = 60;
         int lowestAngle = 80; // for proper
-        int highestAngle = 100; // for proper
+        int highestAngle = 90; // for proper
 
         if ((Angle1 < limitUpAngle && Angle1 > limitDownAngle) || (Angle2 < limitUpAngle && Angle2 > limitDownAngle)) {
             Calculate.isExercise = true;
@@ -285,7 +253,7 @@ public class Calculate {
             Calculate.headPoint.add(Points.get(0));
         }
 
-        if (Calculate.tmpList1.isEmpty() == false && (Angle1 >= limitUpAngle && Angle2 >= limitUpAngle)) {
+        if (Calculate.tmpList1.isEmpty() == false && (Angle1 >= limitUpAngle || Angle2 >=limitUpAngle)) {
             Calculate.isExercise = false;
 
             Calculate.minAng1 = minList(tmpList1);
@@ -295,20 +263,13 @@ public class Calculate {
 
             Calculate.left.add((int) Calculate.minAng1);
 
-            if (minHead_y > 450) {
+            if(minHead_y > 450) {
+                async ass = new async();
                 //feedback if needed
                 if (Calculate.minAng1 >= highestAngle || Calculate.minAng2 >= highestAngle) {
                     Calculate.uppperCount++;
                     Calculate.status = "up";
-
-                    Runnable r = new VoiceFeedback();
-                    Thread thread = new Thread(r);
-                    thread.start();
-                    try {
-                        thread.join();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    ass.execute(Calculate.status);
 
                     //squatUpperFeedback();
                 } /*else if (Calculate.minAng1 <= lowestAngle || Calculate.minAng2 <= lowestAngle) {
@@ -326,15 +287,8 @@ public class Calculate {
                     //squatLowerFeedback();
                 }*/ else {
                     Calculate.status = "right";
+                    ass.execute(Calculate.status);
 
-                    Runnable r = new VoiceFeedback();
-                    Thread thread = new Thread(r);
-                    thread.start();
-                    try {
-                        thread.join();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
                     //successFeedback();
                 }
 
@@ -351,26 +305,13 @@ public class Calculate {
 
     }
 
-
-    public void squatLowerFeedback() {
-
-    }
-
-    public void squatUpperFeedback() {
-
-    }
-
-    public void successFeedback() {
-
-    }
-
-    public static double minList(ArrayList<Double> list) {
+    public static double minList (ArrayList<Double> list) {
         double min = 9999;
         double index = 0;
 
         Log.d("checkangle", Calculate.tmpList1.toString());
-        for (int i = 0; i < list.size(); i++) {
-            if (min > list.get(i)) {
+        for(int i = 0; i < list.size(); i++) {
+            if(min > list.get(i)) {
                 min = list.get(i);
                 index = i;
             }
@@ -379,13 +320,13 @@ public class Calculate {
         return min;
     }
 
-    public static int minIndex(ArrayList<Double> list) {
+    public static int minIndex (ArrayList<Double> list) {
         double min = 9999;
         int index = 0;
 
         Log.d("checkangle", Calculate.tmpList1.toString());
-        for (int i = 0; i < list.size(); i++) {
-            if (min > list.get(i)) {
+        for(int i = 0; i < list.size(); i++) {
+            if(min > list.get(i)) {
                 min = list.get(i);
                 index = i;
             }
@@ -404,7 +345,6 @@ public class Calculate {
         right.clear();
         tmpList1.clear();
         tmpList2.clear();
-        lastPoints.clear();
         headPoint.clear();
 
         isExercise = false;
@@ -413,8 +353,7 @@ public class Calculate {
         lowerCount = 0;
         uppperCount = 0;
         rtAngle = 0;
-        index = -1;
-
+        i = 0;
 
         status = null;
 
@@ -424,13 +363,13 @@ public class Calculate {
     }
 
     public static double getDistance(double x1, double y1, double x2, double y2) {
-        return Math.sqrt(Math.pow(Math.abs(x2 - x1), 2) + Math.pow(Math.abs(y2 - y1), 2));
+        return Math.sqrt(Math.pow(Math.abs(x2-x1), 2) + Math.pow(Math.abs(y2-y1), 2));
     }
 
     public static boolean isPointFValidate(PointF last, PointF current) {
         int limit = 5;
 
-        if (getDistance(last.x, last.y, current.x, current.y) <= limit)
+        if(getDistance(last.x, last.y, current.x, current.y) <= limit)
             return true;
 
         return false;
@@ -441,44 +380,63 @@ public class Calculate {
     }
 }
 
+class async extends AsyncTask<String, Void, String>{
 
-class VoiceFeedback implements Runnable {
     @Override
-    public void run() {
-        MediaPlayer up = MediaPlayer.create(Calculate.context, R.raw.too_low);
-        MediaPlayer down = MediaPlayer.create(Calculate.context, R.raw.too_high);
+    protected void onPreExecute(){
+        super.onPreExecute();
+    }
+
+    @Override
+    protected String doInBackground(String... strings) {
+
+        MediaPlayer down = MediaPlayer.create(Calculate.context, R.raw.too_low);
+        MediaPlayer up = MediaPlayer.create(Calculate.context, R.raw.too_high);
         MediaPlayer good = MediaPlayer.create(Calculate.context, R.raw.well_done);
 
-        if (Calculate.status.equals("down")) {
+        if(strings[0].equals("up")){
             up.start();
             try {
                 Thread.sleep(1500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        } else if (Calculate.status.equals("up")) {
+        }
+
+        else if(strings[0].equals("down")) {
             down.start();
             try {
                 Thread.sleep(1500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        } else if (Calculate.status.equals("right")) {
+        }
+
+        else if(strings[0].equals("right")){
             good.start();
             try {
-                Thread.sleep(1000);
+                Thread.sleep(1500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
-
         up.stop();
-        down.stop();
-        good.stop();
         up.release();
+        down.stop();
         down.release();
+        good.stop();
         good.release();
+
+        return Calculate.status;
     }
 
+    @Override
+    protected void onProgressUpdate(Void... values){
+        super.onProgressUpdate(values);
+    }
 
+    @Override
+    protected void onPostExecute(String s) {
+        super.onPostExecute(s);
+    }
 }
